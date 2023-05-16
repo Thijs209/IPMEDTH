@@ -1,5 +1,8 @@
 <script>
-    let user = 'World';
+    import { json } from "@sveltejs/kit";
+
+    let user = "World";
+    let data = @json($data);
 </script>
 
 <div>
