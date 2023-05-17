@@ -31,9 +31,9 @@
 		"@sveltejs/adapter-auto": "^2.0.0",
 		"@sveltejs/kit": "^1.5.0",
 		"@sveltejs/package": "^2.0.0",
+		"@sveltejs/vite-plugin-svelte": "2.0.2",
 		"@vitejs/plugin-vue": "^4.2.3",
 		"laravel-vite-plugin": "^0.7.6",
-		"@sveltejs/vite-plugin-svelte": "2.0.2",
 		"publint": "^0.1.9",
 		"svelte": "^3.54.0",
 		"svelte-check": "^3.0.1",
@@ -46,6 +46,7 @@
 	"types": "./dist/index.d.ts",
 	"type": "module",
 	"dependencies": {
-		"@inertiajs/svelte": "^1.0.6"
+		"@inertiajs/svelte": "^1.0.6",
+		"svelte-icons": "^2.1.0"
 	}
 }
