@@ -1,5 +1,5 @@
 <script>
-    import SideBar from "./SideBar.svelte";
+    import SideBar from "../Components/SideBar.svelte";
 
     let user = 'World';
 </script>
