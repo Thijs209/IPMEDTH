@@ -61,7 +61,7 @@ return [
     |
     */
 
-    'home' => RouteServiceProvider::HOME,
+    'home' => 'success',
 
     /*
     |--------------------------------------------------------------------------
@@ -103,7 +103,7 @@ return [
     */
 
     'limiters' => [
-        'login' => 'login',
+        // 'login' => 'login', // TODO uncomment rate limiter in production
         'two-factor' => 'two-factor',
     ],
 
@@ -140,7 +140,6 @@ return [
         Features::twoFactorAuthentication([
             'confirm' => true,
             'confirmPassword' => true,
-            // 'window' => 0,
         ]),
     ],
 
