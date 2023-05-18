@@ -42,12 +42,14 @@ class FortifyServiceProvider extends ServiceProvider
         Fortify::updateUserPasswordsUsing(UpdateUserPassword::class);
         Fortify::resetUserPasswordsUsing(ResetUserPassword::class);
 
-        // TODO uncomment rate limiter in production
-        // RateLimiter::for('login', function (Request $request) {
-        //     $email = (string) $request->email;
+        // Restrict rate limiting to production environment
+        if(App::environment('production')) {
+            RateLimiter::for('login', function (Request $request) {
+            $email = (string) $request->email;
+            return Limit::perMinute(20)->by($email.$request->ip());
+        });
+        }
 
-        //     return Limit::perMinute(20)->by($email.$request->ip());
-        // });
 
         RateLimiter::for('two-factor', function (Request $request) {
             return Limit::perMinute(5)->by($request->session()->get('login.id'));
