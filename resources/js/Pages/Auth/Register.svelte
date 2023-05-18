@@ -22,7 +22,7 @@
 
 <main class="page">
     <article class="register">
-        <h2 class="register__heading">Register Page</h2>
+        <h2 class="register__heading">Account registration</h2>
         <form class="form" on:submit|preventDefault={submit}>
             <div class="form__group">
                 <label class="form__label" for="email">Email</label>
@@ -62,15 +62,15 @@
             </div>
 
             <div class="form__group">
-                <label class="form__label" for="user_name">Username</label>
+                <label class="form__label" for="username">Username</label>
                 <input
                     required
                     class="form__input"
                     type="text"
-                    bind:value={$form.user_name}
+                    bind:value={$form.username}
                 />
-                {#if $form.errors.user_name}
-                    <div class="form-error">{$form.errors.user_name}</div>
+                {#if $form.errors.username}
+                    <div class="form-error">{$form.errors.username}</div>
                 {/if}
             </div>
 
