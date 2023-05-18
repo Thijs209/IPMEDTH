@@ -1,5 +1,5 @@
 <script>
-    import { page } from "@inertiajs/svelte";
+    import { inertia, page } from "@inertiajs/svelte";
     let user = "World"; //
     console.log($page.props.auth.user);
 </script>
@@ -12,4 +12,7 @@
     {:else}
         <h1>Welcome! You're not signed in.</h1>
     {/if}
+
+    <button use:inertia="{{ href: '/logout', method: 'post' }}" type="button">Logout</button>
+
 </div>
