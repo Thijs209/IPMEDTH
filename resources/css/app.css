@@ -1,0 +1,38 @@
+:root {
+    /* Global CSS variables */
+
+    /* 1. Base Colorset */
+
+    --color-arcady-green: #00a859;
+    --color-arcady-hover: #00944b;
+
+    --c-alert: #d14137;
+    --c-alert-font: #f2f2f2;
+    --c-attention: #F2C94C;
+    --c-current-progress: #F2C94C;
+
+
+    /* Buttons */
+
+    --c-primary-button: #219653;
+    --c-primary-button-hover: #1e874b;
+    --c-secondary-button: #00A667;
+
+
+    /* 2. MAJOR COMPONENTS */
+    --nav-bg: #0D403D;
+    --nav-font: #F2F2F2;
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+    font-family: 'Montserrat', sans-serif;
+}
