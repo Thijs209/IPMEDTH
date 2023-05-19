@@ -12,19 +12,18 @@
     });
 
     function submit(e) {
-        console.log(form);
-        console.log(e);
         $form.post("/register", {
             onsuccess: () => {
-                $page.visit($page.props.auth.user ? "/home" : "/login");
+                $page.visit(
+                    $page.props.auth.user.username ? "/home" : "/login"
+                );
             },
         });
     }
 </script>
 
 <main class="page">
-    <article class="register">
-        <h2 class="register__heading">Account registration</h2>
+    <article class="register">/
         <form class="form" on:submit|preventDefault={submit}>
             <div class="form__group">
                 <label class="form__label" for="email">Email</label>

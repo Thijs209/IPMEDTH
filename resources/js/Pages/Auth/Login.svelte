@@ -74,6 +74,15 @@
         align-items: center;
     }
 
+    .login__heading {
+        display: flex;
+        padding: 2rem;
+        height: 2rem;
+        width: 100%;
+        justify-content: start;
+        align-items: center;
+    }
+
     .login {
         display: flex;
         justify-content: center;
@@ -135,15 +144,20 @@
         align-self: start;
     }
     .form__button {
+        margin-top: 1rem;
         width: 100%;
         align-self: center;
-        height: 3rem;
+        height: 4rem;
         border-radius: 0.5rem;
         border: 1px solid #ccc;
         padding: 0 1rem;
-        font-size: 1.5rem;
+        font-size: 1.6rem;
         background-color: var(--c-primary-button);
         color: #fff;
+    }
+
+    .form__button:disabled {
+        background-color: #ccc;
     }
 
     .form__button:hover {
