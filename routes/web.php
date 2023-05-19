@@ -19,3 +19,15 @@ Route::get('/', function () {
     return Inertia::render('Home');
 });
 Route::get('/create-pop', [PopController::class, 'new']);
+
+Route::get('/login', function () {
+    return Inertia::render('Auth/Login');
+});
+
+Route::get('/register', function () {
+    return Inertia::render('Auth/Register');
+});
+
+Route::get('/success', function () {
+    return Inertia::render('Auth/Success');
+});

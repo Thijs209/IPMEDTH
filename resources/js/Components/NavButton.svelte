@@ -1,13 +1,24 @@
 <script lang="ts">
-    let text: string;
-    let open: boolean;
+    export let text: string;
+    export let open: boolean;
 
     console.log(open);
     console.log(text);
 </script>
 
+<div>
+    <button class="navRow">
+        <div class="iconHolder">
+            <slot />
+        </div>
+        {#if open}
+            <p>{text}</p>
+        {/if}
+    </button>
+</div>
+
 <style>
-    button{
+    button {
         border-radius: 1em;
         width: 100%;
         background-color: transparent;
@@ -15,15 +26,15 @@
         color: white;
     }
 
-    .navRow{
+    .navRow {
         display: flex;
         flex-direction: row;
         align-items: center;
         justify-content: left;
-        gap: .5em;
+        gap: 0.5em;
     }
 
-    button:hover{
+    button:hover {
         cursor: pointer;
     }
 
@@ -32,14 +43,3 @@
         height: 2em;
     }
 </style>
-
-<div>
-    <button class="navRow">
-        <div class="iconHolder">
-            <slot></slot>
-        </div>
-        {#if open}
-        <p>{text}</p>
-        {/if}
-    </button>
-</div>
