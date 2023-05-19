@@ -1,5 +1,5 @@
 <script>
-    import Register from "./Register.svelte";
+    import Layout from "./../../Layouts/Layout.svelte";
     import { useForm, page } from "@inertiajs/svelte";
 
     let form = useForm({
@@ -22,8 +22,9 @@
     }
 </script>
 
-<main class="page">
-    <article class="register">/
+<Layout>
+    <article slot="main" class="register">
+        /
         <form class="form" on:submit|preventDefault={submit}>
             <div class="form__group">
                 <label class="form__label" for="email">Email</label>
@@ -121,7 +122,7 @@
             >
         </form>
     </article>
-</main>
+</Layout>
 
 <style>
     /* TODO Make re-usable form component styling */

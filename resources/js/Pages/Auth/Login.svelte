@@ -1,4 +1,6 @@
 <script>
+    import Layout from "./../../Layouts/Layout.svelte";
+    import SideBar from "./../../Components/SideBar.svelte";
     import { useForm, page } from "@inertiajs/svelte";
 
     let form = useForm({
@@ -16,8 +18,8 @@
     }
 </script>
 
-<main class="page">
-    <article class="login">
+<Layout>
+    <article class="login" slot="main">
         <h2 class="login__heading">Login Page</h2>
         <form class="form" on:submit|preventDefault={submit}>
             <div class="form__group">
@@ -61,19 +63,9 @@
             >
         </form>
     </article>
-</main>
+</Layout>
 
 <style>
-    .page {
-        height: 100vh;
-        width: 100vw;
-        background-color: #eee;
-        display: flex;
-
-        justify-content: center;
-        align-items: center;
-    }
-
     .login__heading {
         display: flex;
         padding: 2rem;

@@ -1,4 +1,5 @@
 <script>
+    import Layout from "../Layouts/Layout.svelte";
     import SideBar from "../Components/SideBar.svelte";
     import { inertia, Link, page } from "@inertiajs/svelte";
     let user = "World";
@@ -13,33 +14,34 @@
 <div>
     <SideBar />
 </div>
-
-<main class="home-page">
-    {#if $page.props.auth.user}
-        <h2>
-            Welcome! You're signed in as {$page.props.auth.user.first_name}!
-        </h2>
-        <button
-            class="button button--logout"
-            use:inertia={{ href: "/logout", method: "post" }}
-            type="button">Logout</button
-        >
-    {:else}
-        <h2>Welcome! You're not signed in.</h2>
-        <div class="buttons">
+<Layout>
+    <article class="home-page">
+        {#if $page.props.auth.user}
+            <h2>
+                Welcome! You're signed in as {$page.props.auth.user.first_name}!
+            </h2>
             <button
-                class="button"
-                use:inertia={{ href: "/login", method: "get" }}
-                type="button">Login</button
+                class="button button--logout"
+                use:inertia={{ href: "/logout", method: "post" }}
+                type="button">Logout</button
             >
-            <button
-                class="button"
-                use:inertia={{ href: "/register", method: "get" }}
-                type="button">Register</button
-            >
-        </div>
-    {/if}
-</main>
+        {:else}
+            <h2>Welcome! You're not signed in.</h2>
+            <div class="buttons">
+                <button
+                    class="button"
+                    use:inertia={{ href: "/login", method: "get" }}
+                    type="button">Login</button
+                >
+                <button
+                    class="button"
+                    use:inertia={{ href: "/register", method: "get" }}
+                    type="button">Register</button
+                >
+            </div>
+        {/if}
+    </article>
+</Layout>
 
 <style>
     .home-page {
@@ -54,8 +56,6 @@
     }
 
     .header__heading {
-        font-size: 3rem;
-        font-weight: 700;
         margin-bottom: 1rem;
     }
 
@@ -81,7 +81,7 @@
         z-index: 2;
         text-decoration: none;
         color: var(--c-nav-font);
-        font-size: 1.2rem;
+        font-size: 1.4rem;
         font-weight: 700;
     }
 
