@@ -1,4 +1,5 @@
 <script>
+	import NavButton from './NavButton.svelte';
     import FaHome from 'svelte-icons/fa/FaHome.svelte';
     import FaClipboardList from 'svelte-icons/fa/FaClipboardList.svelte';
     import MdTrendingUp from 'svelte-icons/md/MdTrendingUp.svelte';
@@ -8,9 +9,7 @@
     let open = true;
 
     function changeSideBar() {
-        console.log(open);
         open = !open;
-        console.log(open);
     }
 </script>
 
@@ -27,6 +26,10 @@
         align-content: center;
     }
 
+    .closedContainer {
+        width: 2vw;
+    }
+
     .iconHolder {
         width: 2em;
         height: 2em;
@@ -41,22 +44,6 @@
         min-width: 8em;
     }
     
-    button{
-        border-radius: 1em;
-        width: 100%;
-        background-color: transparent;
-        border: none;
-        color: white;
-    }
-
-    .navRow{
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: left;
-        gap: .5em;
-    }
-
     button:hover{
         cursor: pointer;
     }
@@ -68,7 +55,7 @@
         margin: 1em 0;
     }
 
-    .close{
+    .closeButton{
         position: absolute;
         bottom: 5vh;
         right: 0;
@@ -78,31 +65,34 @@
     }
 </style>
 
-<div class="container">
-    <img alt="placeholder" src="" />
+<div    
+    class="container"
+    class:closedContainer={!open}
+>
+    <img alt="logo" src="" />
     <div class="navContainer">
-        <button class="navRow">
-            <div class="iconHolder">
-                <FaHome />
-            </div>
-            <p>Home</p>
-        </button>
-        <button class="navRow">
-            <div class="iconHolder">
-                <FaClipboardList />
-            </div>
-            <p>POP`s`</p>
-        </button>
+        <NavButton 
+            open={open}
+            text="Home"
+        >
+            <FaHome />
+        </NavButton>
+        <NavButton 
+            open={open}
+            text="POP`s"
+        >
+            <FaClipboardList />
+        </NavButton>
         <div class='line'></div>
-        <button class="navRow">
-            <div class=iconHolder>
-                <MdTrendingUp />
-            </div>
-            <p>Evaluatie</p>
-        </button>
+        <NavButton 
+            open={open}
+            text="Resultaten"
+        >
+            <MdTrendingUp />
+        </NavButton>
     </div>
 
-    <button class="close" on:click={changeSideBar()}>
+    <button class="closeButton" on:click={changeSideBar}>
         <div class="iconHolder">
             {#if open}
                 <MdChevronLeft />
