@@ -11,7 +11,9 @@
         password_confirmation: null,
     });
 
-    function submit() {
+    function submit(e) {
+        console.log(form);
+        console.log(e);
         $form.post("/register", {
             onsuccess: () => {
                 $page.visit($page.props.auth.user ? "/home" : "/login");
@@ -27,6 +29,7 @@
             <div class="form__group">
                 <label class="form__label" for="email">Email</label>
                 <input
+                    id="email"
                     class="form__input"
                     type="text"
                     bind:value={$form.email}
@@ -39,6 +42,7 @@
             <div class="form__group">
                 <label class="form__label" for="first_name">First Name</label>
                 <input
+                    id="first_name"
                     required
                     class="form__input"
                     type="text"
@@ -51,6 +55,7 @@
             <div class="form__group">
                 <label class="form__label" for="last_name">Last name</label>
                 <input
+                    id="last_name"
                     required
                     class="form__input"
                     type="text"
@@ -64,6 +69,7 @@
             <div class="form__group">
                 <label class="form__label" for="username">Username</label>
                 <input
+                    id="username"
                     required
                     class="form__input"
                     type="text"
@@ -79,6 +85,7 @@
             <div class="form__group">
                 <label class="form__label" for="password">Password</label>
                 <input
+                    id="password"
                     required
                     class="form__input"
                     type="password"
@@ -94,6 +101,7 @@
                     >Password Confirmation</label
                 >
                 <input
+                    id="password_confirmation"
                     required
                     class="form__input"
                     type="password"

@@ -23,6 +23,7 @@
             <div class="form__group">
                 <label class="form__label" for="email">Email</label>
                 <input
+                    id="email"
                     class="form__input"
                     type="text"
                     bind:value={$form.email}
@@ -35,6 +36,7 @@
             <div class="form__group">
                 <label class="form__label" for="password">Password</label>
                 <input
+                    id="password"
                     class="form__input"
                     type="password"
                     bind:value={$form.password}
@@ -46,6 +48,7 @@
             <div class="form__group form__group--checkbox">
                 <label class="form__label" for="remember">Remember me</label>
                 <input
+                    id="remember"
                     class="form__checkbox"
                     type="checkbox"
                     bind:checked={$form.remember}
