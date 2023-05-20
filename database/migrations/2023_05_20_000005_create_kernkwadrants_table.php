@@ -11,10 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('evaluations', function (Blueprint $table) {
+        Schema::create('kernkwadranten', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('evaluated_by')->constrained('users', 'id');
-            $table->boolean('is_finished')->default(false);
+            $table->foreignId('pop_id')->constrained();
+            $table->foreignId('taak_type_id')->constrained();
+            $table->string('kern_kwaliteit');
+            $table->string('valkuil');
+            $table->string('allergie');
+            $table->string('uitdaging');
             $table->timestamps();
         });
     }
@@ -24,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('evaluations');
+        Schema::dropIfExists('kernkwadranten');
     }
 };

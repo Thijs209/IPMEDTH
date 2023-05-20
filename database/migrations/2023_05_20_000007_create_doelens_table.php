@@ -11,10 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('evaluations', function (Blueprint $table) {
+        Schema::create('doelen', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('evaluated_by')->constrained('users', 'id');
-            $table->boolean('is_finished')->default(false);
             $table->timestamps();
         });
     }
@@ -24,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('evaluations');
+        Schema::dropIfExists('doelen');
     }
 };
