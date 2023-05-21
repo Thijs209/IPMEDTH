@@ -14,8 +14,9 @@ return new class extends Migration
         Schema::create('pops', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();
-            $table->foreignId('evaluation_id')->constrained();
+            $table->foreignId('evaluation_id')->nullable()->constrained();
             $table->timestamps();
+
         });
     }
 
