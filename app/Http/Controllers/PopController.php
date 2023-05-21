@@ -58,7 +58,11 @@ class PopController extends Controller
      */
     public function update(UpdatepopRequest $request, pop $pop)
     {
-        $pop->update($request->validated());
+        // $pop->update($request->validated());
+
+        $pop->evaluated_by = $request['evaluated_by'];
+        $pop->evaluation_finished = $request['evaluation_finished'];
+        $pop->save();
 
         return PopResource::make($pop);
 
