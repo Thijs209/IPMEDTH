@@ -13,7 +13,7 @@ class PopController extends Controller
      */
     public function index()
     {
-        //
+        return pop::all();
     }
 
     /**
