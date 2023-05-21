@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StorepopRequest;
 use App\Http\Requests\UpdatepopRequest;
 use App\Models\pop;
+use App\Http\Resources\PopResource;
 
 class PopController extends Controller
 {
@@ -13,7 +14,7 @@ class PopController extends Controller
      */
     public function index()
     {
-        return pop::all();
+        return PopResource::collection(pop::all());
     }
 
     /**
@@ -29,7 +30,11 @@ class PopController extends Controller
      */
     public function store(StorepopRequest $request)
     {
-        //
+        $pop = Pop::create($request->validated());
+
+        return PopResource::make($pop);
+
+
     }
 
     /**
@@ -37,7 +42,7 @@ class PopController extends Controller
      */
     public function show(pop $pop)
     {
-        //
+        return PopResource::make($pop);
     }
 
     /**
@@ -53,7 +58,10 @@ class PopController extends Controller
      */
     public function update(UpdatepopRequest $request, pop $pop)
     {
-        //
+        $pop->update($request->validated());
+
+        return PopResource::make($pop);
+
     }
 
     /**

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('evaluation_notes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('evaluation_id')->constrained();
+            $table->foreignId('pop_id')->constrained();
             $table->foreignId('taak_type_id')->constrained();
             $table->string('evaluation_note');
             $table->timestamps();
