@@ -13,6 +13,15 @@ return new class extends Migration
     {
         Schema::create('doelen', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('pop_id')->constrained();
+            $table->foreignId('doel_soort')->constrained('doelen_soorten', 'id');
+            $table->string('wat');
+            $table->string('waarom');
+            $table->string('tevreden');
+            $table->string('ondersteuning');
+            $table->date('deadline');
+            $table->string('feedback');
+            $table->string('soort');
             $table->timestamps();
         });
     }

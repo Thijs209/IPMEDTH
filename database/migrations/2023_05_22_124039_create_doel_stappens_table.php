@@ -11,9 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('taak_types', function (Blueprint $table) {
+        Schema::create('doel_stappen', function (Blueprint $table) {
             $table->id();
-            $table->string("taak_type_name");
+            $table->foreignId('doel_id')->constrained('doelen', 'id');
+            $table->integer('stap');
+            $table->string('beschrijving');
+            $table->timestamps();
         });
     }
 
@@ -22,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('taak_types');
+        Schema::dropIfExists('doel_stappen');
     }
 };

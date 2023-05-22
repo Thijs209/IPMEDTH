@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('opdrachten', function (Blueprint $table) {
             $table->id();
             $table->foreignId('pop_id')->constrained();
-            $table->foreignId('taak_type_id')->constrained();
             $table->string('opdracht_doel');
             $table->string('resultaat');
             $table->string('succesvol');

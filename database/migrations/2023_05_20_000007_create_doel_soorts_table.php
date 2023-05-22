@@ -11,10 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('evaluation_notes', function (Blueprint $table) {
+        Schema::create('doelen_soorten', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('pop_id')->constrained();
-            $table->string('evaluation_note');
+            $table->string('doel_soort');
             $table->timestamps();
         });
     }
@@ -24,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('evaluation_notes');
+        Schema::dropIfExists('doelen_soorten');
     }
 };
