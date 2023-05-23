@@ -1,21 +1,11 @@
 <script>
     import Layout from "../Layouts/Layout.svelte";
-    import SideBar from "../Components/SideBar.svelte";
     import { inertia, Link, page } from "@inertiajs/svelte";
-    let user = "World";
     console.log($page.props.auth.user);
 </script>
 
-<!-- 
-<header class="header">
-    <h1 class="header__heading">Home</h1>
-</header> -->
-
-<div>
-    <SideBar />
-</div>
-<Layout>
-    <article class="home-page">
+<Layout centeredContent={true}>
+    <article class="welcome-page" slot="main">
         {#if $page.props.auth.user}
             <h2>
                 Welcome! You're signed in as {$page.props.auth.user.first_name}!
@@ -44,80 +34,10 @@
 </Layout>
 
 <style>
-    .home-page {
-        width: 100%;
+    .welcome-page {
+        width: 50%;
+        height: 100%;
         margin: 0 auto;
-    }
-    .header {
-        height: 20%;
-        width: 100%;
-        background-color: var(--c-nav-bg);
-        color: var(--c-nav-font);
-    }
-
-    .header__heading {
-        margin-bottom: 1rem;
-    }
-
-    .header__nav {
-        display: flex;
-
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .header__items {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .header__item {
-        list-style: none;
-        margin-right: 1rem;
-    }
-
-    .header__link {
-        z-index: 2;
-        text-decoration: none;
-        color: var(--c-nav-font);
-        font-size: 1.4rem;
-        font-weight: 700;
-    }
-
-    .header__link:visited {
-        color: var(--nav-font);
-    }
-
-    .header__link--login {
-        background-color: var(--arcady-green);
-        color: #fff;
-        padding: 0.5rem 1rem;
-        border-radius: 0.5rem;
-    }
-
-    .header__link--logout {
-        background-color: #000;
-        color: #fff;
-        padding: 0.5rem 1rem;
-        border-radius: 0.5rem;
-        border: none;
-    }
-
-    .header__link--logout:hover {
-        background-color: #fff;
-        color: var(--c-alert-hover);
-        cursor: pointer;
-    }
-
-    .header__link--login:hover {
-        background-color: #fff;
-        color: #000;
-    }
-
-    .header__link:hover {
-        color: #fff;
-        background-color: #000;
     }
 
     .button--logout {

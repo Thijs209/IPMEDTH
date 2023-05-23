@@ -22,9 +22,9 @@
     }
 </script>
 
-<Layout>
-    <article slot="main" class="register">
-        /
+<Layout centeredContent={true}>
+    <ar ticle slot="main" class="register">
+        <h2 class="register__heading">Register Page</h2>
         <form class="form" on:submit|preventDefault={submit}>
             <div class="form__group">
                 <label class="form__label" for="email">Email</label>
@@ -121,20 +121,11 @@
                 disabled={$form.processing}>Register</button
             >
         </form>
-    </article>
+    </ar>
 </Layout>
 
 <style>
     /* TODO Make re-usable form component styling */
-    .page {
-        height: 100vh;
-        width: 100vw;
-        background-color: #eee;
-        display: flex;
-
-        justify-content: center;
-        align-items: center;
-    }
 
     .register {
         display: flex;
@@ -178,12 +169,6 @@
         margin-bottom: 1rem;
     }
 
-    .form__group--checkbox {
-        align-self: flex-start;
-        flex-flow: row wrap;
-        gap: 2rem;
-    }
-
     .form__label {
         display: flex;
         height: 2rem;
@@ -202,11 +187,6 @@
         font-size: 1.5rem;
     }
 
-    .form__checkbox {
-        width: 1.5rem;
-        height: 1.5rem;
-        align-self: start;
-    }
     .form__button {
         width: 100%;
         align-self: center;

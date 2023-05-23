@@ -36,6 +36,7 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request): array
     {
+        
         return array_merge(parent::share($request), [
             // Lazily called within the closure only if the user is authenticated.
             'auth.user' => fn () => $request->user()
