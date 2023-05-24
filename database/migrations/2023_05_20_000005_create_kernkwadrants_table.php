@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('kernkwadranten', function (Blueprint $table) {
+        Schema::create('kernkwadrants', function (Blueprint $table) {
             $table->id();
             $table->foreignId('pop_id')->constrained();
             $table->string('kern_kwaliteit');
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('kernkwadranten');
+        Schema::dropIfExists('kernkwadrants');
     }
 };

@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class kernkwadrant extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['pop_id', 'kern_kwaliteit', 'valkuil', 'allergie', 'uitdaging'];
+
+    public function pop(){
+        return $this->hasMany(pop::class);
+    }
 }

@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StorepopRequest;
 use App\Http\Requests\UpdatepopRequest;
 use App\Models\pop;
+use App\Models\opdracht;
+use App\Models\kernkwadrant;
+use App\Models\doel;
 use App\Http\Resources\PopResource;
 
 class PopController extends Controller
@@ -31,6 +34,55 @@ class PopController extends Controller
     public function store(StorepopRequest $request)
     {
         $pop = Pop::create($request->validated());
+
+        error_log($request->input('opdracht.doel'));
+        error_log($pop['id']);
+
+        // save opdracht
+        $opdracht = new opdracht();
+        $opdracht->pop_id = $pop['id'];
+        $opdracht->opdracht_doel = $request->input('opdracht.doel');
+        $opdracht->resultaat = $request->input('opdracht.resultaat');
+        $opdracht->succesvol = $request->input('opdracht.succesvol');
+        $opdracht->leidinggevende = $request->input('opdracht.leidinggevende');
+        $opdracht->rapporteer_anderen = $request->input('opdracht.rapporteer_anderen');
+        $opdracht->save();
+
+        // save kernkwadranten
+        $kernKwadrantData = $request->input('kern_kwadranten');
+
+        foreach($kernKwadrantData as $kernKwadrantItem){
+            $kernkwadrant = new kernkwadrant();
+            $kernkwadrant->pop_id = $pop['id'];
+            $kernkwadrant->kern_kwaliteit = $kernKwadrantItem['kern_kwaliteit'];
+            $kernkwadrant->valkuil = $kernKwadrantItem['valkuil'];
+            $kernkwadrant->allergie = $kernKwadrantItem['allergie'];
+            $kernkwadrant->uitdaging = $kernKwadrantItem['uitdaging'];
+            $kernkwadrant->save();
+
+
+        }
+
+        // save doelen
+        $kernKwadrantData = $request->input('kern_kwadranten');
+
+        foreach($kernKwadrantData as $kernKwadrantItem){
+            $kernkwadrant = new kernkwadrant();
+            $kernkwadrant->pop_id = $pop['id'];
+            $kernkwadrant->kern_kwaliteit = $kernKwadrantItem['kern_kwaliteit'];
+            $kernkwadrant->valkuil = $kernKwadrantItem['valkuil'];
+            $kernkwadrant->allergie = $kernKwadrantItem['allergie'];
+            $kernkwadrant->uitdaging = $kernKwadrantItem['uitdaging'];
+            $kernkwadrant->save();
+
+
+        }
+
+
+
+
+
+
 
         return PopResource::make($pop);
 
@@ -73,6 +125,8 @@ class PopController extends Controller
      */
     public function destroy(pop $pop)
     {
-        //
+        $pop->delete();
+
+        return response()->noContent();
     }
 }

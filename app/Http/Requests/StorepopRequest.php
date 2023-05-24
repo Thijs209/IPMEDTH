@@ -22,7 +22,7 @@ class StorepopRequest extends FormRequest
     public function rules(): array
     {
         return [
-            // 'user_id' => 'required'
+            'user_id' => 'required'
         ];
     }
 }

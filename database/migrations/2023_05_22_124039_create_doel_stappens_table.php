@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('doel_stappen', function (Blueprint $table) {
+        Schema::create('doel_stappens', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('doel_id')->constrained('doelen', 'id');
+            $table->foreignId('doel_id')->constrained('doelens', 'id');
             $table->integer('stap');
             $table->string('beschrijving');
             $table->timestamps();
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('doel_stappen');
+        Schema::dropIfExists('doel_stappens');
     }
 };
