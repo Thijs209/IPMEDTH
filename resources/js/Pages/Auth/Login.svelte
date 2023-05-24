@@ -1,7 +1,6 @@
 <script>
+    import { page, useForm } from "@inertiajs/svelte";
     import Layout from "./../../Layouts/Layout.svelte";
-    import SideBar from "./../../Components/SideBar.svelte";
-    import { useForm, page } from "@inertiajs/svelte";
 
     let form = useForm({
         email: null,
@@ -68,9 +67,6 @@
 <style scoped>
     :root {
         --max-width-form-elements: 60rem;
-    }
-
-    :global(main) {
     }
 
     .login {

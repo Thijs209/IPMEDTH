@@ -1,6 +1,6 @@
 <script>
+    import { inertia, page } from "@inertiajs/svelte";
     import Layout from "../Layouts/Layout.svelte";
-    import { inertia, Link, page } from "@inertiajs/svelte";
     console.log($page.props.auth.user);
 </script>
 

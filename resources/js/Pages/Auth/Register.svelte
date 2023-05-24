@@ -23,7 +23,7 @@
 </script>
 
 <Layout centeredContent={true}>
-    <ar ticle slot="main" class="register">
+    <article slot="main" class="register">
         <h2 class="register__heading">Register Page</h2>
         <form class="form" on:submit|preventDefault={submit}>
             <div class="form__group">
@@ -121,7 +121,7 @@
                 disabled={$form.processing}>Register</button
             >
         </form>
-    </ar>
+    </article>
 </Layout>
 
 <style>
