@@ -6,10 +6,13 @@
 
 <!-- Inertia places the markup below in Svelte's root file (App.html), specifically into the <Body> -->
 <div class="layout-wrapper">
+    <!-- Header -->
     <SideBar />
+    <!-- Main Content -->
     <main class="main" class:center-content="{centeredContent === true}">
         <slot name="main" class="slot" />
     </main>
+    <!-- Footer -->
 </div>
 
 <style>

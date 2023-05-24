@@ -2,6 +2,7 @@
     import { inertia, page } from "@inertiajs/svelte";
     import Layout from "../Layouts/Layout.svelte";
     console.log($page.props.auth.user);
+    console.log($page.props);
 </script>
 
 <Layout centeredContent={true}>
@@ -9,6 +10,9 @@
         {#if $page.props.auth.user}
             <h2>
                 Welcome! You're signed in as {$page.props.auth.user.first_name}!
+                Your role is {String(
+                    $page.props.auth.user.role.name
+                ).toLowerCase()}.
             </h2>
             <button
                 class="button button--logout"
