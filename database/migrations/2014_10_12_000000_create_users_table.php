@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->foreignId('role_id')->constrained('roles')->nullOnDelete()->onUpdate('cascade');
+            $table->foreignId('role_id')->constrained()->cascadeOnDelete()->restrictOnDelete();
             $table->rememberToken();
             $table->timestamps();
         });
