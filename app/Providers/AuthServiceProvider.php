@@ -6,6 +6,9 @@ namespace App\Providers;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Auth;
 
+use App\Models\User;
+use App\Models\Role;
+
 class AuthServiceProvider extends ServiceProvider
 {
     /**
@@ -23,8 +26,14 @@ class AuthServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Auth::viaRequest('admin-role', function ($request) {
-            $user = User::where('email', $request->email)->first();
-            return $user.isAdmin() ? $user : null;
+            $user = Auth::user();
+            return Auth::user()->role->id === 1 ? $user : null;
+        });    
+        
+        Auth::viaRequest('people-manager-role', function ($request) {
+            $user = Auth::user();
+            return Auth::user()->role->id === 2 ? $user : null;
         });
+
     }
 }

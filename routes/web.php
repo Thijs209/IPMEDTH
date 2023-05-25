@@ -28,4 +28,8 @@ Route::get('/register', function () {
 
 Route::get('/success', function () {
     return Inertia::render('Auth/Success');
+})->middleware(['auth:admin']);
+
+Route::get('/unauthorized', function () {
+    return Inertia::render('Auth/Unauthorized');
 });
