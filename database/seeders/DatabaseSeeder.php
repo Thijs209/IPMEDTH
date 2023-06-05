@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\Pop;
 use App\Models\Evaluation;
 
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -16,8 +17,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory(10)->has(
-            Pop::factory(1)
-            )->create();
+
+        $this->call([
+            RoleSeeder::class,
+            UserSeeder::class,
+        ]);
     }
 }

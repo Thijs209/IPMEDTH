@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -16,11 +15,14 @@ return new class extends Migration
             $table->string('first_name');
             $table->string('last_name');
             $table->string('username');
-            $table->boolean('is_admin')->default(false);
-            $table->boolean('is_people_manager')->default(false);
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->foreignId('role_id')
+                ->constrained(table: 'roles')
+                ->onUpdate('cascade')
+                ->onDelete('cascade')
+                ->default(3);
             $table->rememberToken();
             $table->timestamps();
         });
@@ -31,6 +33,10 @@ return new class extends Migration
      */
     public function down(): void
     {
+
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropForeign('users_role_id_foreign');
+        });
         Schema::dropIfExists('users');
     }
 };
