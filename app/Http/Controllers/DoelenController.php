@@ -8,7 +8,6 @@ use App\Models\Doel;
 
 class DoelenController extends Controller
 {
-    /
     /**
      * Display a listing of the resource.
      */

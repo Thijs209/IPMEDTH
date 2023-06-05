@@ -3,7 +3,7 @@
 namespace App\Policies;
 
 use App\Models\User;
-use App\Models\Evaluation_note/;
+use App\Models\EvaluationNote;
 use Illuminate\Auth\Access\Response;
 
 class EvaluationNotePolicy
@@ -19,7 +19,7 @@ class EvaluationNotePolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, Evaluation_note $evaluationNote): bool
+    public function view(User $user, EvaluationNote $evaluationNote): bool
     {
         //
     }
@@ -35,7 +35,7 @@ class EvaluationNotePolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, Evaluation_note $evaluationNote): bool
+    public function update(User $user, EvaluationNote $evaluationNote): bool
     {
         //
     }
@@ -43,7 +43,7 @@ class EvaluationNotePolicy
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, Evaluation_note $evaluationNote): bool
+    public function delete(User $user, EvaluationNote $evaluationNote): bool
     {
         //
     }
@@ -51,7 +51,7 @@ class EvaluationNotePolicy
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, Evaluation_note $evaluationNote): bool
+    public function restore(User $user, EvaluationNote $evaluationNote): bool
     {
         //
     }
@@ -59,7 +59,7 @@ class EvaluationNotePolicy
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, Evaluation_note $evaluationNote): bool
+    public function forceDelete(User $user, EvaluationNote $evaluationNote): bool
     {
         //
     }
