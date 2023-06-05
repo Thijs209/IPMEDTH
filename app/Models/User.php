@@ -44,8 +44,17 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-
+    /* Relationships */
     public function Role(){
         return $this->hasOne(Role::class, 'id', 'role_id');
+    }
+
+    /* Roles convenience methods */
+    public function isAdmin() {
+        return $this->role_id === 1;
+    }
+
+    public function isPeopleManager() {
+        return $this->role_id === 2;
     }
 }
