@@ -42,6 +42,11 @@
         width: 50%;
         height: 100%;
         margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
     }
 
     .button--logout {
@@ -53,12 +58,11 @@
 
     .buttons {
         width: 50%;
-        align-self: start;
+        align-self: center;
         display: flex;
         justify-content: start;
         align-items: center;
         gap: 1rem;
-        padding: 1rem;
     }
 
     .button {

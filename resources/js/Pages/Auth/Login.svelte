@@ -1,5 +1,5 @@
 <script>
-    import { page, useForm } from "@inertiajs/svelte";
+    import { page, useForm, Link } from "@inertiajs/svelte";
     import Layout from "./../../Layouts/Layout.svelte";
 
     let form = useForm({
@@ -19,7 +19,7 @@
 
 <Layout centeredContent={true}>
     <article class="login" slot="main">
-        <h2 class="login__heading">Login Page</h2>
+        <h2 class="login__heading">Login</h2>
         <form class="form" on:submit|preventDefault={submit}>
             <div class="form__group">
                 <label class="form__label" for="email">Email</label>
@@ -30,7 +30,7 @@
                     bind:value={$form.email}
                 />
                 {#if $form.errors.email}
-                    <div class="form-error">{$form.errors.email}</div>
+                    <div class="form__error">{$form.errors.email}</div>
                 {/if}
             </div>
 
@@ -43,11 +43,13 @@
                     bind:value={$form.password}
                 />
                 {#if $form.errors.password}
-                    <div class="form-error">{$form.errors.password}</div>
+                    <div class="form__error">{$form.errors.password}</div>
                 {/if}
             </div>
             <div class="form__group form__group--checkbox">
-                <label class="form__label" for="remember">Remember me</label>
+                <label class="form__label" for="remember"
+                    >Onthoud gegevens</label
+                >
                 <input
                     id="remember"
                     class="form__checkbox"
@@ -61,6 +63,7 @@
                 disabled={$form.processing}>Login</button
             >
         </form>
+        <Link href="/forgot-password">Wachtwoord vergeten?</Link>
     </article>
 </Layout>
 
@@ -70,11 +73,13 @@
     }
 
     .login {
-        min-width: rem;
+        min-width: 40rem;
         width: 40%;
         gap: 4rem;
         padding: 2rem;
-        background-color: #fff;
+        background-color: rgba(250, 250, 250);
+        border-radius: 1rem;
+        box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
     }
 
     .login__heading {
@@ -164,5 +169,23 @@
     .form__button:hover {
         background-color: var(--c-primary-button-hover);
         cursor: pointer;
+    }
+
+    .form__error {
+        background-color: var(--c-alert);
+        width: 100%;
+        color: var(--c-alert-font);
+        padding: 1rem;
+        border-bottom-left-radius: 1rem;
+        border-bottom-right-radius: 1rem;
+        font-size: 1.6rem;
+    }
+
+    .form__success {
+        background-color: none;
+        color: var(--color-arcady-green);
+        margin-top: 1rem;
+        padding: 1rem;
+        font-size: 1.6rem;
     }
 </style>
