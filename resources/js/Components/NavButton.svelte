@@ -1,9 +1,6 @@
 <script lang="ts">
     export let text: string;
     export let open: boolean;
-
-    console.log(open);
-    console.log(text);
 </script>
 
 <div>

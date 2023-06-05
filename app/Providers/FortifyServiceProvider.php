@@ -28,15 +28,30 @@ class FortifyServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        /* 
+        * Fortify routes
+        */
 
         Fortify::loginView(function () {
-            return Inertia::render('login');
+            return Inertia::render('auth.login');
         });
-
         Fortify::registerView(function () {
-            return Inertia::render('register');
+            return Inertia::render('auth.register');
         });
-
+        
+        Fortify::requestPasswordResetLinkView(function () {
+            return Inertia::render('auth.forgot-password');
+        });
+        
+        Fortify::resetPasswordView(function (Request $request) {
+            return Inertia::render('auth.reset-password', [
+                'request' => $request
+            ]);
+        });
+        
+       /*
+       * Fortify actions 
+       */
         
         Fortify::createUsersUsing(CreateNewUser::class);
         Fortify::updateUserProfileInformationUsing(UpdateUserProfileInformation::class);

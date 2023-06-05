@@ -1,5 +1,4 @@
 <script>
-    import SideBar from "../../Components/SideBar.svelte";
     import Layout from "./../../Layouts/Layout.svelte";
 </script>
 

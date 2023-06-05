@@ -1,45 +1,75 @@
 <script>
-    import { page, useForm } from "@inertiajs/svelte";
     import Layout from "./../../Layouts/Layout.svelte";
-    //TODO add mailpit to send email
+    import { useForm, page } from "@inertiajs/svelte";
+
+    // The url is in the form of /reset-password/{token}?email={email}
+    const token = $page.url.split("/")[2].split("?")[0];
+    let email = decodeURIComponent($page.url.split("/")[2].split("?email=")[1]);
+    console.log($page);
 
     let form = useForm({
-        email: "",
+        email: email,
+        password: "",
+        password_confirmation: "",
+        token: token,
     });
 
     function submit() {
-        $form.post("/forgot-password", {
+        $form.post("/reset-password", {
             onsuccess: () => {
                 $page.props.flash.message =
-                    "De password reset link is succesvol verzonden.";
+                    "Je wachtwoord is succesvol gewijzigd, je kan nu inloggen.";
             },
             onfinish: () => {
-                $page.visit($page.props.auth.user ? "/home" : "/login");
+                $page.visit("/login");
             },
         });
     }
 </script>
 
 <Layout centeredContent={true}>
-    <article class="forgot-password" slot="main">
-        <h2 class="forgot-password__heading">Wachtwoord reset aanvraag</h2>
-        <form class="form" on:submit|preventDefault={submit}>
+    <article class="reset-password" slot="main">
+        <h2 class="reset-password__heading">Wachtwoord reset</h2>
+        <form
+            action="/reset-password"
+            method="post"
+            on:submit|preventDefault={submit}
+        >
             <div class="form__group">
-                <label class="form__label" for="email">Email</label>
+                <label class="form__label" for="password">Wachtwoord</label>
                 <input
-                    id="email"
+                    id="password"
+                    required
                     class="form__input"
-                    type="text"
-                    bind:value={$form.email}
+                    type="password"
+                    bind:value={$form.password}
                 />
-                {#if $form.errors.email}
-                    <div class="form__error">{$form.errors.email}</div>
+                {#if $form.errors.password}
+                    <div class="form__error">{$form.errors.password}</div>
+                {/if}
+            </div>
+            <div class="form__group">
+                <label class="form__label" for="password_confirmation"
+                    >Bevestig wachtwoord</label
+                >
+                <input
+                    id="password_confirmation"
+                    required
+                    class="form__input"
+                    type="password"
+                    bind:value={$form.password_confirmation}
+                />
+                {#if $form.errors.password_confirmation}
+                    <div class="form__error">
+                        {$form.errors.password_confirmation}
+                    </div>
                 {/if}
             </div>
             <button
+                required
                 class="form__button"
                 type="submit"
-                disabled={$form.processing}>Versturen</button
+                disabled={$form.processing}>Verzend</button
             >
         </form>
         {#if $page.props.flash.message}
@@ -50,12 +80,12 @@
     </article>
 </Layout>
 
-<style scoped>
+<style>
     :root {
         --max-width-form-elements: 60rem;
     }
 
-    .forgot-password {
+    .reset-password {
         font-size: 1.6rem;
         min-width: rem;
         width: 100%;
@@ -67,7 +97,7 @@
         box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
     }
 
-    .forgot-password__heading {
+    .reset-password__heading {
         display: flex;
         width: 100%;
         height: 4rem;
