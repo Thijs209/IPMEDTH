@@ -7,11 +7,15 @@ use Illuminate\Database\Seeder;
 
 class OpdrachtSeeder extends Seeder
 {
+
+
+    
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
+        $this->table = "opdrachten";
         //
     }
 }

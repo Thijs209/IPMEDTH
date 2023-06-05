@@ -3,7 +3,7 @@
 namespace App\Policies;
 
 use App\Models\User;
-use App\Models\kernkwadrant;
+use App\Models\Kernkwadrant;
 use Illuminate\Auth\Access\Response;
 
 class KernkwadrantPolicy
@@ -19,7 +19,7 @@ class KernkwadrantPolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, kernkwadrant $kernkwadrant): bool
+    public function view(User $user, Kernkwadrant $kernkwadrant): bool
     {
         //
     }
@@ -35,7 +35,7 @@ class KernkwadrantPolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, kernkwadrant $kernkwadrant): bool
+    public function update(User $user, Kernkwadrant $kernkwadrant): bool
     {
         //
     }
@@ -43,7 +43,7 @@ class KernkwadrantPolicy
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, kernkwadrant $kernkwadrant): bool
+    public function delete(User $user, Kernkwadrant $kernkwadrant): bool
     {
         //
     }
@@ -51,7 +51,7 @@ class KernkwadrantPolicy
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, kernkwadrant $kernkwadrant): bool
+    public function restore(User $user, Kernkwadrant $kernkwadrant): bool
     {
         //
     }
@@ -59,7 +59,7 @@ class KernkwadrantPolicy
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, kernkwadrant $kernkwadrant): bool
+    public function forceDelete(User $user, Kernkwadrant $kernkwadrant): bool
     {
         //
     }

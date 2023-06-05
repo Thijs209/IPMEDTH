@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StorepopRequest;
 use App\Http\Requests\UpdatepopRequest;
-use App\Models\pop;
-use App\Models\opdracht;
-use App\Models\kernkwadrant;
-use App\Models\doel;
+use App\Models\Pop;
+use App\Models\Opdracht;
+use App\Models\Kernkwadrant;
+use App\Models\Doel;
 use App\Http\Resources\PopResource;
 
 class PopController extends Controller
@@ -17,7 +17,7 @@ class PopController extends Controller
      */
     public function index()
     {
-        return PopResource::collection(pop::all());
+        return PopResource::collection(Pop::all());
     }
 
     /**
@@ -39,7 +39,7 @@ class PopController extends Controller
         error_log($pop['id']);
 
         // save opdracht
-        $opdracht = new opdracht();
+        $opdracht = new Opdracht();
         $opdracht->pop_id = $pop['id'];
         $opdracht->opdracht_doel = $request->input('opdracht.doel');
         $opdracht->resultaat = $request->input('opdracht.resultaat');
@@ -52,7 +52,7 @@ class PopController extends Controller
         $kernKwadrantData = $request->input('kern_kwadranten');
 
         foreach($kernKwadrantData as $kernKwadrantItem){
-            $kernkwadrant = new kernkwadrant();
+            $kernkwadrant = new Kernkwadrant();
             $kernkwadrant->pop_id = $pop['id'];
             $kernkwadrant->kern_kwaliteit = $kernKwadrantItem['kern_kwaliteit'];
             $kernkwadrant->valkuil = $kernKwadrantItem['valkuil'];
@@ -67,7 +67,7 @@ class PopController extends Controller
         $kernKwadrantData = $request->input('kern_kwadranten');
 
         foreach($kernKwadrantData as $kernKwadrantItem){
-            $kernkwadrant = new kernkwadrant();
+            $kernkwadrant = new Kernkwadrant();
             $kernkwadrant->pop_id = $pop['id'];
             $kernkwadrant->kern_kwaliteit = $kernKwadrantItem['kern_kwaliteit'];
             $kernkwadrant->valkuil = $kernKwadrantItem['valkuil'];
@@ -92,7 +92,7 @@ class PopController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(pop $pop)
+    public function show(Pop $pop)
     {
         return PopResource::make($pop);
     }
@@ -100,7 +100,7 @@ class PopController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(pop $pop)
+    public function edit(Pop $pop)
     {
         //
     }
@@ -108,7 +108,7 @@ class PopController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatepopRequest $request, pop $pop)
+    public function update(UpdatepopRequest $request, Pop $pop)
     {
         // $pop->update($request->validated());
 
@@ -116,14 +116,14 @@ class PopController extends Controller
         $pop->evaluation_finished = $request['evaluation_finished'];
         $pop->save();
 
-        return PopResource::make($pop);
+        return Po/pResource::make($pop);
 
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(pop $pop)
+    public function destroy(Pop $pop)
     {
         $pop->delete();
 

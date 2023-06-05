@@ -11,14 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('opdrachts', function (Blueprint $table) {
+        Schema::create('doelen', function (Blueprint $table) {
             $table->id();
             $table->foreignId('pop_id')->constrained();
-            $table->string('opdracht_doel');
-            $table->string('resultaat');
-            $table->string('succesvol');
-            $table->string('leidinggevende');
-            $table->string('rapporteer_anderen');
+            $table->foreignId('doel_soort')->constrained('doel_soorten', 'id');
+            $table->string('wat');
+            $table->string('waarom');
+            $table->string('tevreden');
+            $table->string('ondersteuning');
+            $table->date('deadline');
+            $table->string('feedback');
+            $table->string('soort');
             $table->timestamps();
         });
     }
@@ -28,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('opdrachts');
+        Schema::dropIfExists('doelen');
     }
 };

@@ -12,6 +12,6 @@ class KernkwadrantSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        
     }
 }

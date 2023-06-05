@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class evaluation_note extends Model
+class TaakType extends Model
 {
     use HasFactory;
 }

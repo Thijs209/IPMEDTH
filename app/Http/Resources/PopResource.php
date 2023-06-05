@@ -4,10 +4,18 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use App\Models\Pop;
 
 class PopResource extends JsonResource
 {
     /**
+     * The resource that this resource collects.
+     *
+     * @var string
+     */
+    public $collects = Pop::class;
+    /**
+     * 
      * Transform the resource into an array.
      *
      * @return array<string, mixed>

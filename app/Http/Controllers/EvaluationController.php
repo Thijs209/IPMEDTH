@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreevaluationRequest;
 use App\Http\Requests\UpdateevaluationRequest;
-use App\Models\evaluation;
+use App\Models\Evaluation;
 
 class EvaluationController extends Controller
 {

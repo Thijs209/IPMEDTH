@@ -3,7 +3,7 @@
 namespace App\Policies;
 
 use App\Models\User;
-use App\Models\opdracht;
+use App\Models\Opdracht;
 use Illuminate\Auth\Access\Response;
 
 class OpdrachtPolicy
@@ -19,7 +19,7 @@ class OpdrachtPolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, opdracht $opdracht): bool
+    public function view(User $user, Opdracht $opdracht): bool
     {
         //
     }
@@ -35,7 +35,7 @@ class OpdrachtPolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, opdracht $opdracht): bool
+    public function update(User $user, Opdracht $opdracht): bool
     {
         //
     }
@@ -43,7 +43,7 @@ class OpdrachtPolicy
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, opdracht $opdracht): bool
+    public function delete(User $user, Opdracht $opdracht): bool
     {
         //
     }
@@ -51,7 +51,7 @@ class OpdrachtPolicy
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, opdracht $opdracht): bool
+    public function restore(User $user, Opdracht $opdracht): bool
     {
         //
     }
@@ -59,7 +59,7 @@ class OpdrachtPolicy
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, opdracht $opdracht): bool
+    public function forceDelete(User $user, Opdracht $opdracht): bool
     {
         //
     }

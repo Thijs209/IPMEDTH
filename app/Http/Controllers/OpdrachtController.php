@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreopdrachtRequest;
 use App\Http\Requests\UpdateopdrachtRequest;
-use App\Models\opdracht;
+use App\Models\Opdracht;
 
 class OpdrachtController extends Controller
 {

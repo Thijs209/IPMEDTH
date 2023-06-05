@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StorekernkwadrantRequest;
 use App\Http\Requests\UpdatekernkwadrantRequest;
-use App\Models\kernkwadrant;
+use App\Models\Kernkwadrant;
 
 class KernkwadrantController extends Controller
 {

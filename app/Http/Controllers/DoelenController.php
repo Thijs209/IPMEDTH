@@ -4,10 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoredoelenRequest;
 use App\Http\Requests\UpdatedoelenRequest;
-use App\Models\doelen;
+use App\Models\Doel;
 
 class DoelenController extends Controller
 {
+    /
     /**
      * Display a listing of the resource.
      */

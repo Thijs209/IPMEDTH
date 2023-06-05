@@ -3,7 +3,7 @@
 namespace App\Policies;
 
 use App\Models\User;
-use App\Models\taak_type;
+use App\Models\TaakType;
 use Illuminate\Auth\Access\Response;
 
 class TaakTypePolicy
@@ -19,7 +19,7 @@ class TaakTypePolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, taak_type $taakType): bool
+    public function view(User $user, TaakType $taakType): bool
     {
         //
     }
@@ -35,7 +35,7 @@ class TaakTypePolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, taak_type $taakType): bool
+    public function update(User $user, TaakType $taakType): bool
     {
         //
     }
@@ -43,7 +43,7 @@ class TaakTypePolicy
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, taak_type $taakType): bool
+    public function delete(User $user, TaakType $taakType): bool
     {
         //
     }
@@ -51,7 +51,7 @@ class TaakTypePolicy
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, taak_type $taakType): bool
+    public function restore(User $user, TaakType $taakType): bool
     {
         //
     }
@@ -59,7 +59,7 @@ class TaakTypePolicy
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, taak_type $taakType): bool
+    public function forceDelete(User $user, TaakType $taakType): bool
     {
         //
     }
