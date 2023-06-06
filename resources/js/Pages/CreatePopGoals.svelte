@@ -1,32 +1,46 @@
 <script>
-	import IconHolder from './../Components/IconHolder.svelte';
 	import Button from './../Components/Button.svelte';
     import FaPlus from 'svelte-icons/fa/FaPlus.svelte'
     import { pop } from './../stores.js';
+    import CreatPopGoal from '../Components/CreatePopComponents/CreatPopGoal.svelte';
 
-    const goals = [
-        'doel 1',
-        'doel 2',
-        'doel 3',
-    ]
+    export let setCurrentPage;
 
     function addGoal(name) {
-        pop.update(p => {
-            p.goals.push(name);
-            return p;
-        })
+        console.log(name);
+        $pop.goals = [...$pop.goals, {name: name}];
+        console.log($pop.goals);
     }
-    console.log(pop.goals);
 </script>
 
-<div>
-    {#if pop.goals.length == 0}
-        <h4>Voeg een doel toe</h4>
-        {#each pop.goals as goal}
-            <h4>{goal}</h4>
-        {/each}
-    {/if}
-    <Button onClick={addGoal} icon>
-        <FaPlus />
-    </Button>
+<div class="container">
+    <div class="goalsContainer">
+        <h3>Doelen:</h3>
+        {#if $pop.goals.length === 0}
+            <h3 class="disabledText">Voeg een doel toe</h3>
+        {:else}
+            {#each $pop.goals as goal}
+                <CreatPopGoal title={goal.name} />
+            {/each}
+        {/if}
+        <Button marginTop onClick={() => setCurrentPage(10)} icon>
+            <FaPlus />
+        </Button>
+    </div>
 </div>
+
+<style>
+    .disabledText{
+        color: #ccc;
+        margin-top: .5em;
+    }
+
+    .container{
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+    }
+
+    .goalsContainer{
+        
+    }
+</style>

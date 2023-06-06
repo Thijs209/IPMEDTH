@@ -8,13 +8,13 @@
     import SideBar from './../Components/SideBar.svelte';
     import CreateProjectCoreQuadrants from './CreateProjectCoreQuadrants.svelte';
     import { writable } from 'svelte/store';
+    import CreateGoal from './CreateGoal.svelte';
 
     const pages = [
         'Intro',
         'Opdracht',
         'Kernkwadranten',
         'Doelen',
-        'Leerdoelen',
         'Afronden'
     ]
 
@@ -40,16 +40,20 @@
     {:else if currentPage == 2}
         <CreateProjectCoreQuadrants />
     {:else if currentPage == 3}
-        <CreatePopGoals />
+        <CreatePopGoals setCurrentPage={setCurrentPage} />
     {:else if currentPage == 4}
         <h1>4</h1>
     {:else if currentPage == 5}
         <h1>5</h1>
+    {:else if currentPage == 10}
+        <CreateGoal setCurrentPage={setCurrentPage} />
     {/if}
-    <div class="buttons">
-        <Button onClick={previousPage} text={'vorige'} />
-        <Button onClick={nextPage} text={'Volgende'} />
-    </div>
+    {#if currentPage != 10}
+        <div class="buttons">
+            <Button onClick={previousPage} text={'vorige'} />
+            <Button onClick={nextPage} text={'Volgende'} />
+        </div>
+    {/if}
 </div>
     
 <style>
