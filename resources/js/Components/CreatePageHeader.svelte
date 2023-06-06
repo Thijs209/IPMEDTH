@@ -1,26 +1,27 @@
 <script lang="ts">
-	import IconHolder from './../IconHolder.svelte';
-    import MdChevronRight from 'svelte-icons/md/MdChevronRight.svelte'
+    import IconHolder from "./IconHolder.svelte";
+    import MdChevronRight from "svelte-icons/md/MdChevronRight.svelte";
 
+    export let setCurrentPage: (page: number) => void;
     export let pages: String[];
     export let currentPage: number;
-    export let setCurrentPage: (page: number) => void;
+    export let pageHeading: String = "Persoonlijk Ontwikkelingsplan";
     console.log(pages);
-
 </script>
 
 <div class="container">
-    <h1>Persoonlijk Ontwikkelings Plan</h1>
-    <div class='breadCrumbs'>
+    <h1>{pageHeading}</h1>
+    <div class="breadCrumbs">
         {#each pages as page}
-            <p 
+            <!-- svelte-ignore a11y-click-events-have-key-events -->
+            <p
                 class:selectedPage={page == pages[currentPage]}
                 on:click={() => setCurrentPage(pages.indexOf(page))}
             >
                 {page}
             </p>
             {#if page != pages[pages.length - 1]}
-                <IconHolder >
+                <IconHolder>
                     <MdChevronRight />
                 </IconHolder>
             {/if}
@@ -29,27 +30,35 @@
 </div>
 
 <style>
-    .container{
+    .container {
         margin-bottom: 2em;
     }
 
-    .breadCrumbs{
+    .breadCrumbs {
         display: flex;
-        flex-direction: row;
-        gap: .5em;
+        flex-flow: row wrap;
+        gap: 0.5em;
         align-items: center;
+    }
+
+    h1 {
+        display: flex;
+        height: auto;
+        width: 100%;
+        margin-bottom: 1rem;
     }
 
     p {
         font-weight: 600;
-        color: gray;
+        color: #808080;
     }
 
-    p:hover{
+    p:hover {
         cursor: pointer;
+        color: #6b6b6b;
     }
 
-    .selectedPage{
+    .selectedPage {
         color: black;
     }
 </style>

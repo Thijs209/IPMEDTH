@@ -1,22 +1,19 @@
 <script lang="ts">
-	import CreatePopGoals from './CreatePopGoals.svelte';
-	import CreatePopProject from './CreatePopProject.svelte';
-	import CreatePopIntro from './CreatePopIntro.svelte';
-	import ProgressBar from './../Components/CreatePopComponents/ProgressBar.svelte';
-	import Button from './../Components/Button.svelte';
-	import CreatePopHeader from '../Components/CreatePopComponents/CreatePopHeader.svelte';
-    import SideBar from './../Components/SideBar.svelte';
-    import CreateProjectCoreQuadrants from './CreateProjectCoreQuadrants.svelte';
-    import { writable } from 'svelte/store';
+    import CreatePageHeader from "../Components/CreatePageHeader.svelte";
+    import Button from "./../Components/Button.svelte";
+    import CreatePopGoals from "./CreatePopGoals.svelte";
+    import CreatePopIntro from "./CreatePopIntro.svelte";
+    import CreatePopProject from "./CreatePopProject.svelte";
+    import CreateProjectCoreQuadrants from "./CreateProjectCoreQuadrants.svelte";
 
     const pages = [
-        'Intro',
-        'Opdracht',
-        'Kernkwadranten',
-        'Doelen',
-        'Leerdoelen',
-        'Afronden'
-    ]
+        "Intro",
+        "Opdracht",
+        "Kernkwadranten",
+        "Doelen",
+        "Leerdoelen",
+        "Afronden",
+    ];
 
     let currentPage = 0;
     function nextPage() {
@@ -30,9 +27,8 @@
     }
 </script>
 
-
 <div class="container">
-    <CreatePopHeader currentPage={currentPage} pages={pages} setCurrentPage={setCurrentPage} />
+    <CreatePageHeader {currentPage} {pages} {setCurrentPage} />
     {#if currentPage == 0}
         <CreatePopIntro />
     {:else if currentPage == 1}
@@ -47,17 +43,17 @@
         <h1>5</h1>
     {/if}
     <div class="buttons">
-        <Button onClick={previousPage} text={'vorige'} />
-        <Button onClick={nextPage} text={'Volgende'} />
+        <Button onClick={previousPage} text={"vorige"} />
+        <Button onClick={nextPage} text={"Volgende"} />
     </div>
 </div>
-    
+
 <style>
     .container {
         padding: 2em 4em;
     }
 
-    .buttons{
+    .buttons {
         display: flex;
         justify-content: end;
         width: 100%;
