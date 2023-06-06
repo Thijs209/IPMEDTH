@@ -1,5 +1,5 @@
 <script lang="ts">
-    import IconHolder from "./IconHolder.svelte";
+	import IconHolder from './IconHolder.svelte';
     import MdChevronRight from "svelte-icons/md/MdChevronRight.svelte";
 
     export let setCurrentPage: (page: number) => void;
@@ -12,6 +12,7 @@
 <div class="container">
     <h1>{pageHeading}</h1>
     <div class="breadCrumbs">
+
         {#each pages as page}
             <!-- svelte-ignore a11y-click-events-have-key-events -->
             <p

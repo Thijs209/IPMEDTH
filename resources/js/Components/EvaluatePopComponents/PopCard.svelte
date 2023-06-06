@@ -1,4 +1,8 @@
 <script lang="ts">
+    import { Link } from "@inertiajs/svelte";
+    import IconHolder from "./../IconHolder.svelte";
+    import MdChevronRight from "svelte-icons/md/MdChevronRight.svelte";
+
     export let pop: object = {
         name: "John Thomas",
         startDate: "01-01-2023",
@@ -28,13 +32,21 @@
             <p class="pop-card__text">{status}</p>
         </div>
     </div>
+    <div class="pop-card__button">
+        <Link href={pop.popId ? "/users/{pop.userId}/pops/{pop.popId}/evaluate" : ""}>
+            <IconHolder>
+                <MdChevronRight  />
+            </IconHolder>
+        </Link>
+    </div>
 </article>
 
 <style>
     .pop-card {
+        font-size: 1.6rem;
         display: grid;
         grid-template-columns: 10% 1fr 10%;
-        width: clamp(20rem, 100%, 25rem);
+        width: clamp(30rem, 100%, 35rem);
         height: 8rem;
         border-radius: 0.5rem;
         background-color: white;
@@ -47,10 +59,11 @@
         height: 100%;
         border-radius: 0 0.5rem 0.5rem 0;
         padding: 0.5rem;
+        font-size: 1.5rem;
     }
 
     .pop-card__heading {
-        font-size: 1.5rem;
+        font-size: 1.6rem;
         font-weight: 600;
         margin: 0;
     }
@@ -64,13 +77,13 @@
     }
 
     .pop-card__label {
-        font-size: 1rem;
+        font-size: 1.2rem;
         font-weight: 600;
         margin: 0;
     }
 
     .pop-card__text {
-        font-size: 1rem;
+        font-size: 1.2rem;
         font-weight: 400;
         margin: 0;
     }
@@ -79,6 +92,9 @@
         width: auto;
         height: 100%;
         border-radius: 0 0.5rem 0.5rem 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     .pop-card__status {

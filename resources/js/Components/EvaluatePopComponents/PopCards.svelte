@@ -16,13 +16,13 @@
 
 <style>
     .pop-cards {
+        font-size: 1.6rem;
         display: flex;
         flex-flow: row wrap;
         gap: 2rem;
         width: 100%;
         height: auto;
         max-height: 50%;
-        background-color: pink;
         margin-top: 5rem;
         padding: 1rem;
     }
