@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StorepopRequest;
 use App\Http\Requests\UpdatepopRequest;
 use App\Models\Pop;
+
 use App\Models\Opdracht;
 use App\Models\Kernkwadrant;
 use App\Models\Doel;
 use App\Http\Resources\PopResource;
 
+use Illuminate\Http\Request;
 class PopController extends Controller
 {
     /**
@@ -25,7 +27,7 @@ class PopController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('CreatePop');
     }
 
     /**
