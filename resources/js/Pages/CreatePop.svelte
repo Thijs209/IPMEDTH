@@ -1,28 +1,67 @@
-<script>
+<script lang="ts">
+	import CreatePopGoals from './CreatePopGoals.svelte';
+	import CreatePopProject from './CreatePopProject.svelte';
+	import CreatePopIntro from './CreatePopIntro.svelte';
 	import ProgressBar from './../Components/CreatePopComponents/ProgressBar.svelte';
 	import Button from './../Components/Button.svelte';
 	import CreatePopHeader from '../Components/CreatePopComponents/CreatePopHeader.svelte';
     import SideBar from './../Components/SideBar.svelte';
+    import CreateProjectCoreQuadrants from './CreateProjectCoreQuadrants.svelte';
+    import { writable } from 'svelte/store';
 
-    let currentPage = 'Intro';
+    const pages = [
+        'Intro',
+        'Opdracht',
+        'Kernkwadranten',
+        'Doelen',
+        'Leerdoelen',
+        'Afronden'
+    ]
 
-    let buttonText = 'Volgende';
+    let currentPage = 0;
+    function nextPage() {
+        currentPage++;
+    }
+    function previousPage() {
+        currentPage--;
+    }
+    function setCurrentPage(page: number) {
+        currentPage = page;
+    }
 </script>
 
-<style>
-    .text{
-        margin: 7em auto;
-        width: 32em;
-    }
-</style>
 
 <div class="container">
-    <CreatePopHeader />
-    <div class="text">
-        <p>Dit is jouw persoonlijk ontwikkel plan (POP). Omdat jij als Arcadian zelf in de regie bent van jouw ontwikkeling wordt er gewerkt met een POP document. Je kan dit programma gebruiken als leidraad voor jouw ontwikkeling. Je kan jouw doelen opschrijven en bijhouden, zodat je altijd een plek hebt om op terug te vallen. Je POP is een levend iets, wat wil zeggen dat je hem steeds voor jezelf up-to-date houdt. De doelen in jouw POP bespreek je elke 6 weken met jouw People Manager. Jouw PM verwacht dat je jouw POP 5 werkdagen voor jouw kort cyclisch gesprek hebt bijgewerkt.</p>
-        <p>Veel succes en plezier met het uitwerken van jouw POP.</p>
-        <p>Namens jouw People Manager.</p>
+    <CreatePopHeader currentPage={currentPage} pages={pages} setCurrentPage={setCurrentPage} />
+    {#if currentPage == 0}
+        <CreatePopIntro />
+    {:else if currentPage == 1}
+        <CreatePopProject />
+    {:else if currentPage == 2}
+        <CreateProjectCoreQuadrants />
+    {:else if currentPage == 3}
+        <CreatePopGoals />
+    {:else if currentPage == 4}
+        <h1>4</h1>
+    {:else if currentPage == 5}
+        <h1>5</h1>
+    {/if}
+    <div class="buttons">
+        <Button onClick={previousPage} text={'vorige'} />
+        <Button onClick={nextPage} text={'Volgende'} />
     </div>
-    <Button text={buttonText} />
-    <ProgressBar />
 </div>
+    
+<style>
+    .container {
+        padding: 2em 4em;
+    }
+
+    .buttons{
+        display: flex;
+        justify-content: end;
+        width: 100%;
+        gap: 1em;
+        margin-top: 4em;
+    }
+</style>

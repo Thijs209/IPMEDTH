@@ -6,13 +6,7 @@
     console.log($page.props.auth.user);
 </script>
 
-<style>
-    :global(body) {
-		margin: 0;
-        padding: 0;
-        font-family: Arial, Helvetica, sans-serif;
-	}
-</style>
+
 <!-- 
 <header class="header">
     <h1 class="header__heading">Home</h1>

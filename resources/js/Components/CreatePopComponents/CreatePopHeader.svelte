@@ -1,22 +1,36 @@
-<script>
+<script lang="ts">
 	import IconHolder from './../IconHolder.svelte';
     import MdChevronRight from 'svelte-icons/md/MdChevronRight.svelte'
 
-    const breadCrumbs = [
-        'Intro',
-        'Opdracht',
-        'Kernkwadranten',
-        'Doelen',
-        'Leerdoelen',
-        'Afronden'
-    ]
+    export let pages: String[];
+    export let currentPage: number;
+    export let setCurrentPage: (page: number) => void;
+    console.log(pages);
 
-    let selectedCrumb = 'Intro';
 </script>
 
+<div class="container">
+    <h1>Persoonlijk Ontwikkelings Plan</h1>
+    <div class='breadCrumbs'>
+        {#each pages as page}
+            <p 
+                class:selectedPage={page == pages[currentPage]}
+                on:click={() => setCurrentPage(pages.indexOf(page))}
+            >
+                {page}
+            </p>
+            {#if page != pages[pages.length - 1]}
+                <IconHolder >
+                    <MdChevronRight />
+                </IconHolder>
+            {/if}
+        {/each}
+    </div>
+</div>
+
 <style>
-    .container {
-        padding: .5em 1em;
+    .container{
+        margin-bottom: 2em;
     }
 
     .breadCrumbs{
@@ -35,24 +49,7 @@
         cursor: pointer;
     }
 
-    .selectedCrumb{
+    .selectedPage{
         color: black;
     }
 </style>
-
-<div class="container">
-    <h1>Persoonlijk Ontwikkelings Plan</h1>
-    <div class='breadCrumbs'>
-        {#each breadCrumbs as crumb}
-            <p 
-                class:selectedCrumb={crumb == selectedCrumb}
-                on:click={() => selectedCrumb = crumb}
-            >
-                {crumb}
-            </p>
-            <IconHolder >
-                <MdChevronRight />
-            </IconHolder>
-        {/each}
-    </div>
-</div>
