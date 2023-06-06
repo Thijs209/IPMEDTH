@@ -46,5 +46,12 @@ Route::get('/reset-password/{token}', function ($request) {
     ]);
 })->name('password.reset');
 
+// People manager routes
+Route::get('/evaluation-overview', function () {
+    return Inertia::render('PopEvaluation/EvaluationOverview');
+});
+
 // POP Routes
 Route::get('/create-pop', [PopController::class, 'create']);
+Route::post('/create-pop', [PopController::class, 'store']);
+Route::get('users/{id}/pop', [PopController::class, 'index']); // get all pop's from 1 user, needs to be limited to the owner, people manager and admin
