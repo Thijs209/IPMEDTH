@@ -1,8 +1,7 @@
 <script lang="ts">
-    import PopArchive from "./../../Components/EvaluatePopComponents/PopArchive.svelte";
-    import PopCards from "./../../Components/EvaluatePopComponents/PopCards.svelte";
-    import PopCard from "./../../Components/EvaluatePopComponents/PopCard.svelte";
+    import PopCards from "../../Components/EvaluatePopComponents/PopCards.svelte";
     import CreatePageHeader from "./../../Components/CreatePageHeader.svelte";
+    import PopArchive from "./../../Components/EvaluatePopComponents/PopArchive.svelte";
     import Layout from "./../../Layouts/Layout.svelte";
 
     let pageHeading = "POP Overzicht";
@@ -12,12 +11,16 @@
         startDate: string;
         endDate: string;
         status: number;
+        popId: number;
+        userId: number;
     }> = [
         {
-            name: "John Thomas",
+            name: "John Doe",
             startDate: "01-01-2023",
             endDate: "01-01-2024",
             status: 1,
+            popId: 1233,
+            userId: 1,
         },
         {
             name: "Karin Tonneman",
@@ -44,7 +47,6 @@
         <div class="cards-container">
             <PopCards {pops} />
         </div>
-
         <div class="archive-container">
             <PopArchive />
         </div>

@@ -18,7 +18,7 @@
 </script>
 
 <div class="container">
-    <h3 class="heading">Archief</h3>
+    <h3 class="heading"></h3>
     <table>
         <thead>
             {#each tableHeaders as header}

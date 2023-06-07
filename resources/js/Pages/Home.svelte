@@ -22,9 +22,17 @@
                     type="button">Pop Aanmaken</button
                 >
                 <button
+                    class="button"
+                    use:inertia={{
+                        href: "/evaluation-dashboard",
+                        method: "get",
+                    }}
+                    type="button">People Manager Overzicht</button
+                >
+                <button
                     class="button button--logout"
                     use:inertia={{ href: "/logout", method: "post" }}
-                    type="button">Logout</button
+                    type="button">Uitloggen</button
                 >
             </div>
         {:else}
@@ -44,13 +52,7 @@
                 <button
                     class="button"
                     use:inertia={{ href: "/forgot-password", method: "get" }}
-                    type="button">Wachtwoord aanmaken</button
-                >
-
-                <button
-                    class="button"
-                    use:inertia={{ href: "/forgot", method: "get" }}
-                    type="button">Register</button
+                    type="button">Wachtwoord Reset</button
                 >
             </div>
         {/if}
@@ -70,10 +72,9 @@
     }
 
     .button--logout {
-        margin: 1rem;
         align-self: center;
-        color: var(--c-alert);
-        background-color: #fff;
+        color: #fff;
+        background-color: var(--c-attention);
     }
 
     .buttons {
@@ -82,7 +83,8 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: 1rem;
+        margin-top: 2rem;
+        gap: 2rem;
     }
 
     .button {
@@ -90,11 +92,12 @@
         justify-content: center;
         align-items: center;
 
-        height: 3rem;
+        height: 5rem;
         width: 100%;
-        max-width: 15rem;
+        max-width: 20rem;
         align-self: center;
 
+        font-weight: 500;
         font-size: 1.6rem;
         color: #eee;
 

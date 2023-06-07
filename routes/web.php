@@ -13,7 +13,7 @@ use App\Http\Controllers\PopController;
 | Here is where you can register web routes for your application. These
 | routes are loaded by the RouteServiceProvider and all of them will
 | be assigned to the "web" middleware group. Make something great!
-|
+| 
 */
 
 Route::get('/', function () {
@@ -47,11 +47,15 @@ Route::get('/reset-password/{token}', function ($request) {
 })->name('password.reset');
 
 // People manager routes
-Route::get('/evaluation-overview', function () {
+Route::get('/evaluation-dashboard', function () {
     return Inertia::render('PopEvaluation/EvaluationOverview');
 });
 
 // POP Routes
 Route::get('/create-pop', [PopController::class, 'create']);
 Route::post('/create-pop', [PopController::class, 'store']);
-Route::get('users/{id}/pop', [PopController::class, 'index']); // get all pop's from 1 user, needs to be limited to the owner, people manager and admin
+
+// Temp Route for testing
+Route::get('/user/{id}/pop/{pop_id}', function (string $id, string $pop_id) {
+        return Inertia::render('EvaluatePop');
+    });

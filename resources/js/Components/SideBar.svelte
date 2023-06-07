@@ -2,6 +2,7 @@
     import NavButton from "./NavButton.svelte";
     import FaHome from "svelte-icons/fa/FaHome.svelte";
     import FaClipboardList from "svelte-icons/fa/FaClipboardList.svelte";
+    import MdRateReview from "svelte-icons/md/MdRateReview.svelte";
     import MdTrendingUp from "svelte-icons/md/MdTrendingUp.svelte";
     import MdChevronLeft from "svelte-icons/md/MdChevronLeft.svelte";
     import MdChevronRight from "svelte-icons/md/MdChevronRight.svelte";
@@ -16,8 +17,8 @@
 <header class="container" class:closedContainer={!open}>
     <div class="container__logo">
         <svg
-            width="50"
-            height="25"
+            width="57"
+            height="48"
             viewBox="0 0 27 15"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -78,6 +79,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        min-width: 8em;
         width: 100%;
     }
 
