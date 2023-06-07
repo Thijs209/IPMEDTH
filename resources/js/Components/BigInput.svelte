@@ -2,11 +2,14 @@
     export let key: string;
     export let text: string;
     export let onChange: (key: String, value: String) => void;
+    export let wide: boolean = false;
+    export let small: boolean = false;
+    export let noMargin: boolean = false;
 
     console.log(typeof onChange)
 </script>
 
-<div class="inputContainer">
+<div class:wide={wide} class:small={small} class="inputContainer" class:noMargin={noMargin}>
     <label for={text}>{text}</label>
     <textarea on:keypress={(e) => {onChange(key, e.currentTarget.value)}} name={text} id={text} placeholder="Type hier..."></textarea>
 </div>
@@ -38,5 +41,17 @@
 
     textarea:focus{
         outline: 1.2px solid #00A667;
+    }
+
+    .wide{
+        width: 80%;
+    }
+
+    .small{
+        width: 10%;
+    }
+
+    .noMargin{
+        margin: 0;
     }
 </style>

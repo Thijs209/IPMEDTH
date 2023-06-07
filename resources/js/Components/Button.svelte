@@ -5,6 +5,7 @@
     export let style: string = '';
     export let marginTop: boolean = false;
     export let icon: boolean = false;
+    export let color: string = '#00A667';
 </script>
 
 <button 
