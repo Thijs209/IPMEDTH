@@ -1,11 +1,12 @@
 <script>
-    import NavButton from "./NavButton.svelte";
-    import FaHome from "svelte-icons/fa/FaHome.svelte";
+    import { Link } from "@inertiajs/svelte";
+    import { inertia } from "@inertiajs/svelte";
     import FaClipboardList from "svelte-icons/fa/FaClipboardList.svelte";
-    import MdRateReview from "svelte-icons/md/MdRateReview.svelte";
-    import MdTrendingUp from "svelte-icons/md/MdTrendingUp.svelte";
+    import FaHome from "svelte-icons/fa/FaHome.svelte";
     import MdChevronLeft from "svelte-icons/md/MdChevronLeft.svelte";
     import MdChevronRight from "svelte-icons/md/MdChevronRight.svelte";
+    import MdTrendingUp from "svelte-icons/md/MdTrendingUp.svelte";
+    import NavButton from "./NavButton.svelte";
 
     let open = true;
 
@@ -15,8 +16,10 @@
 </script>
 
 <header class="container" class:closedContainer={!open}>
-    <div class="container__logo">
+    <!-- svelte-ignore a11y-click-events-have-key-events -->
+    <Link href="/">
         <svg
+            class="container__logo"
             width="57"
             height="48"
             viewBox="0 0 27 15"
@@ -36,7 +39,7 @@
                 fill="white"
             />
         </svg>
-    </div>
+    </Link>
     <div class="navContainer">
         <NavButton {open} text="Home">
             <FaHome />
@@ -80,7 +83,12 @@
         align-items: center;
         justify-content: center;
         min-width: 8em;
-        width: 100%;
+        width: 50px;
+        height: 25px;
+    }
+
+    .container__logo:hover {
+        cursor: pointer;
     }
 
     .closedContainer {

@@ -1,30 +1,30 @@
 <script lang="ts">
-    import CreatePageHeader from "../Components/CreatePageHeader.svelte";
-    import Button from "./../Components/Button.svelte";
-    import CreatePopGoals from "./CreatePopGoals.svelte";
-    import CreatePopIntro from "./CreatePopIntro.svelte";
-    import CreatePopProject from "./CreatePopProject.svelte";
-    import CreateProjectCoreQuadrants from "./CreateProjectCoreQuadrants.svelte";
+    import CreatePageHeader from './../Components/CreatePageHeader.svelte';
+	import Button from './../Components/Button.svelte';
+	import CreatePopIntro from './CreatePopIntro.svelte';
+	import CreatePopProject from './CreatePopProject.svelte';
+    import CreateProjectCoreQuadrants from './CreateProjectCoreQuadrants.svelte';
+	import CreatePopGoals from './CreatePopGoals.svelte';
+
 
     const pages = [
-        "Intro",
-        "Opdracht",
-        "Kernkwadranten",
-        "Doelen",
-        "Leerdoelen",
-        "Afronden",
+        'Intro',
+        'Opdracht',
+        'Kernkwadranten',
+        'Doelen',
+        'Afronden'
     ];
 
     let currentPage = 0;
     function nextPage() {
         currentPage++;
-    }
+    };
     function previousPage() {
         currentPage--;
-    }
+    };
     function setCurrentPage(page: number) {
         currentPage = page;
-    }
+    };
 </script>
 
 <div class="container">

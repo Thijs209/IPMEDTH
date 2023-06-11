@@ -42,7 +42,7 @@
                 disabled={$form.processing}>Versturen</button
             >
         </form>
-        {#if $page.props.flash.message}
+        {#if $form.recentlySuccessful}
             <div class="form__success">
                 {$page.props.flash.message}
             </div>
