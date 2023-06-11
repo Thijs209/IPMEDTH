@@ -15,28 +15,28 @@
         userId: number;
     }> = [
         {
+            userId: 1,
+            popId: 1111,
             name: "John Doe",
             startDate: "01-01-2023",
             endDate: "01-01-2024",
-            status: 1,
-            popId: 1233,
-            userId: 1,
+            status: 2,
         },
         {
+            userId: 2,
+            popId: 1112,
             name: "Karin Tonneman",
             startDate: "01-01-2023",
             endDate: "01-06-2023",
-            status: 2,
-            popId: 1234,
-            userId: 1,
+            status: 1,
         },
         {
+            userId: 3,
+            popId: 1113,
             name: "Tom Mann",
             startDate: "01-01-2023",
             endDate: "01-05-2023",
             status: 3,
-            popId: 1235,
-            userId: 2,
         },
     ];
 </script>

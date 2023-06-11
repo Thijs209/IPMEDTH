@@ -3,7 +3,18 @@
     import IconHolder from "./../IconHolder.svelte";
     import MdChevronRight from "svelte-icons/md/MdChevronRight.svelte";
 
-    export let pop: object = {
+    interface Pop {
+        userId?: number;
+        popId?: number;
+        name: string;
+        startDate: string;
+        endDate: string;
+        status: number;
+    }
+
+    export let pop: Pop = {
+        userId: 1,
+        popId: 1,
         name: "John Thomas",
         startDate: "01-01-2023",
         endDate: "01-01-2024",
@@ -11,16 +22,16 @@
     };
 
     let periode: string = pop.startDate + " / " + pop.endDate;
-    let status: string =
+    let statusText: String =
         pop.status == 1
             ? "Te evalueren"
             : pop.status == 2
             ? "Afspraak ingepland"
-            : "Overdue";
+            : "Overtijd";
 </script>
 
 <article class="pop-card">
-    <div class="pop-card__status" status={pop.status} />
+    <div class="pop-card__status" data-status={pop.status} />
     <div class="pop-card__content">
         <h3 class="pop-card__heading">{pop.name}</h3>
         <div class="pop-card__row">
@@ -29,13 +40,13 @@
         </div>
         <div class="pop-card__row">
             <p class="pop-card__label">Status</p>
-            <p class="pop-card__text">{status}</p>
+            <p class="pop-card__text">{statusText}</p>
         </div>
     </div>
     <div class="pop-card__button">
-        <Link href={pop.popId ? "/users/{pop.userId}/pops/{pop.popId}/evaluate" : ""}>
+        <Link href="/evaluate-pop/users/{pop.userId}/pops/{pop.popId}">
             <IconHolder>
-                <MdChevronRight  />
+                <MdChevronRight />
             </IconHolder>
         </Link>
     </div>
@@ -104,17 +115,17 @@
         border-radius: 0.5rem 0 0 0.5rem;
     }
 
-    .pop-card__status[status="1"] {
+    .pop-card__status[data-status="1"] {
         grid-column-start: 1 / 2;
         height: 100%;
         background-color: var(--c-attention);
     }
-    .pop-card__status[status="2"] {
+    .pop-card__status[data-status="2"] {
         grid-column-start: 1 / 2;
         height: 100%;
         background-color: var(--color-arcady-green);
     }
-    .pop-card__status[status="3"] {
+    .pop-card__status[data-status="3"] {
         grid-column-start: 1 / 2;
         height: 100%;
         background-color: var(--c-alert);

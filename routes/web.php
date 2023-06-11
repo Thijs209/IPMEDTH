@@ -47,7 +47,7 @@ Route::get('/reset-password/{token}', function ($request) {
 })->name('password.reset');
 
 // People manager routes
-Route::get('/evaluation-dashboard', function () {
+Route::get('/evaluation-overview', function () {
     return Inertia::render('PopEvaluation/EvaluationOverview');
 });
 
@@ -55,7 +55,11 @@ Route::get('/evaluation-dashboard', function () {
 Route::get('/create-pop', [PopController::class, 'create']);
 Route::post('/create-pop', [PopController::class, 'store']);
 
-// Temp Route for testing
-Route::get('/user/{id}/pop/{pop_id}', function (string $id, string $pop_id) {
-        return Inertia::render('EvaluatePop');
+// Temp Route for testing, with default values
+// TODO remove default values in production + add permissions so only people manager can access edit page for any POP
+Route::get('/evaluate-pop/users/{user_id?}/pops/{pop_id?}/', function (string $user_id = "1", string $pop_id = "1") {
+        return Inertia::render('PopEvaluation/EvaluatePop', [
+            'user_id' => $user_id,
+            'pop_id' => $pop_id
+        ]);
     });

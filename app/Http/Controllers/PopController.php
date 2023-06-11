@@ -121,7 +121,7 @@ class PopController extends Controller
         $pop->evaluation_finished = $request['evaluation_finished'];
         $pop->save();
 
-        return Po/pResource::make($pop);
+        return PopResource::make($pop);
 
     }
 
