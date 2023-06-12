@@ -46,7 +46,7 @@
 <style>
     .grid {
         display: grid;
-        grid-template-columns: repeat(5, minmax(0, 1fr));
+        grid-template-columns: repeat(3, minmax(0, 1fr));
         grid-template-rows: repeat(3, minmax(0, 1fr));
         gap: 1rem;
         padding: 4rem;
@@ -68,27 +68,32 @@
     }
 
     .coreQuadrantArrow--top {
-        grid-column: 3 / span 1;
+        align-items: center;
+        text-align: center;
+        grid-column: 3 / span 2;
         grid-row: 1 / span 1;
+        transform: translateX(-45%);
     }
 
     div[data-type="Valkuil"] {
-        grid-column: 4 / span 2;
+        grid-column: 5 / span 2;
         grid-row: 1 / span 1;
     }
     .coreQuadrantArrow--right {
-        grid-column: 4 / span 1;
+        grid-column: 5 / span 2;
         grid-row: 2 / span 1;
-        align-self: center;
     }
     div[data-type="Uitdaging"] {
-        grid-column: 4 / span 2;
+        grid-column: 5 / span 1;
         grid-row: 3 / span 1;
     }
 
     .coreQuadrantArrow--bottom {
-        grid-column: 3 / span 1;
+        align-items: center;
+        text-align: center;
+        grid-column: 3 / span 2;
         grid-row: 3 / span 1;
+        transform: translateX(-45%);
     }
 
     div[data-type="Allergie"] {
@@ -97,8 +102,7 @@
     }
 
     .coreQuadrantArrow--left {
-        grid-column: /span 1;
+        grid-column: 1 / span 2;
         grid-row: 2 / span 1;
-        align-self: center;
     }
 </style>
