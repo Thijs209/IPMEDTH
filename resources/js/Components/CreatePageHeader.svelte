@@ -3,9 +3,9 @@
     import MdChevronRight from "svelte-icons/md/MdChevronRight.svelte";
 
     export let setCurrentPage: (page: number) => void;
-    export let pages: String[];
+    export let pages: string[];
     export let currentPage: number;
-    export let pageHeading: String = "Persoonlijk Ontwikkelingsplan";
+    export let pageHeading: string = "Persoonlijk Ontwikkelingsplan";
     console.log(pages);
 </script>
 
