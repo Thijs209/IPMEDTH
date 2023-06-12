@@ -42,8 +42,7 @@
     /* Darkgreen profile */
     .evaluate-pop__profile {
         width: 15%;
-        min-width: 15rem;
-        min-height: 100%;
+        min-width: rem;
     }
 
     /* Main content window, contains the nav tabs, POP pages, and permanent notes section. Bottomright contains action buttons. */
@@ -52,10 +51,7 @@
         grid-template-columns: 1fr 0.5fr 1fr;
         grid-template-rows: 3rem 1fr 5rem;
         align-items: first baseline;
-        height: 100%;
-        min-height: 80vh; /* TODO test if setting height w/ vh leads to issues. */
         width: 85%;
-        min-width: 80%;
         border-top-right-radius: 1rem;
         border-bottom-right-radius: 1rem;
         padding: 1rem;

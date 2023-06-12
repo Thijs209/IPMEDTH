@@ -19,7 +19,6 @@
         align-items: center;
         justify-content: center;
         flex-direction: column;
-        padding: 4rem;
         width: 100%;
         height: 100%;
         background-color: #fff;
