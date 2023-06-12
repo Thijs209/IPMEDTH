@@ -99,8 +99,6 @@
 
     .logo-wrapper:hover {
         cursor: pointer;
-        filter: contrast(1.5);
-        background-color: #0d403d;
     }
 
     .logo-wrapper:hover > .logo {
