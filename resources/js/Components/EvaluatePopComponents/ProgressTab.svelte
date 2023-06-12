@@ -21,8 +21,9 @@
         justify-content: center;
         align-items: center;
         height: 3.5rem;
-        width: 18rem;
-        padding: 0;
+        min-width: fit-content;
+        width: 100%;
+        max-width: 23rem;
 
         border: none;
         box-shadow: 0.7rem 0.6rem 0.5rem 0.1rem rgba(0, 0, 0, 0.1);

@@ -8,14 +8,13 @@
 
 <div class="container">
     {#each $evaluationTabs.tabs as tab}
-        <ProgressTab
-            name={tab}
-            active={$activeEvaluationTab.tab === tab}
-        />
+        <ProgressTab name={tab} active={$activeEvaluationTab.tab === tab} />
         {#if tab != $evaluationTabs.tabs[$evaluationTabs.tabs.length - 1]}
-            <IconHolder>
-                <MdChevronRight />
-            </IconHolder>
+            <div class="chevron">
+                <IconHolder>
+                    <MdChevronRight />
+                </IconHolder>
+            </div>
         {/if}
     {/each}
 </div>
@@ -25,11 +24,17 @@
         align-self: center;
         display: flex;
         flex-flow: row wrap;
-        justify-content: space-between;
+        justify-content: space-evenly;
         align-items: center;
         width: 100%;
         height: 100%;
-        gap: 1rem;
         padding: 0 2em;
+
+        gap: 1.5rem;
+    }
+
+    .chevron {
+        margin: 0;
+        padding: 0;
     }
 </style>
