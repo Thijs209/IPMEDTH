@@ -41,8 +41,7 @@
 
     /* Darkgreen profile */
     .evaluate-pop__profile {
-        width: 15%;
-        min-width: rem;
+        width: clamp(15rem, 15vw, 20rem);
     }
 
     /* Main content window, contains the nav tabs, POP pages, and permanent notes section. Bottomright contains action buttons. */
