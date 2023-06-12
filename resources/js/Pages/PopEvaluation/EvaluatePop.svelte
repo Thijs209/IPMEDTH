@@ -1,5 +1,6 @@
 <script lang="ts">
-    import { evaluationTabs } from "./../../stores.js";
+    import { activeEvaluationTab, evaluationTabs } from "./../../stores.js";
+    import EvaluatePopProject from "./EvaluatePopProject.svelte";
     import Layout from "./../../Layouts/Layout.svelte";
     import UserProfile from "../../Components/EvaluatePopComponents/UserProfile.svelte";
     import EvaluatePopLayout from "./../../Layouts/EvaluatePopLayout.svelte";
@@ -8,37 +9,114 @@
 
     let pages: string[] = ["Home", "POP Overzicht", "POP Review"];
 
-    interface FullPop {
+    interface Pop {
         id: number;
         name: string;
         description: string;
         user_id: number;
         created_at: string;
         updated_at: string;
+        project: {
+            description: {
+                question: string;
+                answer: string;
+            };
+            result: {
+                question: string;
+                answer: string;
+            };
+            success: {
+                question: string;
+                answer: string;
+            };
+            manager: {
+                question: string;
+                answer: string;
+            };
+            additionalReportStakeholders: {
+                question: string;
+                answer: string;
+            };
+        };
+        coreQuadrants: {
+            quality: string;
+            pitfall: string;
+            challenge: string;
+            allergy: string;
+        };
+        goals: {
+            name: string;
+            category: string;
+            description: string;
+        };
+        learningGoals: {
+            name: string;
+            description: string;
+            deadline: string;
+            achieved: boolean;
+        };
     }
 
-    let pop: FullPop = {
+    let currentPop: Pop = {
         id: 0,
         name: "Tony",
         description: "",
         user_id: 0,
         created_at: "",
         updated_at: "",
+        project: {
+            description: {
+                question: "Wat is jouw opdracht en wat is het doel daarvan?",
+                answer: "Ik moet een website maken voor een bedrijf.",
+            },
+            result: {
+                question: "Hoe moet het eindresultaat er uit zien?",
+                answer: "Het moet een website zijn met een homepagina, een contactpagina en een over ons pagina.",
+            },
+            success: {
+                question: "Wanneer ben je succesvol?",
+                answer: "Als de website af is en de klant tevreden is.",
+            },
+            manager: {
+                question: "Wie is de leidinggevende?",
+                answer: "Jeroen van Velden.",
+            },
+            additionalReportStakeholders: {
+                question: "Rapporteer je nog naar anderen?",
+                answer: "Nee, alleen naar Jeroen.",
+            },
+        },
     };
 </script>
 
 <Layout>
     <article slot="main" class="main">
-        <CreatePageHeader {pages} currentPage={0} setCurrentPage={() => {}} />
+        <CreatePageHeader {pages} currentPage={2} setCurrentPage={() => {}} />
         <EvaluatePopLayout>
-            <div slot="evaluate-pop-profile" class="evaluate-pop__profile">
-                <UserProfile name={pop.name} />
-            </div>
+            <section slot="evaluate-pop-profile" class="evaluate-pop__profile">
+                <UserProfile />
+            </section>
             <div slot="evaluate-pop-tabs" class="evaluate-pop__tabs">
-                <ProgressTabs /> 
+                <ProgressTabs />
             </div>
-            <div slot="evaluate-pop-content" class="evaluate-pop__content">
-
+            <section slot="evaluate-pop-content" class="evaluate-pop__content">
+                {#if $activeEvaluationTab.tab === $evaluationTabs.tabs[0]}
+                    <EvaluatePopProject popProject={currentPop.project} />
+                {:else if $activeEvaluationTab.tab === $evaluationTabs.tabs[1]}
+                    <!-- kernkwadranten -->
+                {:else if $activeEvaluationTab.tab === $evaluationTabs.tabs[2]}
+                    <!-- doelen -->
+                {:else if $activeEvaluationTab.tab === $evaluationTabs.tabs[3]}
+                    <!-- leerdoelen -->
+                {:else if $activeEvaluationTab.tab === $evaluationTabs.tabs[4]}
+                    <!-- afsluiting -->
+                {/if}
+            </section>
+            <section slot="evaluate-pop-notes" class="evaluate-pop__notes">
+                <!-- Notes weergave + input component -->
+            </section>
+            <div slot="evaluate-pop-buttons" class="evaluate-pop__buttons">
+                <!-- Buttons = ['Sluiten', 'Opslaan'] -->
             </div>
         </EvaluatePopLayout>
     </article>
