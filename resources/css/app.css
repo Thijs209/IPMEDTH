@@ -25,14 +25,15 @@
 
 }
 
-* { 
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
 html {
-    font-size: 62.5%; /* 1rem = 10px */
+    font-size: 62.5%;
+    /* 1rem = 10px */
 }
 
 body {
@@ -59,9 +60,9 @@ h3 {
     font-size: 2.4rem;
 }
 
-p,
+/* p,
 a,
 li,
 span {
     font-size: 1.6rem;
-}
+} */
