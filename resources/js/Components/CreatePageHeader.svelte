@@ -1,5 +1,5 @@
 <script lang="ts">
-	import IconHolder from './IconHolder.svelte';
+    import IconHolder from "./IconHolder.svelte";
     import MdChevronRight from "svelte-icons/md/MdChevronRight.svelte";
 
     export let setCurrentPage: (page: number) => void;
@@ -12,7 +12,6 @@
 <div class="container">
     <h1>{pageHeading}</h1>
     <div class="breadCrumbs">
-
         {#each pages as page}
             <!-- svelte-ignore a11y-click-events-have-key-events -->
             <p
@@ -32,7 +31,12 @@
 
 <style>
     .container {
+        display: flex;
+        flex-flow: column nowrap;
+        gap: 1em;
         margin-bottom: 2em;
+        width: 100%;
+        height: 100%;
     }
 
     .breadCrumbs {
@@ -46,12 +50,12 @@
         display: flex;
         height: auto;
         width: 100%;
-        margin-bottom: 1rem;
     }
 
     p {
         font-weight: 600;
         color: #808080;
+        font-size: 1.6rem;
     }
 
     p:hover {
@@ -61,5 +65,19 @@
 
     .selectedPage {
         color: black;
+        position: relative;
+    }
+
+    .selectedPage::after {
+        content: "";
+        background-color: var(--c-attention);
+        position: absolute;
+        top: 2rem;
+        right: 46%;
+        height: 8px;
+        width: 8px;
+        z-index: 2;
+        border-radius: 20rem;
+        opacity: 0.4;
     }
 </style>
