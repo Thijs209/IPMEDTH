@@ -1,6 +1,7 @@
 <script>
     import { Link } from "@inertiajs/svelte";
     import { inertia } from "@inertiajs/svelte";
+    import { sideBar } from "../stores.js";
 
     import FaClipboardList from "svelte-icons/fa/FaClipboardList.svelte";
     import FaHome from "svelte-icons/fa/FaHome.svelte";
@@ -9,10 +10,11 @@
     import MdTrendingUp from "svelte-icons/md/MdTrendingUp.svelte";
     import NavButton from "./NavButton.svelte";
 
-    let open = true;
+    let open = $sideBar.open;
 
     function changeSideBar() {
-        open = !open;
+        $sideBar.open = !$sideBar.open;
+        open = $sideBar.open;
     }
 </script>
 
@@ -107,7 +109,7 @@
 
     .closedContainer {
         width: 2vw;
-        transition: 1s width ease-in-out;
+        transition: 0.5s width ease-in-out;
     }
 
     .iconHolder {

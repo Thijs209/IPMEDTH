@@ -20,3 +20,7 @@ export const evaluationTabs = writable({
 export const activeEvaluationTab = writable({
     tab: "opdracht",
 });
+
+export const sideBar = writable({
+    open: false,
+});
