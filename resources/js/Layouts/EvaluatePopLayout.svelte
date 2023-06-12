@@ -8,9 +8,9 @@
     </section>
     <!-- The dark green profile sidebar. Width = 1fr. -->
     <section class="evaluate-pop__main">
-        <nav class="evaluate_pop__tabs">
+        <div class="evaluate-pop__tabs">
             <slot class="evaluate-pop__tabs" name="evaluate-pop-tabs" />
-        </nav>
+        </div>
         <section class="evaluate-pop__content">
             <slot name="evaluate-pop-content" />
         </section>
@@ -32,6 +32,7 @@
         display: flex;
         flex-direction: row;
         width: 100%;
+        max-width: 100%;
         height: 100%;
         background-color: #eee;
         min-height: 80vh; /* TODO test if setting height w/ vh height leads to issues. */
@@ -41,6 +42,7 @@
     /* Darkgreen profile */
     .evaluate-pop__profile {
         width: 15%;
+        min-width: 15rem;
         min-height: 100%;
     }
 
@@ -48,7 +50,7 @@
     .evaluate-pop__main {
         display: grid;
         grid-template-columns: 1fr 2fr 1fr;
-        grid-template-rows: 1fr 5rem;
+        grid-template-rows: 5rem 1fr 5rem;
 
         height: 100%;
         min-height: 80vh; /* TODO test if setting height w/ vh leads to issues. */
@@ -56,6 +58,14 @@
         min-width: 80%;
         border-top-right-radius: 1rem;
         border-bottom-right-radius: 1rem;
+    }
+
+    .evaluate-pop__tabs {
+        grid-column: 1 / span all;
+        grid-row: 1 / 2;
+        background-color: #eee;
+        width: 100%;
+        background-color: pink;
     }
 
     .evaluate-pop__notes {
