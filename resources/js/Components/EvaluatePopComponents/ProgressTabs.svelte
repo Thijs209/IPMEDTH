@@ -4,8 +4,6 @@
     import ProgressTab from "./ProgressTab.svelte";
     import IconHolder from "../IconHolder.svelte";
     import MdChevronRight from "svelte-icons/md/MdChevronRight.svelte";
-
-
 </script>
 
 <div class="container">

@@ -58,6 +58,7 @@
         min-width: 80%;
         border-top-right-radius: 1rem;
         border-bottom-right-radius: 1rem;
+        padding: 1rem;
     }
 
     .evaluate-pop__tabs {
@@ -65,7 +66,6 @@
         grid-row: 1 / 2;
         background-color: #eee;
         width: 100%;
-        background-color: pink;
     }
 
     .evaluate-pop__notes {

@@ -2,8 +2,7 @@
     import { activeEvaluationTab } from "./../../stores.js";
     export let name: string = "";
     export let active: boolean;
-    let handleClick: (event: MouseEvent) => void;
-    handleClick = (event: MouseEvent) => {
+    $: handleClick = (event: MouseEvent) => {
         $activeEvaluationTab.tab = name;
     };
 </script>
@@ -12,6 +11,7 @@
 
 <style>
     button {
+        font-family: "Montserrat", sans-serif;
         background-color: black;
         border-radius: 4rem;
         height: 100%;
@@ -20,11 +20,12 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 100%;
-        width: 15rem;
-        padding: 1rem;
+        height: 3.5rem;
+        width: 18rem;
+        padding: 0;
 
         border: none;
+        box-shadow: 0.7rem 0.6rem 0.5rem 0.1rem rgba(0, 0, 0, 0.1);
     }
 
     button:hover {
