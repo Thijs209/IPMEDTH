@@ -23,8 +23,8 @@
 
 <style>
     label {
-        font-size: 1.5em;
-        margin-top: 1.5em;
+        font-size: 1.5rem;
+        margin-top: 1.5rem;
         font-weight: 700;
         margin-bottom: 1em;
     }

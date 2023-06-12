@@ -24,7 +24,7 @@
                 <button
                     class="button"
                     use:inertia={{
-                        href: "/evaluation-dashboard",
+                        href: "/evaluation-overview",
                         method: "get",
                     }}
                     type="button">People Manager Overzicht</button

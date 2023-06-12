@@ -22,8 +22,7 @@
         align-items: center;
         height: 3.5rem;
         min-width: fit-content;
-        width: 100%;
-        max-width: 23rem;
+        width: clamp(min(10rem, 100%), 20rem, 100%);
 
         border: none;
         box-shadow: 0.7rem 0.6rem 0.5rem 0.1rem rgba(0, 0, 0, 0.1);
