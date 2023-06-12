@@ -36,18 +36,21 @@
 <style>
     /* Main container */
     .profile {
+        height: 100%;
+        width: 100%;
+        min-width: 15rem;
+        padding: 1rem;
+
         display: flex;
         flex-direction: column;
         align-items: center;
         gap: 1rem;
+
         background-color: var(--c-nav-bg);
         border-radius: 1rem;
-        min-width: 15rem;
-        height: 100%;
         color: var(--c-nav-font);
-        padding: 1rem;
-        font-size: 1.1rem;
 
+        font-size: 1.1rem;
         text-align: center;
     }
 
@@ -56,8 +59,8 @@
     .profile__main {
         display: flex;
         flex-direction: column;
-        gap: 10rem;
         height: 25%;
+        min-height: 15rem;
         border-bottom: 1px solid var(--c-nav-font);
     }
 
@@ -68,6 +71,8 @@
         justify-content: center;
         align-items: center;
         gap: 1rem;
+        min-height: 100%;
+        min-width: 100%;
         height: 100%;
         width: 100%;
     }
@@ -76,7 +81,12 @@
         width: 60%;
         min-width: 60%;
         max-height: 60%;
-        object-fit: contain;
+        height: 60%;
+        min-height: 60%;
+        max-height: 60%;
+        aspect-ratio: 1/1;
+
+        object-fit: cover;
         border-radius: 50%;
     }
 
