@@ -1,11 +1,15 @@
 <script lang="ts">
     import { activeEvaluationTab, evaluationTabs } from "./../../stores.js";
-    import EvaluatePopProject from "./EvaluatePopProject.svelte";
+    //Layouts
     import Layout from "./../../Layouts/Layout.svelte";
-    import UserProfile from "../../Components/EvaluatePopComponents/UserProfile.svelte";
     import EvaluatePopLayout from "./../../Layouts/EvaluatePopLayout.svelte";
+    // Page contents
+    import UserProfile from "../../Components/EvaluatePopComponents/UserProfile.svelte";
     import CreatePageHeader from "./../../Components/CreatePageHeader.svelte";
     import ProgressTabs from "./../../Components/EvaluatePopComponents/ProgressTabs.svelte";
+    // Evaluation tabs
+    import EvaluatePopProject from "./EvaluatePopProject.svelte";
+    import EvaluatePopCoreQuadrants from "./EvaluatePopCoreQuadrants.svelte";
 
     let pages: string[] = ["Home", "POP Overzicht", "POP Review"];
 
@@ -86,6 +90,24 @@
                 answer: "Nee, alleen naar Jeroen.",
             },
         },
+        coreQuadrants: {
+            quality: "Sterk verantwoordelijkheids gevoel",
+            pitfall: "Overbelasting",
+            allergy: "Snelle opgevers",
+            challenge: "Rustmomenten vinden",
+        },
+        goals: {
+            name: "Website maken",
+            category: "Werk",
+            description: "Een website maken voor een bedrijf.",
+        },
+        learningGoals: {
+            name: "Leren werken met Vue",
+            description:
+                "Leren werken met Vue en het toepassen in een project.",
+            deadline: "2021-06-01",
+            achieved: false,
+        },
     };
 </script>
 
@@ -103,7 +125,9 @@
                 {#if $activeEvaluationTab.tab === $evaluationTabs.tabs[0]}
                     <EvaluatePopProject popProject={currentPop.project} />
                 {:else if $activeEvaluationTab.tab === $evaluationTabs.tabs[1]}
-                    <!-- kernkwadranten -->
+                    <EvaluatePopCoreQuadrants
+                        coreQuadrants={currentPop.coreQuadrants}
+                    />
                 {:else if $activeEvaluationTab.tab === $evaluationTabs.tabs[2]}
                     <!-- doelen -->
                 {:else if $activeEvaluationTab.tab === $evaluationTabs.tabs[3]}

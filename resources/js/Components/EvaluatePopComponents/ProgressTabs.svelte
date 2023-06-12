@@ -21,11 +21,10 @@
 
 <style>
     .container {
-        align-self: center;
         display: flex;
         flex-flow: row wrap;
-        justify-content: space-evenly;
-        align-items: center;
+        justify-content: start;
+        align-items: start;
         width: 100%;
         height: 100%;
         max-height: 100%;
