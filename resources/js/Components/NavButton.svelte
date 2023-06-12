@@ -1,17 +1,21 @@
 <script lang="ts">
+    import { Link } from "@inertiajs/svelte";
     export let text: string;
     export let open: boolean;
+    export let href: string;
 </script>
 
 <div>
-    <button class="navRow">
-        <div class="iconHolder">
-            <slot />
-        </div>
-        {#if open}
-            <p>{text}</p>
-        {/if}
-    </button>
+    <Link {href}>
+        <button class="navRow">
+            <div class="iconHolder">
+                <slot />
+            </div>
+            {#if open}
+                <p>{text}</p>
+            {/if}
+        </button>
+    </Link>
 </div>
 
 <style>
