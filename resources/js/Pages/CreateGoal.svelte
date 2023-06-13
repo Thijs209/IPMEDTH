@@ -5,11 +5,26 @@
     import Button from '../Components/Button.svelte';
 	import IconHolder from './../Components/IconHolder.svelte';
     import FaArrowLeft from 'svelte-icons/fa/FaArrowLeft.svelte'
-    import { pop } from './../stores.js';
-    import { goal } from './../stores.js';
     import Datepicker from '../Components/Datepicker.svelte';
 
     export let setCurrentPage;
+    export const goal = writable({
+        id: 0,
+        title: '',
+        what: '',
+        why: '',
+        show: false,
+        how: [{
+            step: '',
+            value: '',
+        }],
+        satisfied: '',
+        support: '',
+        when: '',
+        feedback: '',
+        type: '',
+    });
+
 
     let datePicker = true;
     function changeDatePicker(e) {

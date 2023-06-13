@@ -18,6 +18,23 @@
         'Afronden'
     ]
 
+    export const pop = writable({
+        project: {
+            description: '',
+            result: '',
+            success: '',
+            manager: '',
+            bosses: '',
+        },
+        coreQuadrants: {
+            coreQualities: [],
+            traps: [],
+            challenges: [],
+            allergies: []
+        },
+        goals: [goal],
+    });
+
     let currentPage = 0;
     function nextPage() {
         currentPage++;

@@ -3,13 +3,14 @@
     import FaAngleRight from 'svelte-icons/fa/FaAngleRight.svelte'
 
     export let title;
+    export let onClick;
 </script>
 
 <div class="goalContainer">
     <h3>
         {title}
     </h3>
-    <Button icon>
+    <Button onClick={onClick} icon>
         <FaAngleRight />
     </Button>
 </div>
