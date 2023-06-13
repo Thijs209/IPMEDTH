@@ -46,5 +46,10 @@ public function store(StorePopRequest $request)
 
     }
 
+    public function show(Pop $pop)
+    {
+        return PopResource::make($pop);
+    }
+
 }
 
