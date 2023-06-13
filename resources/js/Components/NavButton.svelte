@@ -1,8 +1,9 @@
 <script lang="ts">
     import { Link } from "@inertiajs/svelte";
+    import { fade, fly } from "svelte/transition";
     export let text: string;
     export let open: boolean;
-    export let href: string;
+    export let href: string = "#";
 </script>
 
 <div>
@@ -12,7 +13,7 @@
                 <slot />
             </div>
             {#if open}
-                <p>{text}</p>
+                <p transition:fade={{ duration: 300 }}>{text}</p>
             {/if}
         </button>
     </Link>
@@ -44,6 +45,7 @@
 
     button:hover {
         cursor: pointer;
+        transform: scale(1.05);
     }
 
     .iconHolder {

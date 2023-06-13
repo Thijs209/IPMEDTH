@@ -46,14 +46,14 @@
         </div>
     </Link>
     <div class="navContainer">
-        <NavButton {open} text="Home">
+        <NavButton {open} href="/" text="Home">
             <FaHome />
         </NavButton>
-        <NavButton {open} text="POP`s">
+        <NavButton {open} text="POP`s" href="/create-pop">
             <FaClipboardList />
         </NavButton>
         <div class="line" />
-        <NavButton {open} text="Resultaten">
+        <NavButton {open} href="/evaluation-overview" text="Evaluatie">
             <MdTrendingUp />
         </NavButton>
     </div>
@@ -72,7 +72,8 @@
 <style>
     .container {
         width: 12vw;
-        min-width: fit-content;
+        max-width: 15rem;
+        min-width: 10rem;
         background-color: #0d403d;
         height: 100%;
         min-height: 100vh;
@@ -81,6 +82,8 @@
         flex-direction: column;
         align-content: center;
         padding: 1rem;
+
+        transition: 0.5s width ease-in-out;
     }
 
     .logo-wrapper {
@@ -109,7 +112,6 @@
 
     .closedContainer {
         width: 2vw;
-        transition: 0.5s width ease-in-out;
     }
 
     .iconHolder {
@@ -144,5 +146,6 @@
         background-color: transparent;
         border: none;
         color: white;
+        transition: 0.3s width ease-in-out;
     }
 </style>
