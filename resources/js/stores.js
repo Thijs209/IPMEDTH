@@ -14,7 +14,7 @@ export const pop = writable({
 });
 
 export const evaluationTabs = writable({
-    tabs: ["opdracht", "kernkwadranten", "doelen", "leerdoelen", "afsluiting"],
+    tabs: ["opdracht", "kernkwadranten", "doelen", "afsluiting"],
 });
 
 export const activeEvaluationTab = writable({
