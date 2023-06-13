@@ -5,8 +5,24 @@
     import Button from '../Components/Button.svelte';
 	import IconHolder from './../Components/IconHolder.svelte';
     import FaArrowLeft from 'svelte-icons/fa/FaArrowLeft.svelte'
+    import { pop } from './../stores.js';
+    import { goal } from './../stores.js';
+    import Datepicker from '../Components/Datepicker.svelte';
 
     export let setCurrentPage;
+
+    let datePicker = true;
+    function changeDatePicker(e) {
+        e.preventDefault()
+        datePicker = !datePicker;
+    }
+
+    const people = [
+        'jan',
+        'piet',
+        'joris',
+        'korneel',
+    ]
 
     const options = [
         'persoonlijk',
@@ -15,6 +31,24 @@
         'team',
         'organisatie',
     ]
+
+    function saveGoal(e){
+        e.preventDefault();
+        pop.update((pop) => {
+            pop.goals = [...pop.goals, $goal];
+            return pop;
+        });
+        console.log($pop.goals)
+        setCurrentPage(3);
+    }
+
+    function updateGoal(key, value) {
+        goal.update((goal) => {
+            goal[key] = value;
+            console.log(goal)
+            return goal;
+        });
+    }
 </script>
 
 <div>
@@ -22,19 +56,28 @@
         <Button icon onClick={() => setCurrentPage(3)}>
             <FaArrowLeft />
         </Button>
-        <h3>Doel 1</h3>
+        <h3>{$pop.goals[1].name}</h3>
     </div>
     <form>
-        <BigInput wide text="Wat wil ik leren?" />
-        <BigInput wide text="Waarom wil ik dit leren?" />
+        <BigInput key='what' onChange={updateGoal} wide text="Wat wil ik leren?" />
+        <BigInput key="why" onChange={updateGoal} wide text="Waarom wil ik dit leren?" />
         <div class="steps">
-            <CreateGoalStep />
+            <CreateGoalStep onChange={updateGoal} />
         </div>
-        <BigInput wide text="Wanneer ben ik tevreden?" />
-        <BigInput wide text="Welke ondersteuning heb ik nodig?" />
-        <BigInput wide text="Wanneer wil ik dit resultaat bereiken?" />
-        <BigInput wide text="Van wie wil ik feedback ontvangen?" />
-        <SelectInput text='Soort doel' options={options} />
+        <BigInput key="satisfied" onChange={updateGoal} wide text="Wanneer ben ik tevreden?" />
+        <BigInput key='support' onChange={updateGoal} wide text="Welke ondersteuning heb ik nodig?" />
+        <div>
+            <button class="button" on:click={(e) => changeDatePicker(e)} class:checked={datePicker}>Datum</button>
+            <button class="button" on:click={(e) => changeDatePicker(e)} class:checked={!datePicker}>Moment</button>
+            {#if datePicker}
+                <Datepicker onChange={updateGoal} key='when' marginTop text="Wanneer wil ik dit resultaat bereiken" />
+            {:else}
+                <BigInput key='when' onChange={updateGoal} wide text="Wanneer wil ik dit resultaat bereiken?" />
+            {/if}
+        </div>
+        <SelectInput wide text="Van wie wil ik feedback ontvangen?" onChange={updateGoal} key="feedback" options={people} />
+        <SelectInput onChange={updateGoal} key='type' center options={options} />
+        <Button style='margin: auto; grid-column: span 2' onClick={saveGoal} text="Opslaan" />
     </form>
 </div>
 
@@ -55,5 +98,20 @@
         justify-items: left;
         gap: 1em;
         grid-template-columns: 1fr 1fr;
+        align-items: center;
+    }
+
+    button{
+        padding: .5em 1em;
+        border: none;
+        background-color: #ccc;
+        border-radius: 5px;
+        font-size: 1.5em;
+        font-weight: 600;
+    }
+
+    .checked{
+        background-color: green;
+        color: white;
     }
 </style>

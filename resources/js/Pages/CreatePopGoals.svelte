@@ -2,14 +2,29 @@
 	import Button from './../Components/Button.svelte';
     import FaPlus from 'svelte-icons/fa/FaPlus.svelte'
     import { pop } from './../stores.js';
-    import CreatPopGoal from '../Components/CreatePopComponents/CreatPopGoal.svelte';
+    import CreatePopGoal from '../Components/CreatePopComponents/CreatePopGoal.svelte';
+    import InputPopUp from '../Components/InputPopUp.svelte';
 
     export let setCurrentPage;
 
-    function addGoal(name) {
-        console.log(name);
-        $pop.goals = [...$pop.goals, {name: name}];
-        console.log($pop.goals);
+    let text;
+    function updateText(key, value) {
+        text = value;
+    }
+
+    let overlayOpen = false;
+
+    function changeOverlayOpen() {
+        overlayOpen = !overlayOpen;
+    }
+
+    function addGoal() {
+        pop.update((pop) => {
+            pop.goals = [...pop.goals, {name: text}];
+            return pop;
+        });
+        changeOverlayOpen();
+        setCurrentPage(10);
     }
 </script>
 
@@ -20,12 +35,15 @@
             <h3 class="disabledText">Voeg een doel toe</h3>
         {:else}
             {#each $pop.goals as goal}
-                <CreatPopGoal title={goal.name} />
+                <CreatePopGoal title={goal.name} />
             {/each}
         {/if}
-        <Button marginTop onClick={() => setCurrentPage(10)} icon>
+        <Button marginTop onClick={changeOverlayOpen} icon>
             <FaPlus />
         </Button>
+        {#if overlayOpen}
+            <InputPopUp text={text} updateText={updateText} addGoal={addGoal} changeOverlayOpen={changeOverlayOpen} label='Doel naam' />
+        {/if}
     </div>
 </div>
 
@@ -38,9 +56,5 @@
     .container{
         display: grid;
         grid-template-columns: 1fr 2fr;
-    }
-
-    .goalsContainer{
-        
     }
 </style>

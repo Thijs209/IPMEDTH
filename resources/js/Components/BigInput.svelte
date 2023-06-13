@@ -5,8 +5,6 @@
     export let wide: boolean = false;
     export let small: boolean = false;
     export let noMargin: boolean = false;
-
-    console.log(typeof onChange)
 </script>
 
 <div class:wide={wide} class:small={small} class="inputContainer" class:noMargin={noMargin}>

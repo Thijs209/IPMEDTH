@@ -3,23 +3,37 @@
     import Button from "../Button.svelte";
     import FaPlus from 'svelte-icons/fa/FaPlus.svelte'
     import { pop } from './../../stores.js';
+    import { goal } from './../../stores.js';
 
-    let steps = [
-        'stap 1',
-    ];
+    if(!$goal.steps) {
+        goal.update((goal) => {
+            goal.steps = [{step: 0, value: ''}];
+            return goal;
+        });
+    }
 
     function addStep(e) {
         e.preventDefault();
-        steps = [...steps, `stap ${steps.length + 1}`];
+        goal.update((goal) => {
+            goal.steps = [...goal.steps, {step: goal.steps.length + 1, value: ' '}];
+            return goal;
+        });
+    }
+
+    function updateStep(step, value) {
+        goal.update((goal) => {
+            goal.steps[step].value = value;
+            return goal;
+        });
     }
 </script>
 
 <div>
     <h4>Hoe ga ik dit doen?</h4>
     <div class="container">
-        {#each steps as step}
+        {#each $goal.steps as step, i}
             <div class="step">
-                <BigInput noMargin text={step} />
+                <BigInput key={i} onChange={updateStep} noMargin text={`Stap ${i+1}`} />
             </div>
         {/each}
         <Button onClick={(e) => addStep(e)} icon>

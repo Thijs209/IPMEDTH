@@ -6,11 +6,13 @@
     export let marginTop: boolean = false;
     export let icon: boolean = false;
     export let color: string = '#00A667';
+    export let fitContent: boolean = false;
 </script>
 
 <button 
     class:small={icon && !text}
     class:marginTop={marginTop} 
+    class:fitContent={fitContent}
     style={style} 
     on:click={onClick}
 >
@@ -32,6 +34,10 @@
         background-color: #00A667;
         border-radius: .5em;
         font-size: 2em;
+    }
+
+    .fitContent{
+        width: fit-content;
     }
 
     button:hover{

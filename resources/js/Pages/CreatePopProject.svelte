@@ -13,7 +13,7 @@
 <p>Geef aan wat je in de komende periode gaat doen.</p>
 <BigInput onChange={changePop} key="description" text="Wat is jouw opdracht en wat is het doel daarvan?" />
 <BigInput onChange={changePop} key="result" text="Hoe moet het eindresultaat eruit zien?" />
-<BigInput onChange={changePop} key="succes" text="Wanneer ben je succesvol?" />
+<BigInput onChange={changePop} key="success" text="Wanneer ben je succesvol?" />
 <BigInput onChange={changePop} key="manager" text="Wie is je leidinggevende?" />
 <BigInput onChange={changePop} key="bosses" text="Rapporteer je nog naar anderen?" />
 
