@@ -2,15 +2,16 @@
 	import ShowGoal from './../Components/CreatePopComponents/ShowGoal.svelte';
 	import Button from './../Components/Button.svelte';
     import FaPlus from 'svelte-icons/fa/FaPlus.svelte'
-    import { pop } from './../stores.js';
     import CreatePopGoal from '../Components/CreatePopComponents/CreatePopGoal.svelte';
     import InputPopUp from '../Components/InputPopUp.svelte';
 
     export let setCurrentPage;
+    export let pop;
+    export let updatePop;
 
     let text;
     let openGoal = null;
-
+    
     function updateText(key, value) {
         text = value;
     }
@@ -22,10 +23,7 @@
     }
 
     function addGoal() {
-        pop.update((pop) => {
-            pop.goals = [...pop.goals, {name: text}];
-            return pop;
-        });
+        goals = [...goals, {name: text}];
         changeOverlayOpen();
         setCurrentPage(10);
     }
@@ -34,10 +32,10 @@
 <div class="container">
     <div class="goalsContainer">
         <h3>Doelen:</h3>
-        {#if $pop.goals.length === 0}
+        {#if pop.goals?.length === 0 || pop.goals === undefined}
             <h3 class="disabledText">Voeg een doel toe</h3>
         {:else}
-            {#each $pop.goals as goal}
+            {#each pop.goals as goal}
                 <CreatePopGoal onClick={() => openGoal = goal.id} title={goal.name} />
             {/each}
         {/if}

@@ -8,23 +8,28 @@
     import Datepicker from '../Components/Datepicker.svelte';
 
     export let setCurrentPage;
-    export const goal = writable({
-        id: 0,
-        title: '',
-        what: '',
-        why: '',
-        show: false,
-        how: [{
-            step: '',
-            value: '',
-        }],
-        satisfied: '',
-        support: '',
-        when: '',
-        feedback: '',
-        type: '',
-    });
+    // export const goal = writable({
+    //     id: 0,
+    //     title: '',
+    //     what: '',
+    //     why: '',
+    //     show: false,
+    //     how: [{
+    //         step: '',
+    //         value: '',
+    //     }],
+    //     satisfied: '',
+    //     support: '',
+    //     when: '',
+    //     feedback: '',
+    //     type: '',
+    // });
 
+    let goal = {};
+    function updateGoal(key, value) {
+        goal[key] = value;
+        updateGoals('goals', goal);
+    }
 
     let datePicker = true;
     function changeDatePicker(e) {
@@ -55,14 +60,6 @@
         });
         console.log($pop.goals)
         setCurrentPage(3);
-    }
-
-    function updateGoal(key, value) {
-        goal.update((goal) => {
-            goal[key] = value;
-            console.log(goal)
-            return goal;
-        });
     }
 </script>
 

@@ -5,11 +5,12 @@
     export let wide: boolean = false;
     export let small: boolean = false;
     export let noMargin: boolean = false;
+    export let value: string = '';
 </script>
 
 <div class:wide={wide} class:small={small} class="inputContainer" class:noMargin={noMargin}>
     <label for={text}>{text}</label>
-    <textarea on:keypress={(e) => {onChange(key, e.currentTarget.value)}} name={text} id={text} placeholder="Type hier..."></textarea>
+    <textarea on:change={(e) => {onChange(key, e.currentTarget.value)}} value={value||''} name={text} id={text} placeholder="Type hier..."></textarea>
 </div>
 
 <style>

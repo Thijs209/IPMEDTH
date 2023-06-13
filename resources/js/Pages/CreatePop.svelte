@@ -1,4 +1,4 @@
-<script lang="ts">
+<script>
 	import CreatePopGoals from './CreatePopGoals.svelte';
 	import CreatePopProject from './CreatePopProject.svelte';
 	import CreatePopIntro from './CreatePopIntro.svelte';
@@ -18,22 +18,17 @@
         'Afronden'
     ]
 
-    export const pop = writable({
-        project: {
-            description: '',
-            result: '',
-            success: '',
-            manager: '',
-            bosses: '',
-        },
-        coreQuadrants: {
-            coreQualities: [],
-            traps: [],
-            challenges: [],
-            allergies: []
-        },
-        goals: [goal],
-    });
+    let pop = {};
+    function updatePop(key, value) {
+        pop[key] = value;
+        console.log(pop)
+    }
+    
+    let goals = [];
+    function updateGoals(key, value) {
+        goals = value;
+        updatePop('goals', goals);
+    }
 
     let currentPage = 0;
     function nextPage() {
@@ -42,7 +37,7 @@
     function previousPage() {
         currentPage--;
     }
-    function setCurrentPage(page: number) {
+    function setCurrentPage(page) {
         currentPage = page;
     }
 </script>
@@ -53,17 +48,17 @@
     {#if currentPage == 0}
         <CreatePopIntro />
     {:else if currentPage == 1}
-        <CreatePopProject />
+        <CreatePopProject pop={pop} updatePop={updatePop} />
     {:else if currentPage == 2}
-        <CreateProjectCoreQuadrants />
+        <CreateProjectCoreQuadrants pop={pop} updatePop={updatePop} />
     {:else if currentPage == 3}
-        <CreatePopGoals setCurrentPage={setCurrentPage} />
+        <CreatePopGoals pop={pop} setCurrentPage={setCurrentPage} updatePop={updatePop} />
     {:else if currentPage == 4}
         <h1>4</h1>
     {:else if currentPage == 5}
         <h1>5</h1>
     {:else if currentPage == 10}
-        <CreateGoal setCurrentPage={setCurrentPage} />
+        <CreateGoal pop={pop} setCurrentPage={setCurrentPage} updatePop={updatePop} />
     {/if}
     {#if currentPage != 10}
         <div class="buttons">

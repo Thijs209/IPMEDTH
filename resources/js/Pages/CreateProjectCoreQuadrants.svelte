@@ -2,18 +2,25 @@
 	import CoreQuadrantField from './../Components/CreatePopComponents/CoreQuadrantField.svelte';
     import Button from "../Components/Button.svelte";
 
+    export let pop;
+    export let updatePop;
 
+    let coreQuadrants = {};
+    function updateCoreQuadrants(key, value) {
+        coreQuadrants[key] = value;
+        updatePop('coreQuadrants', coreQuadrants)
+    }
 </script>
 
 <p>Geef aan wat je in de komende periode gaat doen.</p>
 <Button marginTop={true} style="background-color:black" text='Kernkwadrant 1' />
 <div class="quadrantContainer">
-    <CoreQuadrantField title='Kernkwaliteit' />
+    <CoreQuadrantField coreQuadrants={pop?.coreQuadrants} updateCoreQuadrants={updateCoreQuadrants} key='quality' title='Kernkwaliteit' />
     <div class='arrowContainer'>
         <h3>Te veel van het goede</h3>
         <div class="arrow"></div>
     </div>
-    <CoreQuadrantField title='Valkuil' />
+    <CoreQuadrantField coreQuadrants={pop?.coreQuadrants} updateCoreQuadrants={updateCoreQuadrants} key='trap' title='Valkuil' />
     <div class='arrowContainer vertical'>
         <h3>Negatief tegenovergestelde</h3>
         <div class="arrow bottom"></div>
@@ -23,12 +30,12 @@
         <h3>Positief tegenovergestelde</h3>
         <div class="arrow bottom"></div>
     </div>
-    <CoreQuadrantField title='Allergie' />
+    <CoreQuadrantField coreQuadrants={pop?.coreQuadrants} updateCoreQuadrants={updateCoreQuadrants} key='allergy' title='Allergie' />
     <div class='arrowContainer'>
         <h3>Te veel van het goede</h3>
         <div class="arrow reversed"></div>
     </div>
-    <CoreQuadrantField title='Uitdaging' />
+    <CoreQuadrantField coreQuadrants={pop?.coreQuadrants} updateCoreQuadrants={updateCoreQuadrants} key='challenge' title='Uitdaging' />
 </div>
 
 <style>

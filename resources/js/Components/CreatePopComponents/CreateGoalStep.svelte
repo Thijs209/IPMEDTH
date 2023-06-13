@@ -2,8 +2,6 @@
 	import BigInput from './../BigInput.svelte';
     import Button from "../Button.svelte";
     import FaPlus from 'svelte-icons/fa/FaPlus.svelte'
-    import { pop } from './../../stores.js';
-    import { goal } from './../../stores.js';
 
     if(!$goal.steps) {
         goal.update((goal) => {

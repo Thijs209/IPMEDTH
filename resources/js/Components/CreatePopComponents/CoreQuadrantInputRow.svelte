@@ -7,10 +7,11 @@
 
     export let deleteTextField: () => void;
     export let updateTextField: (event: any) => void;
+    export let value: string;
 </script>
 
 <div class='container'>
-    <input type="text" placeholder="Type hier..." on:keypress={(e) => updateTextField(e)} />
+    <input value={value} type="text" placeholder="Type hier..." on:change={(e) => updateTextField(e)} />
     <Button icon style="color:#ff00007d" onClick={() => deleteTextField()} >
         <FaTrash />
     </Button>

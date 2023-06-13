@@ -3,31 +3,41 @@
 	import CoreQuadrantField from './CoreQuadrantField.svelte';
     import Button from "../Button.svelte";
     import FaPlus from 'svelte-icons/fa/FaPlus.svelte'
-    export let title;
 
-    let inputFields = [{id: 0, text: ''}]; 
+    export let title;
+    export let updateCoreQuadrants;
+    export let key;
+    export let coreQuadrants;
+
+    let inputFields = coreQuadrants?.[key] || '';
+    console.log(inputFields);
+    console.log(coreQuadrants);
 
     function addTextField() {
-        inputFields = [...inputFields, {id: inputFields.length, text: ''}];
+        inputFields = [...inputFields, ''];
+        updateCoreQuadrants(key, inputFields);
     }
 
     function deleteTextField(index) {
         inputFields.splice(index, 1);
         inputFields = [...inputFields];
+        updateCoreQuadrants(key, inputFields);
     }
 
-    function updateTextField(event) {
-        inputFields[inputFields.indexOf(event.target.value)] = event.target.value;
+    function updateTextField(event, index) {
+        inputFields[index] = event.target.value;
         inputFields = [...inputFields];
+        updateCoreQuadrants(key, inputFields);
     }
 </script>
 
 <div class="container">
     <h4>{title}</h4>
-    {#each inputFields as inputField (inputField.id)}
+    {#each inputFields as inputField, index}
         <CoreQuadrantInputRow 
-            deleteTextField={() => deleteTextField(inputField.id)} 
-            updateTextField={(event) => updateTextField(event)}
+            value={inputField}
+            deleteTextField={() => deleteTextField(index)} 
+            updateTextField={(event) => updateTextField(event, index)}
         />
     {/each}
     <div class='center'>
