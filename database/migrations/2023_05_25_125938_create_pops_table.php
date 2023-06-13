@@ -15,7 +15,10 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained();
             $table->foreignId('evaluated_by')->nullable()->constrained('users', 'id');
+            $table->boolean('user_finished')->default(false);
+            $table->dateTime('user_finished_at')->nullable();
             $table->boolean('evaluation_finished')->default(false);
+            $table->dateTime('evaluation_finished_at')->nullable();
             $table->timestamps();
         });
     }

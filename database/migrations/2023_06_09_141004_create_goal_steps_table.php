@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('goal_steps', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('goal_id')->constrained();
+            $table->integer('step');
+            $table->string('description');
             $table->timestamps();
         });
     }

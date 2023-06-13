@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
             $table->foreignId('pop_id')->constrained();
-            $table->string('opdracht_doel');
-            $table->string('resultaat');
-            $table->string('succesvol');
-            $table->string('leidinggevende');
-            $table->string('rapporteer_anderen');
+            $table->string('goal');
+            $table->string('results');
+            $table->string('success');
+            $table->string('manager');
+            $table->string('report_others');
             $table->timestamps();
         });
     }
