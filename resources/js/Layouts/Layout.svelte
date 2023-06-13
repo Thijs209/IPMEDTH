@@ -1,14 +1,18 @@
 <script>
     import SideBar from "./../Components/SideBar.svelte";
-    import { inertia } from "@inertiajs/svelte";
+    // centeredContent is a prop used by a slot parent to indicate the main content should be centered.
+    export let centeredContent = false; 
 </script>
 
 <!-- Inertia places the markup below in Svelte's root file (App.html), specifically into the <Body> -->
 <div class="layout-wrapper">
+    <!-- Header -->
     <SideBar />
-    <main class="page">
-        <slot name="main" />
+    <!-- Main Content -->
+    <main class="main" class:center-content="{centeredContent === true}">
+        <slot name="main" class="slot" />
     </main>
+    <!-- Footer -->
 </div>
 
 <style>
@@ -16,18 +20,22 @@
     .layout-wrapper {
         display: flex;
         flex-direction: row;
+        justify-content: start;
+        align-items: start;
         max-width: 100%;
-        min-height: 100vh;
+        /* min-height: 100vh; */
         height: 100%;
     }
-    .page {
+    .main {
         height: 100%;
         min-height: 100vh;
         width: 100%;
         max-width: 100%;
-        background-color: #eee;
-        display: flex;
+        background-color: #eee; /*TODO remove test bg in production*/
+    }
 
+    .center-content {
+        display: flex;
         justify-content: center;
         align-items: center;
     }
