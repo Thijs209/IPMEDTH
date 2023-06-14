@@ -47,6 +47,7 @@
 	"type": "module",
 	"dependencies": {
 		"@inertiajs/svelte": "^1.0.6",
+		"moment": "^2.29.4",
 		"svelte-icons": "^2.1.0"
 	}
 }
