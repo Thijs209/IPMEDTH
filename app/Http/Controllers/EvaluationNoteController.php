@@ -51,8 +51,12 @@ class EvaluationNoteController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(EvaluationNote $evaluationNote)
+    public function destroy($id)
     {
-        //
+        EvaluationNote::destroy($id);
+
+        return response()->json([
+            'message' => 'note deleted'
+        ]);
     }
 }
