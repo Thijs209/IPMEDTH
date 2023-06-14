@@ -22,6 +22,8 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             UserSeeder::class,
             PopSeeder::class,
+            GoalTypeSeeder::class,
+            EvaluationNoteTypeSeeder::class
         ]);
     }
 }

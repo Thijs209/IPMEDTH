@@ -2,56 +2,48 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Storeevaluation_noteRequest;
-use App\Http\Requests\Updateevaluation_noteRequest;
-use App\Models\Evaluation_note;
+use App\Models\EvaluationNote;
+use Illuminate\Http\Request;
+use App\Http\Resources\EvaluationNoteResource;
 
 class EvaluationNoteController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Storeevaluation_noteRequest $request)
+    public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'pop_id' => 'bail|required',
+        ]);
+
+        $note = new EvaluationNote();
+        $note->pop_id = $request['pop_id'];
+        $note->evaluation_note_type_id = $request['note_type_id'];
+        $note->evaluation_note = $request['note'];
+
+        $note->save();
+
+        return EvaluationNoteResource::make($note);
+
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(evaluation_note $evaluation_note)
+    public function show($id)
     {
-        //
-    }
+        $note = EvaluationNote::find($id);
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(evaluation_note $evaluation_note)
-    {
-        //
+        return EvaluationNoteResource::make($note);
+
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Updateevaluation_noteRequest $request, evaluation_note $evaluation_note)
+    public function update(Request $request, EvaluationNote $evaluationNote)
     {
         //
     }
@@ -59,8 +51,12 @@ class EvaluationNoteController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(evaluation_note $evaluation_note)
+    public function destroy($id)
     {
-        //
+        EvaluationNote::destroy($id);
+
+        return response()->json([
+            'message' => 'note deleted'
+        ]);
     }
 }

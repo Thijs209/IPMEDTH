@@ -2,136 +2,85 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StorepopRequest;
-use App\Http\Requests\UpdatepopRequest;
-
-use App\Models\Pop;
-use App\Models\Opdracht;
-use App\Models\Kernkwadrant;
-use App\Models\Doel;
-
+use App\Http\Requests\StorePopRequest;
 use App\Http\Resources\PopResource;
-
-use Illuminate\Http\Request;
-use Inertia\Inertia;
+use App\Models\Task;
+use App\Models\CoreQuadrant;
+use App\Models\Pop;
+use App\Models\Goal;
+use App\Models\GoalStep;
 
 class PopController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         return PopResource::collection(Pop::all());
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        return Inertia::render('CreatePop');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StorepopRequest $request)
+public function store(StorePopRequest $request)
     {
         $pop = Pop::create($request->validated());
 
-        error_log($request->input('opdracht.doel'));
-        error_log($pop['id']);
+        // save tasks
+        $task = new Task();
+        $task->pop_id = $pop['id'];
+        $task->goal = $request->input('task.goal');
+        $task->results = $request->input('task.results');
+        $task->success = $request->input('task.success');
+        $task->manager = $request->input('task.manager');
+        $task->report_others = $request->input('task.report_others');
+        $task->save();
 
-        // save opdracht
-        $opdracht = new Opdracht();
-        $opdracht->pop_id = $pop['id'];
-        $opdracht->opdracht_doel = $request->input('opdracht.doel');
-        $opdracht->resultaat = $request->input('opdracht.resultaat');
-        $opdracht->succesvol = $request->input('opdracht.succesvol');
-        $opdracht->leidinggevende = $request->input('opdracht.leidinggevende');
-        $opdracht->rapporteer_anderen = $request->input('opdracht.rapporteer_anderen');
-        $opdracht->save();
+        // save core quadrants
+        $coreQuadrantData = $request->input('core_quadrant');
 
-        // save kernkwadranten
-        $kernKwadrantData = $request->input('kern_kwadranten');
-
-        foreach($kernKwadrantData as $kernKwadrantItem){
-            $kernkwadrant = new Kernkwadrant();
-            $kernkwadrant->pop_id = $pop['id'];
-            $kernkwadrant->kern_kwaliteit = $kernKwadrantItem['kern_kwaliteit'];
-            $kernkwadrant->valkuil = $kernKwadrantItem['valkuil'];
-            $kernkwadrant->allergie = $kernKwadrantItem['allergie'];
-            $kernkwadrant->uitdaging = $kernKwadrantItem['uitdaging'];
-            $kernkwadrant->save();
-
-
+        if ($coreQuadrantData) {
+            foreach($coreQuadrantData as $coreQuadrantItem){
+                $coreQuadrant = new CoreQuadrant();
+                $coreQuadrant->pop_id = $pop['id'];
+                $coreQuadrant->core_quality = $coreQuadrantItem['core_quality'];
+                $coreQuadrant->pitfall = $coreQuadrantItem['pitfall'];
+                $coreQuadrant->allergy = $coreQuadrantItem['allergy'];
+                $coreQuadrant->challenge = $coreQuadrantItem['challenge'];
+                $coreQuadrant->save();
+            }        
         }
 
-        // save doelen
-        $kernKwadrantData = $request->input('kern_kwadranten');
+         // save goals
+         $goalsData = $request->input('goals');
 
-        foreach($kernKwadrantData as $kernKwadrantItem){
-            $kernkwadrant = new Kernkwadrant();
-            $kernkwadrant->pop_id = $pop['id'];
-            $kernkwadrant->kern_kwaliteit = $kernKwadrantItem['kern_kwaliteit'];
-            $kernkwadrant->valkuil = $kernKwadrantItem['valkuil'];
-            $kernkwadrant->allergie = $kernKwadrantItem['allergie'];
-            $kernkwadrant->uitdaging = $kernKwadrantItem['uitdaging'];
-            $kernkwadrant->save();
+         if ($goalsData) {
+             foreach($goalsData as $goalsItem){
+                $goal = new Goal();
+                $goal->pop_id = $pop['id'];
+                $goal->goal_type_id = $goalsItem['goal_type_id'];
+                $goal->what = $goalsItem['what'];
+                $goal->why = $goalsItem['why'];
+                $goal->satisfied = $goalsItem['satisfied'];
+                $goal->support = $goalsItem['support'];
+                $goal->deadline = date('Y-m-d H:i:s');
+                $goal->feedback = $goalsItem['feedback'];
+                
+                $stepData = $goalsItem['steps'];
 
-
-        }
-
-
-
-
-
-
+                $goal->save();
+                
+                foreach($stepData as $key=>$stepitem){
+                    $goalStep = new GoalStep();
+                    $goalStep->goal_id = $goal['id'];
+                    $goalStep->step = $key;
+                    $goalStep->description = $stepitem;
+                    $goalStep->save();
+                }
+             }        
+         }
 
         return PopResource::make($pop);
 
-
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(Pop $pop)
     {
         return PopResource::make($pop);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Pop $pop)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdatepopRequest $request, Pop $pop)
-    {
-        // $pop->update($request->validated());
-
-        $pop->evaluated_by = $request['evaluated_by'];
-        $pop->evaluation_finished = $request['evaluation_finished'];
-        $pop->save();
-
-        return PopResource::make($pop);
-
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Pop $pop)
-    {
-        $pop->delete();
-
-        return response()->noContent();
     }
 }

@@ -12,10 +12,11 @@ class Pop extends Model
     protected $fillable = ['user_id', 'evaluated_by', 'evaluation_finished'];
 
     public function evaluation(){
-        return $this->hasOne(Evaluation::class);
+        return $this->hasMany(Evaluation::class);
     }
 
-    public function user(){
-        return $this->belongsTo(User::class);
+    public function evaluationNotes(){
+        return $this->hasMany(EvaluationNotes::class);
     }
+    
 }
