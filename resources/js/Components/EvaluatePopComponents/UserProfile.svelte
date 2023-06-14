@@ -59,7 +59,7 @@
     .profile__main {
         display: flex;
         flex-direction: column;
-        height: 25%;
+        height: 15%;
         min-height: 15rem;
         border-bottom: 1px solid var(--c-nav-font);
     }
@@ -71,20 +71,21 @@
         justify-content: center;
         align-items: center;
         gap: 1rem;
-        min-height: 100%;
-        min-width: 100%;
+        min-height: 4rem;
+        min-width: 4rem;
+        aspect-ratio: 1 / 1;
         height: 100%;
         width: 100%;
     }
 
     figure > img {
         width: 60%;
-        min-width: 60%;
-        max-height: 60%;
         height: 60%;
-        min-height: 60%;
+        min-width: 60%;
+        max-height: 2rem;
+        min-height: 2rem;
         max-height: 60%;
-        aspect-ratio: 1/1;
+        aspect-ratio: 4 / 3;
 
         object-fit: cover;
         border-radius: 50%;

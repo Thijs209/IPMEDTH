@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { activeEvaluationTab, evaluationTabs } from "./../../stores.js";
+    import { activeEvaluationTab, evaluationTabs } from "../../stores.js";
     //Layouts
     import Layout from "./../../Layouts/Layout.svelte";
     import EvaluatePopLayout from "./../../Layouts/EvaluatePopLayout.svelte";
@@ -10,6 +10,9 @@
     // Evaluation tabs
     import EvaluatePopProject from "./EvaluatePopProject.svelte";
     import EvaluatePopCoreQuadrants from "./EvaluatePopCoreQuadrants.svelte";
+    import EvaluatePopButtons from "../../Components/EvaluatePopComponents/EvaluatePopButtons.svelte";
+    import EvaluatePopGoals from "./EvaluatePopGoals.svelte";
+    import PopNotes from "../../Components/EvaluatePopComponents/PopNotes.svelte";
 
     let pages: string[] = ["Home", "POP Overzicht", "POP Review"];
 
@@ -131,16 +134,14 @@
                 {:else if $activeEvaluationTab.tab === $evaluationTabs.tabs[2]}
                     <!-- doelen -->
                 {:else if $activeEvaluationTab.tab === $evaluationTabs.tabs[3]}
-                    <!-- leerdoelen -->
-                {:else if $activeEvaluationTab.tab === $evaluationTabs.tabs[4]}
-                    <!-- afsluiting -->
+                    <!-- Afsluiting => Opslaan en afronden POP/status -->
                 {/if}
             </section>
             <section slot="evaluate-pop-notes" class="evaluate-pop__notes">
-                <!-- Notes weergave + input component -->
+                <PopNotes />
             </section>
             <div slot="evaluate-pop-buttons" class="evaluate-pop__buttons">
-                <!-- Buttons = ['Sluiten', 'Opslaan'] -->
+                <EvaluatePopButtons />
             </div>
         </EvaluatePopLayout>
     </article>
@@ -160,5 +161,12 @@
     .evaluate-pop__tabs {
         height: 100%;
         width: 100%;
+    }
+
+    .evaluate-pop__notes {
+        height: 100%;
+        width: 100%;
+        min-width: 100%;
+        background-color: pink;
     }
 </style>

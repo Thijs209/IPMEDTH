@@ -49,7 +49,6 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        padding: 2rem;
     }
 
     svg {
@@ -66,7 +65,7 @@
 
     .svg-container--left > p,
     .svg-container--right > p {
-        width: 50%;
+        width: 40%;
         height: 100%;
         align-items: center;
         word-wrap: break-word;
@@ -75,7 +74,7 @@
 
     .svg-container--left > svg,
     .svg-container--right > svg {
-        width: 50%;
+        width: 60%;
         height: 100%;
     }
 

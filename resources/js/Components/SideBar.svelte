@@ -71,9 +71,9 @@
 
 <style>
     .container {
-        width: 12vw;
-        max-width: 15rem;
-        min-width: 10rem;
+        width: 15vw;
+        max-width: 12rem;
+        min-width: fit-content;
         background-color: #0d403d;
         height: 100%;
         min-height: 100vh;
@@ -83,7 +83,7 @@
         align-content: center;
         padding: 1rem;
 
-        transition: 0.5s width ease-in-out;
+        transition: 0.5s ease-in-out;
     }
 
     .logo-wrapper {

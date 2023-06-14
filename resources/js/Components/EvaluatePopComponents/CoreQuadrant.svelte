@@ -25,13 +25,17 @@
         background-color: #fff;
         border-radius: 2rem;
         font-size: 1.3rem;
+
+        min-width: 20rem;
+        max-height: 20rem;
     }
 
     p {
         display: flex;
         width: 100%;
         max-width: 100%;
-        height: 100;
+        height: 100%;
+        max-height: 100%;
         align-items: center;
         justify-content: center;
         text-align: center;

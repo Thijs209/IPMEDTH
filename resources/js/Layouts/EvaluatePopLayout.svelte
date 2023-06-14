@@ -32,10 +32,9 @@
         display: flex;
         flex-direction: row;
         width: 100%;
-        max-width: 100%;
-        height: 100%;
+        max-width: 90vw;
         background-color: #eee;
-        min-height: 85vh; /* TODO test if setting height w/ vh height leads to issues. */
+        min-height: 85vh; /* m TODO test if setting height w/ vh height leads to issues. */
         border-radius: 1rem;
     }
 
@@ -47,13 +46,15 @@
     /* Main content window, contains the nav tabs, POP pages, and permanent notes section. Bottomright contains action buttons. */
     .evaluate-pop__main {
         display: grid;
-        grid-template-columns: 1fr 0.5fr 1fr;
-        grid-template-rows: 3rem 1fr 5rem;
-        align-items: first baseline;
-        width: 85%;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 5rem 1fr 10rem;
+        align-items: start;
+        justify-items: start;
+        margin: 0 auto;
+        padding: 2rem;
+        width: 100%;
         border-top-right-radius: 1rem;
         border-bottom-right-radius: 1rem;
-        padding: 1rem;
     }
 
     .evaluate-pop__content {
@@ -65,6 +66,10 @@
     .evaluate-pop__notes {
         margin-top: 2rem;
         grid-column: 3 / span 1;
+        grid-row: 2 / span 2;
+        height: 80%;
+        width: 100%;
+        max-height: 80%;
     }
 
     /* Navigation and interaction */
@@ -74,14 +79,19 @@
         grid-row: 1 / 2;
         background-color: #eee;
         width: 100%;
+        padding-bottom: 2rem;
     }
 
     .evaluate-pop__buttons {
         display: flex;
+        flex-flow: row wrap;
+        justify-content: flex-end;
+        align-items: center;
         width: 100%;
         height: 100%;
+        min-height: 7rem;
         grid-column: 3 / span 1;
-        grid-row: 3 / span 1;
-        background-color: black;
+        grid-row: 3 / 4;
+        align-self: end;
     }
 </style>

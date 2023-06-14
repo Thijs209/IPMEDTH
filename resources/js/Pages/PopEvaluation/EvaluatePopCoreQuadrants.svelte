@@ -46,19 +46,19 @@
 <style>
     .grid {
         display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-template-columns: repeat(5, minmax(0, 1fr));
         grid-template-rows: repeat(3, minmax(0, 1fr));
-        gap: 1rem;
-        padding: 4rem;
-        max-height: 100%;
-        height: 100%;
         width: 100%;
-        overflow: hidden;
+        height: 100%;
+        min-height: 100%;
+        max-width: 100%;
+        max-height: 100%;
+        padding: 3rem 2rem;
     }
 
     .grid > div {
         width: 100%;
-        max-width: 20rem;
+        max-width: 14rem;
         height: 100%;
     }
 
@@ -72,7 +72,6 @@
         text-align: center;
         grid-column: 3 / span 2;
         grid-row: 1 / span 1;
-        transform: translateX(-45%);
     }
 
     div[data-type="Valkuil"] {
@@ -84,7 +83,7 @@
         grid-row: 2 / span 1;
     }
     div[data-type="Uitdaging"] {
-        grid-column: 5 / span 1;
+        grid-column: 5 / span 2;
         grid-row: 3 / span 1;
     }
 
@@ -93,7 +92,6 @@
         text-align: center;
         grid-column: 3 / span 2;
         grid-row: 3 / span 1;
-        transform: translateX(-45%);
     }
 
     div[data-type="Allergie"] {
@@ -104,5 +102,9 @@
     .coreQuadrantArrow--left {
         grid-column: 1 / span 2;
         grid-row: 2 / span 1;
+    }
+
+    @media screen and (max-width: 40rem) {
+        /* TODO alle items los in een kolom plaatsen voor reponsive design. */
     }
 </style>

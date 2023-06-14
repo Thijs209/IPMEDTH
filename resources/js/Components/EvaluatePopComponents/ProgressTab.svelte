@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { activeEvaluationTab } from "./../../stores.js";
+    import { activeEvaluationTab } from "../../stores.js";
     export let name: string = "";
     export let active: boolean;
     $: handleClick = (event: MouseEvent) => {

@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { evaluationTabs, activeEvaluationTab } from "./../../stores.js";
+    import { evaluationTabs, activeEvaluationTab } from "../../stores.js";
 
     import ProgressTab from "./ProgressTab.svelte";
     import IconHolder from "../IconHolder.svelte";
@@ -26,6 +26,7 @@
         justify-content: start;
         align-items: center;
         width: 100%;
+        max-width: 100%;
         height: 100%;
         max-height: 100%;
 
@@ -35,5 +36,11 @@
     .chevron {
         margin: 0;
         padding: 0;
+    }
+
+    @media only screen and (max-width: 30rem) {
+        .container {
+            justify-content: center;
+        }
     }
 </style>
