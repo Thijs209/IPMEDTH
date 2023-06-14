@@ -17,11 +17,13 @@
 
     --c-primary-button: #219653;
     --c-primary-button-hover: #1e874b;
-    --c-secondary-button: #00A667;
+    --c-secondary-button: #0D403D;
+    --c-secondary-button-hover: #0a2f2d;
 
 
     /* 2. MAJOR COMPONENTS */
     --c-nav-bg: #0D403D;
+    
     --c-nav-font: #F2F2F2;
 
 }
