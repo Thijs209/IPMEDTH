@@ -32,9 +32,12 @@ class EvaluationNoteController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(EvaluationNote $evaluationNote)
+    public function show($id)
     {
-        return EvaluationNoteResource::make($evaluationNote);
+        $note = EvaluationNote::find($id);
+
+        return EvaluationNoteResource::make($note);
+
     }
 
     /**

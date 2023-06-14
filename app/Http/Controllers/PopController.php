@@ -72,7 +72,6 @@ public function store(StorePopRequest $request)
                     $goalStep->description = $stepitem;
                     $goalStep->save();
                 }
-
              }        
          }
 
@@ -84,7 +83,5 @@ public function store(StorePopRequest $request)
     {
         return PopResource::make($pop);
     }
-
-
 }
 

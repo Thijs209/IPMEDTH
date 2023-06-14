@@ -14,6 +14,13 @@ class EvaluationNoteResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return parent::toArray($request);
+        return [
+            'id' => $this->id,
+            'pop_id' => $this->pop_id,
+            'note_type' => $this->evaluation_note_type_id,
+            'note' => $this->evaluation_note,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
+        ];
     }
 }
