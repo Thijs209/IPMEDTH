@@ -2,65 +2,85 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StorepopRequest;
-use App\Http\Requests\UpdatepopRequest;
-use App\Models\pop;
+use App\Http\Requests\StorePopRequest;
+use App\Http\Resources\PopResource;
+use App\Models\Task;
+use App\Models\CoreQuadrant;
+use App\Models\Pop;
+use App\Models\Goal;
+use App\Models\GoalStep;
 
 class PopController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        return PopResource::collection(Pop::all());
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+public function store(StorePopRequest $request)
     {
-        //
+        $pop = Pop::create($request->validated());
+
+        // save tasks
+        $task = new Task();
+        $task->pop_id = $pop['id'];
+        $task->goal = $request->input('task.goal');
+        $task->results = $request->input('task.results');
+        $task->success = $request->input('task.success');
+        $task->manager = $request->input('task.manager');
+        $task->report_others = $request->input('task.report_others');
+        $task->save();
+
+        // save core quadrants
+        $coreQuadrantData = $request->input('core_quadrant');
+
+        if ($coreQuadrantData) {
+            foreach($coreQuadrantData as $coreQuadrantItem){
+                $coreQuadrant = new CoreQuadrant();
+                $coreQuadrant->pop_id = $pop['id'];
+                $coreQuadrant->core_quality = $coreQuadrantItem['core_quality'];
+                $coreQuadrant->pitfall = $coreQuadrantItem['pitfall'];
+                $coreQuadrant->allergy = $coreQuadrantItem['allergy'];
+                $coreQuadrant->challenge = $coreQuadrantItem['challenge'];
+                $coreQuadrant->save();
+            }        
+        }
+
+         // save goals
+         $goalsData = $request->input('goals');
+
+         if ($goalsData) {
+             foreach($goalsData as $goalsItem){
+                $goal = new Goal();
+                $goal->pop_id = $pop['id'];
+                $goal->goal_type_id = $goalsItem['goal_type_id'];
+                $goal->what = $goalsItem['what'];
+                $goal->why = $goalsItem['why'];
+                $goal->satisfied = $goalsItem['satisfied'];
+                $goal->support = $goalsItem['support'];
+                $goal->deadline = date('Y-m-d H:i:s');
+                $goal->feedback = $goalsItem['feedback'];
+                
+                $stepData = $goalsItem['steps'];
+
+                $goal->save();
+                
+                foreach($stepData as $key=>$stepitem){
+                    $goalStep = new GoalStep();
+                    $goalStep->goal_id = $goal['id'];
+                    $goalStep->step = $key;
+                    $goalStep->description = $stepitem;
+                    $goalStep->save();
+                }
+             }        
+         }
+
+        return PopResource::make($pop);
+
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StorepopRequest $request)
+    public function show(Pop $pop)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(pop $pop)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(pop $pop)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdatepopRequest $request, pop $pop)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(pop $pop)
-    {
-        //
+        return PopResource::make($pop);
     }
 }

@@ -16,11 +16,10 @@ return new class extends Migration
             $table->string('first_name');
             $table->string('last_name');
             $table->string('username');
-            $table->boolean('is_admin');
-            $table->boolean('is_people_manager');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->foreignId('role_id')->constrained()->cascadeOnDelete()->restrictOnDelete();
             $table->rememberToken();
             $table->timestamps();
         });
@@ -32,5 +31,8 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('users');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropForeign('users_role_id_foreign');
+        });
     }
 };
