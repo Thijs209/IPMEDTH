@@ -19,8 +19,17 @@ class PopController extends Controller
 
 public function store(StorePopRequest $request)
     {
-        $pop = Pop::create($request->validated());
+       $validated = $request->validate([
+        'user_id' => 'unique:users',
+    ]);
 
+    $pop = Pop::create($validated(
+        $pop-> name = $validated['name'],
+        $pop-> first_name = $validated['first_name'],
+        $pop-> last_name = $validated['last_name'],
+    ));
+
+        
         // save tasks
         $task = new Task();
         $task->pop_id = $pop['id'];
