@@ -11,7 +11,15 @@ class Task extends Model
 
     /* Relationships */
 
+    public function pop()
+    {
+        return $this->belongsTo(Pop::class);
+    }
 
+    public function taskNotes()
+    {
+        return $this->hasMany(TaskNotes::class);
+    }
     
 
 }

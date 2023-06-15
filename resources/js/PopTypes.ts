@@ -95,6 +95,7 @@ type GoalTask = {
     id: number;
     goal_id: number;
     name: string;
+    question: string;
     description: string;
     deadline: string;
     achieved: boolean;
@@ -113,40 +114,3 @@ type CoreQuadrant = {
     updatedAt: string;
 };
 
-let currentPop: Pop = {
-    id: 1,
-    created_at: Date.now().toString(),
-    updated_at: Date.now().toString(),
-    user_id: 1,
-    task: {
-        goal: {
-            question: "Wat is jouw opdracht en wat is het doel daarvan?",
-            answer: "Ik moet een website maken voor een bedrijf.",
-        },
-        results: {
-            question: "Hoe moet het eindresultaat er uit zien?",
-            answer: "Het moet een website zijn met een homepagina, een contactpagina en een over ons pagina.",
-        },
-        success: {
-            question: "Wanneer ben je succesvol?",
-            answer: "Als de website af is en de klant tevreden is.",
-        },
-        manager: {
-            question: "Wie is de leidinggevende?",
-            answer: "Jeroen van Velden.",
-        },
-        reportsOthers: {
-            question: "Rapporteer je nog naar anderen?",
-            answer: "Nee, alleen naar Jeroen.",
-        },
-    },
-    coreQuadrants: {
-        coreQuality: "Sterk verantwoordelijkheids gevoel",
-        pitfall: "Overbelasting",
-        allergy: "Snelle opgevers",
-        challenge: "Rustmomenten vinden",
-    },
-    goals: [{}],
-    goalSteps: [{}],
-    goalsTasks: [{}],
-};

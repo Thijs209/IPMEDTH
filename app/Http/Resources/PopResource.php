@@ -21,6 +21,13 @@ class PopResource extends JsonResource
             'evaluation_finished' => $this->evaluation_finished,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
+            'evaluation_notes' => EvaluationNoteResource::collection($this->evaluationNotes),
+            // TODO Add l
+            // 'user' => UserResource::make($this->user),
+            // 'tasks' => TaskResource::collection($this->tasks),
+            // 'core_quadrants' => CoreQuadrantResource::collection($this->coreQuadrants),
+            // 'goals' => GoalResource::collection($this->goals),
+            // 'goal_steps' => GoalStepResource::collection($this->goalSteps),
         ];
     }
-}
+};

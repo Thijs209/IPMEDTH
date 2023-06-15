@@ -19,6 +19,7 @@
             <slot name="evaluate-pop-notes" />
         </section>
         <!-- The righthand notes section. Width = 1fr. height = 1fr - 10rem -->
+        
         <div class="evaluate-pop__buttons">
             <slot name="evaluate-pop-buttons" />
         </div>

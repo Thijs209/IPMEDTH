@@ -17,18 +17,28 @@ class PopController extends Controller
         return PopResource::collection(Pop::all());
     }
 
-public function store(StorePopRequest $request)
+    public function show($id)
+    {
+        $pop = Pop::find($id);
+
+        return PopResource::make($pop);
+    }
+
+    public function store(StorePopRequest $request)
     {
        $validated = $request->validate([
         'user_id' => 'unique:users',
     ]);
 
-    $pop = Pop::create($validated(
-        $pop-> name = $validated['name'],
-        $pop-> first_name = $validated['first_name'],
-        $pop-> last_name = $validated['last_name'],
-    ));
-
+    $pop = Pop::create();
+    $validated = $request->validated(
+        [
+            'name' => 'required',
+            'first_name' => 'required',
+            'last_name' => 'required',
+        ]
+    );
+    $pop->fill($validated);
         
         // save tasks
         $task = new Task();
@@ -86,10 +96,5 @@ public function store(StorePopRequest $request)
 
         return PopResource::make($pop);
 
-    }
-
-    public function show(Pop $pop)
-    {
-        return PopResource::make($pop);
     }
 }

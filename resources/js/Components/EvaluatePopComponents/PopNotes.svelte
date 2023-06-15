@@ -15,12 +15,12 @@
         note: string;
     };
     // TODO LocalStorage voor notes uitwerken
-
+    
     export let notes: Note[] = [
         {
-            date: moment("20-01-2022", "DD-MM-YYYY").format(),
+            date: moment("11-06-2023", "DD-MM-YYYY").format(),
             time: moment(2000).format("HH:mm"),
-            note: "Yuhyuhyuh",
+            note: "Karin lijkt niet  ",
         },
         {
             date: moment("22-01-2022", "DD-MM-YYYY").format(),
@@ -39,14 +39,19 @@
     currentPopNotes.subscribe((value) => {
         console.log(value);
     });
-    let newNote: (Note) = {
-            date: $form.date,
-            time: $form.time,
-            note: $form.note};
+    let newNote: Note = {
+        date: $form.date,
+        time: $form.time,
+        note: $form.note,
+    };
     const handleSave = () => {
+        notes.push(newNote);
     };
 
-    $: $form, console.log($currentPopNotes);
+    $: $form,
+        () => {
+            $form.note, $form.date, $form.time;
+        };
 </script>
 
 <h2 class="notes__header">Interne notities</h2>
@@ -58,12 +63,9 @@
             </div>
         {/each}
     </section>
-    <form class="notes__form">
+    <form class="notes__form" on:submit|preventDefault={() => handleSave()}>
         <input id="note" name="note" type="text" bind:value={$form.note} />
-        <button
-            on:keydown|preventDefault
-            on:submit|preventDefault={() => handleSave()}
-        >
+        <button type="submit" on:click={() => handleSave()}>
             <IconHolder>
                 <MdSave />
             </IconHolder>
@@ -115,11 +117,19 @@
     }
 
     .notes__form > button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         background-color: white;
 
         border: 1px solid black;
         height: 4rem;
+        width: 4rem;
         /* min-height: 100%; */
         width: 10%;
+    }
+
+    button:hover {
+        cursor: pointer;
     }
 </style>

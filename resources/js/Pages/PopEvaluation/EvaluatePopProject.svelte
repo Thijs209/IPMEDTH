@@ -1,22 +1,21 @@
 <script lang="ts">
+    import { currentPopTaskQuestions, currentPopTask } from "./../../stores.js";
     import PopProjectField from "../../Components/EvaluatePopComponents/PopProjectField.svelte";
 
-    export let popProject: { [key: string]: { [key: string]: string } };
-    let flattenedArray: Array<string[]> = [];
-    // Onderstaande code maakt van het object een array met arrays van de values van de objecten
-    Object.entries(popProject).map((projectItem) => {
-        Object.values(projectItem).map((item) => {
-            if (typeof item === "object") {
-                flattenedArray.push(Object.values(item));
-            }
-        });
-    });
+    let questions = { ...$currentPopTaskQuestions };
+    let answers = { ...$currentPopTask };
+    
 </script>
 
 <section>
-    {#each flattenedArray as projectItem}
-        <PopProjectField question={projectItem[0]} answer={projectItem[1]} />
-    {/each}
+    <PopProjectField question={questions.goal} answer={answers.goal} />
+    <PopProjectField question={questions.result} answer={answers.result} />
+    <PopProjectField question={questions.succes} answer={answers.succes} />
+    <PopProjectField question={questions.manager} answer={answers.manager} />
+    <PopProjectField
+        question={questions.reportsOthers}
+        answer={answers.reportsOthers}
+    />
 </section>
 
 <style>

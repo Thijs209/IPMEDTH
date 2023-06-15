@@ -1,6 +1,8 @@
 <script lang="ts">
     export let question: string;
     export let answer: string;
+
+    
 </script>
 
 <section>

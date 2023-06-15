@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\PopController;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,7 +40,7 @@ Route::get('/success', function () {
     return Inertia::render('Auth/Success');
 })->name('auth.success');
 
-Route::get('/reset-password/{token}', function ($request) {         
+Route::get('/reset-password/{token}', function ($request) {
     Log::info($request);
     return Inertia::render('Auth/ResetPassword', [
         'request' => $request
@@ -57,9 +58,14 @@ Route::post('/create-pop', [PopController::class, 'store']);
 
 // Temp Route for testing, with default values
 // TODO remove default values in production + add permissions so only people manager can access edit page for any POP
-Route::get('/evaluate-pop/users/{user_id?}/pops/{pop_id?}/', function (string $user_id = "1", string $pop_id = "1") {
-        return Inertia::render('PopEvaluation/EvaluatePop', [
-            'user_id' => $user_id,
-            'pop_id' => $pop_id
-        ]);
-    });
+Route::get('/evaluate-pop/users/{user_id}/pops/{pop_id?}/', function (User $user, string $pop_id) {
+    if ($pop_id = null) {
+        POP::where('user_id', $user->id)->firstOrFail();
+    };
+
+
+    return Inertia::render('PopEvaluation/EvaluatePop', [
+        'user_id' => $user_id,
+        'pop_id' => $pop_id
+    ]);
+});

@@ -1,5 +1,9 @@
 <script lang="ts">
-    import { activeEvaluationTab, evaluationTabs } from "../../stores.js";
+    import {
+        activeEvaluationTab,
+        evaluationTabs,
+        currentPop,
+    } from "../../stores.js";
     //Layouts
     import Layout from "./../../Layouts/Layout.svelte";
     import EvaluatePopLayout from "./../../Layouts/EvaluatePopLayout.svelte";
@@ -12,106 +16,9 @@
     import EvaluatePopCoreQuadrants from "./EvaluatePopCoreQuadrants.svelte";
     import EvaluatePopButtons from "../../Components/EvaluatePopComponents/EvaluatePopButtons.svelte";
     import EvaluatePopGoals from "./EvaluatePopGoals.svelte";
+    import EvaluatePopFinalize from "./EvaluatePopFinalize.svelte";
     import PopNotes from "../../Components/EvaluatePopComponents/PopNotes.svelte";
-
     let pages: string[] = ["Home", "POP Overzicht", "POP Review"];
-
-    interface Pop {
-        id: number;
-        name: string;
-        description: string;
-        user_id: number;
-        created_at: string;
-        updated_at: string;
-        project: {
-            description: {
-                question: string;
-                answer: string;
-            };
-            result: {
-                question: string;
-                answer: string;
-            };
-            success: {
-                question: string;
-                answer: string;
-            };
-            manager: {
-                question: string;
-                answer: string;
-            };
-            additionalReportStakeholders: {
-                question: string;
-                answer: string;
-            };
-        };
-        coreQuadrants: {
-            quality: string;
-            pitfall: string;
-            challenge: string;
-            allergy: string;
-        };
-        goals: {
-            name: string;
-            category: string;
-            description: string;
-        };
-        learningGoals: {
-            name: string;
-            description: string;
-            deadline: string;
-            achieved: boolean;
-        };
-    }
-
-    let currentPop: Pop = {
-        id: 0,
-        name: "Tony",
-        description: "",
-        user_id: 0,
-        created_at: "",
-        updated_at: "",
-        project: {
-            description: {
-                question: "Wat is jouw opdracht en wat is het doel daarvan?",
-                answer: "Ik moet een website maken voor een bedrijf.",
-            },
-            result: {
-                question: "Hoe moet het eindresultaat er uit zien?",
-                answer: "Het moet een website zijn met een homepagina, een contactpagina en een over ons pagina.",
-            },
-            success: {
-                question: "Wanneer ben je succesvol?",
-                answer: "Als de website af is en de klant tevreden is.",
-            },
-            manager: {
-                question: "Wie is de leidinggevende?",
-                answer: "Jeroen van Velden.",
-            },
-            additionalReportStakeholders: {
-                question: "Rapporteer je nog naar anderen?",
-                answer: "Nee, alleen naar Jeroen.",
-            },
-        },
-        coreQuadrants: {
-            quality: "Sterk verantwoordelijkheids gevoel",
-            pitfall: "Overbelasting",
-            allergy: "Snelle opgevers",
-            challenge: "Rustmomenten vinden",
-        },
-        goals: {
-            name: "Website maken",
-            category: "Werk",
-            description: "Een website maken voor een bedrijf.",
-        },
-        learningGoals: {
-            name: "Leren werken met Vue",
-            description:
-                "Leren werken met Vue en het toepassen in een project.",
-            deadline: "2021-06-01",
-            achieved: false,
-        },
-    };
 </script>
 
 <Layout>
@@ -126,15 +33,13 @@
             </div>
             <section slot="evaluate-pop-content" class="evaluate-pop__content">
                 {#if $activeEvaluationTab.tab === $evaluationTabs.tabs[0]}
-                    <EvaluatePopProject popProject={currentPop.project} />
+                    <EvaluatePopProject />
                 {:else if $activeEvaluationTab.tab === $evaluationTabs.tabs[1]}
-                    <EvaluatePopCoreQuadrants
-                        coreQuadrants={currentPop.coreQuadrants}
-                    />
+                    <EvaluatePopCoreQuadrants />
                 {:else if $activeEvaluationTab.tab === $evaluationTabs.tabs[2]}
-                    <!-- doelen -->
+                    <EvaluatePopGoals />
                 {:else if $activeEvaluationTab.tab === $evaluationTabs.tabs[3]}
-                    <!-- Afsluiting => Opslaan en afronden POP/status -->
+                    <EvaluatePopFinalize />
                 {/if}
             </section>
             <section slot="evaluate-pop-notes" class="evaluate-pop__notes">
