@@ -19,11 +19,13 @@
     //     {preserveState: false}
     //     );
     // };
+
+    $: finalize;
 </script>
 
 <div class="evaluate-pop__buttons">
-    <button class="button">
-        <p>Opslaan</p>
+    <button class="button button--close">
+        <p>Cancel</p>
     </button>
     {#if finalize == false}
         <button class="button">

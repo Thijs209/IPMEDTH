@@ -42,9 +42,9 @@
                 <PopNotes />
             </section>
             <div slot="evaluate-pop-buttons" class="evaluate-pop__buttons">
-                {#if $activeEvaluationTab <= 2}
+                {#if $activeEvaluationTab != null && $activeEvaluationTab.tab !== $evaluationTabs.tabs[3]}
                     <EvaluatePopButtons finalize={false} />
-                {:else if $activeEvaluationTab === 3}
+                {:else}
                     <EvaluatePopButtons finalize={true} />
                 {/if}
             </div>
