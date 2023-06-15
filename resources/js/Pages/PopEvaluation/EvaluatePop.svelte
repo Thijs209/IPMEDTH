@@ -43,7 +43,7 @@
             </section>
             <div slot="evaluate-pop-buttons" class="evaluate-pop__buttons">
                 {#if $activeEvaluationTab <= 2}
-                    <EvaluatePopButtons />
+                    <EvaluatePopButtons finalize={false} />
                 {:else if $activeEvaluationTab === 3}
                     <EvaluatePopButtons finalize={true} />
                 {/if}

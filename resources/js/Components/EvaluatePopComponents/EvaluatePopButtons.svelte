@@ -1,15 +1,39 @@
 <script lang="ts">
     // TODO functie schrijven om de data op te slaan in de database bij het klikken op de opslaan knop
-    export let finalize;
+    export let finalize = false;
+
+    // const handleCancel = () => {
+    //     router.get('/evaluation-overview',
+    //     {preserveState: false});
+    // };
+
+    // const handleSave = () => {
+    //     router.get('/evaluation-overview',
+    //     {preserveState: true}
+    //     );
+    // };
+
+    // const handleFinalize = () => {
+
+    //     router.get('/evaluation-overview',
+    //     {preserveState: false}
+    //     );
+    // };
 </script>
 
 <div class="evaluate-pop__buttons">
-    <button on:click={router.get("/evaluation-overview" )} class="button">
+    <button class="button">
         <p>Opslaan</p>
     </button>
-    <button on:click={router.get("/evaluation-overview" )} class="button">
-        <p>Opslaan</p>
-    </button>
+    {#if finalize == false}
+        <button class="button">
+            <p>Opslaan</p>
+        </button>
+    {:else}
+        <button class="button button--finalize">
+            <p>Pop Afsluiten</p>
+        </button>
+    {/if}
 </div>
 
 <style>
@@ -42,6 +66,14 @@
         background-color: var(--c-secondary-button);
     }
 
+    .button--finalize {
+        background-color: var(--c-attention);
+        color: black;
+    }
+
+    .button--finalize:hover {
+        background-color: var(--c-attention-hover);
+    }
     .button--close:hover {
         background-color: var(--c-secondary-button-hover);
     }
