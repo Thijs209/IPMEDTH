@@ -5,6 +5,7 @@ use Inertia\Inertia;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\PopController;
 use App\Models\User;
+use App\Models\Pop;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,14 +59,9 @@ Route::post('/create-pop', [PopController::class, 'store']);
 
 // Temp Route for testing, with default values
 // TODO remove default values in production + add permissions so only people manager can access edit page for any POP
-Route::get('/evaluate-pop/users/{user_id}/pops/{pop_id?}/', function (User $user, string $pop_id) {
+Route::get('/evaluate-pop/users/{user_id}/pops/{pop_id?}/', function (string $user_id = "4", string $pop_id = "1") {
     if ($pop_id = null) {
-        POP::where('user_id', $user->id)->firstOrFail();
+        Pop::create()->id;
     };
-
-
-    return Inertia::render('PopEvaluation/EvaluatePop', [
-        'user_id' => $user_id,
-        'pop_id' => $pop_id
-    ]);
+    return Inertia::render('PopEvaluation/EvaluatePop');
 });

@@ -5,8 +5,8 @@
     import Layout from "./../../Layouts/Layout.svelte";
 
     interface Pop {
-        userId?: number;
-        popId?: number;
+        userId: number;
+        popId: number;
         name: string;
         startDate: string;
         endDate: string;
@@ -15,7 +15,7 @@
 
     let pageHeading = "POP Overzicht";
     let pages: string[] = ["Home", "POP Overzicht", "POP Review"];
-    export let pops: Pop = [
+    export let pops: Pop[] = [
         {
             userId: 1,
             popId: 1111,
@@ -25,7 +25,7 @@
             status: 2,
         },
         {
-            userId: 2,
+            userId: 4,
             popId: 1112,
             name: "Karin Tonneman",
             startDate: "01-01-2023",

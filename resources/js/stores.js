@@ -1,6 +1,20 @@
 import moment from "moment";
 import { writable, readable } from "svelte/store";
 
+export const evaluationTabs = writable({
+    tabs: ["opdracht", "kernkwadranten", "doelen", "afsluiting"],
+});
+
+export const activeEvaluationTab = writable({
+    // Makes active tab persistent during navigation
+    tab: "opdracht",
+});
+
+export const sideBar = writable({
+    // Makes sidebar toggle persistent during navigation
+    open: false,
+});
+
 export const pop = writable({
     project: {
         description: "",
@@ -15,7 +29,6 @@ export const pop = writable({
 });
 
 // For testing purposes only
-
 export const currentPopTaskQuestions = readable({
     goal: "Wat is je overkoepelende doel?",
     result: "Wat is het resultaat van het behalen van dit doel?",
@@ -104,30 +117,26 @@ export const currentPopGoal4 = readable({
         "Ik wens feedback van mijn directe collega's (Vera PM) te ontvangen na afloop van het komende project.",
 });
 
-export const evaluationTabs = writable({
-    tabs: ["opdracht", "kernkwadranten", "doelen", "afsluiting"],
-});
-
-export const activeEvaluationTab = writable({
-    tab: "opdracht",
-});
-
-export const sideBar = writable({
-    open: false,
-});
-
 export const currentPopNotes = writable({
-    notes: [],
+    notes: [
+        {
+            date: "",
+            time: "",
+            note: "",
+        },
+    ],
 });
 
 export const currentPop = writable({
-    id: 1,
-    user_id: 4, // Karin
-    name: "Karin Tonnemann",
-    task: currentPopTask,
-    coreQuadrants: currentPopCoreQuadrants,
-    goals: [currentPopGoal1, currentPopGoal2, currentPopGoal3, currentPopGoal4],
-    goalSteps: [currentPopGoalSteps1],
+    // Writable for testing purposes only, should be readable for evaluation purposes
+    id: 1, // Readable
+    user_id: 4, // Karin Tonnemann
+    name: "Karin Tonnemann", // Readable
+    task: currentPopTask, // Readable
+    coreQuadrants: currentPopCoreQuadrants, // Readable
+    goals: [currentPopGoal1, currentPopGoal2, currentPopGoal3, currentPopGoal4], // Readable
+    goalSteps: [currentPopGoalSteps1], // Readable
+    notes: currentPopNotes, // Writable
 });
 
 export const notes = writable(JSON.parse(localStorage.notes || "[]"));

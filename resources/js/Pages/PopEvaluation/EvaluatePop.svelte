@@ -1,9 +1,5 @@
 <script lang="ts">
-    import {
-        activeEvaluationTab,
-        evaluationTabs,
-        currentPop,
-    } from "../../stores.js";
+    import { activeEvaluationTab, evaluationTabs } from "../../stores.js";
     //Layouts
     import Layout from "./../../Layouts/Layout.svelte";
     import EvaluatePopLayout from "./../../Layouts/EvaluatePopLayout.svelte";
@@ -71,7 +67,10 @@
     .evaluate-pop__notes {
         height: 100%;
         width: 100%;
+        max-width: 30rem;
         min-width: 100%;
-        background-color: pink;
+
+        display: flex;
+        flex-direction: column;
     }
 </style>

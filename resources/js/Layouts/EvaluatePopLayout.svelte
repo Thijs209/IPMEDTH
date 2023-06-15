@@ -19,7 +19,7 @@
             <slot name="evaluate-pop-notes" />
         </section>
         <!-- The righthand notes section. Width = 1fr. height = 1fr - 10rem -->
-        
+
         <div class="evaluate-pop__buttons">
             <slot name="evaluate-pop-buttons" />
         </div>
@@ -70,7 +70,7 @@
         grid-row: 2 / span 2;
         height: 80%;
         width: 100%;
-        max-height: 80%;
+        max-height: 55vh;
     }
 
     /* Navigation and interaction */

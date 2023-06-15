@@ -10,15 +10,11 @@
             {time + " uur"}
         </p>
         <p class="date__date">
-            {"1 feb. 2021"}
+            {date}
         </p>
     </div>
     <div class="note">
-        <p>
-            {note
-                ? note
-                : "Lege note."}
-        </p>
+        <p>{note}</p>
     </div>
 </section>
 
@@ -27,6 +23,7 @@
         display: flex;
         flex-flow: row nowrap;
         justify-content: space-between;
+        align-items: center;
         font-family: "Montserrat", sans-serif;
         width: 90%;
         margin: 0 auto;
@@ -38,29 +35,32 @@
     }
     .date {
         display: flex;
-        flex-flow: column nowrap;
-        justify-content: space;
-        align-items: end;
-        width: 20%;
+        flex-flow: column;
+        justify-content: start;
+        align-items: start;
+        width: 30%;
         height: 100%;
-        background-color: pink;
+
         text-align: right;
     }
 
     .date__time {
         font-weight: 600;
         color: #222;
-        font-size: 1.3rem;
+        font-size: 1.4rem;
     }
 
     .date__date {
         font-style: italic;
         color: #222;
-        font-size: 1.2rem;
+        font-size: 1.3rem;
     }
 
     .note {
-        width: 80%;
+        display: flex;
+        flex-direction: row;
+        
+        width: 70%;
         height: 100%;
         color: black;
         font-size: 1.3rem;
