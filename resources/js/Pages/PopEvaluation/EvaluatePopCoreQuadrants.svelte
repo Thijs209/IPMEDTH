@@ -9,10 +9,10 @@
     };
 
     export let coreQuadrants = {
-        quality: "Sterk verantwoordelijkheids gevoel.",
+        quality: "Doorzettings vermogen",
         pitfall: "Overbelasting",
-        allergy: "Snelle opgevers.",
-        challenge: "Rustmomenten vinden.",
+        allergy: "Onzekerheid",
+        challenge: "Rustmomenten gunnen",
     };
 </script>
 
@@ -58,7 +58,8 @@
 
     .grid > div {
         width: 100%;
-        max-width: 14rem;
+        max-height: 20rem;
+        max-width: 13rem;
         height: 100%;
     }
 
@@ -69,7 +70,7 @@
 
     .coreQuadrantArrow--top {
         align-items: center;
-        text-align: center;
+        text-align: start;
         grid-column: 3 / span 2;
         grid-row: 1 / span 1;
     }

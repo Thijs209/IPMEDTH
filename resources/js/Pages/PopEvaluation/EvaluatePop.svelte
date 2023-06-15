@@ -42,7 +42,11 @@
                 <PopNotes />
             </section>
             <div slot="evaluate-pop-buttons" class="evaluate-pop__buttons">
-                <EvaluatePopButtons />
+                {#if $activeEvaluationTab <= 2}
+                    <EvaluatePopButtons />
+                {:else if $activeEvaluationTab === 3}
+                    <EvaluatePopButtons finalize={true} />
+                {/if}
             </div>
         </EvaluatePopLayout>
     </article>
@@ -50,8 +54,8 @@
 
 <style>
     .main {
-        margin: 1em;
-        margin-left: 2rem;
+        margin: 5em;
+        margin-left: 5rem;
     }
 
     .evaluate-pop__profile {

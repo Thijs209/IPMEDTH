@@ -1,8 +1,10 @@
-<!-- <script lang="ts">
+<script lang="ts">
     import { onMount } from "svelte";
 </script>
 
-<article slot="evaluate-main-content" />
+<article>
+    section
+</article>
 
 <style>
     .goals {
@@ -16,4 +18,4 @@
         flex-flow: column wrap;
         gap: 2rem;
     }
-</style> -->
+</style>

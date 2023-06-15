@@ -1,12 +1,13 @@
 <script lang="ts">
     // TODO functie schrijven om de data op te slaan in de database bij het klikken op de opslaan knop
+    export let finalize;
 </script>
 
 <div class="evaluate-pop__buttons">
-    <button class="button button--close">
-        <p>Sluiten</p>
+    <button on:click={router.get("/evaluation-overview" )} class="button">
+        <p>Opslaan</p>
     </button>
-    <button class="button">
+    <button on:click={router.get("/evaluation-overview" )} class="button">
         <p>Opslaan</p>
     </button>
 </div>
