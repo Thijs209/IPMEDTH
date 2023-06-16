@@ -9,12 +9,10 @@
 
     let element: HTMLElement;
     onMount(() => scrollToBottom(element));
-
     // FIXME: NODE IS UNDEFINED
     // Naar aanleiding van usability test 1 is, Het doel is om er hier voor te zorgen dat de notitieslijst
     // automatisch naar beneden scrollt als er een nieuwe note wordt toegevoegd.
 
-    let text: string = "";
     let form = useForm({
         date: "",
         time: "",
@@ -31,16 +29,22 @@
     // TODO LocalStorage voor notes uitwerken
     export let notes: Note[] = [
         {
-            date: moment("01 01 1980"),
+            date: moment("01 01 1980").format("LL"),
             time: moment().hours(4).minutes(3).format("HH:mm").toString(),
             note: "Karin heeft de doelen niet behaald uit POP-2. ",
         },
         {
-            date: moment("2020 03 03"),
+            date: moment("2020 03 03").format(),
             time: moment().hours(4).minutes(3).format("HH:mm").toString(),
             note: "Mogelijkheden besproken rondom het aansturen van het team op afstand.",
         },
+        {
+            date: moment("2020 03 03").format(),
+            time: moment().hours(4).minutes(3).format("HH:mm").toString(),
+            note: "Karin heeft de notities geizen. ",
+        },
     ];
+
     let newNote: Note = {
         date: moment().format("LL"),
         time: moment().format("HH:mm"),
@@ -48,7 +52,7 @@
     };
 
     // On input change, update the
-    $: $form.note, (newNote.note = $form.note);
+    $: form.note, (newNote.note = $form.note);
 
     const scrollToBottom = (node: HTMLElement, notes?: Note[]) => {
         const scroll = () =>
@@ -60,9 +64,14 @@
     };
 
     function handleSave() {
-        console.debug("this is", newNote);
-        notes.push(newNote);
-        notes = notes;
+        console.log(newNote);
+        notes = [...notes, newNote];
+        newNote = {
+            date: moment().format("LL"),
+            time: moment().format("HH:mm"),
+            note: "",
+        };
+        console.log(notes);
     }
 </script>
 
@@ -79,9 +88,9 @@
             </div>
         {/each}
     </section>
-    <form class="notes__form" on:submit|preventDefault={() => handleSave()}>
+    <form class="notes__form" on:submit|preventDefault={() => handleSave}>
         <input id="note" name="note" type="text" bind:value={$form.note} />
-        <button type="submit">
+        <button type="submit" on:click={handleSave}>
             <IconHolder>
                 <MdSave />
             </IconHolder>

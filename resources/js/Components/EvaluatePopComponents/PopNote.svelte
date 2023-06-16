@@ -37,7 +37,7 @@
         display: flex;
         flex-flow: column;
         justify-content: start;
-        align-items: start;
+        align-items: end;
         width: 30%;
         height: 100%;
 

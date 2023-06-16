@@ -73,7 +73,6 @@
         gap: 1rem;
         min-height: 4rem;
         min-width: 4rem;
-        aspect-ratio: 1 / 1;
         height: 100%;
         width: 100%;
     }
@@ -85,7 +84,6 @@
         max-height: 2rem;
         min-height: 2rem;
         max-height: 60%;
-        aspect-ratio: 4 / 3;
 
         object-fit: cover;
         border-radius: 50%;

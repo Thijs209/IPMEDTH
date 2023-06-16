@@ -65,14 +65,14 @@ export const currentPopGoal1 = readable({
     deadline: moment().add(1, "month").format("Y-m-d h:i:s"),
     feedback:
         "Ik wens feedback van mijn behandelaar te ontvangen over mijn voortgang.",
-});
-
-export const currentPopGoalSteps1 = readable({
-    goalId: 1002,
-    stepId: 2,
-    step: "Een agenda opzetten.",
-    description:
-        "Ik geloof dat een agenda mij zou kunnen helpen door het tastbaar te maken",
+    goalSteps: [
+        {
+            stepId: 1,
+            step: "Een agenda opzetten.",
+            description:
+                "Ik geloof dat een agenda mij zou kunnen helpen door het tastbaar te maken",
+        },
+    ],
 });
 
 export const currentPopGoal2 = readable({
@@ -87,6 +87,14 @@ export const currentPopGoal2 = readable({
     deadline: moment().add(1, "month").format("Y-m-d h:i:s"),
     feedback:
         "Ik wens feedback van mijn trainingspartner te ontvangen over mijn voortgang. Ik denk dat het tot rust komen voor het weekend mij zal helpen om beter te present te zijn tijdens het boogschieten.",
+    goalSteps: [
+        {
+            stepId: 1,
+            step: "Een agenda opzetten.",
+            description:
+                "Ik geloof dat een agenda mij zou kunnen helpen door het tastbaar te maken",
+        },
+    ],
 });
 
 export const currentPopGoal3 = readable({
@@ -101,6 +109,14 @@ export const currentPopGoal3 = readable({
     deadline: moment().add(1, "month").format("Y-m-d h:i:s"),
     feedback:
         "Ik wens feedback van mijn manager (Vera PM) te ontvangen na afloop van de POP cyclus.",
+    goalSteps: [
+        {
+            stepId: 1,
+            step: "Een agenda opzetten.",
+            description:
+                "Ik geloof dat een agenda mij zou kunnen helpen door het tastbaar te maken",
+        },
+    ],
 });
 
 export const currentPopGoal4 = readable({
@@ -115,6 +131,14 @@ export const currentPopGoal4 = readable({
     deadline: moment().add(1, "month").format("Y-m-d h:i:s"),
     feedback:
         "Ik wens feedback van mijn directe collega's (Vera PM) te ontvangen na afloop van het komende project.",
+    goalSteps: [
+        {
+            stepId: 1,
+            step: "Een agenda opzetten.",
+            description:
+                "Ik geloof dat een agenda mij zou kunnen helpen door het tastbaar te maken",
+        },
+    ],
 });
 
 export const currentPopNotes = writable({
@@ -135,9 +159,10 @@ export const currentPop = writable({
     task: currentPopTask, // Readable
     coreQuadrants: currentPopCoreQuadrants, // Readable
     goals: [currentPopGoal1, currentPopGoal2, currentPopGoal3, currentPopGoal4], // Readable
-    goalSteps: [currentPopGoalSteps1], // Readable
     notes: currentPopNotes, // Writable
 });
+
+export const currentPopGoals = [currentPopGoal1, currentPopGoal2, currentPopGoal3, currentPopGoal4]; // Readable
 
 export const notes = writable(JSON.parse(localStorage.notes || "[]"));
 
