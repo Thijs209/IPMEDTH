@@ -54,8 +54,7 @@
 
 <style>
     .main {
-        margin: 5em;
-        margin-left: 5rem;
+        margin: 0 3rem;
     }
 
     .evaluate-pop__profile {
