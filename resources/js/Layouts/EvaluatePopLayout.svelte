@@ -63,16 +63,15 @@
     .evaluate-pop__content {
         margin-top: 2rem;
         grid-column: 1 / span 2;
-        grid-row: 2 / 4;
+        grid-row: 2 / span 1;
     }
 
     .evaluate-pop__notes {
         margin-top: 2rem;
         grid-column: 3 / span 1;
-        grid-row: 2 / span 2;
-        height: 80%;
+        grid-row: 2 / span 1;
+        height: 100%;
         width: 100%;
-        max-height: 55vh;
     }
 
     /* Navigation and interaction */
@@ -88,8 +87,8 @@
     .evaluate-pop__buttons {
         display: flex;
         flex-flow: row wrap;
-        justify-content: flex-end;
-        align-items: center;
+        justify-content: end;
+        align-items: end;
         width: 100%;
         height: 100%;
         min-height: 7rem;
