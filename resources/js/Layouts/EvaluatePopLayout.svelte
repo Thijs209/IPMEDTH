@@ -34,8 +34,9 @@
         flex-direction: row;
         width: 100%;
         max-width: 90vw;
+
         background-color: #eee;
-        min-height: 85vh; /* m TODO test if setting height w/ vh height leads to issues. */
+        min-height: 85vh; /* TODO test if setting height w/ vh units leads to issues. */
         border-radius: 1rem;
     }
 
@@ -52,6 +53,7 @@
         align-items: start;
         justify-items: start;
         margin: 0 auto;
+        max-height: 100vh;
         padding: 2rem;
         width: 100%;
         border-top-right-radius: 1rem;

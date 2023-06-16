@@ -59,7 +59,7 @@
     .note {
         display: flex;
         flex-direction: row;
-        
+
         width: 70%;
         height: 100%;
         color: black;

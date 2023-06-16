@@ -1,59 +1,79 @@
 <script lang="ts">
     import { useForm } from "@inertiajs/svelte";
-    import moment from "moment";
+    import moment, { type Moment } from "moment";
+    import { onMount, tick } from "svelte";
     import { MdSave } from "svelte-icons/md";
     import { currentPopNotes } from "./../../stores.js";
     import IconHolder from "./../IconHolder.svelte";
     import PopNote from "./PopNote.svelte";
+
+    let element: HTMLElement;
+    onMount(() => scrollToBottom(element));
+
+    // FIXME: NODE IS UNDEFINED
+    // Naar aanleiding van usability test 1 is, Het doel is om er hier voor te zorgen dat de notitieslijst
+    // automatisch naar beneden scrollt als er een nieuwe note wordt toegevoegd.
 
     let text: string = "";
     let form = useForm({
         date: "",
         time: "",
         note: "",
+        remember: true,
     });
 
-    // TODO LocalStorage voor notes uitwerken
+    type Note = {
+        date: string | Moment;
+        time: string | Moment;
+        note: string;
+    };
 
-    export let notes = [
+    // TODO LocalStorage voor notes uitwerken
+    export let notes: Note[] = [
         {
             date: moment("01 01 1980"),
-            time: moment().hours(4).minutes(3).format("HH:mm"),
+            time: moment().hours(4).minutes(3).format("HH:mm").toString(),
             note: "Karin heeft de doelen niet behaald uit POP-2. ",
         },
         {
-            date: moment("01 01 1980"),
-            time: moment().hours(4).minutes(3).format("HH:mm"),
-            note: "Another note, another day.",
+            date: moment("2020 03 03"),
+            time: moment().hours(4).minutes(3).format("HH:mm").toString(),
+            note: "Mogelijkheden besproken rondom het aansturen van het team op afstand.",
         },
     ];
-
-    currentPopNotes.subscribe((value) => {
-        console.log(value);
-    });
-    currentPopNotes.subscribe((value) => {
-        console.log(value);
-    });
-    $: newNote = {
+    let newNote: Note = {
         date: moment().format("LL"),
         time: moment().format("HH:mm"),
-        note: $form.note,
+        note: "",
     };
-    const handleSave = () => {
+
+    // On input change, update the
+    $: $form.note, (newNote.note = $form.note);
+
+    const scrollToBottom = (node: HTMLElement, notes?: Note[]) => {
+        const scroll = () =>
+            node.scroll({
+                top: node.scrollHeight,
+                behavior: "smooth",
+            });
+        return { update: scroll };
+    };
+
+    function handleSave() {
+        console.debug("this is", newNote);
         notes.push(newNote);
         notes = notes;
-        $form.note;
-    };
+    }
 </script>
 
 <h2 class="notes__header">Interne notities</h2>
 <section class="notes">
-    <section class="notes__list">
+    <section bind:this={element} use:scrollToBottom={notes} class="notes__list">
         {#each notes as note}
             <div class="note">
                 <PopNote
-                    date={moment(note.date).format("L")}
-                    time={note.time}
+                    date={moment(note.date).format("LL")}
+                    time={note.time.toString()}
                     note={note.note}
                 />
             </div>
@@ -61,7 +81,7 @@
     </section>
     <form class="notes__form" on:submit|preventDefault={() => handleSave()}>
         <input id="note" name="note" type="text" bind:value={$form.note} />
-        <button type="submit" on:click={() => handleSave()}>
+        <button type="submit">
             <IconHolder>
                 <MdSave />
             </IconHolder>
@@ -84,7 +104,7 @@
     .notes__list {
         height: 90%;
         max-height: 90%;
-        max-height: 30rem;
+        max-height: 60rem;
         min-width: 100%;
         width: 100%;
         overflow: scroll;
