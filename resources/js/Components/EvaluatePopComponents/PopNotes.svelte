@@ -65,7 +65,6 @@
     };
 
     async function handleSave() {
-        if (newNote.note == "") return;
         console.log(newNote);
         notes = [...notes, newNote];
         newNote = {

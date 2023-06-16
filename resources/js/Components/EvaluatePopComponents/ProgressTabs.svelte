@@ -31,6 +31,7 @@
         max-height: 100%;
 
         gap: 1.5rem;
+        z-index: 69;
     }
 
     .chevron {

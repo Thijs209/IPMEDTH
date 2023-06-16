@@ -26,6 +26,7 @@
 
         border: none;
         box-shadow: 0.7rem 0.6rem 0.5rem 0.1rem rgba(0, 0, 0, 0.1);
+        z-index: 69;
     }
 
     button:hover {

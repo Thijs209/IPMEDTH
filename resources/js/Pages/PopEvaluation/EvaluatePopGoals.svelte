@@ -1,7 +1,8 @@
 <script lang="ts">
     import { currentPopGoals } from "../../stores.js";
 
-    type Goal = {
+    let goal;
+    let goals: Array<{
         goalId: number;
         goalType: string;
         what: string;
@@ -14,20 +15,20 @@
             stepId: number;
             step: string;
             description: string;
-        }[];
-    }[];
-    let goals: Goal[];
-    currentPopGoals.forEach((goal) => {
-        goal.subscribe((value) => {
+        };
+    }>;
+    goals = [];
+    currentPopGoals.forEach((item) => {
+        item.subscribe((value) => {
             goals.push(value);
         });
-        goals = goals;
     });
+    console.log(goals);
 </script>
 
 <article>
     {#each goals as goal}
-        <p>{goal.what}</p>
+        <p>{goal.goalId}</p>
     {/each}
 </article>
 
