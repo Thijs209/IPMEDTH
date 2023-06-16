@@ -8,7 +8,9 @@
     import PopNote from "./PopNote.svelte";
 
     let element: HTMLElement;
-    onMount(() => scrollToBottom(element));
+    onMount(() => {
+        scrollToBottom(element);
+    });
     // FIXME: NODE IS UNDEFINED
     // Naar aanleiding van usability test 1 is, Het doel is om er hier voor te zorgen dat de notitieslijst
     // automatisch naar beneden scrollt als er een nieuwe note wordt toegevoegd.
@@ -55,15 +57,15 @@
     $: form.note, (newNote.note = $form.note);
 
     const scrollToBottom = (node: HTMLElement, notes?: Note[]) => {
-        const scroll = () =>
-            node.scroll({
-                top: node.scrollHeight,
-                behavior: "smooth",
-            });
+        node.scroll({
+            top: node.scrollHeight,
+            behavior: "smooth",
+        });
         return { update: scroll };
     };
 
-    function handleSave() {
+    async function handleSave() {
+        if (newNote.note == "") return;
         console.log(newNote);
         notes = [...notes, newNote];
         newNote = {
@@ -71,7 +73,10 @@
             time: moment().format("HH:mm"),
             note: "",
         };
+        await tick();
+        scrollToBottom(element);
         console.log(notes);
+        $form.reset();
     }
 </script>
 
@@ -90,7 +95,11 @@
     </section>
     <form class="notes__form" on:submit|preventDefault={() => handleSave}>
         <input id="note" name="note" type="text" bind:value={$form.note} />
-        <button type="submit" on:click={handleSave}>
+        <button
+            disabled={newNote.note.length < 1}
+            type="submit"
+            on:click={handleSave}
+        >
             <IconHolder>
                 <MdSave />
             </IconHolder>
