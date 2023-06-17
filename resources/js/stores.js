@@ -7,7 +7,11 @@ export const evaluationTabs = writable({
 
 export const activeEvaluationTab = writable({
     // Makes active tab persistent during navigation
-    tab: "opdracht",
+    tab: "doelen",
+});
+
+export const activeGoalTab = writable({
+    tab: "persoonlijk",
 });
 
 export const sideBar = writable({
@@ -77,7 +81,7 @@ export const currentPopGoal1 = readable({
 
 export const currentPopGoal2 = readable({
     goalId: 1002,
-    goalType: "persoonlijk",
+    goalType: "Persoonlijk",
     what: "Ik wil graag meer doen aan mijn hobby's buiten werk.",
     why: "Wanneer ik meer tijd besteed aan mijn hobby's, kan ik mijn werk beter loslaten.",
     satisfied:
@@ -90,16 +94,15 @@ export const currentPopGoal2 = readable({
     goalSteps: [
         {
             stepId: 1,
-            step: "Een agenda opzetten.",
-            description:
-                "Ik geloof dat een agenda mij zou kunnen helpen door het tastbaar te maken",
+            step: "Vaste tijden inplannen:",
+            description: "Vaste tijden inplannen voor het boogschieten.",
         },
     ],
 });
 
 export const currentPopGoal3 = readable({
     goalId: 1003,
-    goalType: "organisatie",
+    goalType: "Organisatie",
     what: "Ik wil bijdragen aan het verbeteren van de werksfeer.",
     why: "Wanneer ik bijdraag aan het verbeteren van de werksfeer, kan ik beter samenwerken met mijn collega's.",
     satisfied:
@@ -121,7 +124,7 @@ export const currentPopGoal3 = readable({
 
 export const currentPopGoal4 = readable({
     goalId: 1004,
-    goalType: "training",
+    goalType: "Training",
     what: "Ik wil graag mijn communicatievaardigheden verbeteren.",
     why: "Wanneer ik mijn communicatievaardigheden verbeter, kan ik beter samenwerken met mijn collega's.",
     satisfied:
@@ -162,7 +165,12 @@ export const currentPop = writable({
     notes: currentPopNotes, // Writable
 });
 
-export const currentPopGoals = [currentPopGoal1, currentPopGoal2, currentPopGoal3, currentPopGoal4]; // Readable
+export const currentPopGoals = [
+    currentPopGoal1,
+    currentPopGoal2,
+    currentPopGoal3,
+    currentPopGoal4,
+]; // Readable
 
 export const notes = writable(JSON.parse(localStorage.notes || "[]"));
 

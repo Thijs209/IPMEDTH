@@ -1,7 +1,7 @@
 <script lang="ts">
-    import { currentPopGoals } from "../../stores.js";
+    import { activeGoalTab, currentPopGoals } from "../../stores.js";
+    import EvaluateGoal from "./EvaluateGoal.svelte";
 
-    let goal;
     let goals: Array<{
         goalId: number;
         goalType: string;
@@ -23,21 +23,25 @@
             goals.push(value);
         });
     });
-    console.log(goals);
 </script>
 
-<article>
+<section class="goals">
+    <h3>Doelen</h3>
     {#each goals as goal}
-        <p>{goal.goalId}</p>
+        <EvaluateGoal {goal} open={false} />
     {/each}
-</article>
+</section>
 
 <style>
     .goals {
-        display: flex;
-        flex-flow: row wrap;
+        display: grid;
+        grid-template-columns: repeat(2 minmax(30rem, 1fr));
+        grid-template-rows: auto;
         gap: 2rem;
         font-size: 1.5rem;
+        gap: 1rem;
+        height: 100%;
+        width: 100%;
     }
 
     .goal .opened {
@@ -45,6 +49,4 @@
         flex-flow: column wrap;
         gap: 2rem;
     }
-
-    
 </style>

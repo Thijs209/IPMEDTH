@@ -3,7 +3,6 @@
     import moment, { type Moment } from "moment";
     import { onMount, tick } from "svelte";
     import { MdSave } from "svelte-icons/md";
-    import { currentPopNotes } from "./../../stores.js";
     import IconHolder from "./../IconHolder.svelte";
     import PopNote from "./PopNote.svelte";
 
@@ -116,6 +115,7 @@
         max-width: 100%;
         font-family: "Montserrat", sans-serif;
         border-radius: 1.5rem;
+        margin-top: 2rem;
     }
 
     .notes__list {

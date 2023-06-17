@@ -51,9 +51,11 @@
         grid-template-columns: 1fr 1fr 1fr;
         grid-template-rows: 5rem 1fr 10rem;
         align-items: start;
+        gap: 1rem;
         justify-items: start;
         margin: 0 auto;
-        max-height: 100vh;
+        max-height: 87vh;
+
         padding: 2rem;
         width: 100%;
         border-top-right-radius: 1rem;
@@ -64,6 +66,10 @@
         margin-top: 2rem;
         grid-column: 1 / span 2;
         grid-row: 2 / span 1;
+        max-height: 100%;
+        max-width: 60vw;
+        overflow-y: scroll;
+        overflow-x: hidden;
     }
 
     .evaluate-pop__notes {

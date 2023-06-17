@@ -7,23 +7,22 @@
     };
 </script>
 
-<button class:active on:click={handleClick}><p>{name}</p></button>
+<button class:active on:click={handleClick}><p>{name ? "-" : "-"}</p></button>
 
 <style>
     button {
         font-family: "Montserrat", sans-serif;
         background-color: black;
-        border-radius: 4rem;
+        border-radius: 3rem;
+        border-radius: 3rem;
         height: 100%;
         font-size: 1.5rem;
 
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 3.5rem;
-        min-width: fit-content;
-        width: clamp(min(10rem, 100%), 20rem, 100%);
-
+        height: 4rem;   
+        width: 10%;
         border: none;
         box-shadow: 0.7rem 0.6rem 0.5rem 0.1rem rgba(0, 0, 0, 0.1);
         z-index: 69;
