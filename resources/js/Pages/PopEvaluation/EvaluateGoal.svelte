@@ -120,6 +120,7 @@
     .goal__header {
         position: relative;
         background-color: #ddd;
+        padding-right: 2rem;
     }
 
     .goal__header > h3 {

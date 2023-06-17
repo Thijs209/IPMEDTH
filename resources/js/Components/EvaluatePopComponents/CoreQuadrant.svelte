@@ -26,7 +26,7 @@
         border-radius: 2rem;
         font-size: 1.3rem;
 
-        min-width: 15rem;
+        min-width: 5rem;
         max-height: 10rem;
     }
 
