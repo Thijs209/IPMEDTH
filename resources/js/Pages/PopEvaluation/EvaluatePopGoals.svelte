@@ -3,7 +3,7 @@
     import EvaluateGoal from "./EvaluateGoal.svelte";
 
     let goals: Array<{
-        goalId: number;
+        goalId: number; 
         goalType: string;
         what: string;
         why: string;
