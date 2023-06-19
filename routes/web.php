@@ -53,6 +53,12 @@ Route::get('/evaluation-overview', function () {
     return Inertia::render('PopEvaluation/EvaluationOverview');
 });
 
+Route::prefix('v1')-> group(function(){
+    Route::apiResource('/pops', PopController::class);
+    Route::apiResource('/evaluation', EvaluationNoteController::class);
+});
+
+
 // POP Routes
 Route::get('/create-pop', [PopController::class, 'create']);
 Route::post('/create-pop', [PopController::class, 'store']);

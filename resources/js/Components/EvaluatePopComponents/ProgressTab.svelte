@@ -7,7 +7,7 @@
     };
 </script>
 
-<button class:active on:click={handleClick}><p>{name ? "-" : "-"}</p></button>
+<button class:active on:click={handleClick}><p>{name ? name : "-"}</p></button>
 
 <style>
     button {
@@ -21,7 +21,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 4rem;   
+        height: 4rem;
         width: 10%;
         border: none;
         box-shadow: 0.7rem 0.6rem 0.5rem 0.1rem rgba(0, 0, 0, 0.1);
