@@ -5,8 +5,6 @@
     export let pages: String[];
     export let currentPage: number;
     export let setCurrentPage: (page: number) => void;
-    console.log(pages);
-
 </script>
 
 <div class="container">

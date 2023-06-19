@@ -8,6 +8,7 @@
     import Datepicker from '../Components/Datepicker.svelte';
 
     export let setCurrentPage;
+    export let pop;
     // export const goal = writable({
     //     id: 0,
     //     title: '',
@@ -28,7 +29,7 @@
     let goal = {};
     function updateGoal(key, value) {
         goal[key] = value;
-        updateGoals('goals', goal);
+        updatePop('goals', [...pop.goals, goal]);
     }
 
     let datePicker = true;
@@ -58,7 +59,6 @@
             pop.goals = [...pop.goals, $goal];
             return pop;
         });
-        console.log($pop.goals)
         setCurrentPage(3);
     }
 </script>
@@ -68,7 +68,7 @@
         <Button icon onClick={() => setCurrentPage(3)}>
             <FaArrowLeft />
         </Button>
-        <h3>{$pop.goals[1].name}</h3>
+        <h3>{pop.goals[1].name}</h3>
     </div>
     <form>
         <BigInput key='what' onChange={updateGoal} wide text="Wat wil ik leren?" />

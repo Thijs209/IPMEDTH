@@ -1,6 +1,5 @@
 <script>
     export const small = false;
-    console.log(small);
 </script>
 
 <style>
