@@ -121,7 +121,7 @@
     .notes__list {
         height: 90%;
         max-height: 85%;
-        max-height: 60rem;
+        max-height: 50rem;
         min-width: 100%;
         width: 100%;
         overflow: scroll;
