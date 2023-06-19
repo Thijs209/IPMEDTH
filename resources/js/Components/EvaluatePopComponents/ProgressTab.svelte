@@ -17,6 +17,7 @@
         border-radius: 3rem;
         height: 100%;
         font-size: 1.5rem;
+        min-width: fit-content;
 
         display: flex;
         justify-content: center;
