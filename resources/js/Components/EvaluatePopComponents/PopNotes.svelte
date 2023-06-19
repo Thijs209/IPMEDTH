@@ -30,13 +30,13 @@
     // TODO LocalStorage voor notes uitwerken
     export let notes: Note[] = [
         {
-            date: moment("01 01 1980").format("LL"),
-            time: moment().hours(4).minutes(3).format("HH:mm").toString(),
+            date: moment("01 01 2023").format("LL"),
+            time: moment().hours(9).minutes(3).format("HH:mm").toString(),
             note: "Karin heeft de doelen niet behaald uit POP-2. ",
         },
         {
-            date: moment("2020 03 03").format(),
-            time: moment().hours(4).minutes(3).format("HH:mm").toString(),
+            date: moment("2023 03 03").format(),
+            time: moment().hours(14).minutes(3).format("HH:mm").toString(),
             note: "Mogelijkheden besproken rondom het aansturen van het team op afstand.",
         },
         {
