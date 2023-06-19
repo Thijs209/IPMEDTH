@@ -9,28 +9,11 @@
 
     export let setCurrentPage;
     export let pop;
-    // export const goal = writable({
-    //     id: 0,
-    //     title: '',
-    //     what: '',
-    //     why: '',
-    //     show: false,
-    //     how: [{
-    //         step: '',
-    //         value: '',
-    //     }],
-    //     satisfied: '',
-    //     support: '',
-    //     when: '',
-    //     feedback: '',
-    //     type: '',
-    // });
+    export let updatePop;
+    export let goal;
+    export let updateGoal;
 
-    let goal = {};
-    function updateGoal(key, value) {
-        goal[key] = value;
-        updatePop('goals', [...pop.goals, goal]);
-    }
+    console.log(updateGoal)
 
     let datePicker = true;
     function changeDatePicker(e) {
@@ -55,10 +38,7 @@
 
     function saveGoal(e){
         e.preventDefault();
-        pop.update((pop) => {
-            pop.goals = [...pop.goals, $goal];
-            return pop;
-        });
+        updatePop(pop.goals = [...pop.goals, goal]);
         setCurrentPage(3);
     }
 </script>
@@ -68,13 +48,13 @@
         <Button icon onClick={() => setCurrentPage(3)}>
             <FaArrowLeft />
         </Button>
-        <h3>{pop.goals[1].name}</h3>
+        <h3>{pop.goals[1]?.name}</h3>
     </div>
     <form>
         <BigInput key='what' onChange={updateGoal} wide text="Wat wil ik leren?" />
         <BigInput key="why" onChange={updateGoal} wide text="Waarom wil ik dit leren?" />
         <div class="steps">
-            <CreateGoalStep onChange={updateGoal} />
+            <CreateGoalStep goal={goal} updateGoal={updateGoal} onChange={updateGoal} />
         </div>
         <BigInput key="satisfied" onChange={updateGoal} wide text="Wanneer ben ik tevreden?" />
         <BigInput key='support' onChange={updateGoal} wide text="Welke ondersteuning heb ik nodig?" />

@@ -3,33 +3,38 @@
     import Button from "../Button.svelte";
     import FaPlus from 'svelte-icons/fa/FaPlus.svelte'
 
-    if(!$goal.steps) {
-        goal.update((goal) => {
-            goal.steps = [{step: 0, value: ''}];
-            return goal;
-        });
+    export let goal;
+    export let updateGoal;
+
+    let steps = [];
+    console.log(steps);
+    function updateSteps(key, value) {
+        steps[key] = value;
+        updateGoal('steps', steps);
+    }
+
+    if(goal.steps === undefined || goal.steps.length === 0) {
+        updateSteps(0, [{id: 1, value: ''}]);
+        console.log(goal.steps)
     }
 
     function addStep(e) {
         e.preventDefault();
-        goal.update((goal) => {
-            goal.steps = [...goal.steps, {step: goal.steps.length + 1, value: ' '}];
-            return goal;
-        });
+        steps = [...steps, {id: steps.length + 1, value: ''}];
+        steps = steps;
+        updateGoal('steps', steps);
+        console.log(steps)
     }
 
     function updateStep(step, value) {
-        goal.update((goal) => {
-            goal.steps[step].value = value;
-            return goal;
-        });
+        updateSteps(step, {id: step+1, value: value});
     }
 </script>
 
 <div>
     <h4>Hoe ga ik dit doen?</h4>
     <div class="container">
-        {#each $goal.steps as step, i}
+        {#each goal.steps as step, i}
             <div class="step">
                 <BigInput key={i} onChange={updateStep} noMargin text={`Stap ${i+1}`} />
             </div>

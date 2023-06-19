@@ -6,8 +6,8 @@
     import InputPopUp from '../Components/InputPopUp.svelte';
 
     export let setCurrentPage;
+    export let updateGoal;
     export let pop;
-    export let updatePop;
 
     let text;
     let openGoal = null;
@@ -23,7 +23,7 @@
     }
 
     function addGoal() {
-        goals = [...goals, {name: text}];
+        updateGoal('title', text);
         changeOverlayOpen();
         setCurrentPage(10);
     }
@@ -36,7 +36,7 @@
             <h3 class="disabledText">Voeg een doel toe</h3>
         {:else}
             {#each pop.goals as goal}
-                <CreatePopGoal onClick={() => openGoal = goal.id} title={goal.name} />
+                <CreatePopGoal onClick={() => openGoal = goal.id} title={goal.title} />
             {/each}
         {/if}
         <Button marginTop onClick={changeOverlayOpen} icon>

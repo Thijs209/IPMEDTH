@@ -18,16 +18,16 @@
         'Afronden'
     ]
 
-    let pop = {};
+    let pop = {'goals': []};
     function updatePop(key, value) {
         pop[key] = value;
         console.log(pop)
     }
     
-    let goals = [];
-    function updateGoals(key, value) {
-        goals = value;
-        updatePop('goals', goals);
+    let goal = {};
+    function updateGoal(key, value) {
+        goal[key] = value;
+        console.log(goal);
     }
 
     let currentPage = 0;
@@ -52,13 +52,9 @@
     {:else if currentPage == 2}
         <CreateProjectCoreQuadrants pop={pop} updatePop={updatePop} />
     {:else if currentPage == 3}
-        <CreatePopGoals pop={pop} setCurrentPage={setCurrentPage} updatePop={updatePop} />
-    {:else if currentPage == 4}
-        <h1>4</h1>
-    {:else if currentPage == 5}
-        <h1>5</h1>
+        <CreatePopGoals pop={pop} goals={goal} updateGoal={updateGoal} setCurrentPage={setCurrentPage} />
     {:else if currentPage == 10}
-        <CreateGoal pop={pop} setCurrentPage={setCurrentPage} updatePop={updatePop} />
+        <CreateGoal updateGoal={updateGoal} goal={goal} pop={pop} setCurrentPage={setCurrentPage} updatePop={updatePop} />
     {/if}
     {#if currentPage != 10}
         <div class="buttons">
