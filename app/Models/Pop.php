@@ -14,5 +14,9 @@ class Pop extends Model
     public function evaluation(){
         return $this->hasMany(Evaluation::class);
     }
+
+    public function evaluationNotes(){
+        return $this->hasMany(EvaluationNotes::class);
+    }
     
 }
