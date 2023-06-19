@@ -8,19 +8,19 @@
     let coreQuadrants = {};
     function updateCoreQuadrants(key, value) {
         coreQuadrants[key] = value;
-        updatePop('coreQuadrants', coreQuadrants)
+        updatePop('coreQuadrant', coreQuadrants)
     }
 </script>
 
 <p>Geef aan wat je in de komende periode gaat doen.</p>
 <Button marginTop={true} style="background-color:black" text='Kernkwadrant 1' />
 <div class="quadrantContainer">
-    <CoreQuadrantField coreQuadrants={pop?.coreQuadrants} updateCoreQuadrants={updateCoreQuadrants} key='quality' title='Kernkwaliteit' />
+    <CoreQuadrantField coreQuadrants={pop?.coreQuadrants} updateCoreQuadrants={updateCoreQuadrants} key='coreQuality' title='Kernkwaliteit' />
     <div class='arrowContainer'>
         <h3>Te veel van het goede</h3>
         <div class="arrow"></div>
     </div>
-    <CoreQuadrantField coreQuadrants={pop?.coreQuadrants} updateCoreQuadrants={updateCoreQuadrants} key='trap' title='Valkuil' />
+    <CoreQuadrantField coreQuadrants={pop?.coreQuadrants} updateCoreQuadrants={updateCoreQuadrants} key='pitfall' title='Valkuil' />
     <div class='arrowContainer vertical'>
         <h3>Negatief tegenovergestelde</h3>
         <div class="arrow bottom"></div>

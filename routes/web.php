@@ -19,6 +19,7 @@ Route::get('/', function () {
     return Inertia::render('Home');
 });
 Route::get('/create-pop', [PopController::class, 'new']);
+Route::post('/pop/store', [PopController::class, 'store']);
 
 Route::get('/login', function () {
     return Inertia::render('Auth/Login');

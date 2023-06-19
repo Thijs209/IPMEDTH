@@ -9,6 +9,11 @@
     import CreateProjectCoreQuadrants from './CreateProjectCoreQuadrants.svelte';
     import { writable } from 'svelte/store';
     import CreateGoal from './CreateGoal.svelte';
+    import { router } from '@inertiajs/svelte';
+
+    function savePop() {
+        router.post('/pop/store', pop)
+    }
 
     const pages = [
         'Intro',
@@ -59,7 +64,11 @@
     {#if currentPage != 10}
         <div class="buttons">
             <Button onClick={previousPage} text={'vorige'} />
-            <Button onClick={nextPage} text={'Volgende'} />
+            {#if currentPage == 4}
+                <Button onClick={savePop} text={'Opslaan'} />
+            {:else}
+                <Button onClick={nextPage} text={'Volgende'} />
+            {/if}
         </div>
     {/if}
 </div>

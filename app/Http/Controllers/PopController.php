@@ -23,6 +23,7 @@ class PopController extends Controller
 
 public function store(StorePopRequest $request)
     {
+        dump($request->validated());
         $pop = Pop::create($request->validated());
 
         // save tasks
