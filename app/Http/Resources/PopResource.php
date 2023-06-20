@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class PopResource extends JsonResource

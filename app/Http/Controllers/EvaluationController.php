@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\PopResource;
+use App\Http\Resources\UserResource;
 use App\Models\Evaluation;
 use App\Models\Pop;
 use App\Models\User;
@@ -17,10 +18,9 @@ class EvaluationController extends Controller
      */
     public function index()
     {
-
         return Inertia::render('PopEvaluation/EvaluationOverview', [
             'pops' => PopResource::collection(Pop::all()),
-            'users' => User::all()
+            'users' => UserResource::collection(User::all())
         ]);
     }
 

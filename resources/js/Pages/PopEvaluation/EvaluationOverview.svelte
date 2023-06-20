@@ -14,7 +14,17 @@
         evaluationFinishedAt: any;
     }
 
+    interface User {
+        userId: number;
+        firstName: string;
+        lastName: string;
+        displayName: string;
+        email: string;
+    }
+
     export let pops: Pop[];
+    export let users: User[];
+    // export let usersData: User[] = [];
 
     let pageHeading = "POP Overzicht";
     let pages: string[] = ["Home", "POP Overzicht", "POP Review"];
@@ -44,8 +54,6 @@
     //         status: 3,
     //     },
     // ];
-
-    console.log(pops);
 </script>
 
 <Layout>
@@ -53,7 +61,7 @@
         <CreatePageHeader {pages} currentPage={0} setCurrentPage={() => {}} />
         <div class="cards-container">
             {#if pops && pops.length > 0}
-                <PopCards {pops} />
+                <PopCards {pops} {users} />
             {/if}
         </div>
         <div class="archive-container">

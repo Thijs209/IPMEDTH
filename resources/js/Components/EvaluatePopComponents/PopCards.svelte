@@ -11,12 +11,21 @@
         evaluationFinishedAt: any;
     }
 
-    export let pops: any[];
+    interface User {
+        userId: number;
+        firstName: string;
+        lastName: string;
+        displayName: string;
+        email: string;
+    }
+
+    export let pops: Pop[];
+    export let users: User[];
 </script>
 
 <section class="pop-cards">
     {#each pops as pop}
-        <PopCard {pop} />
+        <PopCard {pop} {users} />
     {/each}
 </section>
 
