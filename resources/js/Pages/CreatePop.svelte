@@ -10,6 +10,9 @@
     import { writable } from 'svelte/store';
     import CreateGoal from './CreateGoal.svelte';
     import { router } from '@inertiajs/svelte';
+    import VerifyPop from './VerifyPop.svelte';
+    
+    export let errors;
 
     function savePop() {
         router.post('/pop/store', pop)
@@ -58,6 +61,8 @@
         <CreateProjectCoreQuadrants pop={pop} updatePop={updatePop} />
     {:else if currentPage == 3}
         <CreatePopGoals pop={pop} goals={goal} updateGoal={updateGoal} setCurrentPage={setCurrentPage} />
+    {:else if currentPage == 4}
+        <VerifyPop errors={errors} pop={pop} setCurrentPage={setCurrentPage} />
     {:else if currentPage == 10}
         <CreateGoal updateGoal={updateGoal} goal={goal} pop={pop} setCurrentPage={setCurrentPage} updatePop={updatePop} />
     {/if}

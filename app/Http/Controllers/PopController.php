@@ -7,6 +7,7 @@ use App\Http\Resources\PopResource;
 use App\Models\Task;
 use App\Models\CoreQuadrant;
 use App\Models\Pop;
+use Inertia\Inertia;
 
 class PopController extends Controller
 {
