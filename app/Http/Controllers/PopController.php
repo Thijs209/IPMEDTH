@@ -16,14 +16,16 @@ class PopController extends Controller
         return PopResource::collection(Pop::all());
     }
 
-    public function new()
+    public function create()
+
     {
+
         return Inertia::render('CreatePop');
+
     }
 
 public function store(StorePopRequest $request)
     {
-        dump($request->validated());
         $pop = Pop::create($request->validated());
 
         // save tasks
@@ -52,10 +54,10 @@ public function store(StorePopRequest $request)
         }
 
          // save goals
-         $goalsData = $request->input('goals');
+        $goalsData = $request->input('goals');
 
-         if ($goalsData) {
-             foreach($goalsData as $goalsItem){
+        if ($goalsData) {
+            foreach($goalsData as $goalsItem){
                 $goal = new Goal();
                 $goal->pop_id = $pop['id'];
                 $goal->goal_type_id = $goalsItem['goal_type_id'];
@@ -77,15 +79,10 @@ public function store(StorePopRequest $request)
                     $goalStep->description = $stepitem;
                     $goalStep->save();
                 }
-             }        
-         }
+            }        
+        }
 
         return PopResource::make($pop);
 
-    }
-
-    public function show(Pop $pop)
-    {
-        return PopResource::make($pop);
     }
 }

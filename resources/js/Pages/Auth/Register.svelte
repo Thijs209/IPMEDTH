@@ -24,23 +24,24 @@
 
 <Layout centeredContent={true}>
     <article slot="main" class="register">
-        <h2 class="register__heading">Register Page</h2>
+        <h2 class="register__heading">Account registratie</h2>
         <form class="form" on:submit|preventDefault={submit}>
             <div class="form__group">
                 <label class="form__label" for="email">Email</label>
                 <input
                     id="email"
+                    required
                     class="form__input"
                     type="text"
                     bind:value={$form.email}
                 />
                 {#if $form.errors.email}
-                    <div class="form-error">{$form.errors.email}</div>
+                    <div class="form__error">{$form.errors.email}</div>
                 {/if}
             </div>
 
             <div class="form__group">
-                <label class="form__label" for="first_name">First Name</label>
+                <label class="form__label" for="first_name">Voornaam</label>
                 <input
                     id="first_name"
                     required
@@ -49,11 +50,11 @@
                     bind:value={$form.first_name}
                 />
                 {#if $form.errors.first_name}
-                    <div class="form-error">{$form.errors.first_name}</div>
+                    <div class="form__error">{$form.errors.first_name}</div>
                 {/if}
             </div>
             <div class="form__group">
-                <label class="form__label" for="last_name">Last name</label>
+                <label class="form__label" for="last_name">Achternaam</label>
                 <input
                     id="last_name"
                     required
@@ -62,7 +63,7 @@
                     bind:value={$form.last_name}
                 />
                 {#if $form.errors.last_name}
-                    <div class="form-error">{$form.errors.last_name}</div>
+                    <div class="form__error">{$form.errors.last_name}</div>
                 {/if}
             </div>
 
@@ -76,14 +77,14 @@
                     bind:value={$form.username}
                 />
                 {#if $form.errors.username}
-                    <div class="form-error">{$form.errors.username}</div>
+                    <div class="form__error">{$form.errors.username}</div>
                 {/if}
             </div>
 
             <!-- Password -->
 
             <div class="form__group">
-                <label class="form__label" for="password">Password</label>
+                <label class="form__label" for="password">Wachtwoord</label>
                 <input
                     id="password"
                     required
@@ -92,13 +93,13 @@
                     bind:value={$form.password}
                 />
                 {#if $form.errors.password}
-                    <div class="form-error">{$form.errors.password}</div>
+                    <div class="form__error">{$form.errors.password}</div>
                 {/if}
             </div>
 
             <div class="form__group">
                 <label class="form__label" for="password_confirmation"
-                    >Password Confirmation</label
+                    >Bevestig wachtwoord</label
                 >
                 <input
                     id="password_confirmation"
@@ -108,7 +109,7 @@
                     bind:value={$form.password_confirmation}
                 />
                 {#if $form.errors.password_confirmation}
-                    <div class="form-error">
+                    <div class="form__error">
                         {$form.errors.password_confirmation}
                     </div>
                 {/if}
@@ -118,7 +119,7 @@
                 required
                 class="form__button"
                 type="submit"
-                disabled={$form.processing}>Register</button
+                disabled={$form.processing}>Registreer</button
             >
         </form>
     </article>
@@ -128,27 +129,22 @@
     /* TODO Make re-usable form component styling */
 
     .register {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-
-        min-width: 30rem;
-        gap: 2rem;
+        min-width: 40rem;
+        width: 40%;
+        gap: 4rem;
         padding: 2rem;
-        background-color: #fff;
-        justify-self: center;
-        align-self: center;
+        background-color: rgba(250, 250, 250);
+        border-radius: 1rem;
+        box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
     }
 
     .register__heading {
-        display: block;
+        display: flex;
         width: 100%;
-        align-self: start;
-
-        font-size: 2rem;
-        font-weight: 700;
-        margin-bottom: 1rem;
+        height: 4rem;
+        margin-bottom: 2rem;
+        justify-content: start;
+        align-items: center;
     }
 
     .form {
@@ -188,19 +184,43 @@
     }
 
     .form__button {
+        margin-top: 1rem;
         width: 100%;
         align-self: center;
-        height: 3rem;
+        height: 4rem;
         border-radius: 0.5rem;
         border: 1px solid #ccc;
         padding: 0 1rem;
-        font-size: 1.5rem;
+        font-size: 1.6rem;
         background-color: var(--c-primary-button);
         color: #fff;
+        max-width: var(--max-width-form-elements);
+    }
+
+    .form__button:disabled {
+        background-color: #ccc;
     }
 
     .form__button:hover {
         background-color: var(--c-primary-button-hover);
         cursor: pointer;
+    }
+
+    .form__error {
+        background-color: var(--c-alert);
+        width: 100%;
+        color: var(--c-alert-font);
+        padding: 1rem;
+        border-bottom-left-radius: 1rem;
+        border-bottom-right-radius: 1rem;
+        font-size: 1.6rem;
+    }
+
+    .form__success {
+        background-color: none;
+        color: var(--color-arcady-green);
+        margin-top: 1rem;
+        padding: 1rem;
+        font-size: 1.6rem;
     }
 </style>
