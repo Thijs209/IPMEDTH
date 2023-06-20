@@ -12,6 +12,6 @@ class TaakTypeSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+
     }
 }

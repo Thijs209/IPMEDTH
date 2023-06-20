@@ -3,7 +3,7 @@
 namespace App\Policies;
 
 use App\Models\User;
-use App\Models\pop;
+use App\Models\Pop;
 use Illuminate\Auth\Access\Response;
 
 class PopPolicy
@@ -19,7 +19,7 @@ class PopPolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, pop $pop): bool
+    public function view(User $user, Pop $Pop): bool
     {
         //
     }
@@ -35,7 +35,7 @@ class PopPolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, pop $pop): bool
+    public function update(User $user, Pop $Pop): bool
     {
         //
     }
@@ -43,7 +43,7 @@ class PopPolicy
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, pop $pop): bool
+    public function delete(User $user, Pop $Pop): bool
     {
         //
     }
@@ -51,7 +51,7 @@ class PopPolicy
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, pop $pop): bool
+    public function restore(User $user, Pop $Pop): bool
     {
         //
     }
@@ -59,7 +59,7 @@ class PopPolicy
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, pop $pop): bool
+    public function forceDelete(User $user, Pop $Pop): bool
     {
         //
     }
