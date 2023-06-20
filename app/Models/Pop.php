@@ -17,21 +17,24 @@ class Pop extends Model
     protected $fillable = ['user_id', 'evaluated_by', 'evaluation_finished'];
  
     // CONTENT RELATED RELATIONSHIPS
-    public function tasks(){
-        return $this->hasMany(Task::class);
+    public function task(){
+        return $this->hasOne(Task::class);
+    }
+
+    
+    public function goals(){
+        return $this->hasMany(Goal::class);
+    }
+
+    public function evaluationNotes() {
+        return $this->hasMany(EvaluationNotes::class);
     }
 
     // ACTION RELATED RELATIONSHIPS
     public function evaluation(){
-        return $this->hasMany(Evaluation::class);
-    }
-
-    public function evaluationNotes(){
-        return $this->hasMany(EvaluationNotes::class);
+        return $this->hasOne(Evaluation::class);
     }
     
-    
-
     // USER RELATED RELATIONSHIPS
     public function user(){
         return $this->belongsTo(User::class);
