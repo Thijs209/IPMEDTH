@@ -7,6 +7,7 @@ use App\Http\Resources\PopResource;
 use App\Models\Task;
 use App\Models\CoreQuadrant;
 use App\Models\Pop;
+use Inertia\Inertia;
 
 class PopController extends Controller
 {
@@ -15,14 +16,8 @@ class PopController extends Controller
         return PopResource::collection(Pop::all());
     }
 
-    public function new()
-    {
-        return Inertia::render('CreatePop');
-    }
-
 public function store(StorePopRequest $request)
     {
-        dump($request->validated());
         $pop = Pop::create($request->validated());
 
         // save tasks
@@ -81,10 +76,5 @@ public function store(StorePopRequest $request)
 
         return PopResource::make($pop);
 
-    }
-
-    public function show(Pop $pop)
-    {
-        return PopResource::make($pop);
     }
 }

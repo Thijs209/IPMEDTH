@@ -10,7 +10,7 @@
 
 <div class:wide={wide} class:small={small} class="inputContainer" class:noMargin={noMargin}>
   <label for={text}>{text}</label>
-  <input value={value} on:keyup={(e) => {onChange(key, e.currentTarget.value)}} name={text} id={text} placeholder="Type hier..." />
+  <input value={value||''} on:keyup={(e) => {onChange(key, e.currentTarget.value)}} name={text} id={text} placeholder="Type hier..." />
 </div>
 
 <style>

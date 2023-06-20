@@ -11,20 +11,23 @@ class GoalTypeSeeder extends Seeder
     /**
      * Run the database seeds.
      */
+
+
     public function run(): void
     {
-        DB::table('goal_types')->insert([
-            'type'=> "persoonlijk",
-        ]);
+        $goal_types = [
+            "persoonlijk",
+            "professioneel",
+            "organisatie",
+            "training",
+            "functie",
+            "gezondheid",
+        ];
 
-        DB::table('goal_types')->insert([
-            'type'=> "professioneel",
-        ]);
-        DB::table('goal_types')->insert([
-            'type'=> "organisatie",
-        ]);
-        DB::table('goal_types')->insert([
-            'type'=> "training",
-        ]);
+        foreach ($goal_types as $goal => $type) {
+            DB::table('goal_types')->insert([
+                'type' => $type,
+            ]);
+        }; 
     }
-}
+};
