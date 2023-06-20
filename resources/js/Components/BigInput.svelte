@@ -1,11 +1,12 @@
 <script lang="ts">
     export let key: string;
     export let text: string;
+    export let wide: boolean;
+    export let small: boolean;
+    export let noMargin: boolean;
     export let onChange: (key: String, value: String) => void;
-    export let wide: boolean = false;
-    export let small: boolean = false;
-    export let noMargin: boolean = false;
-    export let value: string = '';
+
+    console.log(typeof onChange)
 </script>
 
 <div class:wide={wide} class:small={small} class="inputContainer" class:noMargin={noMargin}>
@@ -14,25 +15,25 @@
 </div>
 
 <style>
-    label{
-        font-size: 1.5em;
-        margin-top: 1.5em;
+    label {
+        font-size: 1.5rem;
+        margin-top: 1.5rem;
         font-weight: 700;
         margin-bottom: 1em;
     }
 
-    .inputContainer{
+    .inputContainer {
         margin-top: 2em;
         width: 30%;
         min-width: 40em;
     }
-    
-    textarea{
+
+    textarea {
         width: 100%;
         height: 5em;
-        border: 1px solid #00A667;
-        border-radius: .5em;
-        padding: .5em;
+        border: 1px solid #00a667;
+        border-radius: 0.5em;
+        padding: 0.5em;
         font-size: 1.5em;
         font-family: Arial, Helvetica, sans-serif;
         resize: none;
@@ -40,17 +41,5 @@
 
     textarea:focus{
         outline: 1.2px solid #00A667;
-    }
-
-    .wide{
-        width: 80%;
-    }
-
-    .small{
-        width: 10%;
-    }
-
-    .noMargin{
-        margin: 0;
     }
 </style>

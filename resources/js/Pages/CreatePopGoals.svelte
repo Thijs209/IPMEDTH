@@ -36,7 +36,7 @@
             <h3 class="disabledText">Voeg een doel toe</h3>
         {:else}
             {#each pop.goals as goal}
-                <CreatePopGoal onClick={() => openGoal = goal.id} title={goal.title} />
+                <CreatePopGoal onClick={() => openGoal = goal} title={goal.title} />
             {/each}
         {/if}
         <Button marginTop onClick={changeOverlayOpen} icon>

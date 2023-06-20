@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Pop;
 
 class User extends Authenticatable
 {
@@ -45,7 +46,8 @@ class User extends Authenticatable
     ];
 
 
-    public function Role(){
+    /* Relationships (P*/
+    public function role(){
         return $this->hasOne(Role::class, 'id', 'role_id');
     }
 
@@ -60,4 +62,30 @@ class User extends Authenticatable
     public function isEmployee(){
         return $this->role_id === 3;
     }
+
+    /* 
+        All POPS relations
+    */
+    public function pops(){
+        return $this->hasMany(Pop::class);
+    }
+
+    public function tasks(){
+        return $this->hasMany(Task::class);
+    }
+
+    public function evaluations(){
+        return $this->hasMany(Evaluation::class);
+    }
+
+    public function evaluationNotes(){
+        return $this->hasMany(EvaluationNotes::class);
+    }
+
+    public function evaluationNotesByPop($pop_id){
+        return $this->hasMany(EvaluationNotes::class)->where('pop_id', $pop_id); // Find POPs per user and return them as a collection
+    }
+
+    
+
 }

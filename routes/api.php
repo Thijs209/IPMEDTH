@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PopController;
+use App\Http\Controllers\EvaluationNoteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,9 +16,11 @@ use App\Http\Controllers\PopController;
 |
 */
 
-Route::prefix('v1')-> group(function(){
-    Route::apiResource('/pops', PopController::class);
-});
+// Route::prefix('v1')-> group(function(){
+//     Route::apiResource('/pops', PopController::class);
+//     Route::apiResource('/evaluation', EvaluationNoteController::class);
+// });
+
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
