@@ -10,10 +10,7 @@
     onMount(() => {
         scrollToBottom(element);
     });
-    // FIXME: NODE IS UNDEFINED
-    // Naar aanleiding van usability test 1 is, Het doel is om er hier voor te zorgen dat de notitieslijst
-    // automatisch naar beneden scrollt als er een nieuwe note wordt toegevoegd.
-
+    
     let form = useForm({
         date: "",
         time: "",
@@ -42,7 +39,7 @@
         {
             date: moment("2020 03 03").format(),
             time: moment().hours(4).minutes(3).format("HH:mm").toString(),
-            note: "Karin heeft de notities geizen. ",
+            note: "Karin heeft de feedback ontvangen.",
         },
     ];
 

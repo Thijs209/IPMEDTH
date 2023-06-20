@@ -43,7 +43,7 @@ export const currentPopTaskQuestions = readable({
 });
 
 export const currentPopTask = readable({
-    goal: "Mijn overkoepoelende doel is om meer overzicht te creëren in mijn werkzaamheden.",
+    goal: "Mijn overkoepelende doel is om meer overzicht te creëren in mijn werkzaamheden.",
     result: "Wanneer ik meer overzicht heb, kan ik mijn werkzaamheden beter plannen en prioriteren.",
     succes: "Ik heb dit doel bereikt wanneer ik in het komende project minder stress ervaar.",
     manager:
