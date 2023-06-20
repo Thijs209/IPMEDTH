@@ -1,12 +1,13 @@
 <script lang="ts">
     import PopCard from "./PopCard.svelte";
     export let pops: Array<{
-        userId?: number;
-        popId?: number;
-        name: string;
-        startDate: string;
-        endDate: string;
-        status: number;
+        userId: number;
+        popId: number;
+        userFinished: boolean;
+        userFinishedAt: any;
+        evaluatedBy: number;
+        evaluationFinished: boolean;
+        evaluationFinishedAt: any;
     }>;
 </script>
 

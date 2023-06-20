@@ -4,43 +4,37 @@
     import MdChevronRight from "svelte-icons/md/MdChevronRight.svelte";
 
     interface Pop {
-        userId?: number;
-        popId?: number;
-        name: string;
-        startDate: string;
-        endDate: string;
-        status: number;
+        userId: number;
+        popId: number;
+        userFinished: boolean;
+        userFinishedAt: any;
+        evaluatedBy: number;
+        evaluationFinished: boolean;
+        evaluationFinishedAt: any;
     }
 
-    export let pop: Pop = {
-        userId: 1,
-        popId: 1,
-        name: "John Thomas",
-        startDate: "01-01-2023",
-        endDate: "01-01-2024",
-        status: 2,
-    };
+    export let pop: Pop;
 
-    let periode: string = pop.startDate + " / " + pop.endDate;
-    let statusText: String =
-        pop.status == 1
-            ? "Te evalueren"
-            : pop.status == 2
-            ? "Afspraak ingepland"
-            : "Overtijd";
+    // let periode: string = pop.startDate + " / " + pop.endDate;
+    // let statusText: String =
+    //     pop.status == 1
+    //         ? "Te evalueren"
+    //         : pop.status == 2
+    //         ? "Afspraak ingepland"
+    //         : "Overtijd";
 </script>
 
 <article class="pop-card">
-    <div class="pop-card__status" data-status={pop.status} />
+    <div class="pop-card__status" data-status={1} />
     <div class="pop-card__content">
-        <h3 class="pop-card__heading">{pop.name}</h3>
+        <h3 class="pop-card__heading">hoi</h3>
         <div class="pop-card__row">
             <p class="pop-card__label">Periode</p>
-            <p class="pop-card__text">{periode}</p>
+            <p class="pop-card__text">1234</p>
         </div>
         <div class="pop-card__row">
             <p class="pop-card__label">Status</p>
-            <p class="pop-card__text">{statusText}</p>
+            <p class="pop-card__text">hoi</p>
         </div>
     </div>
     <div class="pop-card__button">
