@@ -14,17 +14,7 @@
         evaluationFinishedAt: any;
     }
 
-    interface User {
-        userId: number;
-        popId: number;
-        name: string;
-        startDate: string;
-        endDate: string;
-        status: number;
-    }
-
-    export let pops: any;
-    export let users: any;
+    export let pops: Pop[];
 
     let pageHeading = "POP Overzicht";
     let pages: string[] = ["Home", "POP Overzicht", "POP Review"];
@@ -55,14 +45,16 @@
     //     },
     // ];
 
-    console.log(pops.data);
+    console.log(pops);
 </script>
 
 <Layout>
     <article slot="main" class="evaluation-dashboard">
         <CreatePageHeader {pages} currentPage={0} setCurrentPage={() => {}} />
         <div class="cards-container">
-            <PopCards {pops} />
+            {#if pops && pops.length > 0}
+                <PopCards {pops} />
+            {/if}
         </div>
         <div class="archive-container">
             <PopArchive />

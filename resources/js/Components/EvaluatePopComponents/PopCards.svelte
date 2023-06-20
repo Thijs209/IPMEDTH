@@ -1,6 +1,7 @@
 <script lang="ts">
     import PopCard from "./PopCard.svelte";
-    export let pops: Array<{
+
+    interface Pop {
         userId: number;
         popId: number;
         userFinished: boolean;
@@ -8,7 +9,9 @@
         evaluatedBy: number;
         evaluationFinished: boolean;
         evaluationFinishedAt: any;
-    }>;
+    }
+
+    export let pops: any[];
 </script>
 
 <section class="pop-cards">
