@@ -2,6 +2,7 @@
     import { Link } from "@inertiajs/svelte";
     import IconHolder from "./../IconHolder.svelte";
     import MdChevronRight from "svelte-icons/md/MdChevronRight.svelte";
+    import moment from "moment";
 
     interface Pop {
         userId: number;
@@ -15,7 +16,10 @@
 
     export let pop: Pop;
 
-    // let periode: string = pop.startDate + " / " + pop.endDate;
+    const date = pop.userFinishedAt;
+
+    let periode: string =
+        moment(date).format("DD-MM-YYYY") + " / " + moment(date).add(6, "w");
     // let statusText: String =
     //     pop.status == 1
     //         ? "Te evalueren"
@@ -25,16 +29,16 @@
 </script>
 
 <article class="pop-card">
-    <div class="pop-card__status" data-status={1} />
+    <div class="pop-card__status" data-status="placeholder" />
     <div class="pop-card__content">
-        <h3 class="pop-card__heading">hoi</h3>
+        <h3 class="pop-card__heading">placeholder</h3>
         <div class="pop-card__row">
             <p class="pop-card__label">Periode</p>
-            <p class="pop-card__text">1234</p>
+            <p class="pop-card__text">{periode}</p>
         </div>
         <div class="pop-card__row">
             <p class="pop-card__label">Status</p>
-            <p class="pop-card__text">hoi</p>
+            <p class="pop-card__text">placeholder</p>
         </div>
     </div>
     <div class="pop-card__button">
