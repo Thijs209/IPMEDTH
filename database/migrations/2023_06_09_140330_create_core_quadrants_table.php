@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('core_quadrants', function (Blueprint $table) {
             $table->id();
             $table->foreignId('pop_id')->constrained();
-            $table->string('core_quality');
-            $table->string('pitfall');
-            $table->string('allergy');
-            $table->string('challenge');
+            $table->string('core_quality')->nullable();
+            $table->string('pitfall')->nullable();
+            $table->string('allergy')->nullable();
+            $table->string('challenge')->nullable();
             $table->timestamps();
         });
     }

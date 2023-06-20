@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('evaluation_notes', function (Blueprint $table) {
             $table->id();
             $table->foreignId('pop_id')->constrained();
-            $table->foreignId('evaluation_note_type_id')->constrained();
+            $table->foreignId('evaluation_note_type_id')->constrained()->nullable();
             $table->string('evaluation_note');
             $table->timestamps();
         });
