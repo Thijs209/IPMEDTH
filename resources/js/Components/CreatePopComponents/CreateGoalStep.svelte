@@ -14,7 +14,7 @@
     }
 
     if(goal.steps === undefined || goal.steps.length === 0) {
-        updateSteps(0, [{id: 1, value: ''}]);
+        updateSteps(0, {id: 1, value: ''});
         console.log(goal.steps)
     }
 

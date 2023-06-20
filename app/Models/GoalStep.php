@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class GoalStep extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['goal_id', 'step', 'description', 'completed'];
 }

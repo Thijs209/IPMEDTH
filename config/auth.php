@@ -100,7 +100,7 @@ return [
             'provider' => 'users',
             'table' => 'password_reset_tokens',
             'expire' => 60,
-            'throttle' => 60,
+            'throttle' => 0, //TODO set to 60 in production
         ],
     ],
 
