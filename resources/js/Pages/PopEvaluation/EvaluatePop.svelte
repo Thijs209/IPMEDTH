@@ -14,6 +14,7 @@
     import EvaluatePopGoals from "./EvaluatePopGoals.svelte";
     import EvaluatePopFinalize from "./EvaluatePopFinalize.svelte";
     import PopNotes from "../../Components/EvaluatePopComponents/PopNotes.svelte";
+
     let pages: string[] = ["Home", "POP Overzicht", "POP Review"];
 
     interface Pop {
@@ -31,7 +32,9 @@
         user: any;
     }
 
-    export let pop: Pop[];
+    export let pop: Pop;
+
+    console.log(pop);
 </script>
 
 <Layout>
@@ -46,7 +49,7 @@
             </div>
             <section slot="evaluate-pop-content" class="evaluate-pop__content">
                 {#if $activeEvaluationTab.tab === $evaluationTabs.tabs[0]}
-                    <EvaluatePopProject />
+                    <EvaluatePopProject task={pop.tasks} />
                 {:else if $activeEvaluationTab.tab === $evaluationTabs.tabs[1]}
                     <EvaluatePopCoreQuadrants />
                 {:else if $activeEvaluationTab.tab === $evaluationTabs.tabs[2]}

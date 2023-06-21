@@ -2,15 +2,28 @@
     import { currentPopTaskQuestions, currentPopTask } from "./../../stores.js";
     import PopProjectField from "../../Components/EvaluatePopComponents/PopProjectField.svelte";
 
+    interface Task {
+        taskId: number;
+        success: string;
+        goal: string;
+        results: string;
+        manager: string;
+        reportOthers: string;
+    }
+
     let questions = { ...$currentPopTaskQuestions };
     let answers = { ...$currentPopTask };
+
+    export let task: any;
+
+    console.log(task.result);
 </script>
 
 <section>
-    <PopProjectField question={questions.goal} answer={answers.goal} />
-    <PopProjectField question={questions.result} answer={answers.result} />
-    <PopProjectField question={questions.succes} answer={answers.succes} />
-    <PopProjectField question={questions.manager} answer={answers.manager} />
+    <PopProjectField question={questions.goal} answer={task.goal} />
+    <PopProjectField question={questions.result} answer={task.results} />
+    <PopProjectField question={questions.succes} answer={task.success} />
+    <PopProjectField question={questions.manager} answer={task.manager} />
     <PopProjectField
         question={questions.reportsOthers}
         answer={answers.reportsOthers}

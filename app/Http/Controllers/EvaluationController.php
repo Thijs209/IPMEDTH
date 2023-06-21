@@ -33,17 +33,16 @@ class EvaluationController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($id, Throwable $exception)    
+    public function show($id)    
     {
-    $pop = Pop::find($id);
+    $pop = Pop::findOrFail($id);
 
-    if ($exception instanceof CustomException) {
-        return response()->view('errors.custom', [], 500);
+    if ($pop) {
+        return Inertia::render('PopEvaluation/EvaluatePop', [
+            'pop' => PopResource::make($pop),
+        ]);    
     }
-    return Inertia::render('PopEvaluation/EvaluatePop', [
-        'pop' => PopResource::make($pop),
-        // 'create_url' => route('users.create'),
-    ]);
+   
     }
 
     /**

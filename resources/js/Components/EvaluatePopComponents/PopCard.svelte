@@ -40,7 +40,6 @@
     //         : pop.status == 2
     //         ? "Afspraak ingepland"
     //         : "Overtijd";
-    console.log();
 </script>
 
 <article class="pop-card">
@@ -57,7 +56,7 @@
         </div>
     </div>
     <div class="pop-card__button">
-        <Link href="/evaluate-pop/users/{pop.user['id']}/pops/{pop.id}">
+        <Link href="/evaluation/{pop.id}}">
             <IconHolder>
                 <MdChevronRight />
             </IconHolder>
