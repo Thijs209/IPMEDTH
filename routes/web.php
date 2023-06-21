@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\PopController;
+use App\Http\Controllers\EvaluationController;
+use App\Http\Controllers\EvaluationNoteController;
 use App\Models\User;
 use App\Models\Pop;
 
@@ -48,23 +50,24 @@ Route::get('/reset-password/{token}', function ($request) {
     ]);
 })->name('password.reset');
 
+// People manager routes
+// Route::get('/evaluation-overview', function () {
+//     return Inertia::render('PopEvaluation/EvaluationOverview', [
 
-/*
-* POP EVALUATION
-* Routes intended for people managers
-*/
-Route::get('/evaluation-overview', function () {
-    return Inertia::render('PopEvaluation/EvaluationOverview');
+//     ]);
+// });
+
+Route::get('/evaluation-overview', [EvaluationController::class, 'index']);
+
+
+Route::prefix('v1')-> group(function(){
+    Route::apiResource('/pops', PopController::class);
+    Route::apiResource('/evaluation', EvaluationNoteController::class);
 });
 
-/* 
-* POP CREATION
-* Routes intended for employees
-*/
-
-
-Route::get('/create-pop', [PopController::class, 'create']);
-Route::post('/create-pop', [PopController::class, 'store']);
+// POP Routes
+// Route::get('/create-pop', [PopController::class, 'create']);
+// Route::post('/create-pop', [PopController::class, 'store']);
 
 // Temp Route for testing, with default values
 // TODO remove default values in production + add permissions so only people manager and admin roles can access evaluation page for any POP

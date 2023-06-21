@@ -1,18 +1,31 @@
 <script lang="ts">
     import PopCard from "./PopCard.svelte";
-    export let pops: Array<{
-        userId?: number;
-        popId?: number;
-        name: string;
-        startDate: string;
-        endDate: string;
-        status: number;
-    }>;
+
+    interface Pop {
+        userId: number;
+        popId: number;
+        userFinished: boolean;
+        userFinishedAt: any;
+        evaluatedBy: number;
+        evaluationFinished: boolean;
+        evaluationFinishedAt: any;
+    }
+
+    interface User {
+        userId: number;
+        firstName: string;
+        lastName: string;
+        displayName: string;
+        email: string;
+    }
+
+    export let pops: Pop[];
+    export let users: User[];
 </script>
 
 <section class="pop-cards">
     {#each pops as pop}
-        <PopCard {pop} />
+        <PopCard {pop} {users} />
     {/each}
 </section>
 

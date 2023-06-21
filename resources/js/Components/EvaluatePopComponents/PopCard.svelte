@@ -2,45 +2,61 @@
     import { Link } from "@inertiajs/svelte";
     import IconHolder from "./../IconHolder.svelte";
     import MdChevronRight from "svelte-icons/md/MdChevronRight.svelte";
+    import moment from "moment";
 
-    interface Pop {
-        userId?: number;
-        popId?: number;
-        name: string;
-        startDate: string;
-        endDate: string;
-        status: number;
-    }
-
-    export let pop: Pop = {
-        userId: 1,
-        popId: 1,
-        name: "John Thomas",
-        startDate: "01-01-2023",
-        endDate: "01-01-2024",
-        status: 2,
+    const POPSTATE = {
+        toEvaluate: 1,
+        toSchedule: 2,
+        overdue: 3,
     };
 
-    let periode: string = pop.startDate + " / " + pop.endDate;
-    let statusText: String =
-        pop.status == 1
-            ? "Te evalueren"
-            : pop.status == 2
-            ? "Afspraak ingepland"
-            : "Overtijd";
+    interface Pop {
+        userId: number;
+        popId: number;
+        userFinished: boolean;
+        userFinishedAt: any;
+        evaluatedBy: number;
+        evaluationFinished: boolean;
+        evaluationFinishedAt: any;
+    }
+
+    interface User {
+        userId: number;
+        firstName: string;
+        lastName: string;
+        displayName: string;
+        email: string;
+    }
+
+    export let pop: Pop;
+    export let users: User[];
+
+    const date = pop.userFinishedAt;
+    const popUser = users.find((id: any) => pop.userId);
+
+    let periode: string =
+        moment(date).format("DD-MM-YYYY") +
+        " / " +
+        moment(date).add(6, "w").format("DD-MM-YYYY");
+    // let statusText: String =
+    //     pop.status == 1
+    //         ? "Te evalueren"
+    //         : pop.status == 2
+    //         ? "Afspraak ingepland"
+    //         : "Overtijd";
 </script>
 
 <article class="pop-card">
-    <div class="pop-card__status" data-status={pop.status} />
+    <div class="pop-card__status" data-status="placeholder" />
     <div class="pop-card__content">
-        <h3 class="pop-card__heading">{pop.name}</h3>
+        <h3 class="pop-card__heading">{popUser?.displayName}</h3>
         <div class="pop-card__row">
             <p class="pop-card__label">Periode</p>
             <p class="pop-card__text">{periode}</p>
         </div>
         <div class="pop-card__row">
             <p class="pop-card__label">Status</p>
-            <p class="pop-card__text">{statusText}</p>
+            <p class="pop-card__text">Te evalueren</p>
         </div>
     </div>
     <div class="pop-card__button">

@@ -16,10 +16,10 @@ use App\Http\Controllers\EvaluationNoteController;
 |
 */
 
-Route::prefix('v1')-> group(function(){
-    Route::apiResource('/pops', PopController::class);
-    Route::apiResource('/evaluation', EvaluationNoteController::class);
-});
+// Route::prefix('v1')-> group(function(){
+//     Route::apiResource('/pops', PopController::class);
+//     Route::apiResource('/evaluation', EvaluationNoteController::class);
+// });
 
 
 

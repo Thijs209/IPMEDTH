@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class PopResource extends JsonResource
@@ -12,16 +13,21 @@ class PopResource extends JsonResource
      *
      * @return array<string, mixed>
      */
+
+    // remove data attribute
+     public static $wrap = null;
+
     public function toArray(Request $request): array
     {
         return [
             'id' => $this->id,
-            'user_id' => $this->user_id,
-            'evaluated_by' => $this->evaluated_by,
-            'evaluation_finished' => $this->evaluation_finished,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
-            'evaluation_notes' => EvaluationNoteResource::collection($this->evaluationNotes),
+            'userId' => $this->user_id,
+            'userFinished' => $this->user_finished,
+            'userFinishedAt' => $this->user_finished_at,
+            'evaluatedBy' => $this->evaluated_by,
+            'evaluationFinished' => $this->evaluation_finished,
+            'evaluationFinishedAt' => $this->evaluation_finished_at,
+            // 'evaluation_notes' => EvaluationNoteResource::collection($this->evaluationNotes),
             // TODO Add l
             // 'user' => UserResource::make($this->user),
             // 'tasks' => TaskResource::collection($this->tasks),

@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Evaluation;
-use App\Models\EvaluationNotes;
+use App\Models\EvaluationNote;
 use App\Models\User;
 use App\Models\Task;
-use App\Models\TaskNotes;
+
 
 class Pop extends Model
 {
@@ -26,8 +26,8 @@ class Pop extends Model
         return $this->hasMany(Goal::class);
     }
 
-    public function evaluationNotes() {
-        return $this->hasMany(EvaluationNotes::class);
+    public function evaluationNotes(){
+        return $this->hasMany(EvaluationNote::class);
     }
 
     // ACTION RELATED RELATIONSHIPS
