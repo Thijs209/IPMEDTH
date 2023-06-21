@@ -14,9 +14,10 @@
     import EvaluatePopGoals from "./EvaluatePopGoals.svelte";
     import EvaluatePopFinalize from "./EvaluatePopFinalize.svelte";
     import PopNotes from "../../Components/EvaluatePopComponents/PopNotes.svelte";
+    import PopArchive from "../../Components/EvaluatePopComponents/PopArchive.svelte";
+    
     let pages: string[] = ["Home", "POP Overzicht", "POP Review"];
 
-    
 </script>
 
 <Layout>
@@ -41,7 +42,7 @@
                 {/if}
             </section>
             <section slot="evaluate-pop-notes" class="evaluate-pop__notes">
-                <PopNotes />
+                <PopNotes popId={pop.id}/>
             </section>
             <div slot="evaluate-pop-buttons" class="evaluate-pop__buttons">
                 {#if $activeEvaluationTab != null && $activeEvaluationTab.tab !== $evaluationTabs.tabs[3]}

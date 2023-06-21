@@ -10,7 +10,7 @@
 <section>
     <PopProjectField question={questions.goal} answer={answers.goal} />
     <PopProjectField question={questions.result} answer={answers.result} />
-    <PopProjectField question={questions.succes} answer={answers.succes} />
+    <PopProjectField question={questions.success} answer={answers.success} />
     <PopProjectField question={questions.manager} answer={answers.manager} />
     <PopProjectField
         question={questions.reportsOthers}
