@@ -9,18 +9,34 @@
     <article class="welcome-page" slot="main">
         {#if $page.props.auth.user}
             <h2>
-                Welcome! You're signed in as {$page.props.auth.user.first_name}!
-                Your role is {String(
-                    $page.props.auth.user.role.name
-                ).toLowerCase()}.
+                Je bent ingelogd als: {$page.props.auth.user.first_name +
+                    " " +
+                    $page.props.auth.user.last_name}. <br />
+                De rol van dit account is:
+                {String($page.props.auth.user.role.name).toLowerCase()}.
             </h2>
-            <button
-                class="button button--logout"
-                use:inertia={{ href: "/logout", method: "post" }}
-                type="button">Logout</button
-            >
+            <div class="buttons">
+                <button
+                    class="button"
+                    use:inertia={{ href: "/create-pop", method: "get" }}
+                    type="button">Pop Aanmaken</button
+                >
+                <button
+                    class="button"
+                    use:inertia={{
+                        href: "/evaluation-overview",
+                        method: "get",
+                    }}
+                    type="button">People Manager Overzicht</button
+                >
+                <button
+                    class="button button--logout"
+                    use:inertia={{ href: "/logout", method: "post" }}
+                    type="button">Uitloggen</button
+                >
+            </div>
         {:else}
-            <h2>Welcome! You're not signed in.</h2>
+            <h2>POP testpagina</h2>
             <div class="buttons">
                 <button
                     class="button"
@@ -30,7 +46,13 @@
                 <button
                     class="button"
                     use:inertia={{ href: "/register", method: "get" }}
-                    type="button">Register</button
+                    type="button">Registreer</button
+                >
+
+                <button
+                    class="button"
+                    use:inertia={{ href: "/forgot-password", method: "get" }}
+                    type="button">Wachtwoord Reset</button
                 >
             </div>
         {/if}
@@ -39,7 +61,7 @@
 
 <style>
     .welcome-page {
-        width: 50%;
+        width: 100%;
         height: 100%;
         margin: 0 auto;
         display: flex;
@@ -50,19 +72,19 @@
     }
 
     .button--logout {
-        margin: 1rem;
         align-self: center;
-        color: var(--c-alert);
-        background-color: #fff;
+        color: #fff;
+        background-color: var(--c-attention);
     }
 
     .buttons {
-        width: 50%;
+        width: 100%;
         align-self: center;
         display: flex;
-        justify-content: start;
+        justify-content: center;
         align-items: center;
-        gap: 1rem;
+        margin-top: 2rem;
+        gap: 2rem;
     }
 
     .button {
@@ -70,11 +92,12 @@
         justify-content: center;
         align-items: center;
 
-        height: 3rem;
+        height: 5rem;
         width: 100%;
         max-width: 20rem;
         align-self: center;
 
+        font-weight: 500;
         font-size: 1.6rem;
         color: #eee;
 

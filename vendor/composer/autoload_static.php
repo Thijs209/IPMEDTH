@@ -82,6 +82,7 @@ class ComposerStaticInitba78dc48f2787e71c00c60073fe32a2a
             'Symfony\\Component\\ErrorHandler\\' => 31,
             'Symfony\\Component\\CssSelector\\' => 30,
             'Symfony\\Component\\Console\\' => 26,
+            'Spatie\\LaravelPackageTools\\' => 27,
             'Spatie\\LaravelIgnition\\' => 23,
             'Spatie\\Ignition\\' => 16,
             'Spatie\\FlareClient\\' => 19,
@@ -126,6 +127,8 @@ class ComposerStaticInitba78dc48f2787e71c00c60073fe32a2a
             'Laravel\\Sanctum\\' => 16,
             'Laravel\\Sail\\' => 13,
             'Laravel\\Fortify\\' => 16,
+            'LaracraftTech\\LaravelUsefulAdditions\\Database\\Factories\\' => 56,
+            'LaracraftTech\\LaravelUsefulAdditions\\' => 37,
         ),
         'I' => 
         array (
@@ -310,6 +313,10 @@ class ComposerStaticInitba78dc48f2787e71c00c60073fe32a2a
         array (
             0 => __DIR__ . '/..' . '/symfony/console',
         ),
+        'Spatie\\LaravelPackageTools\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/spatie/laravel-package-tools/src',
+        ),
         'Spatie\\LaravelIgnition\\' => 
         array (
             0 => __DIR__ . '/..' . '/spatie/laravel-ignition/src',
@@ -426,6 +433,14 @@ class ComposerStaticInitba78dc48f2787e71c00c60073fe32a2a
         'Laravel\\Fortify\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravel/fortify/src',
+        ),
+        'LaracraftTech\\LaravelUsefulAdditions\\Database\\Factories\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/laracraft-tech/laravel-useful-additions/database/factories',
+        ),
+        'LaracraftTech\\LaravelUsefulAdditions\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/laracraft-tech/laravel-useful-additions/src',
         ),
         'Inertia\\' => 
         array (
@@ -549,6 +564,9 @@ class ComposerStaticInitba78dc48f2787e71c00c60073fe32a2a
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\EvaluationController' => __DIR__ . '/../..' . '/app/Http/Controllers/EvaluationController.php',
+        'App\\Http\\Controllers\\EvaluationNoteController' => __DIR__ . '/../..' . '/app/Http/Controllers/EvaluationNoteController.php',
+        'App\\Http\\Controllers\\PopController' => __DIR__ . '/../..' . '/app/Http/Controllers/PopController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
@@ -560,8 +578,24 @@ class ComposerStaticInitba78dc48f2787e71c00c60073fe32a2a
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\ValidateSignature' => __DIR__ . '/../..' . '/app/Http/Middleware/ValidateSignature.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
+        'App\\Http\\Requests\\StorePopRequest' => __DIR__ . '/../..' . '/app/Http/Requests/StorePopRequest.php',
+        'App\\Http\\Resources\\EvaluationNoteResource' => __DIR__ . '/../..' . '/app/Http/Resources/EvaluationNoteResource.php',
+        'App\\Http\\Resources\\PopResource' => __DIR__ . '/../..' . '/app/Http/Resources/PopResource.php',
+        'App\\Http\\Resources\\UserResource' => __DIR__ . '/../..' . '/app/Http/Resources/UserResource.php',
+        'App\\Models\\CoreQuadrant' => __DIR__ . '/../..' . '/app/Models/CoreQuadrant.php',
+        'App\\Models\\Evaluation' => __DIR__ . '/../..' . '/app/Models/Evaluation.php',
+        'App\\Models\\EvaluationNote' => __DIR__ . '/../..' . '/app/Models/EvaluationNote.php',
+        'App\\Models\\EvaluationNoteType' => __DIR__ . '/../..' . '/app/Models/EvaluationNoteType.php',
+        'App\\Models\\Goal' => __DIR__ . '/../..' . '/app/Models/Goal.php',
+        'App\\Models\\GoalStep' => __DIR__ . '/../..' . '/app/Models/GoalStep.php',
+        'App\\Models\\GoalType' => __DIR__ . '/../..' . '/app/Models/GoalType.php',
+        'App\\Models\\Pop' => __DIR__ . '/../..' . '/app/Models/Pop.php',
         'App\\Models\\Role' => __DIR__ . '/../..' . '/app/Models/Role.php',
+        'App\\Models\\Task' => __DIR__ . '/../..' . '/app/Models/Task.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
+        'App\\Policies\\EvaluationNotePolicy' => __DIR__ . '/../..' . '/app/Policies/EvaluationNotePolicy.php',
+        'App\\Policies\\EvaluationPolicy' => __DIR__ . '/../..' . '/app/Policies/EvaluationPolicy.php',
+        'App\\Policies\\PopPolicy' => __DIR__ . '/../..' . '/app/Policies/PopPolicy.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
@@ -748,9 +782,22 @@ class ComposerStaticInitba78dc48f2787e71c00c60073fe32a2a
         'DASPRiD\\Enum\\Exception\\SerializeNotSupportedException' => __DIR__ . '/..' . '/dasprid/enum/src/Exception/SerializeNotSupportedException.php',
         'DASPRiD\\Enum\\Exception\\UnserializeNotSupportedException' => __DIR__ . '/..' . '/dasprid/enum/src/Exception/UnserializeNotSupportedException.php',
         'DASPRiD\\Enum\\NullValue' => __DIR__ . '/..' . '/dasprid/enum/src/NullValue.php',
+        'Database\\Factories\\EvaluationFactory' => __DIR__ . '/../..' . '/database/factories/EvaluationFactory.php',
+        'Database\\Factories\\EvaluationNoteFactory' => __DIR__ . '/../..' . '/database/factories/EvaluationNoteFactory.php',
+        'Database\\Factories\\KernkwadrantFactory' => __DIR__ . '/../..' . '/database/factories/KernkwadrantFactory.php',
+        'Database\\Factories\\PopFactory' => __DIR__ . '/../..' . '/database/factories/PopFactory.php',
         'Database\\Factories\\UserFactory' => __DIR__ . '/../..' . '/database/factories/UserFactory.php',
+        'Database\\Seeders\\CoreQuadrantSeeder' => __DIR__ . '/../..' . '/database/seeders/CoreQuadrantSeeder.php',
         'Database\\Seeders\\DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeders/DatabaseSeeder.php',
+        'Database\\Seeders\\EvaluationNoteSeeder' => __DIR__ . '/../..' . '/database/seeders/EvaluationNoteSeeder.php',
+        'Database\\Seeders\\EvaluationNoteTypeSeeder' => __DIR__ . '/../..' . '/database/seeders/EvaluationNoteTypeSeeder.php',
+        'Database\\Seeders\\EvaluationSeeder' => __DIR__ . '/../..' . '/database/seeders/EvaluationSeeder.php',
+        'Database\\Seeders\\GoalSeeder' => __DIR__ . '/../..' . '/database/seeders/GoalSeeder.php',
+        'Database\\Seeders\\GoalStepSeeder' => __DIR__ . '/../..' . '/database/seeders/GoalStepSeeder.php',
+        'Database\\Seeders\\GoalTypeSeeder' => __DIR__ . '/../..' . '/database/seeders/GoalTypeSeeder.php',
+        'Database\\Seeders\\PopSeeder' => __DIR__ . '/../..' . '/database/seeders/PopSeeder.php',
         'Database\\Seeders\\RoleSeeder' => __DIR__ . '/../..' . '/database/seeders/RoleSeeder.php',
+        'Database\\Seeders\\TaskSeeder' => __DIR__ . '/../..' . '/database/seeders/TaskSeeder.php',
         'Database\\Seeders\\UserSeeder' => __DIR__ . '/../..' . '/database/seeders/UserSeeder.php',
         'DeepCopy\\DeepCopy' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/DeepCopy.php',
         'DeepCopy\\Exception\\CloneException' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/Exception/CloneException.php',
@@ -2839,6 +2886,11 @@ class ComposerStaticInitba78dc48f2787e71c00c60073fe32a2a
         'Inertia\\Testing\\Concerns\\Matching' => __DIR__ . '/..' . '/inertiajs/inertia-laravel/src/Testing/Concerns/Matching.php',
         'Inertia\\Testing\\Concerns\\PageObject' => __DIR__ . '/..' . '/inertiajs/inertia-laravel/src/Testing/Concerns/PageObject.php',
         'Inertia\\Testing\\TestResponseMacros' => __DIR__ . '/..' . '/inertiajs/inertia-laravel/src/Testing/TestResponseMacros.php',
+        'LaracraftTech\\LaravelUsefulAdditions\\Commands\\DBTruncateCommand' => __DIR__ . '/..' . '/laracraft-tech/laravel-useful-additions/src/Commands/DBTruncateCommand.php',
+        'LaracraftTech\\LaravelUsefulAdditions\\LaravelUsefulAdditionsServiceProvider' => __DIR__ . '/..' . '/laracraft-tech/laravel-useful-additions/src/LaravelUsefulAdditionsServiceProvider.php',
+        'LaracraftTech\\LaravelUsefulAdditions\\Traits\\RefreshDatabaseFast' => __DIR__ . '/..' . '/laracraft-tech/laravel-useful-additions/src/Traits/RefreshDatabaseFast.php',
+        'LaracraftTech\\LaravelUsefulAdditions\\Traits\\UsefulEnums' => __DIR__ . '/..' . '/laracraft-tech/laravel-useful-additions/src/Traits/UsefulEnums.php',
+        'LaracraftTech\\LaravelUsefulAdditions\\Traits\\UsefulScopes' => __DIR__ . '/..' . '/laracraft-tech/laravel-useful-additions/src/Traits/UsefulScopes.php',
         'Laravel\\Fortify\\Actions\\AttemptToAuthenticate' => __DIR__ . '/..' . '/laravel/fortify/src/Actions/AttemptToAuthenticate.php',
         'Laravel\\Fortify\\Actions\\CompletePasswordReset' => __DIR__ . '/..' . '/laravel/fortify/src/Actions/CompletePasswordReset.php',
         'Laravel\\Fortify\\Actions\\ConfirmPassword' => __DIR__ . '/..' . '/laravel/fortify/src/Actions/ConfirmPassword.php',
@@ -5556,6 +5608,10 @@ class ComposerStaticInitba78dc48f2787e71c00c60073fe32a2a
         'Spatie\\LaravelIgnition\\Support\\StringComparator' => __DIR__ . '/..' . '/spatie/laravel-ignition/src/Support/StringComparator.php',
         'Spatie\\LaravelIgnition\\Views\\BladeSourceMapCompiler' => __DIR__ . '/..' . '/spatie/laravel-ignition/src/Views/BladeSourceMapCompiler.php',
         'Spatie\\LaravelIgnition\\Views\\ViewExceptionMapper' => __DIR__ . '/..' . '/spatie/laravel-ignition/src/Views/ViewExceptionMapper.php',
+        'Spatie\\LaravelPackageTools\\Commands\\InstallCommand' => __DIR__ . '/..' . '/spatie/laravel-package-tools/src/Commands/InstallCommand.php',
+        'Spatie\\LaravelPackageTools\\Exceptions\\InvalidPackage' => __DIR__ . '/..' . '/spatie/laravel-package-tools/src/Exceptions/InvalidPackage.php',
+        'Spatie\\LaravelPackageTools\\Package' => __DIR__ . '/..' . '/spatie/laravel-package-tools/src/Package.php',
+        'Spatie\\LaravelPackageTools\\PackageServiceProvider' => __DIR__ . '/..' . '/spatie/laravel-package-tools/src/PackageServiceProvider.php',
         'Stringable' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Stringable.php',
         'Symfony\\Component\\Console\\Application' => __DIR__ . '/..' . '/symfony/console/Application.php',
         'Symfony\\Component\\Console\\Attribute\\AsCommand' => __DIR__ . '/..' . '/symfony/console/Attribute/AsCommand.php',

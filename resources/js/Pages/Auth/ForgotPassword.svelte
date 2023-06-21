@@ -1,7 +1,6 @@
 <script>
     import { page, useForm } from "@inertiajs/svelte";
     import Layout from "./../../Layouts/Layout.svelte";
-    //TODO add mailpit to send email
 
     let form = useForm({
         email: "",
@@ -42,7 +41,7 @@
                 disabled={$form.processing}>Versturen</button
             >
         </form>
-        {#if $page.props.flash.message}
+        {#if $form.recentlySuccessful}
             <div class="form__success">
                 {$page.props.flash.message}
             </div>

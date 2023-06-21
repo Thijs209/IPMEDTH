@@ -1,0 +1,52 @@
+<script lang="ts">
+    export let key: string;
+    export let text: string;
+    export let wide: boolean;
+    export let small: boolean;
+    export let noMargin: boolean;
+    export let onChange: (key: String, value: String) => void;
+
+    console.log(typeof onChange);
+</script>
+
+<div class:wide class:small class="inputContainer" class:noMargin>
+    <label for={text}>{text}</label>
+    <textarea
+        on:keypress={(e) => {
+            onChange(key, e.currentTarget.value);
+        }}
+        name={text}
+        id={text}
+        placeholder="Type hier..."
+    />
+</div>
+
+<style>
+    label {
+        font-size: 1.5rem;
+        margin-top: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 1em;
+    }
+
+    .inputContainer {
+        margin-top: 2em;
+        width: 30%;
+        min-width: 40em;
+    }
+
+    textarea {
+        width: 100%;
+        height: 5em;
+        border: 1px solid #00a667;
+        border-radius: 0.5em;
+        padding: 0.5em;
+        font-size: 1.5em;
+        font-family: Arial, Helvetica, sans-serif;
+        resize: none;
+    }
+
+    textarea:focus {
+        outline: 1.2px solid #00a667;
+    }
+</style>

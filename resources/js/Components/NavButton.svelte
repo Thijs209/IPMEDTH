@@ -1,26 +1,38 @@
 <script lang="ts">
+    import { Link } from "@inertiajs/svelte";
+    import { fade, fly } from "svelte/transition";
     export let text: string;
     export let open: boolean;
+    export let href: string = "#";
 </script>
 
 <div>
-    <button class="navRow">
-        <div class="iconHolder">
-            <slot />
-        </div>
-        {#if open}
-            <p>{text}</p>
-        {/if}
-    </button>
+    <Link {href}>
+        <button class="navRow">
+            <div class="iconHolder">
+                <slot />
+            </div>
+            {#if open}
+                <p transition:fade={{ duration: 300 }}>{text}</p>
+            {/if}
+        </button>
+    </Link>
 </div>
 
 <style>
     button {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
         border-radius: 1em;
         width: 100%;
+        height: 4rem;
         background-color: transparent;
         border: none;
         color: white;
+        font-size: 1.5rem;
+        font-weight: bold;
     }
 
     .navRow {
@@ -33,6 +45,7 @@
 
     button:hover {
         cursor: pointer;
+        transform: scale(1.05);
     }
 
     .iconHolder {

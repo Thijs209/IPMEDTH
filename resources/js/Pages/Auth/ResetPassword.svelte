@@ -14,10 +14,12 @@
         token: token,
     });
 
+    let message = null``;
+
     function submit() {
         $form.post("/reset-password", {
             onsuccess: () => {
-                $page.props.flash.message =
+                message =
                     "Je wachtwoord is succesvol gewijzigd, je kan nu inloggen.";
             },
             onfinish: () => {
@@ -72,10 +74,8 @@
                 disabled={$form.processing}>Verzend</button
             >
         </form>
-        {#if $page.props.flash.message}
-            <div class="form__success">
-                {$page.props.flash.message}
-            </div>
+        {#if message}
+            <div class="form__success">message</div>
         {/if}
     </article>
 </Layout>
