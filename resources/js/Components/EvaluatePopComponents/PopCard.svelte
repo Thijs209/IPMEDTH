@@ -68,7 +68,7 @@
         </div>
     </div>
     <div class="pop-card__button">
-        <Link href="/evaluate-pop/users/{pop.userId}/pops/{pop.id}">
+        <Link href={/evaluation/ + pop.id}>
             <IconHolder>
                 <MdChevronRight />
             </IconHolder>

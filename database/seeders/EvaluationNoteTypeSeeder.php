@@ -14,6 +14,9 @@ class EvaluationNoteTypeSeeder extends Seeder
     public function run(): void
     {
         DB::table('evaluation_note_types')->insert([
+            'note_type' => "overall",
+        ]);
+        DB::table('evaluation_note_types')->insert([
             'note_type' => "core quadrants",
         ]);
         DB::table('evaluation_note_types')->insert([

@@ -10,9 +10,8 @@
         pitfall: string;
     }
 
-    export let coreQuadrant: any;
+    export let coreQuadrant: CoreQuadrant;
 
-    console.log(coreQuadrant.coreQuality);
 </script>
 
 <section class="grid">

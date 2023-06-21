@@ -65,11 +65,11 @@ class EvaluationController extends Controller
     {
     $pop = Pop::findOrFail($id);
 
-    if ($pop) {
-        return Inertia::render('PopEvaluation/EvaluatePop', [
-            'pop' => PopResource::make($pop),
-        ]);    
-    }
+        if ($pop) {
+            return Inertia::render('PopEvaluation/EvaluatePop', [
+                'pop' => PopResource::make($pop),
+            ]);    
+        }
     }
 
     /**

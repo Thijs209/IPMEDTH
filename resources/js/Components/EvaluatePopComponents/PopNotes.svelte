@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { useForm } from "@inertiajs/svelte";
+    import { useForm, page } from "@inertiajs/svelte";
     import moment, { type Moment } from "moment";
     import { onMount, tick } from "svelte";
     import { MdSave } from "svelte-icons/md";
@@ -7,24 +7,7 @@
     import PopNote from "./PopNote.svelte";
     import { pop } from "../../stores.js";
 
-    let element: HTMLElement;
-    onMount(() => {
-        scrollToBottom(element);
-    });
-    
-    let form = useForm({
-        date: "",
-        time: "",
-        note: "",
-        remember: true,
-    });
-
-    type Note = {
-        date: string | Moment;
-        time: string | Moment;
-        note: string;
-    };
-
+    export let popId: string;
     // TODO LocalStorage voor notes uitwerken
     export let notes: Note[] = [
         {
@@ -43,6 +26,26 @@
             note: "Karin heeft de feedback ontvangen.",
         },
     ];
+
+    let element: HTMLElement;
+    onMount(() => {
+        scrollToBottom(element);
+    });
+
+    let form = useForm({
+        date: "",
+        time: "",
+        note: "",
+        pop_id: popId,
+        remember: true,
+    });
+
+    type Note = {
+        date: string | Moment;
+        time: string | Moment;
+        note: string;
+        pop_id: string;
+    };
 
     let newNote: Note = {
         date: moment().format("LL"),
@@ -63,8 +66,10 @@
 
     async function handleSave() {
         console.log(newNote);
+        console.log($form);
         notes = [...notes, newNote];
         newNote = {
+            pop_id: pop.id,
             date: moment().format("LL"),
             time: moment().format("HH:mm"),
             note: "",
@@ -72,15 +77,15 @@
         await tick();
         scrollToBottom(element);
         console.log(notes);
-        $form.post(('/pops' + pop.id + '/evaluation-note'), {
+        $form.post("/evaluation/" + popId + "/notes", {
             preserveScroll: true,
             onSuccess: () => {
                 console.log("succes");
             },
             onError: () => {
-                console.log("error");
+                console.log($form.errors);
             },
-        };
+        });
         $form.reset();
     }
 </script>

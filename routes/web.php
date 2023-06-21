@@ -59,6 +59,7 @@ Route::get('/reset-password/{token}', function ($request) {
 
 Route::get('/evaluation-overview', [EvaluationController::class, 'index']);
 Route::get('/evaluation/{pop_id}', [EvaluationController::class, 'show']);
+Route::post('/evaluation/{pop_id}/notes', [EvaluationNoteController::class, 'store']);
 
 
 // Route::prefix('v1')-> group(function(){
@@ -67,7 +68,6 @@ Route::get('/evaluation/{pop_id}', [EvaluationController::class, 'show']);
 // });
 
 
-Route::post('/pops/{$popId}/evaluation-note', [EvaluationNoteController::class, 'store']);
 // POP Routes
 // Route::get('/create-pop', [PopController::class, 'create']);
 // Route::post('/create-pop', [PopController::class, 'store']);
