@@ -1,19 +1,18 @@
 <script lang="ts">
     import CoreQuadrantArrow from "./../../Components/EvaluatePopComponents/CoreQuadrantArrow.svelte";
     import CoreQuadrant from "./../../Components/EvaluatePopComponents/CoreQuadrant.svelte";
-    let kernkwadranten = {
-        quality: "Kwaliteit",
-        pitfall: "Valkuil",
-        allergy: "Allergie",
-        challenge: "Uitdaging",
-    };
+
+    interface CoreQuadrant {
+        coreQuadrantId: string;
+        allergy: string;
+        challenge: string;
+        coreQuality: string;
+        pitfall: string;
+    }
+
+    export let coreQuadrant: any;
     export let pop;
-    export let coreQuadrants = {
-        quality: "Doorzettings vermogen",
-        pitfall: "Overbelasting",
-        allergy: "Onzekerheid",
-        challenge: "Rustmomenten gunnen",
-    };
+    console.log(coreQuadrant.coreQuality);
     if (window.location.href.indexOf("create-pop") > -1) {
         coreQuadrants = pop?.coreQuadrant;
     }

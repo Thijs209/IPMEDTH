@@ -17,11 +17,14 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             UserSeeder::class,
             PopSeeder::class,
+            TaskSeeder::class,
             GoalTypeSeeder::class,
             GoalSeeder::class,
             TaskSeeder::class,
             EvaluationSeeder::class,
-            EvaluationNoteTypeSeeder::class
+            EvaluationNoteTypeSeeder::class,
+            TaskSeeder::class,
+            CoreQuadrantSeeder::class,
         ]);
     }
 }

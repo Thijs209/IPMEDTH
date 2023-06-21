@@ -10,7 +10,6 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
-
 class EvaluationController extends Controller
 {
     /**
@@ -20,7 +19,6 @@ class EvaluationController extends Controller
     {
         return Inertia::render('PopEvaluation/EvaluationOverview', [
             'pops' => PopResource::collection(Pop::all()),
-            'users' => UserResource::collection(User::all())
         ]);
     }
 
@@ -35,9 +33,15 @@ class EvaluationController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Evaluation $evaluation)
+    public function show($id)    
     {
-        //
+    $pop = Pop::findOrFail($id);
+
+    if ($pop) {
+        return Inertia::render('PopEvaluation/EvaluatePop', [
+            'pop' => PopResource::make($pop),
+        ]);    
+    }
     }
 
     /**

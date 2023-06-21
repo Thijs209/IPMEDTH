@@ -82,6 +82,7 @@ class ComposerStaticInitba78dc48f2787e71c00c60073fe32a2a
             'Symfony\\Component\\ErrorHandler\\' => 31,
             'Symfony\\Component\\CssSelector\\' => 30,
             'Symfony\\Component\\Console\\' => 26,
+            'Spatie\\LaravelPackageTools\\' => 27,
             'Spatie\\LaravelIgnition\\' => 23,
             'Spatie\\Ignition\\' => 16,
             'Spatie\\FlareClient\\' => 19,
@@ -126,6 +127,8 @@ class ComposerStaticInitba78dc48f2787e71c00c60073fe32a2a
             'Laravel\\Sanctum\\' => 16,
             'Laravel\\Sail\\' => 13,
             'Laravel\\Fortify\\' => 16,
+            'LaracraftTech\\LaravelUsefulAdditions\\Database\\Factories\\' => 56,
+            'LaracraftTech\\LaravelUsefulAdditions\\' => 37,
         ),
         'I' => 
         array (
@@ -310,6 +313,10 @@ class ComposerStaticInitba78dc48f2787e71c00c60073fe32a2a
         array (
             0 => __DIR__ . '/..' . '/symfony/console',
         ),
+        'Spatie\\LaravelPackageTools\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/spatie/laravel-package-tools/src',
+        ),
         'Spatie\\LaravelIgnition\\' => 
         array (
             0 => __DIR__ . '/..' . '/spatie/laravel-ignition/src',
@@ -426,6 +433,14 @@ class ComposerStaticInitba78dc48f2787e71c00c60073fe32a2a
         'Laravel\\Fortify\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravel/fortify/src',
+        ),
+        'LaracraftTech\\LaravelUsefulAdditions\\Database\\Factories\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/laracraft-tech/laravel-useful-additions/database/factories',
+        ),
+        'LaracraftTech\\LaravelUsefulAdditions\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/laracraft-tech/laravel-useful-additions/src',
         ),
         'Inertia\\' => 
         array (
@@ -2871,6 +2886,11 @@ class ComposerStaticInitba78dc48f2787e71c00c60073fe32a2a
         'Inertia\\Testing\\Concerns\\Matching' => __DIR__ . '/..' . '/inertiajs/inertia-laravel/src/Testing/Concerns/Matching.php',
         'Inertia\\Testing\\Concerns\\PageObject' => __DIR__ . '/..' . '/inertiajs/inertia-laravel/src/Testing/Concerns/PageObject.php',
         'Inertia\\Testing\\TestResponseMacros' => __DIR__ . '/..' . '/inertiajs/inertia-laravel/src/Testing/TestResponseMacros.php',
+        'LaracraftTech\\LaravelUsefulAdditions\\Commands\\DBTruncateCommand' => __DIR__ . '/..' . '/laracraft-tech/laravel-useful-additions/src/Commands/DBTruncateCommand.php',
+        'LaracraftTech\\LaravelUsefulAdditions\\LaravelUsefulAdditionsServiceProvider' => __DIR__ . '/..' . '/laracraft-tech/laravel-useful-additions/src/LaravelUsefulAdditionsServiceProvider.php',
+        'LaracraftTech\\LaravelUsefulAdditions\\Traits\\RefreshDatabaseFast' => __DIR__ . '/..' . '/laracraft-tech/laravel-useful-additions/src/Traits/RefreshDatabaseFast.php',
+        'LaracraftTech\\LaravelUsefulAdditions\\Traits\\UsefulEnums' => __DIR__ . '/..' . '/laracraft-tech/laravel-useful-additions/src/Traits/UsefulEnums.php',
+        'LaracraftTech\\LaravelUsefulAdditions\\Traits\\UsefulScopes' => __DIR__ . '/..' . '/laracraft-tech/laravel-useful-additions/src/Traits/UsefulScopes.php',
         'Laravel\\Fortify\\Actions\\AttemptToAuthenticate' => __DIR__ . '/..' . '/laravel/fortify/src/Actions/AttemptToAuthenticate.php',
         'Laravel\\Fortify\\Actions\\CompletePasswordReset' => __DIR__ . '/..' . '/laravel/fortify/src/Actions/CompletePasswordReset.php',
         'Laravel\\Fortify\\Actions\\ConfirmPassword' => __DIR__ . '/..' . '/laravel/fortify/src/Actions/ConfirmPassword.php',
@@ -5588,6 +5608,10 @@ class ComposerStaticInitba78dc48f2787e71c00c60073fe32a2a
         'Spatie\\LaravelIgnition\\Support\\StringComparator' => __DIR__ . '/..' . '/spatie/laravel-ignition/src/Support/StringComparator.php',
         'Spatie\\LaravelIgnition\\Views\\BladeSourceMapCompiler' => __DIR__ . '/..' . '/spatie/laravel-ignition/src/Views/BladeSourceMapCompiler.php',
         'Spatie\\LaravelIgnition\\Views\\ViewExceptionMapper' => __DIR__ . '/..' . '/spatie/laravel-ignition/src/Views/ViewExceptionMapper.php',
+        'Spatie\\LaravelPackageTools\\Commands\\InstallCommand' => __DIR__ . '/..' . '/spatie/laravel-package-tools/src/Commands/InstallCommand.php',
+        'Spatie\\LaravelPackageTools\\Exceptions\\InvalidPackage' => __DIR__ . '/..' . '/spatie/laravel-package-tools/src/Exceptions/InvalidPackage.php',
+        'Spatie\\LaravelPackageTools\\Package' => __DIR__ . '/..' . '/spatie/laravel-package-tools/src/Package.php',
+        'Spatie\\LaravelPackageTools\\PackageServiceProvider' => __DIR__ . '/..' . '/spatie/laravel-package-tools/src/PackageServiceProvider.php',
         'Stringable' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Stringable.php',
         'Symfony\\Component\\Console\\Application' => __DIR__ . '/..' . '/symfony/console/Application.php',
         'Symfony\\Component\\Console\\Attribute\\AsCommand' => __DIR__ . '/..' . '/symfony/console/Attribute/AsCommand.php',

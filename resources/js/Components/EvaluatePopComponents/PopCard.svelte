@@ -18,21 +18,17 @@
         evaluatedBy: number;
         evaluationFinished: boolean;
         evaluationFinishedAt: any;
-    }
-
-    interface User {
-        userId: number;
-        firstName: string;
-        lastName: string;
-        displayName: string;
-        email: string;
+        tasks: any[];
+        core_quadrants: any[];
+        goals: any[];
+        evaluation_notes: any[];
+        user: any;
     }
 
     export let pop: Pop;
-    export let users: User[];
 
     const date = pop.userFinishedAt;
-    const popUser = users.find((id: any) => pop.userId);
+    const displayName = pop.user.first_name + " " + pop.user.last_name;
 
     let periode: string =
         moment(date).format("DD-MM-YYYY") +
@@ -47,9 +43,9 @@
 </script>
 
 <article class="pop-card">
-    <div class="pop-card__status" data-status="placeholder" />
+    <div class="pop-card__status" data-status="1" />
     <div class="pop-card__content">
-        <h3 class="pop-card__heading">{popUser?.displayName}</h3>
+        <h3 class="pop-card__heading">{displayName}</h3>
         <div class="pop-card__row">
             <p class="pop-card__label">Periode</p>
             <p class="pop-card__text">{periode}</p>
@@ -60,7 +56,7 @@
         </div>
     </div>
     <div class="pop-card__button">
-        <Link href="/evaluate-pop/users/{pop.userId}/pops/{pop.popId}">
+        <Link href="/evaluation/{pop.id}}">
             <IconHolder>
                 <MdChevronRight />
             </IconHolder>
