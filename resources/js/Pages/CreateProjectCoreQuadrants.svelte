@@ -2,7 +2,8 @@
     import CoreQuadrantField from "./../Components/CreatePopComponents/CoreQuadrantField.svelte";
     import Button from "../Components/Button.svelte";
 
-
+    export let pop;
+    export let updateCoreQuadrants;
 </script>
 
 <p>Geef aan wat je in de komende periode gaat doen.</p>
@@ -85,5 +86,9 @@
         position: absolute;
         right: -10px;
         top: -7.5px;
+    }
+
+    p{
+        font-size: 1.5em;
     }
 </style>

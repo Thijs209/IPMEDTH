@@ -18,5 +18,7 @@
 <BigInput onChange={changeProject} value={pop.project?.reportOthers} key="reportOthers" text="Rapporteer je nog naar anderen?" />
 
 <style>
-    
+    p{
+			font-size: 1.5em;
+		}
 </style>

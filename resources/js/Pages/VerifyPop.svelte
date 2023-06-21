@@ -1,8 +1,5 @@
 <script>
-    export let errors;
-    console.log(errors);
-</script>
+    import ShowGoal from "../Components/CreatePopComponents/ShowGoal.svelte";
 
-<h1>
-    {errors}
-</h1>
+    export let pop;
+</script>

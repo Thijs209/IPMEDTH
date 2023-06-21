@@ -16,6 +16,11 @@ class PopController extends Controller
         return PopResource::collection(Pop::all());
     }
 
+    public function create()
+    {
+        return Inertia::render('CreatePop');
+    }
+
 public function store(StorePopRequest $request)
     {
         $pop = Pop::create($request->validated());

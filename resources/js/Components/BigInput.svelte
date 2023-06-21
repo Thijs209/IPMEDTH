@@ -5,6 +5,7 @@
     export let small: boolean;
     export let noMargin: boolean;
     export let onChange: (key: String, value: String) => void;
+    export let value: string;
 
     console.log(typeof onChange)
 </script>

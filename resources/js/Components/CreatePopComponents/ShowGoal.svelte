@@ -89,4 +89,8 @@
     .infoCard{
         margin: .5em 0;
     }
+
+    p{
+        font-size: 1.5em;
+    }
 </style>
