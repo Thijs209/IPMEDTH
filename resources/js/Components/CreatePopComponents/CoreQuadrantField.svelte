@@ -10,8 +10,6 @@
     export let coreQuadrants;
 
     let inputFields = coreQuadrants?.[key] || '';
-    console.log(inputFields);
-    console.log(coreQuadrants);
 
     function addTextField() {
         inputFields = [...inputFields, ''];

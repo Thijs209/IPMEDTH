@@ -7,36 +7,40 @@
         allergy: "Allergie",
         challenge: "Uitdaging",
     };
-
+    export let pop;
     export let coreQuadrants = {
         quality: "Doorzettings vermogen",
         pitfall: "Overbelasting",
         allergy: "Onzekerheid",
         challenge: "Rustmomenten gunnen",
     };
+    if (window.location.href.indexOf("create-pop") > -1) {
+        coreQuadrants = pop?.coreQuadrant;
+    }
+    
 </script>
 
 <section class="grid">
     <div data-type="Kwaliteit">
-        <CoreQuadrant type={"Kwaliteit"} text={coreQuadrants.quality} />
+        <CoreQuadrant type={"Kwaliteit"} text={coreQuadrants?.quality||''} />
     </div>
     <div class="coreQuadrantArrow--top">
         <CoreQuadrantArrow location={"top"} />
     </div>
     <div data-type="Valkuil">
-        <CoreQuadrant type={"Valkuil"} text={coreQuadrants.pitfall} />
+        <CoreQuadrant type={"Valkuil"} text={coreQuadrants?.pitfall||''} />
     </div>
     <div class="coreQuadrantArrow--right">
         <CoreQuadrantArrow location={"right"} />
     </div>
     <div data-type="Allergie">
-        <CoreQuadrant type={"Allergie"} text={coreQuadrants.allergy} />
+        <CoreQuadrant type={"Allergie"} text={coreQuadrants?.allergy||''} />
     </div>
     <div class="coreQuadrantArrow--bottom">
         <CoreQuadrantArrow location={"bottom"} />
     </div>
     <div data-type="Uitdaging">
-        <CoreQuadrant type={"Uitdaging"} text={coreQuadrants.challenge} />
+        <CoreQuadrant type={"Uitdaging"} text={coreQuadrants?.challenge||''} />
     </div>
     <div class="coreQuadrantArrow--left">
         <CoreQuadrantArrow location={"left"} />

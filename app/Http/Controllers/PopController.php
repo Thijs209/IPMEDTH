@@ -19,7 +19,7 @@ class PopController extends Controller
         return PopResource::collection(Pop::all());
     }
 
-    public function create()
+    public function show()
     {
         $pop = Pop::find($id);
         return Inertia::render('Pop/', [
@@ -35,7 +35,7 @@ class PopController extends Controller
         return Inertia::render('CreatePop');
     }
 
-public function store(StorePopRequest $request)
+    public function store(StorePopRequest $request)
     {
         $pop = Pop::create($request->validated());
 
@@ -90,8 +90,8 @@ public function store(StorePopRequest $request)
                     $goalStep->description = $stepitem;
                     $goalStep->save();
                 }
-            }        
-        }
+             }        
+         }
 
         return PopResource::make($pop);
     }

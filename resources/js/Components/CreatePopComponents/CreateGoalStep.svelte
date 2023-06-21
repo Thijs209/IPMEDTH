@@ -6,23 +6,21 @@
     export let goal;
     export let updateGoal;
 
-    let steps = [];
-    console.log(steps);
+    let steps = goal.goalSteps||[];
     function updateSteps(key, value) {
         steps[key] = value;
-        updateGoal('steps', steps);
+        updateGoal('goalSteps', steps);
     }
 
-    if(goal.steps === undefined || goal.steps.length === 0) {
+    if(goal.goalSteps === undefined || goal.goalSteps.length === 0) {
         updateSteps(0, {id: 1, value: ''});
-        console.log(goal.steps)
     }
 
     function addStep(e) {
         e.preventDefault();
         steps = [...steps, {id: steps.length + 1, value: ''}];
         steps = steps;
-        updateGoal('steps', steps);
+        updateGoal('goalSteps', steps);
         console.log(steps)
     }
 
@@ -34,9 +32,9 @@
 <div>
     <h4>Hoe ga ik dit doen?</h4>
     <div class="container">
-        {#each goal.steps as step, i}
+        {#each goal.goalSteps as step, i}
             <div class="step">
-                <BigInput key={i} onChange={updateStep} noMargin text={`Stap ${i+1}`} />
+                <BigInput value={step.value} key={i} onChange={updateStep} noMargin text={`Stap ${i+1}`} />
             </div>
         {/each}
         <Button onClick={(e) => addStep(e)} icon>

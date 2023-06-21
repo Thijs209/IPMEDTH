@@ -8,7 +8,8 @@
     import CreateProjectCoreQuadrants from './CreateProjectCoreQuadrants.svelte';
     import { writable } from 'svelte/store';
     import VerifyPop from './VerifyPop.svelte';
-
+    import { text } from '@sveltejs/kit';
+    import { router } from '@inertiajs/svelte'
 
     const pages = [
         'Intro',
@@ -18,18 +19,22 @@
         'Afronden'
     ];
 
-    let pop = {'goals': []};
+    let pop = {'goals': [], 'user_id':1
+    };
     function updatePop(key, value) {
         pop[key] = value;
         console.log(pop)
     }
-    
-    let goal = {};
-    function updateGoal(key, value) {
-        goal[key] = value;
-        console.log(goal);
-    }
 
+    function addGoal(goal) {
+        if(pop.goals[goal.id-1] === undefined) {
+            updatePop('goals', [...pop.goals, goal]);
+        } else {
+            pop.goals[goal.id-1] = goal;
+            updatePop('goals', pop.goals);
+        }
+    }
+    
     let currentPage = 0;
     function nextPage() {
         currentPage++;
@@ -40,6 +45,15 @@
     function setCurrentPage(page) {
         currentPage = page;
     };
+
+    function savePop() {
+        router.post('/post-pop', pop)
+    }
+
+    let openGoal = null;
+    function setOpenGoal(goal) {
+        openGoal = goal;
+    }
 </script>
 
 <div class="container">
@@ -51,16 +65,23 @@
     {:else if currentPage == 2}
         <CreateProjectCoreQuadrants pop={pop} updatePop={updatePop} />
     {:else if currentPage == 3}
-        <CreatePopGoals pop={pop} goals={goal} updateGoal={updateGoal} setCurrentPage={setCurrentPage} />
+        <CreatePopGoals openGoal={openGoal} setOpenGoal={setOpenGoal} pop={pop} setCurrentPage={setCurrentPage} />
     {:else if currentPage == 4}
-        <VerifyPop pop={pop} setCurrentPage={setCurrentPage} />
+        {console.log(pop)}
+        <VerifyPop pop={pop} />
     {:else if currentPage == 10}
-        <CreateGoal updateGoal={updateGoal} goal={goal} pop={pop} setCurrentPage={setCurrentPage} updatePop={updatePop} />
+        <CreateGoal addGoal={addGoal} openGoal={openGoal} pop={pop} setCurrentPage={setCurrentPage} updatePop={updatePop} />
     {/if}
-    <div class="buttons">
-        <Button onClick={previousPage} text={'vorige'} />
-        <Button onClick={nextPage} text={'Volgende'} />
-    </div>
+    {#if currentPage != 10}
+        <div class="buttons">
+            <Button onClick={previousPage} text={'vorige'} />
+            {#if currentPage == 4}
+                <Button onClick={savePop} text='Opslaan' />
+            {:else}
+                <Button onClick={nextPage} text={'Volgende'} />
+            {/if}
+        </div>
+    {/if}
 </div>
 
 <style>

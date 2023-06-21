@@ -2,20 +2,23 @@
     import { currentPopTaskQuestions, currentPopTask } from "./../../stores.js";
     import PopProjectField from "../../Components/EvaluatePopComponents/PopProjectField.svelte";
 
+    export let pop;
+
     let questions = { ...$currentPopTaskQuestions };
     let answers = { ...$currentPopTask };
     
+    if (window.location.href.indexOf("create-pop") > -1) {
+        answers = pop?.task
+    }
+    console.log(answers)
 </script>
 
 <section>
-    <PopProjectField question={questions.goal} answer={answers.goal} />
-    <PopProjectField question={questions.result} answer={answers.result} />
-    <PopProjectField question={questions.succes} answer={answers.succes} />
-    <PopProjectField question={questions.manager} answer={answers.manager} />
-    <PopProjectField
-        question={questions.reportsOthers}
-        answer={answers.reportsOthers}
-    />
+    <PopProjectField question={questions.goal} answer={answers?.goal} />
+    <PopProjectField question={questions.result} answer={answers?.result} />
+    <PopProjectField question={questions.success} answer={answers?.success} />
+    <PopProjectField question={questions.manager} answer={answers?.manager} />
+    <PopProjectField question={questions.reportsOthers} answer={answers?.reportsOthers}    />
 </section>
 
 <style>

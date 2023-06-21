@@ -10,11 +10,14 @@
 
 <style>
     u{
-        font-size: 1.3em;
+        font-size: 1.8em;
         font-weight: 700;
         color: white;
     }
 
+    p{
+        font-size:1.5em;
+    }
     .container{
         padding: 1em 2em;
         background-color: #0d403d;

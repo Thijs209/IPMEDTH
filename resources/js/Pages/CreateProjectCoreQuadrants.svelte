@@ -3,18 +3,26 @@
     import Button from "../Components/Button.svelte";
 
     export let pop;
-    export let updateCoreQuadrants;
+    export let updatePop;
+
+    console.log(pop)
+    let coreQuadrants = pop.coreQuadrant || {};
+    console.log(coreQuadrants)
+    function updateCoreQuadrants(key, value) {
+        coreQuadrants[key] = value;
+        updatePop('coreQuadrant', coreQuadrants)
+    }
 </script>
 
 <p>Geef aan wat je in de komende periode gaat doen.</p>
 <Button marginTop={true} style="background-color:black" text="Kernkwadrant 1" />
 <div class="quadrantContainer">
-    <CoreQuadrantField coreQuadrants={pop?.coreQuadrants} updateCoreQuadrants={updateCoreQuadrants} key='coreQuality' title='Kernkwaliteit' />
+    <CoreQuadrantField coreQuadrants={pop?.coreQuadrant} updateCoreQuadrants={updateCoreQuadrants} key='quality' title='Kernkwaliteit' />
     <div class='arrowContainer'>
         <h3>Te veel van het goede</h3>
         <div class="arrow" />
     </div>
-    <CoreQuadrantField coreQuadrants={pop?.coreQuadrants} updateCoreQuadrants={updateCoreQuadrants} key='pitfall' title='Valkuil' />
+    <CoreQuadrantField coreQuadrants={pop?.coreQuadrant} updateCoreQuadrants={updateCoreQuadrants} key='pitfall' title='Valkuil' />
     <div class='arrowContainer vertical'>
         <h3>Negatief tegenovergestelde</h3>
         <div class="arrow bottom" />
@@ -24,12 +32,12 @@
         <h3>Positief tegenovergestelde</h3>
         <div class="arrow bottom" />
     </div>
-    <CoreQuadrantField coreQuadrants={pop?.coreQuadrants} updateCoreQuadrants={updateCoreQuadrants} key='allergy' title='Allergie' />
+    <CoreQuadrantField coreQuadrants={pop?.coreQuadrant} updateCoreQuadrants={updateCoreQuadrants} key='allergy' title='Allergie' />
     <div class='arrowContainer'>
         <h3>Te veel van het goede</h3>
         <div class="arrow reversed" />
     </div>
-    <CoreQuadrantField coreQuadrants={pop?.coreQuadrants} updateCoreQuadrants={updateCoreQuadrants} key='challenge' title='Uitdaging' />
+    <CoreQuadrantField coreQuadrants={pop?.coreQuadrant} updateCoreQuadrants={updateCoreQuadrants} key='challenge' title='Uitdaging' />
 </div>
 
 <style>

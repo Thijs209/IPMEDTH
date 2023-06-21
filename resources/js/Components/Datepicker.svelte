@@ -3,11 +3,12 @@
   export let text;
   export let onChange;
   export let key;
+  export let value;
 </script>
 
 <div class:marginTop={marginTop}  class="inputContainer">
   <label for={text}>{text}</label>
-  <input on:change={(e) => onChange(key, e.target.value)} name={text} type="date">
+  <input value={value} on:change={(e) => onChange(key, e.target.value)} name={text} type="date">
 </div>
   
 <style>

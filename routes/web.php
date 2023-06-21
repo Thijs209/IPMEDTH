@@ -66,8 +66,8 @@ Route::prefix('v1')-> group(function(){
 });
 
 // POP Routes
-// Route::get('/create-pop', [PopController::class, 'create']);
-// Route::post('/create-pop', [PopController::class, 'store']);
+Route::get('/create-pop', [PopController::class, 'create']);
+Route::post('/post-pop', [PopController::class, 'store']);
 
 // Temp Route for testing, with default values
 // TODO remove default values in production + add permissions so only people manager and admin roles can access evaluation page for any POP
