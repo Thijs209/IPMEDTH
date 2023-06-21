@@ -5,6 +5,7 @@
     import { MdSave } from "svelte-icons/md";
     import IconHolder from "./../IconHolder.svelte";
     import PopNote from "./PopNote.svelte";
+    import { pop } from "../../stores.js";
 
     let element: HTMLElement;
     onMount(() => {
@@ -71,6 +72,15 @@
         await tick();
         scrollToBottom(element);
         console.log(notes);
+        $form.post(('/pops' + pop.id + '/evaluation-note'), {
+            preserveScroll: true,
+            onSuccess: () => {
+                console.log("succes");
+            },
+            onError: () => {
+                console.log("error");
+            },
+        };
         $form.reset();
     }
 </script>

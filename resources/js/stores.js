@@ -24,9 +24,9 @@ export const pop = writable({
     project: {
         description: "",
         result: "",
-        succes: "",
+        success: "",
         manager: "",
-        bosses: "",
+        reportsOthers: "",
     },
     coreQuadrants: [],
     goals: [],
@@ -37,15 +37,15 @@ export const pop = writable({
 export const currentPopTaskQuestions = readable({
     goal: "Wat is je overkoepelende doel?",
     result: "Wat is het resultaat van het behalen van dit doel?",
-    succes: "Wanneer ben je tevreden?",
+    success: "Wanneer ben je tevreden?",
     manager: "Hoe kan je manager je helpen?",
     reportsOthers: "Rapporteer je aan anderen?",
 });
 
-export const currentPopTask = readable({
+export const currentPopTask = writable({
     goal: "Mijn overkoepelende doel is om meer overzicht te creëren in mijn werkzaamheden.",
     result: "Wanneer ik meer overzicht heb, kan ik mijn werkzaamheden beter plannen en prioriteren.",
-    succes: "Ik heb dit doel bereikt wanneer ik in het komende project minder stress ervaar.",
+    success: "Ik heb dit doel bereikt wanneer ik in het komende project minder stress ervaar.",
     manager:
         "Mijn manager, Vera PM, kan mij helpen door mij te helpen met het stellen van prioriteiten.",
     reportsOthers: "Ik rapporteer enkel aan Vera PM voor mijn werkzaamheden.",

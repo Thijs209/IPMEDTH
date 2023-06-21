@@ -65,6 +65,8 @@ Route::prefix('v1')-> group(function(){
     Route::apiResource('/evaluation', EvaluationNoteController::class);
 });
 
+
+Route::post('/pops/{$popId}/evaluation-note', [EvaluationNoteController::class, 'store']);
 // POP Routes
 // Route::get('/create-pop', [PopController::class, 'create']);
 // Route::post('/create-pop', [PopController::class, 'store']);
