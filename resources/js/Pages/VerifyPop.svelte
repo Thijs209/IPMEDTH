@@ -11,7 +11,7 @@
     console.log(pop);
 </script>
 
-{#if pop.user_finished = 1}
+{#if pop.noSideBar == true}
 <Layout>
     <div class='container' slot="main">
         <EvaluatePopProject pop={pop} />

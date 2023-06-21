@@ -18,18 +18,17 @@
 
     export let task: any;
 
-    console.log(task.result);
     if (window.location.href.indexOf("create-pop") > -1) {
-        answers = pop?.task
+        task = pop?.task
     }
     console.log(answers)
 </script>
 
 <section>
-    <PopProjectField question={questions.goal} answer={task.goal} />
-    <PopProjectField question={questions.result} answer={task.results} />
-    <PopProjectField question={questions.succes} answer={task.success} />
-    <PopProjectField question={questions.manager} answer={task.manager} />
+    <PopProjectField question={questions.goal} answer={task?.goal} />
+    <PopProjectField question={questions.result} answer={task?.results} />
+    <PopProjectField question={questions.succes} answer={task?.success} />
+    <PopProjectField question={questions.manager} answer={task?.manager} />
     <PopProjectField
         question={questions.reportsOthers}
         answer={answers.reportsOthers}

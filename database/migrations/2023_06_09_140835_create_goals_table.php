@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('goals', function (Blueprint $table) {
             $table->id();
             $table->foreignId('pop_id')->constrained();
-            $table->foreignId('goal_type_id')->constrained();
+            $table->string('goal_type')->nullable();
             $table->string('what')->nullable();
             $table->string('why')->nullable();
             $table->string('satisfied')->nullable();

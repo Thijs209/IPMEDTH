@@ -21,7 +21,7 @@ class PopController extends Controller
 
     public function show($id)
     {
-        $pop = POP::with(['task', 'goals', 'coreQuadrant'])->find($id);
+        $pop = POP::with(['task', 'goals', 'coreQuadrant'])->find($id)->pluck('goals')->flatten();
         return Inertia::render('VerifyPop', [
             'pop' => $pop,
             'tasks' => $pop->tasks,
@@ -33,8 +33,8 @@ class PopController extends Controller
     public function edit($id)
     {
         $pop = POP::with(['task', 'goals', 'coreQuadrant'])->find($id);
-        return Inertia::render('EditPop', [
-            'pop' => $pop,
+        return Inertia::render('CreatePop', [
+            'databasePop' => $pop,
         ]);
     }
 
@@ -94,7 +94,7 @@ class PopController extends Controller
             foreach ($goalsData as $goalsItem) {
                 $goal = new Goal();
                 $goal->pop_id = $pop['id'];
-                $goal->goal_type_id = $goalsItem['goal_type_id'];
+                $goal->goal_type = $goalsItem['goalType'];
                 $goal->what = $goalsItem['what'];
                 $goal->why = $goalsItem['why'];
                 $goal->satisfied = $goalsItem['satisfied'];
@@ -102,7 +102,7 @@ class PopController extends Controller
                 $goal->deadline = date('Y-m-d H:i:s');
                 $goal->feedback = $goalsItem['feedback'];
 
-                $stepData = $goalsItem['steps'];
+                $stepData = $goalsItem['goalSteps'];
 
                 $goal->save();
 
@@ -110,12 +110,11 @@ class PopController extends Controller
                     $goalStep = new GoalStep();
                     $goalStep->goal_id = $goal['id'];
                     $goalStep->step = $key;
-                    $goalStep->description = $stepitem;
+                    $goalStep->description = $stepitem['value'];
                     $goalStep->save();
                 }
              }        
          }
-
         return PopResource::make($pop);
     }
 }

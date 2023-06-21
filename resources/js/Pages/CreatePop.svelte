@@ -20,9 +20,10 @@
         'Doelen',
         'Afronden'
     ];
-
-    let pop = {'goals': [], 'user_id':1
-    };
+    export let databasePop;
+    let pop = databasePop || {'goals': [], 'user_id':1, 'noSidebar': true, 'user_finished': 0, 'project': ''};
+    console.log(pop);
+    console.log(databasePop)
     function updatePop(key, value) {
         pop[key] = value;
         console.log(pop)
@@ -49,7 +50,7 @@
     };
 
     function savePop() {
-        router.post('/post-pop', pop)
+        axios.post('/post-pop', pop)
     }
 
     let openGoal = null;
@@ -70,7 +71,6 @@
     {:else if currentPage == 3}
         <CreatePopGoals openGoal={openGoal} setOpenGoal={setOpenGoal} pop={pop} setCurrentPage={setCurrentPage} />
     {:else if currentPage == 4}
-        {console.log(pop)}
         <VerifyPop pop={pop} />
     {:else if currentPage == 10}
         <CreateGoal addGoal={addGoal} openGoal={openGoal} pop={pop} setCurrentPage={setCurrentPage} updatePop={updatePop} />

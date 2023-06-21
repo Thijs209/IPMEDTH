@@ -49,7 +49,7 @@
         <NavButton {open} href="/" text="Home">
             <FaHome />
         </NavButton>
-        <NavButton {open} text="POP`s" href="/create-pop">
+        <NavButton {open} text="POP`s" href="/pops">
             <FaClipboardList />
         </NavButton>
         <div class="line" />

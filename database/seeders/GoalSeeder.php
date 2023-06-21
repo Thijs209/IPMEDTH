@@ -29,7 +29,7 @@ class GoalSeeder extends Seeder
         DB::table('goals')->insert([
             'id' => 11091,
             'pop_id' => 1109,
-            'goal_type_id' => '1',
+            // 'goal_type_id' => '1',
             'what' => 'Ik wil meer tijd besteden aan mijn hobby\'s door 1x per week een avond vrij te houden',
             'why' => 'Ik wil meer tijd besteden aan mijn hobby\'s omdat ik daar energie van krijg',
             'satisfied' => 'Ik ben tevreden wanneer ik een nieuwe miniatuur heb af kunnen maken in deze POP-cyclus.',
@@ -42,7 +42,7 @@ class GoalSeeder extends Seeder
             DB::table('goals')->insert([
                 'id' => (11090 + $i),
                 'pop_id' => 1109,
-                'goal_type_id' => $i,
+                // 'goal_type_id' => $i,
             ]);
         }
 
@@ -51,7 +51,7 @@ class GoalSeeder extends Seeder
         DB::table('goals')->insert([
             'id' => 11101,
             'pop_id' => 1110,
-            'goal_type_id' => '1',
+            // 'goal_type_id' => '1',
             'what' => 'Ik wil mijn werkplek opgeruimd houden door elke dag 10 minuten te besteden aan het opruimen van mijn bureau.',
             'why' => 'Ik wil mijn werkplek opgeruimd houden omdat ik daar rustig van word.',
             'satisfied' => 'Ik ben tevreden wanneer ik mijn bureau aan het einde van de dag opgeruimd achterlaat.',
@@ -62,7 +62,7 @@ class GoalSeeder extends Seeder
         DB::table('goals')->insert([
             'id' => 11102,
             'pop_id' => 1110,
-            'goal_type_id' => '2',
+            // 'goal_type_id' => '2',
             'what' => 'Ik wil kortere mails kunnen sturen.',
             'why' => 'Ik wil kortere mails kunnen sturen omdat ik geloof dat, dat professioneel overkomt.',
             'satisfied' => 'Ik ben tevreden wanneer ik bij de kernboodschap kan blijven in een mail.',
@@ -75,14 +75,14 @@ class GoalSeeder extends Seeder
             DB::table('goals')->insert([
                 'id' => (11100 + $i),
                 'pop_id' => 1110,
-                'goal_type_id' => $i,
+                // 'goal_type_id' => $i,
             ]);
         }
 
         DB::table('goals')->insert([
             'id' => 11111,
             'pop_id' => 1111,
-            'goal_type_id' => $goal_types["gezondheid"],
+            // 'goal_type_id' => $goal_types["gezondheid"],
             'what' => "Ik wil graag meer overzicht creëren in mijn werkzaamheden.",
             'why' => "Wanneer ik meer overzicht heb, kan ik mijn werkzaamheden beter en prioriteren.",
             'satisfied' =>
@@ -97,7 +97,7 @@ class GoalSeeder extends Seeder
         DB::table('goals')->insert([
             'id' => 11112,
             'pop_id' => 1111,
-            'goal_type_id' =>  $goal_types["persoonlijk"],
+            // 'goal_type_id' =>  $goal_types["persoonlijk"],
             'what' => "Ik wil graag meer doen aan mijn hobby's buiten werk.",
             'why' => "Wanneer ik meer tijd besteed aan mijn hobby's, kan ik mijn werk beter loslaten.",
             'satisfied' =>
@@ -111,7 +111,7 @@ class GoalSeeder extends Seeder
         DB::table('goals')->insert([
             'id' => 11113,
             'pop_id' => 1111,
-            'goal_type_id' => $goal_types["organisatie"],
+            // 'goal_type_id' => $goal_types["organisatie"],
             'what' => "Ik wil bijdragen aan het verbeteren van de werksfeer.",
             'why' => "Wanneer ik bijdraag aan het verbeteren van de werksfeer, kan ik beter samenwerken met mijn collega's.",
             'satisfied' =>
@@ -125,7 +125,7 @@ class GoalSeeder extends Seeder
         DB::table('goals')->insert([
             'id' => 11114,
             'pop_id' => 1111,
-            'goal_type_id' => $goal_types["training"],
+            // 'goal_type_id' => $goal_types["training"],
             'what' => "Ik wil graag mijn communicatievaardigheden verbeteren.",
             'why' => "Wanneer ik mijn communicatievaardigheden verbeter, kan ik beter samenwerken met mijn collega's.",
             'satisfied' =>
@@ -139,7 +139,7 @@ class GoalSeeder extends Seeder
         DB::table('goals')->insert([
             'id' => 11115,
             'pop_id' => 1111,
-            'goal_type_id' =>  $goal_types["functie"],
+            // 'goal_type_id' =>  $goal_types["functie"],
             // 'what' => '',
             // 'why' => '',
             // 'satisfied' => '',
@@ -151,7 +151,7 @@ class GoalSeeder extends Seeder
         DB::table('goals')->insert([
             'id' => 11116,
             'pop_id' => 1111,
-            'goal_type_id' =>  $goal_types["professioneel"],
+            // 'goal_type_id' =>  $goal_types["professioneel"],
             // 'what' => '',
             // 'why' => '',
             // 'satisfied' => '',

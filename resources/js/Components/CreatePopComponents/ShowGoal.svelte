@@ -21,9 +21,11 @@
     <div class="steps">
         <h3>Hoe:</h3>
         <div class="stepContainer">
-            {#each goal.goalSteps as step}
-            <StepCard step={step} />
-            {/each}
+            {#if goal.goalSteps !== undefined}
+                {#each goal.goalSteps as step}
+                    <StepCard step={step} />
+                {/each}
+            {/if}
         </div>
     </div>
     <div class="infoCard">

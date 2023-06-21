@@ -73,10 +73,10 @@
                 <div class="steps">
                     {#each goal?.goalSteps as step}
                     <div class="goalStep">
-                        <h4>{step.stepId}</h4>
-                        <p class="goalStep__title u-bold">{step.step}</p>
+                        <h4>Stap {step.id}</h4>
+                        <!-- <p class="goalStep__title u-bold">{step.step}</p> -->
                         <p class="u-font-small goalStep__description">
-                            {step.description}
+                            {step.value}
                         </p>
                     </div>
                     {/each}
