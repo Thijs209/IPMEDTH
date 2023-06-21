@@ -1,20 +1,39 @@
 <script lang="ts">
     let tableHeaders = [
         "Afgesloten op",
+        "Naam",
         "People Manager",
         "Status",
         "Doelen behaald",
     ];
 
+    interface Pop {
+        userFinishedAt: string;
+        user: {
+            displayName: string;
+        };
+    }
+
+    export let finishedPops: Pop[] = [];
     let tableRows = [
-        ["01-01-2021", "Vera Dide van Oene", "Afgesloten", "Ja"],
-        ["01-01-2021", "Vera Dide van Oene", "Afgesloten", "Ja"],
-        ["01-01-2021", "Vera Dide van Oene", "Afgesloten", "Ja"],
-        ["01-01-2021", "Vera Dide van Oene", "Afgesloten", "Ja"],
-        ["01-01-2021", "Vera Dide van Oene", "Afgesloten", "Ja"],
-        ["01-01-2021", "Vera Dide van Oene", "Afgesloten", "Ja"],
-        ["01-01-2021", "Vera Dide van Oene", "Afgesloten", "Ja"],
+        ["01-01-2021", "Tom Mann", "Vera Dide van Oene", "Afgesloten", "Ja"],
+        // ["01-01-2021", "Vera Dide van Oene", "Afgesloten", "Ja"],
+        // ["01-01-2021", "Vera Dide van Oene", "Afgesloten", "Ja"],
+        // ["01-01-2021", "Vera Dide van Oene", "Afgesloten", "Ja"],
+        // ["01-01-2021", "Vera Dide van Oene", "Afgesloten", "Ja"],
+        // ["01-01-2021", "Vera Dide van Oene", "Afgesloten", "Ja"],
+        // ["01-01-2021", "Vera Dide van Oene", "Afgesloten", "Ja"],
     ];
+    finishedPops.forEach((finishedPop) => {
+        let tableRow = [
+            finishedPop.userFinishedAt,
+            finishedPop.user.displayName,
+            "Vera PM",
+            "Afgesloten",
+            "Ja",
+        ];
+        tableRows.push(tableRow);
+    });
 </script>
 
 <div class="container">
@@ -47,7 +66,7 @@
     .heading {
         display: flex;
         justify-content: start;
-        align-items: center;
+        align-items: start;
         height: 4rem;
         width: 100%;
         font-weight: 600;

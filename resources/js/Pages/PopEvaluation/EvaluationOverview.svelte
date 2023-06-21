@@ -12,10 +12,10 @@
         evaluatedBy: number;
         evaluationFinished: boolean;
         evaluationFinishedAt: any;
+        user: User;
     }
 
     interface User {
-        userId: number;
         firstName: string;
         lastName: string;
         displayName: string;
@@ -23,49 +23,27 @@
     }
 
     export let pops: Pop[];
-    export let users: User[];
-    // export let usersData: User[] = [];
+    console.log(pops);
+
+    let finishedPops = pops.filter(
+        (pop) => pop.userFinished === true && pop.evaluationFinishedAt !== null
+    );
 
     let pageHeading = "POP Overzicht";
     let pages: string[] = ["Home", "POP Overzicht", "POP Review"];
-    // export let pops: Pop[] = [
-    //     {
-    //         userId: 1,
-    //         popId: 1111,
-    //         name: "John Doe",
-    //         startDate: "01-01-2023",
-    //         endDate: "01-01-2024",
-    //         status: 2,
-    //     },
-    //     {
-    //         userId: 4,
-    //         popId: 1112,
-    //         name: "Karin Tonneman",
-    //         startDate: "01-01-2023",
-    //         endDate: "01-06-2023",
-    //         status: 1,
-    //     },
-    //     {
-    //         userId: 3,
-    //         popId: 1113,
-    //         name: "Tom Mann",
-    //         startDate: "01-01-2023",
-    //         endDate: "01-05-2023",
-    //         status: 3,
-    //     },
-    // ];
 </script>
 
 <Layout>
     <article slot="main" class="evaluation-dashboard">
-        <CreatePageHeader {pages} currentPage={0} setCurrentPage={() => {}} />
+        <!-- <CreatePageHeader {pages} currentPage={1} setCurrentPage={() => {}} /> -->
+        <h1>Persoonlijk Ontwikkelingsplan</h1>
         <div class="cards-container">
             {#if pops && pops.length > 0}
-                <PopCards {pops} {users} />
+                <PopCards {pops} />
             {/if}
         </div>
         <div class="archive-container">
-            <PopArchive />
+            <PopArchive {finishedPops} />
         </div>
     </article>
 </Layout>
