@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Task;
 use App\Models\Pop;
+use App\Models\Goal;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Str;
 use App\Http\Resources\TaskResource;
@@ -31,6 +32,7 @@ class PopResource extends JsonResource
             'user' => User::select(['id', 'first_name', 'last_name'])->find($this->user_id),
             'tasks' => TaskResource::make(Pop::find($this->id)->task),
             'goals' => GoalResource::collection(Pop::find($this->id)->goals),
+            // 'goalSteps' => Goal::find($this->id)->goalSteps,
             'coreQuadrants' => CoreQuadrantResource::make(Pop::find($this->id)->coreQuadrants),
             'evaluationNotes' => EvaluationNoteResource::collection(Pop::find($this->id)->evaluationNotes),
             'userFinished' => $this->user_finished,

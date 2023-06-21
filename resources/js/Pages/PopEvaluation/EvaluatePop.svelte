@@ -17,6 +17,14 @@
 
     let pages: string[] = ["Home", "POP Overzicht", "POP Review"];
 
+    interface CoreQuadrant {
+        coreQuadrantId: string;
+        allergy: string;
+        challenge: string;
+        coreQuality: string;
+        pitfall: string;
+    }
+
     interface Pop {
         userId: number;
         popId: number;
@@ -26,23 +34,14 @@
         evaluationFinished: boolean;
         evaluationFinishedAt: any;
         tasks: any[];
-        coreQuadrants: any[];
+        coreQuadrants: CoreQuadrant;
         goals: any[];
+        // goalsSteps: any[];
         evaluation_notes: any[];
         user: any;
     }
 
-    interface CoreQuadrant {
-        coreQuadrantId: string;
-        allergy: string;
-        challenge: string;
-        coreQuality: string;
-        pitfall: string;
-    }
-
     export let pop: Pop;
-
-    console.log(pop.coreQuadrants);
 </script>
 
 <Layout>
@@ -63,7 +62,7 @@
                         coreQuadrant={pop.coreQuadrants}
                     />
                 {:else if $activeEvaluationTab.tab === $evaluationTabs.tabs[2]}
-                    <EvaluatePopGoals />
+                    <EvaluatePopGoals goals={pop.goals} />
                 {:else if $activeEvaluationTab.tab === $evaluationTabs.tabs[3]}
                     <EvaluatePopFinalize />
                 {/if}

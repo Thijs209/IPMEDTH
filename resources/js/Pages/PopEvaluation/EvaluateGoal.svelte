@@ -23,13 +23,15 @@
     export async function handleClick() {
         open = !open;
     }
+
+    console.log(goal);
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <article class="goal" class:open>
     <header data-goalType={goal.goalType} class="goal__header">
         <button on:click={handleClick} class="goal__toggle">
-            {goal.goalType}
+            'hoi'
             <div data-open={open} class="header__open">
                 <IconHolder>
                     <MdChevronRight />

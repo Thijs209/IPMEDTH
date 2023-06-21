@@ -50,8 +50,6 @@
     //         status: 3,
     //     },
     // ];
-
-    console.log(pops);
 </script>
 
 <Layout>

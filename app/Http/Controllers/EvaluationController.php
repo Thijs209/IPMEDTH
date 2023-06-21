@@ -40,7 +40,7 @@ class EvaluationController extends Controller
     if ($pop) {
         return Inertia::render('PopEvaluation/EvaluatePop', [
             'pop' => PopResource::make($pop),
-        ]);    
+        ]);
     }
     }
 
