@@ -5,9 +5,9 @@
     import moment from "moment";
 
     const POPSTATE = {
-        toEvaluate: 1,
-        toSchedule: 2,
-        overdue: 3,
+        toEvaluate: { id: 1, text: "Te evalueren" },
+        toSchedule: { id: 2, text: "Afspraak inplannen" },
+        overdue: { id: 3, text: "Overtijd" },
     };
 
     interface Pop {
@@ -18,49 +18,57 @@
         evaluatedBy: number;
         evaluationFinished: boolean;
         evaluationFinishedAt: any;
+        createdAt: string;
+        updatedAt: string;
+        status: {
+            id: number;
+            text: string;
+        };
+        user: User;
     }
 
     interface User {
-        userId: number;
         firstName: string;
         lastName: string;
         displayName: string;
         email: string;
     }
 
-    export let pop: Pop;
     export let users: User[];
+    export let pop: Pop;
+    let status;
+    let statusText;
+    console.log(pop);
 
     const date = pop.userFinishedAt;
-    const popUser = users.find((id: any) => pop.userId);
+    const popUser: User = pop.user[0];
 
+    if (pop.userFinishedAt == null) {
+        pop.status = POPSTATE.toEvaluate;
+    } else if (pop.evaluationFinishedAt == null) {
+        pop.status = POPSTATE.toSchedule;
+    } else if (pop.evaluationFinishedAt != null) {
+        pop.status = POPSTATE.overdue;
+    }
     let periode: string =
-        moment(date).format("DD-MM-YYYY") +
-        " / " +
-        moment(date).add(6, "w").format("DD-MM-YYYY");
-    // let statusText: String =
-    //     pop.status == 1
-    //         ? "Te evalueren"
-    //         : pop.status == 2
-    //         ? "Afspraak ingepland"
-    //         : "Overtijd";
+        moment(pop.createdAt).format("L") + " - " + (pop.updatedAt ?? "Heden");
 </script>
 
 <article class="pop-card">
-    <div class="pop-card__status" data-status="placeholder" />
+    <div class="pop-card__status" data-status={pop.status.id} />
     <div class="pop-card__content">
-        <h3 class="pop-card__heading">{popUser?.displayName}</h3>
+        <h3 class="pop-card__heading">{popUser.displayName}</h3>
         <div class="pop-card__row">
             <p class="pop-card__label">Periode</p>
             <p class="pop-card__text">{periode}</p>
         </div>
         <div class="pop-card__row">
             <p class="pop-card__label">Status</p>
-            <p class="pop-card__text">Te evalueren</p>
+            <p class="pop-card__text">{pop.status.text}</p>
         </div>
     </div>
     <div class="pop-card__button">
-        <Link href="/evaluate-pop/users/{pop.userId}/pops/{pop.popId}">
+        <Link href="/evaluate-pop/users/{pop.userId}/pops/{pop.id}">
             <IconHolder>
                 <MdChevronRight />
             </IconHolder>

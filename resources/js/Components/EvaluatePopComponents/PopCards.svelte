@@ -9,10 +9,10 @@
         evaluatedBy: number;
         evaluationFinished: boolean;
         evaluationFinishedAt: any;
+        user: User;
     }
 
     interface User {
-        userId: number;
         firstName: string;
         lastName: string;
         displayName: string;
@@ -20,12 +20,11 @@
     }
 
     export let pops: Pop[];
-    export let users: User[];
 </script>
 
 <section class="pop-cards">
     {#each pops as pop}
-        <PopCard {pop} {users} />
+        <PopCard {pop} />
     {/each}
 </section>
 
