@@ -44,7 +44,7 @@
     </div>
     <div class="buttons">
         <Button text='bewerken' onClick={() => setCurrentPage(10)} />
-        <Button text='reflecteren' />
+        <!-- <Button text='reflecteren' /> -->
     </div>
 </div>
 

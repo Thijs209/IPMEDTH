@@ -10,6 +10,8 @@
     import VerifyPop from './VerifyPop.svelte';
     import { text } from '@sveltejs/kit';
     import { router } from '@inertiajs/svelte'
+    import SideBar from '../Components/SideBar.svelte';
+    import Layout from '../Layouts/Layout.svelte';
 
     const pages = [
         'Intro',
@@ -56,7 +58,8 @@
     }
 </script>
 
-<div class="container">
+<Layout>
+<div class="container" slot="main">
     <CreatePageHeader {currentPage} {pages} {setCurrentPage} />
     {#if currentPage == 0}
         <CreatePopIntro />
@@ -83,6 +86,7 @@
         </div>
     {/if}
 </div>
+</Layout>
 
 <style>
     .container {
