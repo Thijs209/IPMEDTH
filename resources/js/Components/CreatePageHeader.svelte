@@ -6,7 +6,6 @@
     export let pages: string[];
     export let currentPage: number;
     export let pageHeading: string = "Persoonlijk Ontwikkelingsplan";
-    console.log(pages);
 </script>
 
 <div class="container">
@@ -60,7 +59,7 @@
 
     p:hover {
         cursor: pointer;
-        color: #6b6b6b;
+        color: black;
     }
 
     .selectedPage {

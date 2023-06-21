@@ -1,32 +1,48 @@
 <script>
-	import IconHolder from './../Components/IconHolder.svelte';
+	import ShowGoal from './../Components/CreatePopComponents/ShowGoal.svelte';
 	import Button from './../Components/Button.svelte';
     import FaPlus from 'svelte-icons/fa/FaPlus.svelte'
-    import { pop } from './../stores.js';
+    import CreatePopGoal from '../Components/CreatePopComponents/CreatePopGoal.svelte';
+    import InputPopUp from '../Components/InputPopUp.svelte';
 
-    const goals = [
-        'doel 1',
-        'doel 2',
-        'doel 3',
-    ]
+    export let setCurrentPage;
+    export let pop;
+    export let openGoal;
+    export let setOpenGoal;
 
-    function addGoal(name) {
-        pop.update(p => {
-            p.goals.push(name);
-            return p;
-        })
+    function addGoal(){
+        setOpenGoal(null);
+        setCurrentPage(10);
     }
-    console.log(pop.goals);
 </script>
 
-<div>
-    {#if pop.goals.length == 0}
-        <h4>Voeg een doel toe</h4>
-        {#each pop.goals as goal}
-            <h4>{goal}</h4>
-        {/each}
+<div class="container">
+    <div class="goalsContainer">
+        <h3>Doelen:</h3>
+        {#if pop.goals?.length === 0 || pop.goals === undefined}
+            <h3 class="disabledText">Voeg een doel toe</h3>
+        {:else}
+            {#each pop.goals as goal}
+                <CreatePopGoal onClick={() => setOpenGoal(goal)} title={goal.what} />
+            {/each}
+        {/if}
+        <Button marginTop onClick={() => addGoal()} icon>
+            <FaPlus />
+        </Button>
+    </div>
+    {#if openGoal !== null}
+        <ShowGoal setCurrentPage={setCurrentPage} goal={openGoal} />
     {/if}
-    <Button onClick={addGoal} icon>
-        <FaPlus />
-    </Button>
 </div>
+
+<style>
+    .disabledText{
+        color: #ccc;
+        margin-top: .5em;
+    }
+
+    .container{
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+    }
+</style>

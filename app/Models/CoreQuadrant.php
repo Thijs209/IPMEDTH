@@ -12,7 +12,4 @@ class CoreQuadrant extends Model
     
     protected $table = 'core_quadrants';
 
-    
-
-
 }

@@ -29,6 +29,10 @@ class Pop extends Model
     {
         return $this->hasOne(Task::class);
     }
+    
+    public function coreQuadrant(){
+        return $this->hasOne(CoreQuadrant::class);
+    }
 
 
     public function goals()

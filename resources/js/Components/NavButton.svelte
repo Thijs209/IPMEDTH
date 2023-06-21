@@ -4,14 +4,18 @@
     export let text: string;
     export let open: boolean;
     export let href: string = "#";
+    export let lightBackground: boolean = false;
 </script>
 
 <div>
     <Link {href}>
-        <button class="navRow">
+        <button class:lightBackground={lightBackground} class="navRow">
             <div class="iconHolder">
                 <slot />
             </div>
+            {#if lightBackground}
+                {text}
+            {/if}
             {#if open}
                 <p transition:fade={{ duration: 300 }}>{text}</p>
             {/if}
@@ -33,6 +37,11 @@
         color: white;
         font-size: 1.5rem;
         font-weight: bold;
+        text-decoration: none;
+    }
+
+    .lightBackground {
+        background-color: #00a667;
     }
 
     .navRow {

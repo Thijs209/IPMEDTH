@@ -9,7 +9,7 @@
     <!-- TODO Moet dit een h3 of gewoon een bold p zijn vanuit semantische HTML/accessibility? -->
     <div>
         <h3>{question ? question : "ok"}</h3>
-        <p>{answer ? answer : "answer"}</p>
+        <p>{answer ? answer : ""}</p>
     </div>
 </section>
 

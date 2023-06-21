@@ -4,6 +4,7 @@
     export let wide: boolean;
     export let small: boolean;
     export let noMargin: boolean;
+    export let value: string;
     export let onChange: (key: String, value: String) => void;
 
     console.log(typeof onChange);
@@ -12,9 +13,10 @@
 <div class:wide class:small class="inputContainer" class:noMargin>
     <label for={text}>{text}</label>
     <textarea
-        on:keypress={(e) => {
+        on:change={(e) => {
             onChange(key, e.currentTarget.value);
         }}
+        value={value || ""}
         name={text}
         id={text}
         placeholder="Type hier..."

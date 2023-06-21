@@ -49,7 +49,7 @@
         <NavButton {open} href="/" text="Home">
             <FaHome />
         </NavButton>
-        <NavButton {open} text="POP`s" href="/create-pop">
+        <NavButton {open} text="POP`s" href="/pops">
             <FaClipboardList />
         </NavButton>
         <div class="line" />
@@ -68,22 +68,25 @@
         </div>
     </button>
 </header>
+<div class='margin' class:closedMargin={!open}></div>
 
 <style>
     .container {
         width: 15vw;
         max-width: 12rem;
-        min-width: fit-content;
         background-color: #0d403d;
-        height: 100%;
         min-height: 100vh;
-        position: relative;
+        position: fixed;
         display: flex;
         flex-direction: column;
         align-content: center;
         padding: 1rem;
 
         transition: 0.5s ease-in-out;
+    }
+    .margin {
+        width: 15vw;
+        max-width: 12rem;
     }
 
     .logo-wrapper {
@@ -111,7 +114,11 @@
     }
 
     .closedContainer {
-        width: 2vw;
+        width: 10em;
+    }
+
+    .closedMargin {
+        width: 10em;
     }
 
     .iconHolder {

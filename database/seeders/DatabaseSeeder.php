@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             TaskSeeder::class,
             GoalTypeSeeder::class,
             GoalSeeder::class,
+            TaskSeeder::class,
             EvaluationSeeder::class,
             EvaluationNoteTypeSeeder::class,
             TaskSeeder::class,

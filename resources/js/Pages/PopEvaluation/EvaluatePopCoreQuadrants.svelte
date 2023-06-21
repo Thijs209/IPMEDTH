@@ -10,31 +10,35 @@
         pitfall: string;
     }
 
-    export let coreQuadrant: CoreQuadrant;
-
+    export let coreQuadrant: any;
+    export let pop;
+    if (window.location.href.indexOf("create-pop") > -1) {
+        coreQuadrant = pop?.coreQuadrant;
+    }
+    
 </script>
 
 <section class="grid">
     <div data-type="Kwaliteit">
-        <CoreQuadrant type={"Kwaliteit"} text={coreQuadrant.coreQuality} />
+        <CoreQuadrant type={"Kwaliteit"} text={coreQuadrant?.quality||''} />
     </div>
     <div class="coreQuadrantArrow--top">
         <CoreQuadrantArrow location={"top"} />
     </div>
     <div data-type="Valkuil">
-        <CoreQuadrant type={"Valkuil"} text={coreQuadrant.pitfall} />
+        <CoreQuadrant type={"Valkuil"} text={coreQuadrant?.pitfall||''} />
     </div>
     <div class="coreQuadrantArrow--right">
         <CoreQuadrantArrow location={"right"} />
     </div>
     <div data-type="Allergie">
-        <CoreQuadrant type={"Allergie"} text={coreQuadrant.allergy} />
+        <CoreQuadrant type={"Allergie"} text={coreQuadrant?.allergy||''} />
     </div>
     <div class="coreQuadrantArrow--bottom">
         <CoreQuadrantArrow location={"bottom"} />
     </div>
     <div data-type="Uitdaging">
-        <CoreQuadrant type={"Uitdaging"} text={coreQuadrant.challenge} />
+        <CoreQuadrant type={"Uitdaging"} text={coreQuadrant?.challenge||''} />
     </div>
     <div class="coreQuadrantArrow--left">
         <CoreQuadrantArrow location={"left"} />
