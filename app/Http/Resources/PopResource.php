@@ -27,6 +27,7 @@ class PopResource extends JsonResource
             'evaluatedBy' => $this->evaluated_by,
             'evaluationFinished' => $this->evaluation_finished,
             'evaluationFinishedAt' => $this->evaluation_finished_at,
+
             // 'evaluation_notes' => EvaluationNoteResource::collection($this->evaluationNotes),
             // TODO Add l
             // 'user' => UserResource::make($this->user),
