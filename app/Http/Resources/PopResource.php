@@ -4,7 +4,10 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Task;
+use App\Models\Pop;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Str;
 
 class PopResource extends JsonResource
 {
@@ -22,6 +25,10 @@ class PopResource extends JsonResource
         return [
             'id' => $this->id,
             'user' => User::select(['id', 'first_name', 'last_name'])->find($this->user_id),
+            'tasks' => Pop::find($this->id)->task,
+            'goals' => Pop::find($this->id)->goals,
+            'coreQuadrants' => Pop::find($this->id)->coreQuadrants,
+            'evaluationNotes' => Pop::find($this->id)->evaluationNotes,
             'userFinished' => $this->user_finished,
             'userFinishedAt' => $this->user_finished_at,
             'evaluatedBy' => $this->evaluated_by,

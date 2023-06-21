@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
             EvaluationSeeder::class,
             EvaluationNoteTypeSeeder::class,
             TaskSeeder::class,
+            CoreQuadrantSeeder::class,
         ]);
     }
 }
