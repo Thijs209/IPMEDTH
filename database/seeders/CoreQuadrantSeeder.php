@@ -13,7 +13,7 @@ class CoreQuadrantSeeder extends Seeder
     public function run(): void
     {
 
-        DB::table('core_quardrants')->insert([
+        DB::table('core_quadrants')->insert([
             // Tom Mann - POP - 1
             'pop_id' => 1109,
             'core_quality' => 'Sociaal sterk',
@@ -22,7 +22,7 @@ class CoreQuadrantSeeder extends Seeder
             'challenge' => 'Dingen niet personlijk opvatten',
         ]);
 
-        DB::table('core_quadrants')->inserot([
+        DB::table('core_quadrants')->insert([
             // Karin Tonneman - 1
             'pop_id' => 1110,
             'core_quality' => 'Oog voor detail',
@@ -31,7 +31,7 @@ class CoreQuadrantSeeder extends Seeder
             'challenge' => 'Overzicht behouden',
         ]);
 
-        DB::table('core_quardrants')->insert([
+        DB::table('core_quadrants')->insert([
             // Karin Tonneman - 2
             'pop_id' => 1111,
             'core_quality' => 'Ik ben een harde werker.',

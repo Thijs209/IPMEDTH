@@ -58,12 +58,13 @@ Route::get('/reset-password/{token}', function ($request) {
 // });
 
 Route::get('/evaluation-overview', [EvaluationController::class, 'index']);
+Route::get('/evaluation/{pop_id}', [EvaluationController::class, 'show']);
 
 
-Route::prefix('v1')-> group(function(){
-    Route::apiResource('/pops', PopController::class);
-    Route::apiResource('/evaluation', EvaluationNoteController::class);
-});
+// Route::prefix('v1')-> group(function(){
+//     Route::apiResource('/pops', PopController::class);
+//     Route::apiResource('/evaluation', EvaluationNoteController::class);
+// });
 
 
 Route::post('/pops/{$popId}/evaluation-note', [EvaluationNoteController::class, 'store']);

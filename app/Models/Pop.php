@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Evaluation;
+use App\Models\CoreQuadrant;
 use App\Models\EvaluationNote;
 use App\Models\User;
 use App\Models\Task;
@@ -39,6 +40,13 @@ class Pop extends Model
     {
         return $this->hasMany(EvaluationNote::class);
     }
+
+
+    public function coreQuadrants()
+    {
+        return $this->hasOne(coreQuadrant::class);
+    }
+
 
     // ACTION RELATED RELATIONSHIPS
     public function evaluation()
