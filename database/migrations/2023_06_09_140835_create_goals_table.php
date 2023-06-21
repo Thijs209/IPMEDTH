@@ -14,13 +14,13 @@ return new class extends Migration
         Schema::create('goals', function (Blueprint $table) {
             $table->id();
             $table->foreignId('pop_id')->constrained();
-            $table->foreignId('goal_type_id')->constrained();
-            $table->string('what');
-            $table->string('why');
-            $table->string('satisfied');
-            $table->string('support');
-            $table->date('deadline');
-            $table->string('feedback');
+            $table->string('goal_type')->nullable();
+            $table->string('what')->nullable();
+            $table->string('why')->nullable();
+            $table->string('satisfied')->nullable();
+            $table->string('support')->nullable();
+            $table->date('deadline')->nullable();
+            $table->string('feedback')->nullable();
             $table->timestamps();
         });
     }

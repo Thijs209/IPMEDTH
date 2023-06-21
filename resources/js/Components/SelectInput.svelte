@@ -5,13 +5,14 @@
     export let key;
     export let center;
     export let wide;
+    export let value;
 </script>
 
-<div class:wide={wide} class:center={center}>
+<div class="container" class:wide={wide} class:center={center}>
     {#if text}
         <label for={key}>{text}</label><br>
     {/if}
-    <select name={key} on:change={(e) => onChange(key, e.target.value)} id={key}>
+    <select value={value} name={key} on:change={(e) => onChange(key, e.target.value)} id={key}>
         {#each options as option}
         <option value={option}>{option}</option>
         {/each}
@@ -19,6 +20,9 @@
 </div>
     
 <style>
+    .container{
+        min-width: 40em;
+    }
     .wide{
         width: 80%;
     }

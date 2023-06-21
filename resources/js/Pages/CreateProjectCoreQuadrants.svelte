@@ -5,22 +5,17 @@
     export let pop;
     export let updatePop;
 
-    let coreQuadrants = {};
-    function updateCoreQuadrants(key, value) {
-        coreQuadrants[key] = value;
-        updatePop('coreQuadrant', coreQuadrants)
-    }
 </script>
 
 <p>Geef aan wat je in de komende periode gaat doen.</p>
 <Button marginTop={true} style="background-color:black" text='Kernkwadrant 1' />
 <div class="quadrantContainer">
-    <CoreQuadrantField coreQuadrants={pop?.coreQuadrants} updateCoreQuadrants={updateCoreQuadrants} key='coreQuality' title='Kernkwaliteit' />
+    <CoreQuadrantField coreQuadrants={pop?.coreQuadrant} updateCoreQuadrants={updateCoreQuadrants} key='quality' title='Kernkwaliteit' />
     <div class='arrowContainer'>
         <h3>Te veel van het goede</h3>
         <div class="arrow"></div>
     </div>
-    <CoreQuadrantField coreQuadrants={pop?.coreQuadrants} updateCoreQuadrants={updateCoreQuadrants} key='pitfall' title='Valkuil' />
+    <CoreQuadrantField coreQuadrants={pop?.coreQuadrant} updateCoreQuadrants={updateCoreQuadrants} key='pitfall' title='Valkuil' />
     <div class='arrowContainer vertical'>
         <h3>Negatief tegenovergestelde</h3>
         <div class="arrow bottom"></div>
@@ -30,12 +25,12 @@
         <h3>Positief tegenovergestelde</h3>
         <div class="arrow bottom"></div>
     </div>
-    <CoreQuadrantField coreQuadrants={pop?.coreQuadrants} updateCoreQuadrants={updateCoreQuadrants} key='allergy' title='Allergie' />
+    <CoreQuadrantField coreQuadrants={pop?.coreQuadrant} updateCoreQuadrants={updateCoreQuadrants} key='allergy' title='Allergie' />
     <div class='arrowContainer'>
         <h3>Te veel van het goede</h3>
         <div class="arrow reversed"></div>
     </div>
-    <CoreQuadrantField coreQuadrants={pop?.coreQuadrants} updateCoreQuadrants={updateCoreQuadrants} key='challenge' title='Uitdaging' />
+    <CoreQuadrantField coreQuadrants={pop?.coreQuadrant} updateCoreQuadrants={updateCoreQuadrants} key='challenge' title='Uitdaging' />
 </div>
 
 <style>
@@ -92,10 +87,5 @@
         position: absolute;
         right: -10px;
         top: -7.5px;
-    }
-
-    p{
-        font-size: 1.5em;
-        font-weight: 500;
     }
 </style>

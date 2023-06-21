@@ -1,42 +1,44 @@
 <script lang="ts">
     import CoreQuadrantArrow from "./../../Components/EvaluatePopComponents/CoreQuadrantArrow.svelte";
     import CoreQuadrant from "./../../Components/EvaluatePopComponents/CoreQuadrant.svelte";
-    let kernkwadranten = {
-        quality: "Kwaliteit",
-        pitfall: "Valkuil",
-        allergy: "Allergie",
-        challenge: "Uitdaging",
-    };
 
-    export let coreQuadrants = {
-        quality: "Doorzettings vermogen",
-        pitfall: "Overbelasting",
-        allergy: "Onzekerheid",
-        challenge: "Rustmomenten gunnen",
-    };
+    interface CoreQuadrant {
+        coreQuadrantId: string;
+        allergy: string;
+        challenge: string;
+        coreQuality: string;
+        pitfall: string;
+    }
+
+    export let coreQuadrant: any;
+    export let pop;
+    if (window.location.href.indexOf("create-pop") > -1) {
+        coreQuadrant = pop?.coreQuadrant;
+    }
+    
 </script>
 
 <section class="grid">
     <div data-type="Kwaliteit">
-        <CoreQuadrant type={"Kwaliteit"} text={coreQuadrants.quality} />
+        <CoreQuadrant type={"Kwaliteit"} text={coreQuadrant?.quality||''} />
     </div>
     <div class="coreQuadrantArrow--top">
         <CoreQuadrantArrow location={"top"} />
     </div>
     <div data-type="Valkuil">
-        <CoreQuadrant type={"Valkuil"} text={coreQuadrants.pitfall} />
+        <CoreQuadrant type={"Valkuil"} text={coreQuadrant?.pitfall||''} />
     </div>
     <div class="coreQuadrantArrow--right">
         <CoreQuadrantArrow location={"right"} />
     </div>
     <div data-type="Allergie">
-        <CoreQuadrant type={"Allergie"} text={coreQuadrants.allergy} />
+        <CoreQuadrant type={"Allergie"} text={coreQuadrant?.allergy||''} />
     </div>
     <div class="coreQuadrantArrow--bottom">
         <CoreQuadrantArrow location={"bottom"} />
     </div>
     <div data-type="Uitdaging">
-        <CoreQuadrant type={"Uitdaging"} text={coreQuadrants.challenge} />
+        <CoreQuadrant type={"Uitdaging"} text={coreQuadrant?.challenge||''} />
     </div>
     <div class="coreQuadrantArrow--left">
         <CoreQuadrantArrow location={"left"} />

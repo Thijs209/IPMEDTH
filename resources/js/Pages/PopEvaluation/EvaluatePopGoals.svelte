@@ -1,6 +1,8 @@
 <script lang="ts">
-    import { activeGoalTab, currentPopGoals } from "../../stores.js";
+    import { currentPopGoals } from "../../stores.js";
     import EvaluateGoal from "./EvaluateGoal.svelte";
+
+    export let pop;
 
     let goals: Array<{
         goalId: number; 
@@ -23,6 +25,10 @@
             goals.push(value);
         });
     });
+
+    if (window.location.href.indexOf("create-pop") > -1) {
+        goals = pop?.goals;
+    }
 </script>
 
 <section class="goals">

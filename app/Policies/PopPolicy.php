@@ -13,7 +13,7 @@ class PopPolicy
      */
     public function viewAny(User $user): bool
     {
-        //
+        return $user->isAdmin() | $user->isPeopleManager();
     }
 
     /**
@@ -21,7 +21,7 @@ class PopPolicy
      */
     public function view(User $user, Pop $Pop): bool
     {
-        //
+        return $user->Admin | $user->isPeopleManager() | $user->id == $Pop->user_id;
     }
 
     /**
@@ -29,7 +29,7 @@ class PopPolicy
      */
     public function create(User $user): bool
     {
-        //
+        return $user->isAdmin() || $user->isPeopleManager() 
     }
 
     /**
@@ -37,7 +37,7 @@ class PopPolicy
      */
     public function update(User $user, Pop $Pop): bool
     {
-        //
+        return $user->isdAdmin() || $user->isPeopleManager() || $user->id == $Pop->user_id;
     }
 
     /**
@@ -45,7 +45,7 @@ class PopPolicy
      */
     public function delete(User $user, Pop $Pop): bool
     {
-        //
+        return $user->isAdmin();
     }
 
     /**
@@ -53,7 +53,7 @@ class PopPolicy
      */
     public function restore(User $user, Pop $Pop): bool
     {
-        //
+        return $user->isAdmin();
     }
 
     /**
@@ -61,6 +61,6 @@ class PopPolicy
      */
     public function forceDelete(User $user, Pop $Pop): bool
     {
-        //
+        return $user->isAdmin();
     }
 }

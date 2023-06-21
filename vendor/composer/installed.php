@@ -2,6 +2,7 @@
     'root' => array(
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
+        'reference' => '9afa97bf19daa7285a1bd05cded51c11412305d3',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -388,6 +389,15 @@
                 0 => '*',
             ),
         ),
+        'laracraft-tech/laravel-useful-additions' => array(
+            'pretty_version' => 'v3.4.0',
+            'version' => '3.4.0.0',
+            'reference' => '77cf47062d97324151e7ba7496eaf0c95d56e817',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../laracraft-tech/laravel-useful-additions',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'laravel/fortify' => array(
             'pretty_version' => 'v1.17.2',
             'version' => '1.17.2.0',
@@ -409,6 +419,7 @@
         'laravel/laravel' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
+            'reference' => '9afa97bf19daa7285a1bd05cded51c11412305d3',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -1009,6 +1020,15 @@
             'aliases' => array(),
             'reference' => '2f99fa6b732a6049e78ed34e4608ce589605ae54',
             'dev_requirement' => true,
+        ),
+        'spatie/laravel-package-tools' => array(
+            'pretty_version' => '1.15.0',
+            'version' => '1.15.0.0',
+            'reference' => 'efab1844b8826443135201c4443690f032c3d533',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../spatie/laravel-package-tools',
+            'aliases' => array(),
+            'dev_requirement' => false,
         ),
         'symfony/console' => array(
             'pretty_version' => 'v6.2.10',

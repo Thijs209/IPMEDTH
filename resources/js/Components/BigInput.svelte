@@ -6,6 +6,7 @@
     export let noMargin: boolean;
     export let value: string;
     export let onChange: (key: String, value: String) => void;
+    export let value: string;
 
     console.log(typeof onChange)
 </script>

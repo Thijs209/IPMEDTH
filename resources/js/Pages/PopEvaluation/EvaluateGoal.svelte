@@ -1,10 +1,9 @@
 <script lang="ts">
-    import IconHolder from "./../../Components/IconHolder.svelte";
-    import { slide } from "svelte/transition";
-    import BigInput from "../../Components/BigInput.svelte";
     import { MdChevronRight } from "svelte-icons/md";
-    import { MdChevronLeft } from "svelte-icons/md";
+    import { slide } from "svelte/transition";
+    import IconHolder from "./../../Components/IconHolder.svelte";
 
+    export let createdGoal;
     export let open: boolean = false;
     export let goal: {
         goalId: number;
@@ -21,7 +20,11 @@
             description: string;
         };
     };
-    $: open, console.log(goal.goalType, open);
+    if (window.location.href.indexOf("create-pop") > -1) {
+        goal= createdGoal;
+    }
+    console.log(goal);
+    $: open, console.log(goal?.goalType, open);
     export async function handleClick() {
         open = !open;
     }
@@ -29,9 +32,9 @@
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <article class="goal" class:open>
-    <header data-goalType={goal.goalType} class="goal__header">
+    <header data-goalType={goal?.goalType} class="goal__header">
         <button on:click={handleClick} class="goal__toggle">
-            {goal.goalType}
+            {goal?.goalType}
             <div data-open={open} class="header__open">
                 <IconHolder>
                     <MdChevronRight />
@@ -39,46 +42,46 @@
             </div>
         </button>
         <div />
-        <h3>{goal.what}</h3>
+        <h3>{goal?.what}</h3>
     </header>
     {#if open}
         <section class="goal__body" transition:slide={{ duration: 300 }}>
             <h4>Omschrijving</h4>
             <div class="goal__section">
                 <span class="u-bold">Deadline:</span>
-                <p class="u-font-small">{goal.deadline}</p>
+                <p class="u-font-small">{goal?.deadline || '-'}</p>
             </div>
             <div class="goal__section">
                 <span class="u-bold">Waarom?</span>
-                <p class="u-font-small">{goal.why}</p>
+                <p class="u-font-small">{goal?.why || '-'}</p>
             </div>
 
             <div class="goal__section">
                 <span class="u-bold">Tevreden:</span>
-                <p class="u-font-small">{goal.satisfied}</p>
+                <p class="u-font-small">{goal?.satisfied || '-'}</p>
             </div>
-            <p class="u-font-small">{goal.satisfied}</p>
-            <p class="u-font-small" />
             <div class="goal__section">
-                <p class="goal__section__heading">
-                    <span class="u-bold">Wilt ondersteuning van:</span>
-                    {goal.support}
-                </p>
+                <span class="u-bold">Wilt ondersteuning van:</span>
+                <p class="u-font-small">{goal?.support || '-'}</p>
             </div>
             <div class="goal__section">
                 <span class="u-bold">Feedback:</span>
-                <p class="u-font-small">{goal.feedback}</p>
+                <p class="u-font-small">{goal?.feedback || '-'}</p>
             </div>
-            {#each goal.goalSteps as step}
+            {#if goal?.goalSteps.length > 0 || goal?.goalSteps != undefined}
                 <h4>Stappen</h4>
-                <div class="goalStep">
-                    <h4>{step.stepId}</h4>
-                    <p class="goalStep__title u-bold">{step.step}</p>
-                    <p class="u-font-small goalStep__description">
-                        {step.description}
-                    </p>
+                <div class="steps">
+                    {#each goal?.goalSteps as step}
+                    <div class="goalStep">
+                        <h4>Stap {step.id}</h4>
+                        <!-- <p class="goalStep__title u-bold">{step.step}</p> -->
+                        <p class="u-font-small goalStep__description">
+                            {step.value}
+                        </p>
+                    </div>
+                    {/each}
                 </div>
-            {/each}
+            {/if}
         </section>
     {/if}
 </article>
@@ -95,6 +98,11 @@
         padding: 0;
         margin: 0;
         color: white;
+    }
+
+    .steps{
+        display: flex;
+        gap: 1em;
     }
 
     .header__open {
@@ -115,6 +123,7 @@
         grid-column: 1 / span 1;
         height: 100%;
         overflow: hidden;
+        margin-bottom: 1em;
     }
 
     .goal__header {

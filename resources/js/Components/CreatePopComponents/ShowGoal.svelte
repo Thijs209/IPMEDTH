@@ -4,10 +4,12 @@
     import FaPencilAlt from 'svelte-icons/fa/FaPencilAlt.svelte'
 
     export let goal;
+    export let setCurrentPage;
+
+    console.log(goal);
 </script>
 
 <div class="container">
-    <h1>{goal.title}</h1>
     <div class="infoCard">
         <h3>Wat:</h3>
         <p>{goal.what}</p>
@@ -19,9 +21,11 @@
     <div class="steps">
         <h3>Hoe:</h3>
         <div class="stepContainer">
-            {#each goal.steps as step}
-            <StepCard step={step} />
-            {/each}
+            {#if goal.goalSteps !== undefined}
+                {#each goal.goalSteps as step}
+                    <StepCard step={step} />
+                {/each}
+            {/if}
         </div>
     </div>
     <div class="infoCard">
@@ -34,15 +38,15 @@
     </div>
     <div class="infoCard">
         <h3>Voor wanneer wil ik dit halen:</h3>
-        <p>{goal.when}</p>
+        <p>{goal.deadline}</p>
     </div>
     <div class="infoCard">
         <h3>Van wie wil ik feedback?</h3>
         <p>{goal.feedback}</p>
     </div>
     <div class="buttons">
-        <Button text='bewerken' />
-        <Button text='reflecteren' />
+        <Button text='bewerken' onClick={() => setCurrentPage(10)} />
+        <!-- <Button text='reflecteren' /> -->
     </div>
 </div>
 
@@ -89,7 +93,6 @@
     }
 
     p{
-        font-weight: 500;
         font-size: 1.5em;
     }
 </style>

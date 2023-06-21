@@ -52,11 +52,7 @@ class ComposerAutoloaderInitba78dc48f2787e71c00c60073fe32a2a
 
         $loader->register(true);
 
-        if ($useStaticLoader) {
-            $includeFiles = Composer\Autoload\ComposerStaticInitba78dc48f2787e71c00c60073fe32a2a::$files;
-        } else {
-            $includeFiles = require __DIR__ . '/autoload_files.php';
-        }
+        $includeFiles = \Composer\Autoload\ComposerStaticInitba78dc48f2787e71c00c60073fe32a2a::$files;
         foreach ($includeFiles as $fileIdentifier => $file) {
             composerRequireba78dc48f2787e71c00c60073fe32a2a($fileIdentifier, $file);
         }
