@@ -21,7 +21,8 @@ class PopController extends Controller
 
     public function show($id)
     {
-        $pop = POP::with(['task', 'goals', 'coreQuadrant'])->find($id)->pluck('goals')->flatten();
+        // $pop = POP::with(['task', 'goals', 'coreQuadrant'])->find($id)->pluck('goals')->flatten();
+        $pop = POP::with(['task', 'goals', 'coreQuadrant'])->find($id); 
         return Inertia::render('VerifyPop', [
             'pop' => $pop,
             'tasks' => $pop->tasks,
@@ -46,7 +47,8 @@ class PopController extends Controller
         ]);
     }
 
-    public function popFinished($id){
+    public function popFinished($id)
+    {
         $pop = Pop::find($id);
         $pop->user_finished = true;
         $pop->save();
@@ -58,9 +60,6 @@ class PopController extends Controller
         return Inertia::render('CreatePop');
     }
 
-    public function edit(StorePopRequest $request)
-    {
-    }
 
     public function update()
     {
