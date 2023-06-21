@@ -8,6 +8,10 @@ use App\Models\Task;
 use App\Models\Pop;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Str;
+use App\Http\Resources\TaskResource;
+use App\Http\Resources\GoalResource;
+use App\Http\Resources\CoreQuadrantResource;
+use App\Http\Resources\EvaluationNoteResource;
 
 class PopResource extends JsonResource
 {
@@ -25,23 +29,15 @@ class PopResource extends JsonResource
         return [
             'id' => $this->id,
             'user' => User::select(['id', 'first_name', 'last_name'])->find($this->user_id),
-            'tasks' => Pop::find($this->id)->task,
-            'goals' => Pop::find($this->id)->goals,
-            'coreQuadrants' => Pop::find($this->id)->coreQuadrants,
-            'evaluationNotes' => Pop::find($this->id)->evaluationNotes,
+            'tasks' => TaskResource::make(Pop::find($this->id)->task),
+            'goals' => GoalResource::collection(Pop::find($this->id)->goals),
+            'coreQuadrants' => CoreQuadrantResource::collection(Pop::find($this->id)->coreQuadrants),
+            'evaluationNotes' => EvaluationNoteResource::collection(Pop::find($this->id)->evaluationNotes),
             'userFinished' => $this->user_finished,
             'userFinishedAt' => $this->user_finished_at,
             'evaluatedBy' => $this->evaluated_by,
             'evaluationFinished' => $this->evaluation_finished,
             'evaluationFinishedAt' => $this->evaluation_finished_at,
-
-            // 'evaluation_notes' => EvaluationNoteResource::collection($this->evaluationNotes),
-            // TODO Add l
-            // 'user' => UserResource::make($this->user),
-            // 'tasks' => TaskResource::collection($this->tasks),
-            // 'core_quadrants' => CoreQuadrantResource::collection($this->coreQuadrants),
-            // 'goals' => GoalResource::collection($this->goals),
-            // 'goal_steps' => GoalStepResource::collection($this->goalSteps),
         ];
     }
 };

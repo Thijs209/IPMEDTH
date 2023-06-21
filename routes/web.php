@@ -58,6 +58,7 @@ Route::get('/reset-password/{token}', function ($request) {
 // });
 
 Route::get('/evaluation-overview', [EvaluationController::class, 'index']);
+Route::get('/evaluation/evaluate/{pop_id}', [EvaluationController::class, 'show']);
 
 
 Route::prefix('v1')-> group(function(){

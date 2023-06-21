@@ -16,7 +16,22 @@
     import PopNotes from "../../Components/EvaluatePopComponents/PopNotes.svelte";
     let pages: string[] = ["Home", "POP Overzicht", "POP Review"];
 
-    
+    interface Pop {
+        userId: number;
+        popId: number;
+        userFinished: boolean;
+        userFinishedAt: any;
+        evaluatedBy: number;
+        evaluationFinished: boolean;
+        evaluationFinishedAt: any;
+        tasks: any[];
+        core_quadrants: any[];
+        goals: any[];
+        evaluation_notes: any[];
+        user: any;
+    }
+
+    export let pop: Pop[];
 </script>
 
 <Layout>

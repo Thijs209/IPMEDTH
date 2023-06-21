@@ -12,6 +12,11 @@
         evaluatedBy: number;
         evaluationFinished: boolean;
         evaluationFinishedAt: any;
+        tasks: any[];
+        core_quadrants: any[];
+        goals: any[];
+        evaluation_notes: any[];
+        user: any;
     }
 
     export let pops: Pop[];

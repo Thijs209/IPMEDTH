@@ -4,7 +4,6 @@
 
     let questions = { ...$currentPopTaskQuestions };
     let answers = { ...$currentPopTask };
-    
 </script>
 
 <section>

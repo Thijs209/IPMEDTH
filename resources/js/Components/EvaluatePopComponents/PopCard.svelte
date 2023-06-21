@@ -11,7 +11,6 @@
     };
 
     interface Pop {
-        user: any;
         userId: number;
         popId: number;
         userFinished: boolean;
@@ -19,13 +18,17 @@
         evaluatedBy: number;
         evaluationFinished: boolean;
         evaluationFinishedAt: any;
+        tasks: any[];
+        core_quadrants: any[];
+        goals: any[];
+        evaluation_notes: any[];
+        user: any;
     }
 
     export let pop: Pop;
 
     const date = pop.userFinishedAt;
     const displayName = pop.user.first_name + " " + pop.user.last_name;
-    const popUser = "hoi";
 
     let periode: string =
         moment(date).format("DD-MM-YYYY") +
@@ -37,6 +40,7 @@
     //         : pop.status == 2
     //         ? "Afspraak ingepland"
     //         : "Overtijd";
+    console.log();
 </script>
 
 <article class="pop-card">
@@ -53,7 +57,7 @@
         </div>
     </div>
     <div class="pop-card__button">
-        <Link href="/evaluate-pop/users/{pop.userId}/pops/{pop.popId}">
+        <Link href="/evaluate-pop/users/{pop.user['id']}/pops/{pop.id}">
             <IconHolder>
                 <MdChevronRight />
             </IconHolder>
