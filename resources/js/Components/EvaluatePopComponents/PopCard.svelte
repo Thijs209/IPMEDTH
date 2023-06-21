@@ -11,6 +11,7 @@
     };
 
     interface Pop {
+        user: any;
         userId: number;
         popId: number;
         userFinished: boolean;
@@ -20,18 +21,10 @@
         evaluationFinishedAt: any;
     }
 
-    interface User {
-        userId: number;
-        firstName: string;
-        lastName: string;
-        displayName: string;
-        email: string;
-    }
-
     export let pop: Pop;
-    export let users: User[];
 
     const date = pop.userFinishedAt;
+    const displayName = pop.user.first_name + " " + pop.user.last_name;
     const popUser = "hoi";
 
     let periode: string =
@@ -44,14 +37,12 @@
     //         : pop.status == 2
     //         ? "Afspraak ingepland"
     //         : "Overtijd";
-
-    // console.log(users);
 </script>
 
 <article class="pop-card">
-    <div class="pop-card__status" data-status="placeholder" />
+    <div class="pop-card__status" data-status="1" />
     <div class="pop-card__content">
-        <h3 class="pop-card__heading">hoi</h3>
+        <h3 class="pop-card__heading">{displayName}</h3>
         <div class="pop-card__row">
             <p class="pop-card__label">Periode</p>
             <p class="pop-card__text">{periode}</p>

@@ -22,7 +22,6 @@ class Pop extends Model
         return $this->hasOne(Task::class);
     }
 
-    
     public function goals(){
         return $this->hasMany(Goal::class);
     }
@@ -34,8 +33,6 @@ class Pop extends Model
     public function evaluationNotes(){
         return $this->hasMany(EvaluationNote::class);
     }
-
-    
 
     // ACTION RELATED RELATIONSHIPS
     public function evaluation(){

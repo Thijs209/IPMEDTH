@@ -14,16 +14,7 @@
         evaluationFinishedAt: any;
     }
 
-    interface User {
-        userId: number;
-        firstName: string;
-        lastName: string;
-        displayName: string;
-        email: string;
-    }
-
     export let pops: Pop[];
-    export let users: User[];
     // export let usersData: User[] = [];
 
     let pageHeading = "POP Overzicht";
@@ -63,7 +54,7 @@
         <CreatePageHeader {pages} currentPage={0} setCurrentPage={() => {}} />
         <div class="cards-container">
             {#if pops && pops.length > 0}
-                <PopCards {pops} {users} />
+                <PopCards {pops} />
             {/if}
         </div>
         <div class="archive-container">
