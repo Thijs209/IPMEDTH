@@ -32,7 +32,7 @@
     export let users: User[];
 
     const date = pop.userFinishedAt;
-    const popUser = users.find((user) => user.userId == pop.userId);
+    const popUser = "hoi";
 
     let periode: string =
         moment(date).format("DD-MM-YYYY") +
@@ -45,13 +45,13 @@
     //         ? "Afspraak ingepland"
     //         : "Overtijd";
 
-    console.log(users);
+    // console.log(users);
 </script>
 
 <article class="pop-card">
     <div class="pop-card__status" data-status="placeholder" />
     <div class="pop-card__content">
-        <h3 class="pop-card__heading">{popUser?.displayName}</h3>
+        <h3 class="pop-card__heading">hoi</h3>
         <div class="pop-card__row">
             <p class="pop-card__label">Periode</p>
             <p class="pop-card__text">{periode}</p>

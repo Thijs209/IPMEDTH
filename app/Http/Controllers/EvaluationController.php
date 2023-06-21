@@ -20,7 +20,6 @@ class EvaluationController extends Controller
     {
         return Inertia::render('PopEvaluation/EvaluationOverview', [
             'pops' => PopResource::collection(Pop::all()),
-            'users' => UserResource::collection(User::all())
         ]);
     }
 

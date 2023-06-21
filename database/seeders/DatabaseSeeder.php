@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             UserSeeder::class,
             PopSeeder::class,
+            TaskSeeder::class,
             GoalTypeSeeder::class,
             GoalSeeder::class,
             EvaluationSeeder::class,

@@ -21,7 +21,7 @@ class PopResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'userId' => $this->user_id,
+            'user' => User::select(['id', 'first_name', 'last_name'])->find($this->user_id),
             'userFinished' => $this->user_finished,
             'userFinishedAt' => $this->user_finished_at,
             'evaluatedBy' => $this->evaluated_by,
