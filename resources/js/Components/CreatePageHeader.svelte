@@ -6,7 +6,6 @@
     export let pages: string[];
     export let currentPage: number;
     export let pageHeading: string = "Persoonlijk Ontwikkelingsplan";
-    console.log(pages);
 </script>
 
 <div class="container">

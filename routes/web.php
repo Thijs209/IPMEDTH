@@ -8,6 +8,7 @@ use App\Http\Controllers\EvaluationController;
 use App\Http\Controllers\EvaluationNoteController;
 use App\Models\User;
 use App\Models\Pop;
+use GuzzleHttp\Psr7\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -68,6 +69,15 @@ Route::prefix('v1')-> group(function(){
 // POP Routes
 Route::get('/create-pop', [PopController::class, 'create']);
 Route::post('/post-pop', [PopController::class, 'store']);
+Route::get('/pops', [PopController::class, 'popOverview']);
+Route::post('pop-finished/{id}', [PopController::class, 'popFinished']);
+Route::get('/viewPop/{id}', [PopController::class, 'show']);
+Route::get('/create-pop/{id}', [PopController::class, 'edit']);
+
+//Task routes
+Route::get('/index{popId}', function (Request $request, string $popId) {
+    return 'Tasks '.$popId;
+});
 
 // Temp Route for testing, with default values
 // TODO remove default values in production + add permissions so only people manager and admin roles can access evaluation page for any POP

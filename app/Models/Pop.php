@@ -20,8 +20,11 @@ class Pop extends Model
     public function task(){
         return $this->hasOne(Task::class);
     }
-
     
+    public function coreQuadrant(){
+        return $this->hasOne(CoreQuadrant::class);
+    }
+
     public function goals(){
         return $this->hasMany(Goal::class);
     }

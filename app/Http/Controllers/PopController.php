@@ -19,15 +19,38 @@ class PopController extends Controller
         return PopResource::collection(Pop::all());
     }
 
-    public function show()
+    public function show($id)
     {
-        $pop = Pop::find($id);
-        return Inertia::render('Pop/', [
+        $pop = POP::with(['task', 'goals', 'coreQuadrant'])->find($id);
+        return Inertia::render('VerifyPop', [
             'pop' => $pop,
             'tasks' => $pop->tasks,
             'core_quadrants' => $pop->coreQuadrants,
             'goals' => $pop->goals,
         ]);
+    }
+
+    public function edit($id)
+    {
+        $pop = POP::with(['task', 'goals', 'coreQuadrant'])->find($id);
+        return Inertia::render('EditPop', [
+            'pop' => $pop,
+        ]);
+    }
+
+    public function popOverview()
+    {
+        $pops = POP::with(['task', 'goals', 'user'])->get();
+        return Inertia::render('PopOverview', [
+            'pops' => $pops,
+        ]);
+    }
+
+    public function popFinished($id){
+        $pop = Pop::find($id);
+        $pop->user_finished = true;
+        $pop->save();
+        return redirect('/pops');
     }
 
     public function create()

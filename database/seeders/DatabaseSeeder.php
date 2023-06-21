@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             PopSeeder::class,
             GoalTypeSeeder::class,
             GoalSeeder::class,
+            TaskSeeder::class,
             EvaluationSeeder::class,
             EvaluationNoteTypeSeeder::class
         ]);
