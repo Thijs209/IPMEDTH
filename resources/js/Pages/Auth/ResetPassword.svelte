@@ -14,7 +14,7 @@
         token: token,
     });
 
-    let message = null``;
+    let message = null;
 
     function submit() {
         $form.post("/reset-password", {
