@@ -60,7 +60,7 @@
 
     p:hover {
         cursor: pointer;
-        color: #6b6b6b;
+        color: black;
     }
 
     .selectedPage {

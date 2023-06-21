@@ -4,8 +4,6 @@
     import FaPencilAlt from 'svelte-icons/fa/FaPencilAlt.svelte'
 
     export let goal;
-
-    console.log(goal);
 </script>
 
 <div class="container">
@@ -88,5 +86,10 @@
 
     .infoCard{
         margin: .5em 0;
+    }
+
+    p{
+        font-weight: 500;
+        font-size: 1.5em;
     }
 </style>

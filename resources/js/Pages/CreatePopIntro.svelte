@@ -2,6 +2,8 @@
     .text{
         margin: 17em auto;
         width: 55em;
+        font-size: 1.5em;
+        font-weight: 500;
     }
 </style>
 
