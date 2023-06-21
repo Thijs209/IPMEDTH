@@ -42,7 +42,6 @@ class EvaluationController extends Controller
             'pop' => PopResource::make($pop),
         ]);    
     }
-   
     }
 
     /**

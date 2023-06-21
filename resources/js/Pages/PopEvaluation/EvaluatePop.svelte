@@ -26,15 +26,23 @@
         evaluationFinished: boolean;
         evaluationFinishedAt: any;
         tasks: any[];
-        core_quadrants: any[];
+        coreQuadrants: any[];
         goals: any[];
         evaluation_notes: any[];
         user: any;
     }
 
+    interface CoreQuadrant {
+        coreQuadrantId: string;
+        allergy: string;
+        challenge: string;
+        coreQuality: string;
+        pitfall: string;
+    }
+
     export let pop: Pop;
 
-    console.log(pop);
+    console.log(pop.coreQuadrants);
 </script>
 
 <Layout>
@@ -51,7 +59,9 @@
                 {#if $activeEvaluationTab.tab === $evaluationTabs.tabs[0]}
                     <EvaluatePopProject task={pop.tasks} />
                 {:else if $activeEvaluationTab.tab === $evaluationTabs.tabs[1]}
-                    <EvaluatePopCoreQuadrants />
+                    <EvaluatePopCoreQuadrants
+                        coreQuadrant={pop.coreQuadrants}
+                    />
                 {:else if $activeEvaluationTab.tab === $evaluationTabs.tabs[2]}
                     <EvaluatePopGoals />
                 {:else if $activeEvaluationTab.tab === $evaluationTabs.tabs[3]}

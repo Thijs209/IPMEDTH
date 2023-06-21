@@ -27,7 +27,7 @@ class Pop extends Model
     }
 
     public function coreQuadrants(){
-        return $this->hasMany(coreQuadrant::class);
+        return $this->hasOne(coreQuadrant::class);
     }
 
     public function evaluationNotes(){
