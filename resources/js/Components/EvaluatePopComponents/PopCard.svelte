@@ -4,6 +4,12 @@
     import MdChevronRight from "svelte-icons/md/MdChevronRight.svelte";
     import moment from "moment";
 
+    const POPSTATE = {
+        toEvaluate: 1,
+        toSchedule: 2,
+        overdue: 3,
+    };
+
     interface Pop {
         userId: number;
         popId: number;
@@ -26,7 +32,7 @@
     export let users: User[];
 
     const date = pop.userFinishedAt;
-    const popUser = users.find((id) => pop.userId);
+    const popUser = users.find((id: any) => pop.userId);
 
     let periode: string =
         moment(date).format("DD-MM-YYYY") +
@@ -50,7 +56,7 @@
         </div>
         <div class="pop-card__row">
             <p class="pop-card__label">Status</p>
-            <p class="pop-card__text">placeholder</p>
+            <p class="pop-card__text">Te evalueren</p>
         </div>
     </div>
     <div class="pop-card__button">
