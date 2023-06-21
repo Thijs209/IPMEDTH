@@ -17,16 +17,13 @@ class EvaluationNoteController extends Controller
         $validatedData = $request->validate([
             'pop_id' => 'bail|required',
         ]);
-
+        
         $note = new EvaluationNote();
         $note->pop_id = $request['pop_id'];
         $note->evaluation_note_type_id = $request['note_type_id'];
         $note->evaluation_note = $request['note'];
-
+        // $note EvaluationNoteResource::make($note);
         $note->save();
-
-        return EvaluationNoteResource::make($note);
-
     }
 
     /**

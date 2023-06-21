@@ -8,7 +8,6 @@ use App\Models\Task;
 use App\Models\CoreQuadrant;
 use App\Models\Pop;
 use App\Models\Goal;
-use App\Models\GoalStep;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
@@ -16,6 +15,7 @@ class PopController extends Controller
 {
     public function index()
     {
+
         return PopResource::collection(Pop::all());
     }
 
@@ -35,20 +35,28 @@ class PopController extends Controller
         return Inertia::render('CreatePop');
     }
 
+    public function edit(StorePopRequest $request)
+    {
+    }
+
+    public function update()
+    {
+    }
+
     public function store(StorePopRequest $request)
     {
-    // $validated = $request->validate([
-    //     'user_id' => 'required|exists:users, id',
-    // ]);
+        // $validated = $request->validate([
+        //     'user_id' => 'required|exists:users, id',
+        // ]);
 
-    $pop = Pop::create($request->validated());
-    // $validated = $request->validated(
-    //     [
-    //         'user_id' => 'required',
-    //         'first_name' => 'required',
-    //         'last_name' => 'required',
-    //     ]
-    // );
+        $pop = Pop::create($request->validated());
+        // $validated = $request->validated(
+        //     [
+        //         'user_id' => 'required',
+        //         'first_name' => 'required',
+        //         'last_name' => 'required',
+        //     ]
+        // );
 
         // save tasks
         $task = new Task();
@@ -75,7 +83,7 @@ class PopController extends Controller
             }
         }
 
-        // save goals
+        // save goalsGoalStep
         $goalsData = $request->input('goals');
 
         if ($goalsData) {
@@ -102,7 +110,7 @@ class PopController extends Controller
                     $goalStep->save();
                 }
             }
-        }
+        };
 
         return PopResource::make($pop);
     }
