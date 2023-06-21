@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { activeGoalTab, currentPopGoals } from "../../stores.js";
+    import { currentPopGoals } from "../../stores.js";
     import EvaluateGoal from "./EvaluateGoal.svelte";
 
     let goals: Array<{

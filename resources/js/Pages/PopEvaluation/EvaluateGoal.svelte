@@ -1,9 +1,7 @@
 <script lang="ts">
-    import IconHolder from "./../../Components/IconHolder.svelte";
-    import { slide } from "svelte/transition";
-    import BigInput from "../../Components/BigInput.svelte";
     import { MdChevronRight } from "svelte-icons/md";
-    import { MdChevronLeft } from "svelte-icons/md";
+    import { slide } from "svelte/transition";
+    import IconHolder from "./../../Components/IconHolder.svelte";
 
     export let open: boolean = false;
     export let goal: {
@@ -57,13 +55,9 @@
                 <span class="u-bold">Tevreden:</span>
                 <p class="u-font-small">{goal.satisfied}</p>
             </div>
-            <p class="u-font-small">{goal.satisfied}</p>
-            <p class="u-font-small" />
             <div class="goal__section">
-                <p class="goal__section__heading">
-                    <span class="u-bold">Wilt ondersteuning van:</span>
-                    {goal.support}
-                </p>
+                <span class="u-bold">Wilt ondersteuning van:</span>
+                <p class="u-font-small">{goal.support}</p>
             </div>
             <div class="goal__section">
                 <span class="u-bold">Feedback:</span>

@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class EvaluationNote extends Model
 {
     use HasFactory;
+
+    public function pop()
+    {
+        return $this->belongsTo(Pop::class);
+    }
 }

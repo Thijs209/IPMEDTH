@@ -16,10 +16,4 @@ class Task extends Model
         return $this->belongsTo(Pop::class);
     }
 
-    public function taskNotes()
-    {
-        return $this->hasMany(TaskNotes::class);
-    }
-    
-
 }

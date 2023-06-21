@@ -7,47 +7,62 @@
     interface Pop {
         userId: number;
         popId: number;
-        name: string;
-        startDate: string;
-        endDate: string;
-        status: number;
+        userFinished: boolean;
+        userFinishedAt: any;
+        evaluatedBy: number;
+        evaluationFinished: boolean;
+        evaluationFinishedAt: any;
     }
+
+    interface User {
+        userId: number;
+        firstName: string;
+        lastName: string;
+        displayName: string;
+        email: string;
+    }
+
+    export let pops: Pop[];
+    export let users: User[];
+    // export let usersData: User[] = [];
 
     let pageHeading = "POP Overzicht";
     let pages: string[] = ["Home", "POP Overzicht", "POP Review"];
-    export let pops: Pop[] = [
-        {
-            userId: 1,
-            popId: 1111,
-            name: "John Doe",
-            startDate: "01-01-2023",
-            endDate: "01-01-2024",
-            status: 2,
-        },
-        {
-            userId: 4,
-            popId: 1112,
-            name: "Karin Tonneman",
-            startDate: "01-01-2023",
-            endDate: "01-06-2023",
-            status: 1,
-        },
-        {
-            userId: 3,
-            popId: 1113,
-            name: "Tom Mann",
-            startDate: "01-01-2023",
-            endDate: "01-05-2023",
-            status: 3,
-        },
-    ];
+    // export let pops: Pop[] = [
+    //     {
+    //         userId: 1,
+    //         popId: 1111,
+    //         name: "John Doe",
+    //         startDate: "01-01-2023",
+    //         endDate: "01-01-2024",
+    //         status: 2,
+    //     },
+    //     {
+    //         userId: 4,
+    //         popId: 1112,
+    //         name: "Karin Tonneman",
+    //         startDate: "01-01-2023",
+    //         endDate: "01-06-2023",
+    //         status: 1,
+    //     },
+    //     {
+    //         userId: 3,
+    //         popId: 1113,
+    //         name: "Tom Mann",
+    //         startDate: "01-01-2023",
+    //         endDate: "01-05-2023",
+    //         status: 3,
+    //     },
+    // ];
 </script>
 
 <Layout>
     <article slot="main" class="evaluation-dashboard">
         <CreatePageHeader {pages} currentPage={0} setCurrentPage={() => {}} />
         <div class="cards-container">
-            <PopCards {pops} />
+            {#if pops && pops.length > 0}
+                <PopCards {pops} {users} />
+            {/if}
         </div>
         <div class="archive-container">
             <PopArchive />

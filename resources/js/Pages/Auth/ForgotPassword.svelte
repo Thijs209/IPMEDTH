@@ -1,7 +1,6 @@
 <script>
     import { page, useForm } from "@inertiajs/svelte";
     import Layout from "./../../Layouts/Layout.svelte";
-    //TODO add mailpit to send email
 
     let form = useForm({
         email: "",

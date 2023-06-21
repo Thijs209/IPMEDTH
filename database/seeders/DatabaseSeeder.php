@@ -4,11 +4,6 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
-use App\Models\User;
-use App\Models\Pop;
-use App\Models\Evaluation;
-
 
 class DatabaseSeeder extends Seeder
 {
@@ -23,6 +18,8 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             PopSeeder::class,
             GoalTypeSeeder::class,
+            GoalSeeder::class,
+            EvaluationSeeder::class,
             EvaluationNoteTypeSeeder::class
         ]);
     }
