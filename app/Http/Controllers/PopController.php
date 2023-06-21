@@ -79,7 +79,7 @@ class PopController extends Controller
             foreach ($coreQuadrantData as $coreQuadrantItem) {
                 $coreQuadrant = new CoreQuadrant();
                 $coreQuadrant->pop_id = $pop['id'];
-                $coreQuadrant->core_quality = $coreQuadrantItem['core_quality'];
+                $coreQuadrant->core_quality = $coreQuadrantItem['coreQuality'];
                 $coreQuadrant->pitfall = $coreQuadrantItem['pitfall'];
                 $coreQuadrant->allergy = $coreQuadrantItem['allergy'];
                 $coreQuadrant->challenge = $coreQuadrantItem['challenge'];

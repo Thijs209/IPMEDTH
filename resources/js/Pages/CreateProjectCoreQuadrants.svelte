@@ -5,12 +5,19 @@
     export let pop;
     export let updatePop;
 
+    function updateCoreQuadrants(key, value) {
+        updatePop('core_quadrant', {
+            ...pop.coreQuadrant,
+            [key]: value
+        });
+    }
+
 </script>
 
 <p>Geef aan wat je in de komende periode gaat doen.</p>
 <Button marginTop={true} style="background-color:black" text='Kernkwadrant 1' />
 <div class="quadrantContainer">
-    <CoreQuadrantField coreQuadrants={pop?.coreQuadrant} updateCoreQuadrants={updateCoreQuadrants} key='quality' title='Kernkwaliteit' />
+    <CoreQuadrantField coreQuadrants={pop?.coreQuadrant} updateCoreQuadrants={updateCoreQuadrants} key='coreQuality' title='Kernkwaliteit' />
     <div class='arrowContainer'>
         <h3>Te veel van het goede</h3>
         <div class="arrow"></div>

@@ -6,14 +6,21 @@
     export let noMargin: boolean;
     export let value: string;
     export let onChange: (key: String, value: String) => void;
-    export let value: string;
 
-    console.log(typeof onChange)
+    console.log(typeof onChange);
 </script>
 
-<div class:wide={wide} class:small={small} class="inputContainer" class:noMargin={noMargin}>
+<div class:wide class:small class="inputContainer" class:noMargin>
     <label for={text}>{text}</label>
-    <textarea on:change={(e) => {onChange(key, e.currentTarget.value)}} value={value||''} name={text} id={text} placeholder="Type hier..."></textarea>
+    <textarea
+        on:change={(e) => {
+            onChange(key, e.currentTarget.value);
+        }}
+        value={value || ""}
+        name={text}
+        id={text}
+        placeholder="Type hier..."
+    />
 </div>
 
 <style>
@@ -41,7 +48,7 @@
         resize: none;
     }
 
-    textarea:focus{
-        outline: 1.2px solid #00A667;
+    textarea:focus {
+        outline: 1.2px solid #00a667;
     }
 </style>
