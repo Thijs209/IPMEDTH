@@ -29,10 +29,7 @@
     <PopProjectField question={questions.result} answer={task?.results} />
     <PopProjectField question={questions.success} answer={task?.success} />
     <PopProjectField question={questions.manager} answer={task?.manager} />
-    <PopProjectField
-        question={questions.reportsOthers}
-        answer={answers.reportsOthers}
-    />
+    <PopProjectField question={questions.reportsOthers} answer={task?.reportsOthers} />
 </section>
 
 <style>

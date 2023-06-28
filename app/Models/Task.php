@@ -10,6 +10,7 @@ class Task extends Model
     use HasFactory;
 
     /* Relationships */
+    protected $guarded = ['id'];
 
     public function pop()
     {

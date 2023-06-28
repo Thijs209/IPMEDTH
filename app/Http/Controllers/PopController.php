@@ -15,14 +15,31 @@ class PopController extends Controller
 {
     public function index()
     {
-
         return PopResource::collection(Pop::all());
     }
+
+    public function camelCaseKeys($array, $arrayHolder = array()) {
+        $camelCaseArray = !empty($arrayHolder) ? $arrayHolder : array();
+        foreach ($array as $key => $val) {
+            $newKey = @explode('_', $key);
+            array_walk($newKey, create_function('&$v', '$v = ucwords($v);'));
+            $newKey = @implode('', $newKey);
+            $newKey[0] = strtolower($newKey[0]);
+            if (!is_array($val)) {
+                $camelCaseArray[$newKey] = $val;
+            } else {
+                $camelCaseArray[$newKey] = $this->camelCaseKeys($val, $camelCaseArray[$newKey]);
+            }
+        }
+        return $camelCaseArray;
+    }
+
 
     public function show($id)
     {
         // $pop = POP::with(['task', 'goals', 'coreQuadrant'])->find($id)->pluck('goals')->flatten();
-        $pop = POP::with(['task', 'goals', 'coreQuadrant'])->find($id); 
+        $pop = camelCaseKeys(POP::with(['task', 'goals', 'coreQuadrant'])->find($id)->toArray());
+        
         return Inertia::render('VerifyPop', [
             'pop' => $pop,
             'tasks' => $pop->tasks,
@@ -41,9 +58,10 @@ class PopController extends Controller
 
     public function popOverview()
     {
-        $pops = POP::with(['task', 'goals', 'user'])->get();
+        $pops = POP::with(['task', 'goals', 'user'])->where('user_id', Auth::user()->id)->get();
         return Inertia::render('PopOverview', [
             'pops' => $pops,
+            'user' => Auth::user(),
         ]);
     }
 
@@ -57,9 +75,8 @@ class PopController extends Controller
 
     public function create()
     {
-        return Inertia::render('CreatePop');
+        return Inertia::render('CreatePop',['user' => Auth::user()]);
     }
-
 
     public function update()
     {
@@ -79,7 +96,11 @@ class PopController extends Controller
         //         'last_name' => 'required',
         //     ]
         // );
-        $pop = Pop::create($request->validated());
+        if($request->input('id') !== null){
+            $pop = Pop::find($request->input('id'));
+        } else {
+            $pop = Pop::create($request->validated());
+        }
 
         // save tasks
         $task = new Task();
@@ -89,7 +110,11 @@ class PopController extends Controller
         $task->success = $request->input('task.success');
         $task->manager = $request->input('task.manager');
         $task->report_others = $request->input('task.report_others');
-        $task->save();
+        if($request->input('task.id') !== null){
+            \DB::table('tasks')->where('id', $request->input('task.id'))->update($task->toArray());
+        } else {
+            $task->save();
+        }
 
         // save core quadrants
         $coreQuadrantData = $request->input('core_quadrant');
@@ -102,7 +127,11 @@ class PopController extends Controller
                 $coreQuadrant->pitfall = $coreQuadrantItem['pitfall'];
                 $coreQuadrant->allergy = $coreQuadrantItem['allergy'];
                 $coreQuadrant->challenge = $coreQuadrantItem['challenge'];
-                $coreQuadrant->save();
+                if($coreQuadrantItem['id'] !== null){
+                    \DB::table('core_quadrants')->where('id', $coreQuadrantItem['id'])->update($coreQuadrant->toArray());
+                } else {
+                    $coreQuadrant->save();
+                }
             }
         }
 
@@ -113,28 +142,43 @@ class PopController extends Controller
             foreach ($goalsData as $goalsItem) {
                 $goal = new Goal();
                 $goal->pop_id = $pop['id'];
-                $goal->goal_type = $goalsItem['goalType'];
-                $goal->what = $goalsItem['what'];
-                $goal->why = $goalsItem['why'];
-                $goal->satisfied = $goalsItem['satisfied'];
-                $goal->support = $goalsItem['support'];
-                $goal->deadline = date('Y-m-d H:i:s');
-                $goal->feedback = $goalsItem['feedback'];
-
-                $stepData = $goalsItem['goalSteps'];
-
-                $goal->save();
-
-                foreach ($stepData as $key => $stepitem) {
-                    $goalStep = new GoalStep();
-                    $goalStep->goal_id = $goal['id'];
-                    $goalStep->step = $key;
-                    $goalStep->description = $stepitem['value'];
-                    $goalStep->save();
+                if (array_key_exists('goalType', $goalsItem)) $goal->goal_type = $goalsItem['goalType'];
+                if (array_key_exists('what', $goalsItem)) $goal->what = $goalsItem['what'];
+                if (array_key_exists('why', $goalsItem)) $goal->why = $goalsItem['why'];
+                if (array_key_exists('satisfied', $goalsItem)) $goal->satisfied = $goalsItem['satisfied'];
+                if (array_key_exists('support', $goalsItem)) $goal->support = $goalsItem['support'];
+                if (array_key_exists('deadline', $goalsItem)) $goal->deadline = date('Y-m-d H:i:s');
+                if (array_key_exists('feedback', $feedback)) $goal->feedback = $goalsItem['feedback'];
+                
+                if($goalsItem['id'] !== null){
+                    \DB::table('goals')->where('id', $goalsItem['id'])->update($goal->toArray());
+                } else {
+                    $goal->save();
+                }
+                
+                if(array_key_exists('goal_steps', $goalsItem)){
+                    $stepData = $goalsItem['goalSteps'];
+                    foreach ($stepData as $key => $stepitem) {
+                        $goalStep = new GoalStep();
+                        $goalStep->goal_id = $goal['id'];
+                        $goalStep->step = $key;
+                        $goalStep->description = $stepitem['value'];
+                        if($stepitem['id'] !== null){
+                            \DB::table('goal_steps')->where('id', $stepitem['id'])->update($goalStep->toArray());
+                        } else {
+                            $goalStep->save();
+                        }
+                    }
                 }
             }
         };
-
-        return PopResource::make($pop);
+        if($request->input('id') !== null){
+            $popArray = $pop->toArray();
+            unset($popArray['created_at']);
+            unset($popArray['updated_at']);
+            \DB::table('pops')->where('id', $request->input('id'))->update($pop->toArray());
+        } else {
+            $pop->save();
+        }
     }
 }

@@ -13,6 +13,9 @@
     import SideBar from '../Components/SideBar.svelte';
     import Layout from '../Layouts/Layout.svelte';
 
+    export let databasePop;
+    export let user;
+
     const pages = [
         'Intro',
         'Opdracht',
@@ -20,13 +23,10 @@
         'Doelen',
         'Afronden'
     ];
-    export let databasePop;
-    let pop = databasePop || {'goals': [], 'user_id':1, 'noSidebar': true, 'user_finished': 0, 'project': ''};
-    console.log(pop);
-    console.log(databasePop)
+
+    let pop = databasePop || {'goals': [], user_id: user.id ,'noSidebar': true, 'user_finished': 0, 'project': ''};
     function updatePop(key, value) {
         pop[key] = value;
-        console.log(pop)
     }
 
     function addGoal(goal) {
@@ -50,6 +50,7 @@
     };
 
     function savePop() {
+        console.log(pop);
         axios.post('/post-pop', pop)
     }
 

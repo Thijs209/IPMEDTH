@@ -4,13 +4,14 @@
   import Layout from "../Layouts/Layout.svelte"; 
   import { router, page } from '@inertiajs/svelte'
   export let pops;
+  export let user;
   
   let currentPop = pops.find(pop => pop.user_finished == 0);
 </script>
 
 <Layout>
   <div class="container" slot="main">
-    <CurrentPop pop={currentPop} />
+    <CurrentPop pop={currentPop} user={user} />
     <div>
       <h1>Mijn POPs</h1>
       <div class="pop-overview">
@@ -20,7 +21,9 @@
           <p>Doelen</p>
         </div>
         {#each pops as pop, i}
-        <PopRow pop={pop} index={i} />
+        {#if pop.user_finished == 0}
+          <PopRow pop={pop} index={i} />
+        {/if}
         {/each}
       </div>
     </div>

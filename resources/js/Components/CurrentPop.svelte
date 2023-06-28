@@ -3,15 +3,18 @@
   import { router, page } from '@inertiajs/svelte'
 
   export let pop;
+  export let user;
 
   function setFinished() {
     router.post(`pop-finished/${pop.id}`)
   }
+
+  console.log(pop);
 </script>
 
 <div class="container">
+  <h1>Hallo {user.first_name}</h1>
   {#if pop != undefined}
-  <h1>Hallo {pop.user.first_name}</h1>
   <h4>Huidige POP</h4>
   <div class="row">
     <p>people manager:</p>
@@ -31,7 +34,7 @@
     </div>
   </div>
   {:else}
-  <h1>Geen lopende POP</h1>
+  <h1>Je hebt op dit moment geen lopende POP</h1>
   <a href="/create-pop">
     <Button marginTop text='Maak Nieuwe POP' />
   </a>
