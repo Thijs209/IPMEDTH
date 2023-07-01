@@ -1,36 +1,38 @@
 <script lang="ts">
     import { useForm } from "@inertiajs/svelte";
     import moment, { type Moment } from "moment";
+    import { localization } from "moment/locale/nl";
     import { onMount, tick } from "svelte";
     import { MdSave } from "svelte-icons/md";
     import IconHolder from "./../IconHolder.svelte";
     import PopNote from "./PopNote.svelte";
-
-
-
+    export let dbNotes: Note[];
     export let popId: string;
     // TODO LocalStorage voor notes uitwerken
     export let notes: Note[] = [
-        {
-            date: moment("2023 03 03").format("DD/MM/YYYY").toString(),
-            time: moment().hours(9).minutes(3).format("HH:mm").toString(),
-            note: "Karin heeft de doelen niet behaald uit POP-2. ",
-            pop_id: "1111",
-        },
-        {
-            date: moment("2023 03 03").format(),
-            time: moment().hours(14).minutes(3).format("HH:mm").toString(),
-            note: "Mogelijkheden besproken rondom het aansturen van het team op afstand.",
-            pop_id: "1111",
-        },
-        {
-            date: moment("2020 03 03").format("DD/MM/YYYY").toString(),
-            time: moment().hours(4).minutes(3).format("HH:mm").toString(),
-            note: "Karin heeft de feedback ontvangen.",
-            pop_id: "1111",
-        },
+        // {
+        //     date: moment("2023 03 03").format("DD/MM/YYYY").toString(),
+        //     time: moment().hours(9).minutes(3).format("HH:mm").toString(),
+        //     note: "Karin heeft de doelen niet behaald uit POP-2. ",
+        //     pop_id: "1111",
+        // },
+        // {
+        //     date: moment("2023 03 03").format(),
+        //     time: moment().hours(14).minutes(3).format("HH:mm").toString(),
+        //     note: "Mogelijkheden besproken rondom het aansturen van het team op afstand.",
+        //     pop_id: "1111",
+        // },
+        // {
+        //     date: moment("2020 03 03").format("DD/MM/YYYY").toString(),
+        //     time: moment().hours(4).minutes(3).format("HH:mm").toString(),
+        //     note: "Karin heeft de feedback ontvangen.",
+        //     pop_id: "1111",
+        // },
     ];
 
+    dbNotes.forEach((dbNote) => {
+        notes.push(dbNote);
+    });
     let element: HTMLElement;
     onMount(() => {
         scrollToBottom(element);
@@ -40,25 +42,30 @@
         date: "",
         time: "",
         note: "",
+        note_type: 1,
         pop_id: popId,
         remember: true,
     });
 
     type Note = {
-        date: string | Moment;
-        time: string | Moment;
         note: string;
+        note_type: string | number;
         pop_id: string;
+        created_at: string | Moment;
+        updated_at: string | Moment;
     };
 
     let newNote: Note = {
-        date: moment().format("LL"),
-        time: moment().format("HH:mm"),
         note: "",
+        note_type: 1,
+        pop_id: popId,
+        created_at: moment(),
+        updated_at: moment(),
     };
 
     // On input change, update the
     $: form.note, (newNote.note = $form.note);
+    $: notes, console.log(notes);
 
     const scrollToBottom = (node: HTMLElement, notes?: Note[]) => {
         node.scroll({
@@ -69,14 +76,15 @@
     };
 
     async function handleSave() {
-        console.log(newNote);
-        console.log($form);
+        console.log("newNote", newNote);
+        console.log("form", $form);
         notes = [...notes, newNote];
         newNote = {
-            date: moment().format("LL"),
-            time: moment().format("HH:mm"),
             note: "",
+            note_type: 1,
             pop_id: popId,
+            created_at: moment(),
+            updated_at: moment(),
         };
 
         await tick();
@@ -101,8 +109,11 @@
         {#each notes as note}
             <div class="note">
                 <PopNote
-                    date={moment(note.date).format("LL")}
-                    time={note.time.toString()}
+                    date={moment(note.created_at)
+                        .locale("nl")
+                        .format("LL")
+                        .toString()}
+                    time={moment(note.created_at).format("HH:mm").toString()}
                     note={note.note}
                 />
             </div>

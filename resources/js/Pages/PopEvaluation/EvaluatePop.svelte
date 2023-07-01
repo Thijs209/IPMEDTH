@@ -33,7 +33,7 @@
         tasks: any[];
         coreQuadrants: any[];
         goals: any[];
-        evaluation_notes: any[];
+        evaluationNotes: any[];
         user: any;
     }
 
@@ -48,7 +48,7 @@
     export let pop: Pop;
     console.log(pop);
 
-    console.log(pop.evaluation_notes);
+    console.log(pop.evaluationNotes);
 </script>
 
 <Layout>
@@ -84,7 +84,7 @@
             <section slot="evaluate-pop-notes" class="evaluate-pop__notes">
                 <PopNotes
                     popId={pop.id.toString()}
-                    notes={pop.evaluation_notes}
+                    dbNotes={pop.evaluationNotes}
                 />
             </section>
             <div slot="evaluate-pop-buttons" class="evaluate-pop__buttons">

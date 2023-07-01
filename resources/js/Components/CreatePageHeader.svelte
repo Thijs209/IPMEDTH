@@ -84,6 +84,10 @@
         color: black;
     }
 
+    a:visited {
+        color: black;
+    }
+
     .selectedPage {
         color: black;
         position: relative;
