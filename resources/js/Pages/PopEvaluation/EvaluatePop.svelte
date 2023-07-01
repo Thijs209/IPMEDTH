@@ -54,6 +54,9 @@
 <Layout>
     <article slot="main" class="main">
         <CreatePageHeader
+            setCurrentPage={() => {}}
+            pages={[]}
+            currentPage={1}
             evaluationSection
             evaluationPages={$evaluationLinks.review}
         />
@@ -66,9 +69,10 @@
             </div>
             <section slot="evaluate-pop-content" class="evaluate-pop__content">
                 {#if $activeEvaluationTab.tab === $evaluationTabs.tabs[0]}
-                    <EvaluatePopProject task={pop.tasks} />
+                    <EvaluatePopProject {pop} task={pop.tasks} />
                 {:else if $activeEvaluationTab.tab === $evaluationTabs.tabs[1]}
                     <EvaluatePopCoreQuadrants
+                        {pop}
                         coreQuadrant={pop.coreQuadrants}
                     />
                 {:else if $activeEvaluationTab.tab === $evaluationTabs.tabs[2]}
@@ -78,7 +82,10 @@
                 {/if}
             </section>
             <section slot="evaluate-pop-notes" class="evaluate-pop__notes">
-                <PopNotes popId={pop.id.toString()} />
+                <PopNotes
+                    popId={pop.id.toString()}
+                    notes={pop.evaluation_notes}
+                />
             </section>
             <div slot="evaluate-pop-buttons" class="evaluate-pop__buttons">
                 {#if $activeEvaluationTab != null && $activeEvaluationTab.tab !== $evaluationTabs.tabs[3]}

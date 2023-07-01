@@ -23,7 +23,7 @@
     if (window.location.href.indexOf("create-pop") > -1) {
         goal = createdGoal;
     }
-    console.log(goal);
+
     $: open;
     export async function handleClick() {
         open = !open;

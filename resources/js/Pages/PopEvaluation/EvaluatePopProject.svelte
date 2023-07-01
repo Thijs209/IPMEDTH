@@ -19,9 +19,8 @@
     export let task: any;
 
     if (window.location.href.indexOf("create-pop") > -1) {
-        task = pop?.task
+        task = pop?.task;
     }
-    console.log(answers)
 </script>
 
 <section>

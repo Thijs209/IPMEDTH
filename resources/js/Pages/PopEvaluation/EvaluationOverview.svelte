@@ -38,6 +38,9 @@
     <article slot="main" class="evaluation-dashboard">
         <!-- <CreatePageHeader {pages} currentPage={1} setCurrentPage={() => {}} /> -->
         <CreatePageHeader
+            setCurrentPage={() => {}}
+            pages={[]}
+            currentPage={1}
             evaluationSection
             evaluationPages={$evaluationLinks.overview}
         />
