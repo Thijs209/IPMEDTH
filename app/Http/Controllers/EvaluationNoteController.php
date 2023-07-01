@@ -27,6 +27,8 @@ class EvaluationNoteController extends Controller
         }
         $note->evaluation_note = $request['note'];
         // $note EvaluationNoteResource::make($note);
+        error_log("evaluationNoteController: store fn triggered");
+        error_log($note);
         $note->save();
     }
 

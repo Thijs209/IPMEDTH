@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { evaluationLinks } from "./../../stores.js";
     import PopCards from "../../Components/EvaluatePopComponents/PopCards.svelte";
     import CreatePageHeader from "./../../Components/CreatePageHeader.svelte";
     import PopArchive from "./../../Components/EvaluatePopComponents/PopArchive.svelte";
@@ -30,13 +31,16 @@
     );
 
     let pageHeading = "POP Overzicht";
-    let pages: string[] = ["Home", "POP Overzicht", "POP Review"];
+    let pages: string[] = ["Home", "POP Overzicht"];
 </script>
 
 <Layout>
     <article slot="main" class="evaluation-dashboard">
         <!-- <CreatePageHeader {pages} currentPage={1} setCurrentPage={() => {}} /> -->
-        <h1>Persoonlijk Ontwikkelingsplan</h1>
+        <CreatePageHeader
+            evaluationSection
+            evaluationPages={$evaluationLinks.overview}
+        />
         <div class="cards-container">
             {#if pops && pops.length > 0}
                 <PopCards {pops} />

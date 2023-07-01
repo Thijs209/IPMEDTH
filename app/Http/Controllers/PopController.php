@@ -8,6 +8,7 @@ use App\Models\Task;
 use App\Models\CoreQuadrant;
 use App\Models\Pop;
 use App\Models\Goal;
+use App\Models\GoalStep;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
@@ -22,7 +23,7 @@ class PopController extends Controller
     public function show($id)
     {
         // $pop = POP::with(['task', 'goals', 'coreQuadrant'])->find($id)->pluck('goals')->flatten();
-        $pop = POP::with(['task', 'goals', 'coreQuadrant'])->find($id); 
+        $pop = POP::with(['task', 'goals', 'coreQuadrant'])->find($id);
         return Inertia::render('VerifyPop', [
             'pop' => $pop,
             'tasks' => $pop->tasks,
@@ -67,18 +68,18 @@ class PopController extends Controller
 
     public function store(StorePopRequest $request)
     {
-        // $validated = $request->validate([
-        //     'user_id' => 'required|exists:users, id',
-        // ]);
+        $validated = $request->validate([
+            'user_id' => 'required|exists:users, id',
+        ]);
 
-        // $pop = Pop::create($request->validated());
-        // $validated = $request->validated(
-        //     [
-        //         'user_id' => 'required',
-        //         'first_name' => 'required',
-        //         'last_name' => 'required',
-        //     ]
-        // );
+        $pop = Pop::create($request->validated());
+        $validated = $request->validated(
+            [
+                'user_id' => 'required',
+                'first_name' => 'required',
+                'last_name' => 'required',
+            ]
+        );
         $pop = Pop::create($request->validated());
 
         // save tasks

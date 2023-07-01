@@ -2,6 +2,38 @@ import moment from "moment";
 import { dataset_dev } from "svelte/internal";
 import { writable, readable } from "svelte/store";
 
+export const evaluationLinks = writable({
+    overview: [
+        {
+            label: "Home",
+            href: "/",
+            active: false,
+        },
+        {
+            label: "POP overzicht",
+            href: "",
+            active: true,
+        },
+    ],
+    review: [
+        {
+            label: "Home",
+            href: "/",
+            active: false,
+        },
+        {
+            label: "POP overzicht",
+            href: "/evaluation-overview",
+            active: false,
+        },
+        {
+            label: "POP Review",
+            href: "",
+            active: true,
+        },
+    ],
+});
+
 export const evaluationTabs = writable({
     tabs: ["opdracht", "kernkwadranten", "doelen", "afsluiting"],
 });
@@ -45,7 +77,8 @@ export const currentPopTaskQuestions = readable({
 export const currentPopTask = writable({
     goal: "Mijn overkoepelende doel is om meer overzicht te creëren in mijn werkzaamheden.",
     result: "Wanneer ik meer overzicht heb, kan ik mijn werkzaamheden beter plannen en prioriteren.",
-    success: "Ik heb dit doel bereikt wanneer ik in het komende project minder stress ervaar.",
+    success:
+        "Ik heb dit doel bereikt wanneer ik in het komende project minder stress ervaar.",
     manager:
         "Mijn manager, Vera PM, kan mij helpen door mij te helpen met het stellen van prioriteiten.",
     reportsOthers: "Ik rapporteer enkel aan Vera PM voor mijn werkzaamheden.",
@@ -90,7 +123,7 @@ export const currentPopGoal2 = readable({
         "Ik ben tevreden wanneer ik in het komende project elk weekend gemiddeld 2 uur per maand aan mijn hobby (boogschieten) heb besteed.",
     support:
         "Ik heb ondersteuning nodig van mijn partner, Lou, om mij te helpen met het stellen van prioriteiten. Ik zou graag 's avonds tijd over willen houden om tot rust te komen voor het weekend.",
-        deadline: moment().add(1, "day").format("MMMM Do YYYY, h:mm:ss"),
+    deadline: moment().add(1, "day").format("MMMM Do YYYY, h:mm:ss"),
     feedback:
         "Ik wens feedback van mijn trainingspartner te ontvangen over mijn voortgang. Ik denk dat het tot rust komen voor het weekend mij zal helpen om beter te present te zijn tijdens het boogschieten.",
     goalSteps: [
@@ -111,15 +144,14 @@ export const currentPopGoal3 = readable({
         "Ik ben tevreden wanneer ik in het komende project 1 keer per week een compliment geef aan een collega.",
     support:
         "Ik zou graag ondersteuning van mijn teamleden willen ontvangen tijdens dit proces.",
-        deadline: moment().add(1, "day").format("MMMM Do YYYY, h:mm:ss"),
+    deadline: moment().add(1, "day").format("MMMM Do YYYY, h:mm:ss"),
     feedback:
         "Ik wens feedback van mijn manager (Vera PM) te ontvangen na afloop van de POP cyclus.",
     goalSteps: [
         {
             stepId: 1,
             step: "Neem elke ochtend 5 minuten om een collega een compliment te geven.",
-            description:
-                "De sfeer van de organisatie begint bij de individu.",
+            description: "De sfeer van de organisatie begint bij de individu.",
         },
     ],
 });
@@ -133,7 +165,7 @@ export const currentPopGoal4 = readable({
         "Ik ben tevreden wanneer ik in het komende project 1 keer per week een compliment geef aan een collega.",
     support:
         "Ik zou graag ondersteuning van mijn directe projectleden willen ontvangen. .",
-        deadline: moment().add(1, "day").format("MMMM Do YYYY, h:mm:ss"),
+    deadline: moment().add(1, "day").format("MMMM Do YYYY, h:mm:ss"),
     feedback:
         "Ik wens feedback van mijn directe collega's (Vera PM) te ontvangen na afloop van het komende project.",
     goalSteps: [

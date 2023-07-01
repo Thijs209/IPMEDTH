@@ -1,30 +1,52 @@
 <script lang="ts">
     import IconHolder from "./IconHolder.svelte";
     import MdChevronRight from "svelte-icons/md/MdChevronRight.svelte";
+    import { Link } from "@inertiajs/svelte";
 
     export let setCurrentPage: (page: number) => void;
     export let pages: string[];
+    export let evaluationPages: {
+        label: string;
+        href: string;
+        active: boolean;
+    }[];
     export let currentPage: number;
     export let pageHeading: string = "Persoonlijk Ontwikkelingsplan";
+    export let evaluationSection: boolean = false;
 </script>
 
 <div class="container">
     <h1>{pageHeading}</h1>
     <div class="breadCrumbs">
-        {#each pages as page}
-            <!-- svelte-ignore a11y-click-events-have-key-events -->
-            <p
-                class:selectedPage={page == pages[currentPage]}
-                on:click={() => setCurrentPage(pages.indexOf(page))}
-            >
-                {page}
-            </p>
-            {#if page != pages[pages.length - 1]}
-                <IconHolder>
-                    <MdChevronRight />
-                </IconHolder>
-            {/if}
-        {/each}
+        {#if evaluationSection}
+            {#each evaluationPages as evaluationPage}
+                <Link href={evaluationPage.href}
+                    ><p class:selectedPage={evaluationPage.active}>
+                        {evaluationPage.label}
+                    </p></Link
+                >
+                {#if evaluationPage != evaluationPages[evaluationPages.length - 1]}
+                    <IconHolder>
+                        <MdChevronRight />
+                    </IconHolder>
+                {/if}
+            {/each}
+        {:else}
+            {#each pages as page}
+                <!-- svelte-ignore a11y-click-events-have-key-events -->
+                <p
+                    class:selectedPage={page == pages[currentPage]}
+                    on:click={() => setCurrentPage(pages.indexOf(page))}
+                >
+                    {page}
+                </p>
+                {#if page != pages[pages.length - 1]}
+                    <IconHolder>
+                        <MdChevronRight />
+                    </IconHolder>
+                {/if}
+            {/each}
+        {/if}
     </div>
 </div>
 

@@ -1,22 +1,26 @@
 <script lang="ts">
-    import { activeEvaluationTab, evaluationTabs } from "../../stores.js";
+    import { page } from "@inertiajs/svelte";
+    import {
+        activeEvaluationTab,
+        evaluationTabs,
+        evaluationLinks,
+    } from "../../stores.js";
     //Layouts
-    import Layout from "./../../Layouts/Layout.svelte";
     import EvaluatePopLayout from "./../../Layouts/EvaluatePopLayout.svelte";
+    import Layout from "./../../Layouts/Layout.svelte";
     // Page contents
     import UserProfile from "../../Components/EvaluatePopComponents/UserProfile.svelte";
     import CreatePageHeader from "./../../Components/CreatePageHeader.svelte";
     import ProgressTabs from "./../../Components/EvaluatePopComponents/ProgressTabs.svelte";
     // Evaluation tabs
-    import EvaluatePopProject from "./EvaluatePopProject.svelte";
-    import EvaluatePopCoreQuadrants from "./EvaluatePopCoreQuadrants.svelte";
     import EvaluatePopButtons from "../../Components/EvaluatePopComponents/EvaluatePopButtons.svelte";
-    import EvaluatePopGoals from "./EvaluatePopGoals.svelte";
-    import EvaluatePopFinalize from "./EvaluatePopFinalize.svelte";
     import PopNotes from "../../Components/EvaluatePopComponents/PopNotes.svelte";
-    import PopArchive from "../../Components/EvaluatePopComponents/PopArchive.svelte";
+    import EvaluatePopCoreQuadrants from "./EvaluatePopCoreQuadrants.svelte";
+    import EvaluatePopFinalize from "./EvaluatePopFinalize.svelte";
+    import EvaluatePopGoals from "./EvaluatePopGoals.svelte";
+    import EvaluatePopProject from "./EvaluatePopProject.svelte";
 
-    let pages: string[] = ["Home", "POP Overzicht", "POP Review"];
+    // let pages: string[] = ["Home", "POP Overzicht", "POP Review"];
 
     interface Pop {
         userId: number;
@@ -41,14 +45,17 @@
         pitfall: string;
     }
 
-    export let pop: Pop;
+    export let pop: Pop = $page.props.pop;
 
-    console.log(pop.coreQuadrants);
+    console.log(pop.evaluation_notes);
 </script>
 
 <Layout>
     <article slot="main" class="main">
-        <CreatePageHeader {pages} currentPage={2} setCurrentPage={() => {}} />
+        <CreatePageHeader
+            evaluationSection
+            evaluationPages={$evaluationLinks.review}
+        />
         <EvaluatePopLayout>
             <section slot="evaluate-pop-profile" class="evaluate-pop__profile">
                 <UserProfile />

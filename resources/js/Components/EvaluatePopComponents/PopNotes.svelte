@@ -1,29 +1,31 @@
 <script lang="ts">
-    import { useForm, page } from "@inertiajs/svelte";
+    import { useForm } from "@inertiajs/svelte";
     import moment, { type Moment } from "moment";
     import { onMount, tick } from "svelte";
     import { MdSave } from "svelte-icons/md";
     import IconHolder from "./../IconHolder.svelte";
     import PopNote from "./PopNote.svelte";
-    import { pop } from "../../stores.js";
 
     export let popId: string;
     // TODO LocalStorage voor notes uitwerken
     export let notes: Note[] = [
         {
-            date: moment("01 01 2023").format("LL"),
+            date: moment("2023 03 03").format("DD/MM/YYYY").toString(),
             time: moment().hours(9).minutes(3).format("HH:mm").toString(),
             note: "Karin heeft de doelen niet behaald uit POP-2. ",
+            pop_id: "1111",
         },
         {
             date: moment("2023 03 03").format(),
             time: moment().hours(14).minutes(3).format("HH:mm").toString(),
             note: "Mogelijkheden besproken rondom het aansturen van het team op afstand.",
+            pop_id: "1111",
         },
         {
-            date: moment("2020 03 03").format(),
+            date: moment("2020 03 03").format("DD/MM/YYYY").toString(),
             time: moment().hours(4).minutes(3).format("HH:mm").toString(),
             note: "Karin heeft de feedback ontvangen.",
+            pop_id: "1111",
         },
     ];
 
@@ -69,11 +71,12 @@
         console.log($form);
         notes = [...notes, newNote];
         newNote = {
-            pop_id: pop.id,
             date: moment().format("LL"),
             time: moment().format("HH:mm"),
             note: "",
+            pop_id: popId,
         };
+
         await tick();
         scrollToBottom(element);
         console.log(notes);

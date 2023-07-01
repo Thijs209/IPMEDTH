@@ -21,10 +21,10 @@
         };
     };
     if (window.location.href.indexOf("create-pop") > -1) {
-        goal= createdGoal;
+        goal = createdGoal;
     }
     console.log(goal);
-    $: open, console.log(goal?.goalType, open);
+    $: open;
     export async function handleClick() {
         open = !open;
     }
@@ -49,36 +49,36 @@
             <h4>Omschrijving</h4>
             <div class="goal__section">
                 <span class="u-bold">Deadline:</span>
-                <p class="u-font-small">{goal?.deadline || '-'}</p>
+                <p class="u-font-small">{goal?.deadline || "-"}</p>
             </div>
             <div class="goal__section">
                 <span class="u-bold">Waarom?</span>
-                <p class="u-font-small">{goal?.why || '-'}</p>
+                <p class="u-font-small">{goal?.why || "-"}</p>
             </div>
 
             <div class="goal__section">
                 <span class="u-bold">Tevreden:</span>
-                <p class="u-font-small">{goal?.satisfied || '-'}</p>
+                <p class="u-font-small">{goal?.satisfied || "-"}</p>
             </div>
             <div class="goal__section">
                 <span class="u-bold">Wilt ondersteuning van:</span>
-                <p class="u-font-small">{goal?.support || '-'}</p>
+                <p class="u-font-small">{goal?.support || "-"}</p>
             </div>
             <div class="goal__section">
                 <span class="u-bold">Feedback:</span>
-                <p class="u-font-small">{goal?.feedback || '-'}</p>
+                <p class="u-font-small">{goal?.feedback || "-"}</p>
             </div>
             {#if goal?.goalSteps.length > 0 || goal?.goalSteps != undefined}
                 <h4>Stappen</h4>
                 <div class="steps">
                     {#each goal?.goalSteps as step}
-                    <div class="goalStep">
-                        <h4>Stap {step.id}</h4>
-                        <!-- <p class="goalStep__title u-bold">{step.step}</p> -->
-                        <p class="u-font-small goalStep__description">
-                            {step.value}
-                        </p>
-                    </div>
+                        <div class="goalStep">
+                            <h4>Stap {step.id}</h4>
+                            <!-- <p class="goalStep__title u-bold">{step.step}</p> -->
+                            <p class="u-font-small goalStep__description">
+                                {step.value}
+                            </p>
+                        </div>
                     {/each}
                 </div>
             {/if}
@@ -100,7 +100,7 @@
         color: white;
     }
 
-    .steps{
+    .steps {
         display: flex;
         gap: 1em;
     }
@@ -120,6 +120,7 @@
         background-color: #fff;
         border-radius: 1rem;
         width: 100%;
+        min-width: 100%;
         grid-column: 1 / span 1;
         height: 100%;
         overflow: hidden;
