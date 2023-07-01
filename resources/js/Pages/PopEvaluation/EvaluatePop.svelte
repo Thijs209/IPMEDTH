@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { page } from "@inertiajs/svelte";
+
     import {
         activeEvaluationTab,
         evaluationTabs,

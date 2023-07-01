@@ -42,7 +42,6 @@ class PopController extends Controller
     public function popOverview()
     {
         $pops = POP::with(['task', 'goals', 'user'])->get();
-        error_log($pops);
         return Inertia::render('PopOverview', [
             'pops' => $pops,
         ]);

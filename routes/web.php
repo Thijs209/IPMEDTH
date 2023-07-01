@@ -7,6 +7,7 @@ use App\Http\Controllers\PopController;
 use App\Http\Controllers\EvaluationController;
 use App\Http\Controllers\EvaluationNoteController;
 use App\Models\User;
+use App\Models\Evaluation;
 use App\Models\Pop;
 use GuzzleHttp\Psr7\Request;
 
@@ -58,18 +59,15 @@ Route::get('/reset-password/{token}', function ($request) {
 //     ]);
 // });
 
-Route::get('/evaluation-overview', [EvaluationController::class, 'index']);
-Route::get('/evaluation/{pop_id}', [EvaluationController::class, 'show']);
-Route::post('/evaluation/{pop_id}/notes', [EvaluationNoteController::class, 'store']);
-
 
 // Route::prefix('v1')-> group(function(){
 //     Route::apiResource('/pops', PopController::class);
 //     Route::apiResource('/evaluation', EvaluationNoteController::class);
 // });
 
-
-// POP Routes
+/* 
+*  POP - EMPLOYEE ROUTES
+*/
 Route::get('/create-pop', [PopController::class, 'create']);
 Route::post('/post-pop', [PopController::class, 'store']);
 Route::get('/pops', [PopController::class, 'popOverview']);
@@ -79,12 +77,21 @@ Route::get('/create-pop/{id}', [PopController::class, 'edit']);
 
 //Task routes
 Route::get('/index{popId}', function (Request $request, string $popId) {
-    return 'Tasks '.$popId;
+    return 'Tasks ' . $popId;
 });
+
+/* 
+*  POP - PEOPLE MANAGER (EVALUATION) ROUTES
+*/
+
+Route::get('/evaluation-overview', [EvaluationController::class, 'index'])->can('viewAny', Evaluation::class)->name('evaluation-overview');
+Route::get('/evaluation/{pop_id}', [EvaluationController::class, 'show'])->can('view', Evaluation::class)->name('pop-review');
+Route::post('/evaluation/{pop_id}/notes', [EvaluationNoteController::class, 'store'])->can('update', Evaluation::class)->name('evaluation-notes');
+
 
 // Temp Route for testing, with default values
 // TODO remove default values in production + add permissions so only people manager and admin roles can access evaluation page for any POP
-Route::get('/evaluate-pop/users/{user_id}/pops/{pop_id?}/', function (string $user_id = "4", string $pop_id = "1") {
+Route::get('/evaluate-pop/users/{user_id}/pops/{pop_id?}/', function (string $user_id, string $pop_id) {
     if ($pop_id = null) {
         Pop::create()->id;
     };
@@ -92,4 +99,4 @@ Route::get('/evaluate-pop/users/{user_id}/pops/{pop_id?}/', function (string $us
         'user_id' => $user_id,
         'pop_id' => $pop_id
     ]);
-});
+})->can('view', Evaluation::class)->name('evaluate-pop');
