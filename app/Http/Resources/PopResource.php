@@ -22,7 +22,7 @@ class PopResource extends JsonResource
      */
 
     // remove data attribute
-     public static $wrap = null;
+    public static $wrap = null;
 
     public function toArray(Request $request): array
     {

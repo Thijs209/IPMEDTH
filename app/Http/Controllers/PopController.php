@@ -16,7 +16,6 @@ class PopController extends Controller
 {
     public function index()
     {
-
         return PopResource::collection(Pop::all());
     }
 
@@ -42,7 +41,8 @@ class PopController extends Controller
 
     public function popOverview()
     {
-        $pops = POP::with(['task', 'goals', 'user'])->get();
+        $pops = POP::with(['task', 'goals', 'user', 'pop_id'])->get();
+        error_log($pops);
         return Inertia::render('PopOverview', [
             'pops' => $pops,
         ]);

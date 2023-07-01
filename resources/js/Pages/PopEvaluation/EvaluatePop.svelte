@@ -24,7 +24,7 @@
 
     interface Pop {
         userId: number;
-        popId: number;
+        id: number;
         userFinished: boolean;
         userFinishedAt: any;
         evaluatedBy: number;
@@ -45,7 +45,8 @@
         pitfall: string;
     }
 
-    export let pop: Pop = $page.props.pop;
+    export let pop: Pop;
+    console.log(pop);
 
     console.log(pop.evaluation_notes);
 </script>
@@ -77,7 +78,7 @@
                 {/if}
             </section>
             <section slot="evaluate-pop-notes" class="evaluate-pop__notes">
-                <PopNotes popId={pop.id} />
+                <PopNotes popId={pop.id.toString()} />
             </section>
             <div slot="evaluate-pop-buttons" class="evaluate-pop__buttons">
                 {#if $activeEvaluationTab != null && $activeEvaluationTab.tab !== $evaluationTabs.tabs[3]}

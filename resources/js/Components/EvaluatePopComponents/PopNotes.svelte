@@ -6,6 +6,8 @@
     import IconHolder from "./../IconHolder.svelte";
     import PopNote from "./PopNote.svelte";
 
+
+
     export let popId: string;
     // TODO LocalStorage voor notes uitwerken
     export let notes: Note[] = [

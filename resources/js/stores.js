@@ -10,7 +10,7 @@ export const evaluationLinks = writable({
             active: false,
         },
         {
-            label: "POP overzicht",
+            label: "POP Overzicht",
             href: "",
             active: true,
         },
@@ -22,7 +22,7 @@ export const evaluationLinks = writable({
             active: false,
         },
         {
-            label: "POP overzicht",
+            label: "POP Overzicht",
             href: "/evaluation-overview",
             active: false,
         },
