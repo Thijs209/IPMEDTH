@@ -9,6 +9,8 @@ class Goal extends Model
 {
     use HasFactory;
 
+    protected $guarded = ['id'];
+
     public function pop() 
     {
         return $this->belongsTo(Pop::class);
