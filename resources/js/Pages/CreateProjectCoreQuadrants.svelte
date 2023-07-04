@@ -6,7 +6,7 @@
     export let updatePop;
 
     function updateCoreQuadrants(key, value) {
-        updatePop('core_quadrant', {
+        updatePop('coreQuadrants', {
             ...pop.coreQuadrant,
             [key]: value
         });
@@ -41,6 +41,10 @@
 </div>
 
 <style>
+    p{
+        font-size: 1.5em;
+    }
+
     .quadrantContainer{
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;

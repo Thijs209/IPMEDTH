@@ -8,8 +8,8 @@
 
 <div class:backgroundColor={index%2!=0} class="container"> 
   <p>{pop.id}</p>
-  <p>{pop.task.goal}</p>
-  <p>{pop.goals.length}</p>
+  <p>{pop.task?.goal}</p>
+  <p>{pop.goals?.length}</p>
   <NavButton text='bekijk' lightBackground href='viewPop/{pop.id}' />
 </div>
 
