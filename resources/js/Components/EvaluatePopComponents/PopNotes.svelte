@@ -105,18 +105,21 @@
 <h2 class="notes__header">Interne notities</h2>
 <section class="notes">
     <section bind:this={element} use:scrollToBottom={notes} class="notes__list">
-        {#each notes as note}
-            <div class="note">
-                <PopNote
-                    date={moment(note.created_at)
-                        .format("LL")
-
-                        .toString()}
-                    time={moment(note.created_at).format("HH:mm").toString()}
-                    note={note.note}
-                />
-            </div>
-        {/each}
+        {#if notes.length < 1}
+            <p class="notes__empty">Er zijn nog geen notities toegevoegd.</p>
+        {:else}
+            {#each notes as note}
+                <div class="note">
+                    <PopNote
+                        date={moment(note.created_at).format("LL").toString()}
+                        time={moment(note.created_at)
+                            .format("HH:mm")
+                            .toString()}
+                        note={note.note}
+                    />
+                </div>
+            {/each}
+        {/if}
     </section>
     <form class="notes__form" on:submit|preventDefault={() => handleSave}>
         <input id="note" name="note" type="text" bind:value={$form.note} />
@@ -194,6 +197,14 @@
         /* min-height: 100%; */
         width: 10%;
         border-radius: 0.5rem;
+    }
+
+    .notes__empty {
+        font-size: 1.4rem;
+        font-weight: 500;
+        color: #000;
+        text-align: left;
+        margin: 2rem;
     }
 
     button:hover {
