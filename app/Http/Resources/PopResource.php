@@ -29,6 +29,7 @@ class PopResource extends JsonResource
         return [
             'id' => $this->id,
             'user' => User::select(['id', 'first_name', 'last_name'])->find($this->user_id),
+            'fullName' => User::select(['id', 'first_name', 'last_name'])->find($this->user_id)->first_name . ' ' . User::select(['id', 'first_name', 'last_name'])->find($this->user_id)->last_name,
             'tasks' => TaskResource::make(Pop::find($this->id)->task),
             'goals' => GoalResource::collection(Pop::find($this->id)->goals),
             'coreQuadrants' => CoreQuadrantResource::make(Pop::find($this->id)->coreQuadrants),

@@ -16,7 +16,7 @@
             />
             <figcaption>
                 <p class="u-bold">
-                    {name ? "Karin Tonneman" : "Karin Tonneman"}
+                    {name ? name : "Karin Tonneman"}
                 </p>
                 <p>{circle}</p>
             </figcaption>
