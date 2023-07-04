@@ -8,6 +8,7 @@ use App\Models\Task;
 use App\Models\CoreQuadrant;
 use App\Models\Pop;
 use App\Models\Goal;
+use App\Models\GoalStep;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
@@ -47,10 +48,10 @@ class PopController extends Controller
             'goals' => $pop->goals,
         ]);
     }
-
+    
     public function edit($id)
     {
-        $pop = POP::with(['task', 'goals', 'coreQuadrant'])->find($id);
+        $pop = POP::with(['task', 'goals', 'coreQuadrants', 'goals.goalSteps'])->find($id);
         return Inertia::render('CreatePop', [
             'databasePop' => $pop,
         ]);
@@ -117,7 +118,7 @@ class PopController extends Controller
         }
 
         // save core quadrants
-        $coreQuadrantData = $request->input('core_quadrant');
+        $coreQuadrantData = $request->input('coreQuadrant');
 
         if ($coreQuadrantData) {
             foreach ($coreQuadrantData as $coreQuadrantItem) {
@@ -148,26 +149,17 @@ class PopController extends Controller
                 if (array_key_exists('satisfied', $goalsItem)) $goal->satisfied = $goalsItem['satisfied'];
                 if (array_key_exists('support', $goalsItem)) $goal->support = $goalsItem['support'];
                 if (array_key_exists('deadline', $goalsItem)) $goal->deadline = date('Y-m-d H:i:s');
-                if (array_key_exists('feedback', $feedback)) $goal->feedback = $goalsItem['feedback'];
+                if (array_key_exists('feedback', $goalsItem)) $goal->feedback = $goalsItem['feedback'];
                 
-                if($goalsItem['id'] !== null){
-                    \DB::table('goals')->where('id', $goalsItem['id'])->update($goal->toArray());
-                } else {
-                    $goal->save();
-                }
-                
-                if(array_key_exists('goal_steps', $goalsItem)){
+                $goal->save();
+                if(array_key_exists('goalSteps', $goalsItem)){
                     $stepData = $goalsItem['goalSteps'];
                     foreach ($stepData as $key => $stepitem) {
                         $goalStep = new GoalStep();
                         $goalStep->goal_id = $goal['id'];
                         $goalStep->step = $key;
-                        $goalStep->description = $stepitem['value'];
-                        if($stepitem['id'] !== null){
-                            \DB::table('goal_steps')->where('id', $stepitem['id'])->update($goalStep->toArray());
-                        } else {
-                            $goalStep->save();
-                        }
+                        if (array_key_exists('value', $stepitem)) $goalStep->description = $stepitem['value'];
+                        $goalStep->save();
                     }
                 }
             }
@@ -176,7 +168,7 @@ class PopController extends Controller
             $popArray = $pop->toArray();
             unset($popArray['created_at']);
             unset($popArray['updated_at']);
-            \DB::table('pops')->where('id', $request->input('id'))->update($pop->toArray());
+            \DB::table('pops')->where('id', $request->input('id'))->update($popArray);
         } else {
             $pop->save();
         }

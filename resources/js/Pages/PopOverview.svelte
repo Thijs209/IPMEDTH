@@ -20,8 +20,11 @@
           <p>Project</p>
           <p>Doelen</p>
         </div>
+        {#if pops.filter(pop => pop.user_finished == 0).length == 0}
+          <p>Je hebt geen lopende POPs</p>
+        {/if}
         {#each pops as pop, i}
-        {#if pop.user_finished == 0}
+        {#if pop.user_finished == 1}
           <PopRow pop={pop} index={i} />
         {/if}
         {/each}

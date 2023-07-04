@@ -15,7 +15,7 @@
 <div class="container">
   <h1>Hallo {user.first_name}</h1>
   {#if pop != undefined}
-  <h4>Huidige POP</h4>
+  <h4>Huidige POP: {pop.task.goal}</h4>
   <div class="row">
     <p>people manager:</p>
     <p>{pop.evaluatedBy||'onbekend'}</p>

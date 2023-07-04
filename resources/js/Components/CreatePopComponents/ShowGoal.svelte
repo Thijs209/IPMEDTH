@@ -6,6 +6,11 @@
     export let goal;
     export let setCurrentPage;
 
+    if(goal.goal_steps !== undefined) {
+        goal.goalSteps = goal.goal_steps || [];
+        delete goal.goal_steps;
+    }
+
     console.log(goal);
 </script>
 
