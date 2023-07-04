@@ -1,7 +1,6 @@
 <script lang="ts">
     import { useForm } from "@inertiajs/svelte";
     import moment, { type Moment } from "moment";
-    import { localization } from "moment/locale/nl";
     import { onMount, tick } from "svelte";
     import { MdSave } from "svelte-icons/md";
     import IconHolder from "./../IconHolder.svelte";
@@ -110,8 +109,8 @@
             <div class="note">
                 <PopNote
                     date={moment(note.created_at)
-                        .locale("nl")
                         .format("LL")
+
                         .toString()}
                     time={moment(note.created_at).format("HH:mm").toString()}
                     note={note.note}
