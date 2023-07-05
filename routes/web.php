@@ -70,7 +70,7 @@ Route::get('/reset-password/{token}', function ($request) {
 */
 Route::get('/create-pop', [PopController::class, 'create']);
 Route::post('/post-pop', [PopController::class, 'store']);
-Route::get('/pops', [PopController::class, 'popOverview']);
+Route::get('/pops', [PopController::class, 'popOverview'])->name('pops');
 Route::post('pop-finished/{id}', [PopController::class, 'popFinished']);
 Route::get('/viewPop/{id}', [PopController::class, 'show']);
 Route::get('/create-pop/{id}', [PopController::class, 'edit']);

@@ -49,9 +49,15 @@
         currentPage = page;
     };
 
+    function delay(time) {
+        return new Promise(resolve => setTimeout(resolve, time));
+    }
+
+    
     function savePop() {
         console.log(pop);
         axios.post('/post-pop', pop)
+        delay(1000).then(() => location.href = '/pops');
     }
 
     let openGoal = null;

@@ -6,7 +6,8 @@
   export let pops;
   export let user;
   
-  let currentPop = pops.find(pop => pop.user_finished == 0);
+  let currentPop = pops?.find(pop => pop.user_finished == 0);
+  // const noPops = pops?.find(pop => pop.user_finished == 1).length == 0;
 </script>
 
 <Layout>
@@ -20,9 +21,9 @@
           <p>Project</p>
           <p>Doelen</p>
         </div>
-        {#if pops.filter(pop => pop.user_finished == 0).length == 0}
+        <!-- {#if noPops}
           <p>Je hebt geen lopende POPs</p>
-        {/if}
+        {/if} -->
         {#each pops as pop, i}
         {#if pop.user_finished == 1}
           <PopRow pop={pop} index={i} />

@@ -10,6 +10,7 @@ use App\Models\Pop;
 use App\Models\Goal;
 use App\Models\GoalStep;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 
 class PopController extends Controller
@@ -173,5 +174,6 @@ class PopController extends Controller
         } else {
             $pop->save();
         }
+        return redirect()->route('pops');
     }
 }
