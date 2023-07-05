@@ -24,6 +24,11 @@
         'Afronden'
     ];
 
+    if(databasePop != undefined) {
+        databasePop.task.reportsOthers = databasePop.task.report_others;
+        delete databasePop.task.report_others;
+    }
+
     let pop = databasePop || {'goals': [], user_id: user.id ,'noSidebar': true, 'user_finished': 0, 'project': ''};
     function updatePop(key, value) {
         pop[key] = value;
@@ -53,6 +58,7 @@
         return new Promise(resolve => setTimeout(resolve, time));
     }
 
+    console.log(pop);
     
     function savePop() {
         console.log(pop);

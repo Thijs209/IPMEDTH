@@ -112,7 +112,7 @@ class PopController extends Controller
         $task->results = $request->input('task.results');
         $task->success = $request->input('task.success');
         $task->manager = $request->input('task.manager');
-        $task->report_others = $request->input('task.report_others');
+        $task->report_others = $request->input('task.reportsOthers');
         if ($request->input('task.id') !== null) {
             \DB::table('tasks')->where('id', $request->input('task.id'))->update($task->toArray());
         } else {

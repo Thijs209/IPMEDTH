@@ -13,7 +13,7 @@
     export let coreQuadrant: any;
     export let pop;
     if (window.location.href.indexOf("create-pop") > -1) {
-        coreQuadrant = pop?.coreQuadrant;
+        coreQuadrant = pop?.coreQuadrants;
     }
 </script>
 
