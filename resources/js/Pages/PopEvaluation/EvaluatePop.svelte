@@ -1,5 +1,4 @@
 <script lang="ts">
-
     import {
         activeEvaluationTab,
         evaluationTabs,
@@ -25,6 +24,7 @@
     interface Pop {
         userId: number;
         id: number;
+        fullName: string;
         userFinished: boolean;
         userFinishedAt: any;
         evaluatedBy: number;
@@ -62,7 +62,7 @@
         />
         <EvaluatePopLayout>
             <section slot="evaluate-pop-profile" class="evaluate-pop__profile">
-                <UserProfile />
+                <UserProfile name={pop.fullName} />
             </section>
             <div slot="evaluate-pop-tabs" class="evaluate-pop__tabs">
                 <ProgressTabs />
@@ -76,7 +76,7 @@
                         coreQuadrant={pop.coreQuadrants}
                     />
                 {:else if $activeEvaluationTab.tab === $evaluationTabs.tabs[2]}
-                    <EvaluatePopGoals />
+                    <EvaluatePopGoals {pop} />
                 {:else if $activeEvaluationTab.tab === $evaluationTabs.tabs[3]}
                     <EvaluatePopFinalize />
                 {/if}
@@ -100,7 +100,7 @@
 
 <style>
     .main {
-        margin: 0 3rem;
+        margin: 3rem;
     }
 
     .evaluate-pop__profile {

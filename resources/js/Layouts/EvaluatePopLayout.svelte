@@ -35,6 +35,7 @@
         width: 100%;
         max-width: 90vw;
 
+
         background-color: #eee;
         min-height: 85vh; /* TODO test if setting height w/ vh units leads to issues. */
         border-radius: 1rem;
@@ -47,6 +48,7 @@
 
     /* Main content window, contains the nav tabs, POP pages, and permanent notes section. Bottomright contains action buttons. */
     .evaluate-pop__main {
+        
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         grid-template-rows: 5rem 1fr 10rem;

@@ -19,7 +19,8 @@ class PopController extends Controller
         return PopResource::collection(Pop::all());
     }
 
-    public function camelCaseKeys($array, $arrayHolder = array()) {
+    public function camelCaseKeys($array, $arrayHolder = array())
+    {
         $camelCaseArray = !empty($arrayHolder) ? $arrayHolder : array();
         foreach ($array as $key => $val) {
             $newKey = @explode('_', $key);
@@ -40,7 +41,7 @@ class PopController extends Controller
     {
         // $pop = POP::with(['task', 'goals', 'coreQuadrant'])->find($id)->pluck('goals')->flatten();
         $pop = camelCaseKeys(POP::with(['task', 'goals', 'coreQuadrant'])->find($id)->toArray());
-        
+
         return Inertia::render('VerifyPop', [
             'pop' => $pop,
             'tasks' => $pop->tasks,
@@ -48,7 +49,7 @@ class PopController extends Controller
             'goals' => $pop->goals,
         ]);
     }
-    
+
     public function edit($id)
     {
         $pop = POP::with(['task', 'goals', 'coreQuadrants', 'goals.goalSteps'])->find($id);
@@ -76,7 +77,7 @@ class PopController extends Controller
 
     public function create()
     {
-        return Inertia::render('CreatePop',['user' => Auth::user()]);
+        return Inertia::render('CreatePop', ['user' => Auth::user()]);
     }
 
     public function update()
@@ -86,7 +87,7 @@ class PopController extends Controller
     public function store(StorePopRequest $request)
     {
         $validated = $request->validate([
-            'user_id' => 'required|exists:users, id',
+            'user_id' => 'required|exists:users,id',
         ]);
 
         // $pop = Pop::create($request->validated());
@@ -97,7 +98,7 @@ class PopController extends Controller
         //         'last_name' => 'required',
         //     ]
         // );
-        if($request->input('id') !== null){
+        if ($request->input('id') !== null) {
             $pop = Pop::find($request->input('id'));
         } else {
             $pop = Pop::create($request->validated());
@@ -111,7 +112,7 @@ class PopController extends Controller
         $task->success = $request->input('task.success');
         $task->manager = $request->input('task.manager');
         $task->report_others = $request->input('task.report_others');
-        if($request->input('task.id') !== null){
+        if ($request->input('task.id') !== null) {
             \DB::table('tasks')->where('id', $request->input('task.id'))->update($task->toArray());
         } else {
             $task->save();
@@ -128,7 +129,7 @@ class PopController extends Controller
                 $coreQuadrant->pitfall = $coreQuadrantItem['pitfall'];
                 $coreQuadrant->allergy = $coreQuadrantItem['allergy'];
                 $coreQuadrant->challenge = $coreQuadrantItem['challenge'];
-                if($coreQuadrantItem['id'] !== null){
+                if ($coreQuadrantItem['id'] !== null) {
                     \DB::table('core_quadrants')->where('id', $coreQuadrantItem['id'])->update($coreQuadrant->toArray());
                 } else {
                     $coreQuadrant->save();
@@ -150,9 +151,9 @@ class PopController extends Controller
                 if (array_key_exists('support', $goalsItem)) $goal->support = $goalsItem['support'];
                 if (array_key_exists('deadline', $goalsItem)) $goal->deadline = date('Y-m-d H:i:s');
                 if (array_key_exists('feedback', $goalsItem)) $goal->feedback = $goalsItem['feedback'];
-                
+
                 $goal->save();
-                if(array_key_exists('goalSteps', $goalsItem)){
+                if (array_key_exists('goalSteps', $goalsItem)) {
                     $stepData = $goalsItem['goalSteps'];
                     foreach ($stepData as $key => $stepitem) {
                         $goalStep = new GoalStep();
@@ -164,7 +165,7 @@ class PopController extends Controller
                 }
             }
         };
-        if($request->input('id') !== null){
+        if ($request->input('id') !== null) {
             $popArray = $pop->toArray();
             unset($popArray['created_at']);
             unset($popArray['updated_at']);

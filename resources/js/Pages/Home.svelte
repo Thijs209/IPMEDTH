@@ -36,7 +36,7 @@
                 >
             </div>
         {:else}
-            <h2>POP testpagina</h2>
+            <h2>POP applicatie</h2>
             <div class="buttons">
                 <button
                     class="button"

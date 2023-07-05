@@ -1,5 +1,7 @@
 <script lang="ts">
+    import { router } from "@inertiajs/svelte";
     // TODO functie schrijven om de data op te slaan in de database bij het klikken op de opslaan knop
+    // Dit wordt nu al direct gedaan via het werken met de POP.
     export let finalize = false;
 
     // const handleCancel = () => {
@@ -24,15 +26,27 @@
 </script>
 
 <div class="evaluate-pop__buttons">
-    <button class="button button--close">
+    <button
+        class="button button--close"
+        on:click={() =>
+            router.get("/evaluation-overview", { preserveState: true })}
+    >
         <p>Cancel</p>
     </button>
     {#if finalize == false}
-        <button class="button">
+        <button
+            on:click={() =>
+                router.get("/evaluation-overview", { preserveState: true })}
+            class="button"
+        >
             <p>Opslaan</p>
         </button>
     {:else}
-        <button class="button button--finalize">
+        <button
+            class="button button--finalize"
+            on:click={//TODO Replace with function to update EvaluatedAt in database
+            () => router.get("/evaluation-overview", { preserveState: true })}
+        >
             <p>Pop Afsluiten</p>
         </button>
     {/if}

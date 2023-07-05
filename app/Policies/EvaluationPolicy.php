@@ -34,7 +34,7 @@ class EvaluationPolicy
      */
     public function view(User $user, Evaluation $evaluation): bool
     {
-        //
+        return $user->isPeopleManager();
     }
 
     /**
@@ -44,6 +44,7 @@ class EvaluationPolicy
     {
         //
     }
+
 
     /**
      * Determine whether the user can update the model.
