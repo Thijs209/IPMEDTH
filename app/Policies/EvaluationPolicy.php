@@ -32,9 +32,9 @@ class EvaluationPolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, Evaluation $evaluation): bool
+    public function view(): bool
     {
-        return $user->isPeopleManager();
+        return true;
     }
 
     /**
