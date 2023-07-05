@@ -18,7 +18,7 @@
     </section>
 </article>
 
-<style>
+<style> 
     .heading {
         display: flex;
         width: 100%;

@@ -68,7 +68,7 @@
                 <span class="u-bold">Feedback:</span>
                 <p class="u-font-small">{goal?.feedback || "-"}</p>
             </div>
-            {#if goal?.goalSteps.length > 0 && goal?.goalSteps.description != undefined}
+            {#if goal?.goalSteps > 0 && goal?.goalSteps.description != undefined}
                 <h4>Stappen</h4>
                 <div class="steps">
                     {#each goal?.goalSteps as step}

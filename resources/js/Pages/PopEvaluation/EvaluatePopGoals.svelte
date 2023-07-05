@@ -4,8 +4,8 @@
 
     export let pop;
 
-    let goals: Array<{
-        goalId: number; 
+    interface Goal {
+        goalId: number;
         goalType: string;
         what: string;
         why: string;
@@ -18,13 +18,17 @@
             step: string;
             description: string;
         };
-    }>;
-    goals = [];
-    currentPopGoals.forEach((item) => {
-        item.subscribe((value) => {
-            goals.push(value);
-        });
-    });
+    }
+
+    let currentGoalsStore = currentPopGoals;
+    let goals: Array<Goal>;
+    goals = pop.goals;
+    if (pop.goals.length > 0) {
+        currentGoalsStore = [...pop.goals];
+    }
+    // goals.forEach((item) => {
+    //     currentGoalsStore = [...goals];
+    // });
 
     if (window.location.href.indexOf("create-pop") > -1) {
         goals = pop?.goals;
@@ -34,7 +38,9 @@
 <section class="goals">
     <h3>Doelen</h3>
     {#each goals as goal}
-        <EvaluateGoal {goal} open={false} />
+        {#if goal.what !== null}
+            <EvaluateGoal {goal} createdGoal={false} open={false} />
+        {/if}
     {/each}
 </section>
 

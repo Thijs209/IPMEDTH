@@ -91,7 +91,7 @@ export const currentPopCoreQuadrants = readable({
     challenge: "Ik wil graag alles zelf doen.",
 });
 
-export const currentPopGoal1 = readable({
+export const currentPopGoal1 = writable({
     goalId: 1001,
     goalType: "Gezondheid",
     what: "Ik wil graag meer overzicht creëren in mijn werkzaamheden.",
